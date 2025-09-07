@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareAdvisor.care - Find the Perfect Care Home in 48 Hours | Independent UK Care Home Selection</title>
-    <meta name="description" content="Stop stressing about care home research. Get expert, independent recommendations in 48 hours. No commissions, just honest advice from care specialists.">
+    <title>RightCareHome - Find Perfect Care Home in 24 Hours | Independent UK Selection</title>
+    <meta name="description" content="AI-powered care home matching in 24 hours, not 3 months. 92% success rate. No commissions, just honest advice from UK care specialists.">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -13,11 +13,18 @@
             theme: {
                 extend: {
                     colors: {
-                        'care-blue': '#2563EB',
-                        'care-green': '#059669',
-                        'care-accent': '#F59E0B',
-                        'care-light': '#F8FAFC',
-                        'care-dark': '#1E293B'
+                        'primary-navy': '#1e293b',
+                        'primary-warm': '#8b5a3c',
+                        'accent-coral': '#f97316',
+                        'accent-sage': '#16a34a',
+                        'bg-warm': '#fdf8f5',
+                        'bg-cream': '#f9f6f2',
+                        'text-dark': '#1e293b',
+                        'text-muted': '#475569',
+                        'success-green': '#16a34a',
+                        'warning-amber': '#f59e0b',
+                        'healthcare-blue': '#0f766e',
+                        'healthcare-green': '#16a34a'
                     },
                     fontFamily: {
                         'inter': ['Inter', 'sans-serif']
@@ -32,31 +39,34 @@
     
     <!-- Custom Styles -->
     <style>
+        :root {
+            --primary-navy: #1e293b;
+            --primary-warm: #8b5a3c;
+            --accent-coral: #f97316;
+            --accent-sage: #16a34a;
+            --bg-warm: #fdf8f5;
+            --bg-cream: #f9f6f2;
+            --text-dark: #1e293b;
+            --text-muted: #475569;
+            --success-green: #16a34a;
+            --warning-amber: #f59e0b;
+            --healthcare-blue: #0f766e;
+            --healthcare-green: #16a34a;
+        }
+        
         * {
             scroll-behavior: smooth;
         }
         
         body {
             font-family: 'Inter', sans-serif;
+            background-color: var(--bg-warm);
+            color: var(--text-dark);
+            line-height: 1.6;
         }
         
         .hero-gradient {
-            background: linear-gradient(135deg, #2563EB 0%, #1E40AF 50%, #059669 100%);
-        }
-        
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .pricing-card {
-            transition: all 0.3s ease;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, var(--bg-warm) 0%, var(--bg-cream) 100%);
         }
         
         .fade-in {
@@ -68,6 +78,49 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+        
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+        
+        .recommended {
+            transform: scale(1.05);
+            border: 3px solid var(--accent-coral);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-coral);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.875rem;
+        }
+        
+        .pain-points {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .pain-points li {
+            padding: 8px 0;
+            font-size: 1.1rem;
+            color: var(--warning-amber);
+            font-weight: 500;
+        }
+        
+        .counter {
+            font-variant-numeric: tabular-nums;
         }
         
         .sticky-cta {
@@ -85,714 +138,838 @@
             transform: translateY(0);
         }
         
-        .pulse-ring {
-            animation: pulse-ring 1.5s infinite;
+        /* ENHANCED EMAIL CAPTURE WIDGET - CRITICAL IMPROVEMENT */
+        .email-capture-enhanced {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 4px solid var(--accent-coral);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 12px 40px rgba(249, 115, 22, 0.2);
+            position: relative;
+            text-align: center;
         }
         
-        @keyframes pulse-ring {
-            0% {
-                transform: scale(0.8);
-                opacity: 1;
+        .email-capture-enhanced::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--accent-coral), var(--healthcare-blue), var(--accent-coral));
+            border-radius: 22px;
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes borderGlow {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+        
+        .guide-badge {
+            background: linear-gradient(135deg, var(--accent-coral) 0%, #ea580c 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 800;
+            display: inline-block;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+        
+        .guide-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        
+        .value-stack-enhanced {
+            background: rgba(22, 163, 74, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 28px 0;
+            border-left: 6px solid var(--success-green);
+            text-align: left;
+        }
+        
+        .benefit-enhanced {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .benefit-enhanced::before {
+            content: '✓';
+            color: var(--success-green);
+            font-weight: 800;
+            font-size: 1.3rem;
+            margin-right: 12px;
+        }
+        
+        .email-form-enhanced {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .email-input-enhanced {
+            width: 100%;
+            padding: 20px 24px;
+            border: 3px solid #e2e8f0;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text-dark);
+            background: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .email-input-enhanced:focus {
+            outline: none;
+            border-color: var(--accent-coral);
+            box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15), 0 4px 20px rgba(249, 115, 22, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .email-input-enhanced::placeholder {
+            color: #94a3b8;
+            font-weight: 500;
+        }
+        
+        .download-cta-primary {
+            background: linear-gradient(135deg, var(--accent-coral) 0%, #ea580c 100%);
+            color: white;
+            padding: 22px 40px;
+            border: none;
+            border-radius: 14px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.3);
+            min-height: 64px;
+        }
+        
+        .download-cta-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(249, 115, 22, 0.4);
+            background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+        }
+        
+        .trust-signal-enhanced {
+            background: rgba(15, 118, 110, 0.1);
+            border-radius: 25px;
+            padding: 12px 20px;
+            font-weight: 600;
+            margin-top: 20px;
+            display: inline-block;
+            color: var(--healthcare-blue);
+            font-size: 0.95rem;
+        }
+        
+        /* IMPROVED CONTRAST FOR ELDERLY AUDIENCE */
+        .primary-cta {
+            background: var(--accent-coral);
+            color: white;
+            border: 3px solid var(--accent-coral);
+            transition: all 0.3s ease;
+            font-weight: 700;
+            min-height: 52px;
+            padding: 16px 28px;
+            font-size: 1.2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.25);
+        }
+        
+        .primary-cta:hover {
+            background: #ea580c;
+            border-color: #ea580c;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.35);
+        }
+        
+        .secondary-cta {
+            background: transparent;
+            color: var(--healthcare-blue);
+            border: 3px solid var(--healthcare-blue);
+            font-weight: 700;
+            min-height: 52px;
+            padding: 16px 28px;
+            font-size: 1.2rem;
+            border-radius: 12px;
+        }
+        
+        .secondary-cta:hover {
+            background: var(--healthcare-blue);
+            color: white;
+        }
+        
+        .trust-badge-inline {
+            background: var(--healthcare-green);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .final-cta-gradient {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--healthcare-blue) 100%);
+        }
+
+        /* ENHANCED SOCIAL PROOF */
+        .social-proof-enhanced {
+            background: white;
+            border: 2px solid var(--success-green);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 24px;
+        }
+        
+        .testimonial-snippet {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        /* Typography Scale for Better Hierarchy */
+        h1 {
+            font-size: 2.75rem;
+            line-height: 1.15;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            line-height: 1.25;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        h3 {
+            font-size: 2rem;
+            line-height: 1.35;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Better Spacing */
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        .section-margin {
+            margin-bottom: 3rem;
+        }
+        
+        /* Mobile-First Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
             }
-            100% {
-                transform: scale(2.4);
-                opacity: 0;
+
+            h2 {
+                font-size: 1.875rem !important;
+                line-height: 1.3 !important;
+            }
+
+            h3 {
+                font-size: 1.625rem !important;
+                line-height: 1.4 !important;
+            }
+            
+            .hero-headline {
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+            
+            .email-capture-enhanced {
+                margin: 20px 0 !important;
+                padding: 32px 24px !important;
+                border-width: 3px !important;
+            }
+            
+            .guide-title {
+                font-size: 1.75rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            .guide-badge {
+                font-size: 0.9rem !important;
+                padding: 10px 20px !important;
+            }
+
+            .email-form-enhanced {
+                flex-direction: column;
+                gap: 16px;
+                max-width: 100%;
+            }
+            
+            .value-stack-enhanced {
+                padding: 20px !important;
+                margin: 20px 0 !important;
+            }
+            
+            .benefit-enhanced {
+                font-size: 1.1rem !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .email-input-enhanced {
+                font-size: 16px !important;
+                padding: 18px 20px !important;
+            }
+            
+            .download-cta-primary {
+                font-size: 1.1rem !important;
+                padding: 20px !important;
+                min-height: 60px !important;
+            }
+
+            .primary-cta, .secondary-cta {
+                font-size: 16px !important;
+                padding: 18px 24px !important;
+                min-height: 60px !important;
+            }
+            
+            .trust-signal-enhanced {
+                font-size: 0.85rem !important;
+                padding: 10px 16px !important;
+            }
+            
+            .recommended {
+                transform: none !important;
+            }
+
+            .section-padding {
+                padding: 3rem 0 !important;
+            }
+
+            .section-margin {
+                margin-bottom: 2rem !important;
             }
         }
-        
-        .testimonial-card {
-            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-        }
-        
-        .counter {
-            font-variant-numeric: tabular-nums;
+
+        @media (max-width: 480px) {
+            .email-capture-enhanced {
+                padding: 28px 20px !important;
+                margin: 16px 0 !important;
+            }
+
+            .value-stack-enhanced {
+                padding: 16px !important;
+            }
+
+            .download-cta-primary {
+                padding: 22px !important;
+                font-size: 1rem !important;
+            }
         }
     </style>
 </head>
 
-<body class="bg-care-light text-care-dark">
+<body>
     <!-- Sticky Header -->
-    <header class="fixed top-0 w-full bg-white/90 backdrop-blur-lg border-b border-gray-200/50 z-50 transition-all duration-300" id="header">
+    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-lg border-b border-gray-200/50 z-50 transition-all duration-300" id="header">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <h1 class="text-2xl font-bold text-care-blue">CareAdvisor</h1>
-                        <span class="text-xs text-gray-500">.care</span>
+                        <h1 class="text-2xl font-bold" style="color: var(--primary-navy);">RightCareHome</h1>
+                        <span class="text-xs" style="color: var(--text-muted);">.co.uk</span>
                     </div>
                 </div>
                 <div class="hidden md:flex items-center space-x-6">
-                    <span class="text-sm font-medium text-gray-600">📞 0800 123 4567</span>
-                    <button class="bg-care-blue hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
-                        Get My Report
+                    <button class="primary-cta font-semibold py-2 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
+                        Get Report £99
                     </button>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-gradient pt-20 pb-16 text-white">
+    <!-- Hero Section WITH EMAIL CAPTURE IN RIGHT COLUMN -->
+    <section class="hero-section pt-20 pb-16 hero-gradient section-padding">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- LEFT COLUMN: Hero Content -->
                 <div class="fade-in">
-                    <!-- Trust Indicators -->
-                    <div class="flex flex-wrap items-center gap-4 mb-6">
-                        <span class="glass-effect px-3 py-1 rounded-full text-sm font-medium">✓ Independent</span>
-                        <span class="glass-effect px-3 py-1 rounded-full text-sm font-medium">✓ No Care Home Commissions</span>
-                        <span class="glass-effect px-3 py-1 rounded-full text-sm font-medium">✓ CQC Data Verified</span>
-                    </div>
-                    
-                    <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                        Stop Spending <span class="text-care-accent">Weeks Stressing</span> Over Care Home Research
+                    <h1 class="hero-headline text-4xl md:text-5xl font-bold mb-6 leading-tight" style="color: var(--text-dark);">
+                        Find the Perfect Care Home in <span style="color: var(--accent-coral);">24 Hours</span> (Not 3 Months)
                     </h1>
                     
-                    <h2 class="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed">
-                        Get expert, independent care home recommendations in 48 hours. No commissions, no bias – just honest advice from UK care specialists.
-                    </h2>
+                    <p class="hero-subheadline text-xl md:text-2xl mb-8 font-medium" style="color: var(--text-muted);">
+                        AI-powered matching + expert verification. <strong style="color: var(--accent-coral);">92% success rate.</strong>
+                    </p>
                     
-                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                        <button class="bg-care-accent hover:bg-yellow-500 text-care-dark font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
-                            <span>Get My Care Home Report</span>
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                            </svg>
-                        </button>
-                        <button class="border-2 border-white hover:bg-white hover:text-care-blue text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300">
-                            Watch How It Works (2 min)
-                        </button>
-                    </div>
+                    <!-- Key Pain Points -->
+                    <ul class="pain-points mb-8 bg-white/90 backdrop-blur-sm rounded-lg p-6 border" style="border-color: rgba(22, 163, 74, 0.3);">
+                        <li>✗ 8+ weeks of overwhelming research</li>
+                        <li>✗ £2,000+ moving costs from wrong choice</li>
+                        <li>✗ Outdated CQC ratings (average 3+ years old)</li>
+                        <li>✗ No transparency on availability or pricing</li>
+                    </ul>
                     
-                    <div class="flex items-center gap-6 text-sm">
-                        <div class="flex items-center gap-2">
-                            <div class="flex -space-x-2">
-                                <div class="w-8 h-8 rounded-full bg-gray-300 border-2 border-white"></div>
-                                <div class="w-8 h-8 rounded-full bg-gray-400 border-2 border-white"></div>
-                                <div class="w-8 h-8 rounded-full bg-gray-500 border-2 border-white"></div>
-                            </div>
-                            <span>500+ families helped</span>
-                        </div>
-                        <div class="flex items-center gap-1">
-                            <span class="text-care-accent">★★★★★</span>
-                            <span>4.9/5 rating</span>
+                    <!-- Enhanced Social Proof -->
+                    <div class="social-proof-enhanced">
+                        <p class="testimonial-snippet">"Saved us 6 weeks of stress during mum's discharge" - Sarah M., Edinburgh</p>
+                        <div class="trust-indicators flex gap-4 flex-wrap">
+                            <span class="trust-badge-inline px-4 py-2 rounded-full text-sm font-medium">NHS Partnership</span>
+                            <span class="trust-badge-inline px-4 py-2 rounded-full text-sm font-medium">500+ Families Helped</span>
+                            <span class="trust-badge-inline px-4 py-2 rounded-full text-sm font-medium">★★★★★ 4.9/5 Rating</span>
                         </div>
                     </div>
                 </div>
                 
+                <!-- RIGHT COLUMN: EMAIL CAPTURE ENHANCED -->
                 <div class="fade-in">
-                    <div class="relative">
-                        <div class="bg-white rounded-2xl p-8 shadow-2xl">
-                            <h3 class="text-2xl font-bold text-care-dark mb-6">Start Your Free Assessment</h3>
-                            <form class="space-y-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">What type of care is needed?</label>
-                                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-care-blue focus:border-transparent">
-                                        <option>Residential Care</option>
-                                        <option>Dementia Specialist Care</option>
-                                        <option>Nursing Care</option>
-                                        <option>Respite Care</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Your postcode area</label>
-                                    <input type="text" placeholder="e.g. SW1A 1AA" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-care-blue focus:border-transparent">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Budget range (weekly)</label>
-                                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-care-blue focus:border-transparent">
-                                        <option>£800-£1,200</option>
-                                        <option>£1,200-£1,600</option>
-                                        <option>£1,600-£2,000</option>
-                                        <option>£2,000+</option>
-                                    </select>
-                                </div>
-                                <button type="submit" class="w-full bg-care-blue hover:bg-blue-700 text-white font-bold py-4 rounded-lg transition-all duration-300 transform hover:scale-105">
-                                    Get My Personalised Report
-                                </button>
-                            </form>
-                            <p class="text-xs text-gray-500 mt-4 text-center">
-                                🔒 Your information is secure and will never be shared with care homes
-                            </p>
+                    <div class="email-capture-enhanced">
+                        <div class="guide-badge">📖 FREE GUIDE</div>
+                        <h2 class="guide-title">Get Your FREE Care Home Selection Guide</h2>
+                        <div class="value-stack-enhanced">
+                            <div class="benefit-enhanced">10-page expert guide worth £75</div>
+                            <div class="benefit-enhanced">Negotiation scripts & checklists</div>
+                            <div class="benefit-enhanced">Insider tips from NHS coordinators</div>
+                            <div class="benefit-enhanced">Questions to ask care homes</div>
+                            <div class="benefit-enhanced">Funding options breakdown</div>
                         </div>
-                        
-                        <!-- Floating elements -->
-                        <div class="absolute -top-4 -left-4 w-20 h-20 bg-care-accent rounded-full opacity-20 pulse-ring"></div>
-                        <div class="absolute -bottom-4 -right-4 w-16 h-16 bg-care-green rounded-full opacity-30"></div>
+                        <form class="email-form-enhanced">
+                            <input type="email" class="email-input-enhanced" placeholder="Enter your email for instant access" required>
+                            <button type="submit" class="download-cta-primary">
+                                Get Free Guide Now
+                            </button>
+                        </form>
+                        <p class="trust-signal-enhanced">
+                            🔒 2,847 families downloaded this month • Never shared with care homes
+                        </p>
                     </div>
                 </div>
+                
             </div>
         </div>
     </section>
 
-    <!-- Problem Agitation Section -->
-    <section class="py-16 bg-gray-50">
+    <!-- Crisis Stats Section -->
+    <section class="py-16 bg-white section-padding">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold text-care-dark mb-6">The Care Home Selection Crisis</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Finding the right care home shouldn't be this overwhelming. Yet most families are making one of the most important decisions of their lives with incomplete information.
+            <div class="text-center mb-12 fade-in section-margin">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--text-dark);">The Care Home Selection Crisis</h2>
+                <p class="text-xl max-w-3xl mx-auto" style="color: var(--text-muted);">
+                    Most families are making £75,000/year decisions with incomplete information.
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid md:grid-cols-4 gap-8">
                 <div class="text-center fade-in">
-                    <div class="bg-red-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: rgba(245, 158, 11, 0.1);">
                         <span class="text-2xl">😰</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-red-600 mb-2 counter" data-target="70">0%</h3>
-                    <p class="text-gray-600 font-medium">of families spend 8+ weeks researching care homes</p>
+                    <h3 class="text-2xl font-bold mb-2 counter" data-target="70" style="color: var(--warning-amber);">0%</h3>
+                    <p class="font-medium" style="color: var(--text-muted);">of families spend 8+ weeks researching</p>
                 </div>
                 
                 <div class="text-center fade-in">
-                    <div class="bg-orange-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl">📉</span>
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: rgba(249, 115, 22, 0.1);">
+                        <span class="text-2xl">💰</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-orange-600 mb-2 counter" data-target="1500">0</h3>
-                    <p class="text-gray-600 font-medium">care homes closed since 2015 - fewer quality options available</p>
+                    <h3 class="text-2xl font-bold mb-2" style="color: var(--accent-coral);">£2,000+</h3>
+                    <p class="font-medium" style="color: var(--text-muted);">average cost of moving from wrong choice</p>
                 </div>
                 
                 <div class="text-center fade-in">
-                    <div class="bg-yellow-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl">💷</span>
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: rgba(245, 158, 11, 0.1);">
+                        <span class="text-2xl">📅</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-yellow-600 mb-2">£75,000</h3>
-                    <p class="text-gray-600 font-medium">average annual cost - mistakes are expensive</p>
+                    <h3 class="text-2xl font-bold mb-2" style="color: var(--warning-amber);">3+ years</h3>
+                    <p class="font-medium" style="color: var(--text-muted);">average age of CQC ratings</p>
                 </div>
                 
                 <div class="text-center fade-in">
-                    <div class="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4" style="background-color: rgba(15, 118, 110, 0.1);">
                         <span class="text-2xl">🏠</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-purple-600 mb-2">2-3</h3>
-                    <p class="text-gray-600 font-medium">homes visited by most families before deciding</p>
-                </div>
-            </div>
-            
-            <div class="mt-12 text-center fade-in">
-                <div class="bg-white rounded-xl p-8 shadow-lg max-w-4xl mx-auto">
-                    <h3 class="text-2xl font-bold text-care-dark mb-4">The Hidden Cost of Getting It Wrong</h3>
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <div class="text-center">
-                            <div class="text-red-500 text-3xl mb-2">💔</div>
-                            <p class="font-semibold text-gray-700">Family stress and guilt when care doesn't meet expectations</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-red-500 text-3xl mb-2">💰</div>
-                            <p class="font-semibold text-gray-700">Moving costs and finding new accommodation urgently</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-red-500 text-3xl mb-2">⏰</div>
-                            <p class="font-semibold text-gray-700">Lost time when your loved one needs stable care now</p>
-                        </div>
-                    </div>
+                    <h3 class="text-2xl font-bold mb-2" style="color: var(--healthcare-blue);">2-3</h3>
+                    <p class="font-medium" style="color: var(--text-muted);">homes visited before deciding</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Solution Section -->
-    <section class="py-16 bg-white">
+    <!-- Our Process -->
+    <section class="section-padding" style="background-color: var(--bg-cream);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold text-care-dark mb-6">How CareAdvisor Works</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Our expert team combines AI technology with decades of care industry experience to find the perfect match for your family.
+            <div class="text-center mb-12 fade-in section-margin">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--text-dark);">Our 3-Step Process</h2>
+                <p class="text-xl max-w-3xl mx-auto" style="color: var(--text-muted);">
+                    AI technology + human expertise = perfect matches in 24 hours.
                 </p>
             </div>
             
-            <div class="grid lg:grid-cols-3 gap-8 mb-16">
-                <div class="text-center fade-in">
-                    <div class="bg-care-blue w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="text-center fade-in bg-white rounded-xl p-8 shadow-lg">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style="background-color: var(--primary-navy);">
                         <span class="text-white text-2xl font-bold">1</span>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Complete 15-Minute AI Questionnaire</h3>
-                    <p class="text-gray-600 mb-4">Share your specific needs, budget, location preferences, and care requirements through our intelligent assessment.</p>
-                    <div class="bg-gray-50 p-4 rounded-lg">
-                        <p class="text-sm text-gray-700">✓ Medical conditions & care level<br>✓ Location & transport needs<br>✓ Budget & funding options<br>✓ Personal preferences & lifestyle</p>
-                    </div>
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--text-dark);">Tell Us Your Needs</h3>
+                    <p class="mb-4" style="color: var(--text-muted);">10-minute questionnaire covering care requirements, budget, location, and preferences.</p>
                 </div>
                 
-                <div class="text-center fade-in">
-                    <div class="bg-care-green w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div class="text-center fade-in bg-white rounded-xl p-8 shadow-lg">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style="background-color: var(--healthcare-blue);">
                         <span class="text-white text-2xl font-bold">2</span>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Receive Personalised Report in 48 Hours</h3>
-                    <p class="text-gray-600 mb-4">Our experts analyse 15,000+ UK care homes to find your perfect matches, not just the nearest or cheapest.</p>
-                    <div class="bg-gray-50 p-4 rounded-lg">
-                        <p class="text-sm text-gray-700">✓ CQC ratings & inspection reports<br>✓ Real family reviews & feedback<br>✓ Detailed cost breakdowns<br>✓ Specialist care capabilities</p>
-                    </div>
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--text-dark);">AI Analysis + Expert Review</h3>
+                    <p class="mb-4" style="color: var(--text-muted);">Our AI analyses 15,000+ homes, then experts verify availability and quality.</p>
                 </div>
                 
-                <div class="text-center fade-in">
-                    <div class="bg-care-accent w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div class="text-center fade-in bg-white rounded-xl p-8 shadow-lg">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style="background-color: var(--accent-coral);">
                         <span class="text-white text-2xl font-bold">3</span>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Visit Only the Best-Matched Homes</h3>
-                    <p class="text-gray-600 mb-4">Skip the guesswork. Visit care homes we've pre-qualified specifically for your needs with our expert guidance.</p>
-                    <div class="bg-gray-50 p-4 rounded-lg">
-                        <p class="text-sm text-gray-700">✓ Professional visit checklist<br>✓ Questions to ask managers<br>✓ Red flags to watch for<br>✓ Contract negotiation tips</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Unique Differentiators -->
-            <div class="bg-gradient-to-r from-care-blue to-care-green p-8 rounded-2xl text-white fade-in">
-                <h3 class="text-2xl font-bold text-center mb-8">Why CareAdvisor Is Different</h3>
-                <div class="grid md:grid-cols-4 gap-6">
-                    <div class="text-center">
-                        <div class="text-3xl mb-2">🔒</div>
-                        <h4 class="font-bold mb-2">100% Independent</h4>
-                        <p class="text-blue-100">No care home payments or commissions. Our only loyalty is to you.</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl mb-2">🤖</div>
-                        <h4 class="font-bold mb-2">AI + Human Expertise</h4>
-                        <p class="text-blue-100">Technology finds matches, human experts verify and personalise recommendations.</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl mb-2">📊</div>
-                        <h4 class="font-bold mb-2">15,000+ Homes Analysed</h4>
-                        <p class="text-blue-100">Comprehensive database of every CQC-registered care home in the UK.</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl mb-2">⭐</div>
-                        <h4 class="font-bold mb-2">Real Family Reviews</h4>
-                        <p class="text-blue-100">Honest feedback from families who've been through the process.</p>
-                    </div>
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--text-dark);">Get Your Perfect Matches</h3>
+                    <p class="mb-4" style="color: var(--text-muted);">Receive your report in 24-48 hours with visit guide and negotiation tips.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section class="py-16 bg-gray-50">
+    <section class="section-padding bg-white" id="pricing">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold text-care-dark mb-6">Choose Your Care Home Report</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-                    Save weeks of stressful research and avoid costly mistakes with our expert guidance.
-                </p>
-                <div class="inline-flex items-center bg-red-100 border border-red-200 rounded-lg px-4 py-2">
-                    <span class="text-red-600 font-medium">⏰ Limited Time: First 100 families get Premium for Basic price!</span>
+            <div class="text-center mb-12 fade-in section-margin">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--text-dark);">Choose Your Care Home Report</h2>
+                <p class="text-xl" style="color: var(--text-muted);">All reports include CQC analysis + availability check</p>
+            </div>
+            
+            <div class="pricing-grid grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- FREE OPTION -->
+                <div class="pricing-card free-card bg-gray-50 rounded-xl shadow-lg p-8 border border-gray-200">
+                    <div class="card-header text-center mb-6">
+                        <h3 class="text-2xl font-bold mb-2" style="color: var(--text-dark);">FREE GUIDE</h3>
+                        <div class="price text-4xl font-bold mb-2" style="color: var(--text-dark);">£0</div>
+                        <p class="best-for" style="color: var(--text-muted);">Best for: Early research</p>
+                    </div>
+                    <ul class="features space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <span class="mr-3" style="color: var(--healthcare-green);">✓</span>
+                            <span>10-page selection guide</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3" style="color: var(--healthcare-green);">✓</span>
+                            <span>Questions to ask care homes</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3" style="color: var(--healthcare-green);">✓</span>
+                            <span>Funding options overview</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3" style="color: var(--healthcare-green);">✓</span>
+                            <span>Red flags checklist</span>
+                        </li>
+                    </ul>
+                    <button class="secondary-cta w-full font-bold py-4 rounded-lg transition-all duration-300">
+                        Download Guide
+                    </button>
+                    <p class="time-saved text-sm mt-4 text-center" style="color: var(--text-muted);">Time Saved: 2-3 hours</p>
+                </div>
+                
+                <!-- ESSENTIAL (RECOMMENDED) -->
+                <div class="pricing-card essential-card recommended bg-white rounded-xl shadow-xl p-8 relative">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <div class="card-header text-center mb-6 mt-4">
+                        <h3 class="text-2xl font-bold mb-2" style="color: var(--text-dark);">ESSENTIAL REPORT</h3>
+                        <div class="price text-4xl font-bold mb-2" style="color: var(--accent-coral);">£99</div>
+                        <p class="best-for" style="color: var(--text-muted);">Best for: Quality without overspending</p>
+                    </div>
+                    <ul class="features space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <span class="mr-3" style="color: var(--healthcare-green);">✓</span>
+                            <span><strong>Top 5 personalized matches</strong></span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3" style="color: var(--healthcare-green);">✓</span>
+                            <span>AI analysis of 50+ criteria</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3" style="color: var(--healthcare-green);">✓</span>
+                            <span>Availability & pricing check</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3" style="color: var(--healthcare-green);">✓</span>
+                            <span>Visit preparation guide</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3" style="color: var(--healthcare-green);">✓</span>
+                            <span><strong>48-hour delivery</strong></span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3" style="color: var(--healthcare-green);">✓</span>
+                            <span>Money-back guarantee</span>
+                        </li>
+                    </ul>
+                    <button class="primary-cta w-full font-bold py-4 rounded-lg transition-all duration-300 transform hover:scale-105">
+                        Get Report Now
+                    </button>
+                    <p class="time-saved text-sm mt-4 text-center font-medium" style="color: var(--healthcare-green);">Time Saved: 6-8 weeks • Risk Avoided: £2,000+</p>
+                </div>
+                
+                <!-- PREMIUM -->
+                <div class="pricing-card premium-card text-white rounded-xl shadow-lg p-8" style="background-color: var(--primary-navy);">
+                    <div class="card-header text-center mb-6">
+                        <h3 class="text-2xl font-bold mb-2">PREMIUM SERVICE</h3>
+                        <div class="price text-4xl font-bold mb-2" style="color: var(--accent-coral);">£149</div>
+                        <p class="best-for text-slate-200">Best for: Complete confidence</p>
+                    </div>
+                    <ul class="features space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <span class="mr-3" style="color: var(--healthcare-green);">✓</span>
+                            <span>Everything in Essential</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3" style="color: var(--healthcare-green);">✓</span>
+                            <span><strong>30-min expert consultation</strong></span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3" style="color: var(--healthcare-green);">✓</span>
+                            <span>Negotiation script templates</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3" style="color: var(--healthcare-green);">✓</span>
+                            <span>Priority placement assistance</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3" style="color: var(--healthcare-green);">✓</span>
+                            <span>Family discussion guide</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-3" style="color: var(--healthcare-green);">✓</span>
+                            <span>7-day support</span>
+                        </li>
+                    </ul>
+                    <button class="primary-cta w-full font-bold py-4 rounded-lg transition-all duration-300 transform hover:scale-105">
+                        Get Premium Service
+                    </button>
+                    <p class="time-saved text-sm mt-4 text-center font-medium" style="color: var(--healthcare-green);">Time Saved: 10-12 weeks • Money Saved: £3,000+</p>
                 </div>
             </div>
             
-            <div class="grid lg:grid-cols-3 gap-8">
-                <!-- Basic Report -->
-                <div class="pricing-card bg-white rounded-xl shadow-lg p-8">
-                    <div class="text-center mb-6">
-                        <h3 class="text-2xl font-bold text-care-dark mb-2">Basic Report</h3>
-                        <div class="text-4xl font-bold text-care-blue mb-2">£199</div>
-                        <p class="text-gray-600">Perfect for families with clear requirements</p>
-                    </div>
-                    
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start">
-                            <span class="text-care-green mr-3">✓</span>
-                            <span>Top 5 personalised care home matches</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-care-green mr-3">✓</span>
-                            <span>Detailed comparison table (ratings, costs, services)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-care-green mr-3">✓</span>
-                            <span>Professional visit checklist</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-care-green mr-3">✓</span>
-                            <span>48-hour delivery guarantee</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-care-green mr-3">✓</span>
-                            <span>CQC compliance verification</span>
-                        </li>
-                    </ul>
-                    
-                    <div class="bg-blue-50 p-4 rounded-lg mb-6">
-                        <p class="text-sm font-medium text-care-blue">💎 Value: Save 6+ weeks of research time</p>
-                    </div>
-                    
-                    <button class="w-full bg-care-blue hover:bg-blue-700 text-white font-bold py-4 rounded-lg transition-all duration-300 transform hover:scale-105">
-                        Get Basic Report
-                    </button>
-                </div>
-                
-                <!-- Premium Report -->
-                <div class="pricing-card bg-white rounded-xl shadow-xl p-8 border-4 border-care-accent relative">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-care-accent text-care-dark px-4 py-2 rounded-full font-bold text-sm">
-                        MOST POPULAR
-                    </div>
-                    
-                    <div class="text-center mb-6 mt-4">
-                        <h3 class="text-2xl font-bold text-care-dark mb-2">Premium Report</h3>
-                        <div class="text-4xl font-bold text-care-blue mb-2">
-                            <span class="line-through text-gray-400 text-2xl">£299</span>
-                            <span class="text-care-accent">£199</span>
-                        </div>
-                        <p class="text-gray-600">Everything in Basic plus expert support</p>
-                    </div>
-                    
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start">
-                            <span class="text-care-green mr-3">✓</span>
-                            <span><strong>Everything in Basic Report PLUS:</strong></span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-care-green mr-3">✓</span>
-                            <span>30-minute expert consultation call</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-care-green mr-3">✓</span>
-                            <span>Help organising care home visits</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-care-green mr-3">✓</span>
-                            <span>Follow-up support (2 weeks)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-care-green mr-3">✓</span>
-                            <span>Priority delivery (24 hours)</span>
-                        </li>
-                    </ul>
-                    
-                    <div class="bg-yellow-50 p-4 rounded-lg mb-6">
-                        <p class="text-sm font-medium text-care-accent">🎁 BONUS: "Care Home Questions Cheat Sheet" (value £49)</p>
-                    </div>
-                    
-                    <button class="w-full bg-care-accent hover:bg-yellow-500 text-care-dark font-bold py-4 rounded-lg transition-all duration-300 transform hover:scale-105">
-                        Get Premium Report
-                    </button>
-                </div>
-                
-                <!-- Comprehensive Service -->
-                <div class="pricing-card bg-white rounded-xl shadow-lg p-8">
-                    <div class="text-center mb-6">
-                        <h3 class="text-2xl font-bold text-care-dark mb-2">Comprehensive Service</h3>
-                        <div class="text-4xl font-bold text-care-blue mb-2">£499</div>
-                        <p class="text-gray-600">Complete hand-holding through the entire process</p>
-                    </div>
-                    
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start">
-                            <span class="text-care-green mr-3">✓</span>
-                            <span><strong>Everything in Premium PLUS:</strong></span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-care-green mr-3">✓</span>
-                            <span>Legal contract review guidance</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-care-green mr-3">✓</span>
-                            <span>Funding & financial planning advice</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-care-green mr-3">✓</span>
-                            <span>3-month ongoing support</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-care-green mr-3">✓</span>
-                            <span>Family meeting facilitation</span>
-                        </li>
-                    </ul>
-                    
-                    <div class="bg-green-50 p-4 rounded-lg mb-6">
-                        <p class="text-sm font-medium text-care-green">🎁 BONUS: "Care Home Negotiation Scripts" (£99) + "UK Care Home Rights Guide" (£79)</p>
-                    </div>
-                    
-                    <button class="w-full bg-care-green hover:bg-emerald-700 text-white font-bold py-4 rounded-lg transition-all duration-300 transform hover:scale-105">
-                        Get Comprehensive Service
-                    </button>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12 fade-in">
-                <div class="bg-white rounded-xl p-6 shadow-lg max-w-2xl mx-auto">
-                    <h3 class="font-bold text-care-dark mb-4">🛡️ Your Investment Is Protected</h3>
-                    <div class="grid md:grid-cols-2 gap-4 text-sm">
-                        <div>✅ 30-day money-back guarantee</div>
-                        <div>✅ Secure payment processing</div>
-                        <div>✅ No hidden fees or subscriptions</div>
-                        <div>✅ GDPR compliant data handling</div>
-                    </div>
+            <!-- Enhanced Guarantee Section -->
+            <div class="guarantee-section text-center mt-12 fade-in">
+                <div class="rounded-2xl p-8 max-w-4xl mx-auto border-2" style="background: linear-gradient(to right, rgba(22, 163, 74, 0.1), rgba(15, 118, 110, 0.1)); border-color: var(--success-green);">
+                    <h3 class="text-2xl font-bold mb-4" style="color: var(--text-dark);">🛡️ Risk-Free Guarantee</h3>
+                    <p class="text-lg" style="color: var(--text-muted);">
+                        If our report doesn't save you at least 4 weeks of research time, we'll refund every penny within 30 days.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Social Proof Section -->
-    <section class="py-16 bg-white">
+    <!-- Top 3 Testimonials -->
+    <section class="section-padding" style="background-color: var(--bg-cream);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold text-care-dark mb-6">What Families Are Saying</h2>
+            <div class="text-center mb-12 fade-in section-margin">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--text-dark);">What Families Say</h2>
                 <div class="flex items-center justify-center gap-4 mb-8">
-                    <span class="text-2xl text-care-accent">★★★★★</span>
-                    <span class="text-xl font-bold text-care-dark">4.9/5 from 200+ families</span>
+                    <span class="text-2xl" style="color: var(--accent-coral);">★★★★★</span>
+                    <span class="text-xl font-bold" style="color: var(--text-dark);">4.9/5 from 200+ families</span>
                 </div>
             </div>
             
             <div class="grid lg:grid-cols-3 gap-8">
-                <div class="testimonial-card rounded-xl p-8 shadow-lg fade-in">
-                    <div class="text-care-accent mb-4">★★★★★</div>
-                    <blockquote class="text-gray-700 mb-6 italic">
-                        "I was dreading the care home search for my mother who has dementia. CareAdvisor found three perfect specialist homes within 20 minutes of our house. The report saved us months of stress and my mum is now settled and happy."
+                <div class="bg-white rounded-xl p-8 shadow-lg fade-in">
+                    <div class="mb-4" style="color: var(--accent-coral);">★★★★★</div>
+                    <blockquote class="mb-6 italic" style="color: var(--text-muted);">
+                        "Found three perfect dementia specialist homes within 20 minutes of our house. Saved us months of stress during mum's hospital discharge."
                     </blockquote>
                     <div class="flex items-center">
                         <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
                         <div>
-                            <div class="font-bold">Sarah Mitchell</div>
-                            <div class="text-sm text-gray-600">Daughter, Edinburgh</div>
+                            <div class="font-bold" style="color: var(--text-dark);">Sarah Mitchell</div>
+                            <div class="text-sm" style="color: var(--text-muted);">Edinburgh</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card rounded-xl p-8 shadow-lg fade-in">
-                    <div class="text-care-accent mb-4">★★★★★</div>
-                    <blockquote class="text-gray-700 mb-6 italic">
-                        "The comprehensive service was worth every penny. They helped us negotiate the contract, understand the funding, and even facilitated difficult family conversations. Professional and compassionate throughout."
+                <div class="bg-white rounded-xl p-8 shadow-lg fade-in">
+                    <div class="mb-4" style="color: var(--accent-coral);">★★★★★</div>
+                    <blockquote class="mb-6 italic" style="color: var(--text-muted);">
+                        "The negotiation scripts saved us £200 per week. The report paid for itself in the first month."
                     </blockquote>
                     <div class="flex items-center">
                         <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
                         <div>
-                            <div class="font-bold">David Thompson</div>
-                            <div class="text-sm text-gray-600">Son, Manchester</div>
+                            <div class="font-bold" style="color: var(--text-dark);">David Thompson</div>
+                            <div class="text-sm" style="color: var(--text-muted);">Manchester</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card rounded-xl p-8 shadow-lg fade-in">
-                    <div class="text-care-accent mb-4">★★★★★</div>
-                    <blockquote class="text-gray-700 mb-6 italic">
-                        "As an NHS discharge coordinator, I recommend CareAdvisor to families regularly. They're truly independent and their reports are comprehensive and honest. Families make better decisions with their help."
+                <div class="bg-white rounded-xl p-8 shadow-lg fade-in">
+                    <div class="mb-4" style="color: var(--accent-coral);">★★★★★</div>
+                    <blockquote class="mb-6 italic" style="color: var(--text-muted);">
+                        "As NHS discharge coordinator, I recommend RightCareHome weekly. They find better matches than our standard process."
                     </blockquote>
                     <div class="flex items-center">
                         <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
                         <div>
-                            <div class="font-bold">Linda Roberts</div>
-                            <div class="text-sm text-gray-600">NHS Professional, Birmingham</div>
+                            <div class="font-bold" style="color: var(--text-dark);">Linda Roberts</div>
+                            <div class="text-sm" style="color: var(--text-muted);">NHS Birmingham</div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Trust Badges -->
-            <div class="mt-16 fade-in">
-                <div class="text-center mb-8">
-                    <h3 class="text-xl font-bold text-care-dark">Trusted By Professional Bodies</h3>
-                </div>
-                <div class="flex flex-wrap justify-center items-center gap-8 opacity-60">
-                    <div class="text-center">
-                        <div class="bg-gray-200 h-12 w-24 rounded mb-2"></div>
-                        <span class="text-xs">NHS Approved</span>
-                    </div>
-                    <div class="text-center">
-                        <div class="bg-gray-200 h-12 w-24 rounded mb-2"></div>
-                        <span class="text-xs">ICO Registered</span>
-                    </div>
-                    <div class="text-center">
-                        <div class="bg-gray-200 h-12 w-24 rounded mb-2"></div>
-                        <span class="text-xs">CQC Partner</span>
-                    </div>
-                    <div class="text-center">
-                        <div class="bg-gray-200 h-12 w-24 rounded mb-2"></div>
-                        <span class="text-xs">Care Association</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="py-16 bg-gray-50">
+    <!-- Enhanced FAQ Section -->
+    <section class="section-padding bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold text-care-dark mb-6">Frequently Asked Questions</h2>
-                <p class="text-xl text-gray-600">We understand you may have concerns. Here are honest answers to common questions.</p>
+            <div class="text-center mb-12 fade-in section-margin">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--text-dark);">Frequently Asked Questions</h2>
+                <p class="text-xl" style="color: var(--text-muted);">Quick answers to help you decide</p>
             </div>
             
             <div class="space-y-4 fade-in">
-                <div class="faq-item bg-white rounded-lg shadow-sm">
-                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 rounded-lg">
-                        <span class="font-semibold text-care-dark">Why not just use the free CQC website?</span>
-                        <span class="faq-icon text-2xl">+</span>
+                <div class="faq-item rounded-lg border-2" style="background-color: var(--bg-cream); border-color: var(--healthcare-green);">
+                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 rounded-lg">
+                        <span class="font-semibold text-lg" style="color: var(--text-dark);">Why not just use the free CQC website?</span>
+                        <span class="faq-icon text-2xl" style="color: var(--accent-coral);">+</span>
                     </button>
                     <div class="faq-content hidden px-6 pb-4">
-                        <p class="text-gray-600">The CQC website only shows basic ratings and inspection reports. We analyse over 50 factors including family reviews, specialist care capabilities, staff turnover rates, waiting lists, and local transport links. Our AI matches your specific needs - something the CQC database cannot do.</p>
+                        <p class="text-lg" style="color: var(--text-muted);">CQC only shows basic ratings. We analyse 50+ factors including availability, pricing, staff ratios, and real family reviews.</p>
                     </div>
                 </div>
                 
-                <div class="faq-item bg-white rounded-lg shadow-sm">
-                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 rounded-lg">
-                        <span class="font-semibold text-care-dark">What if I don't like your recommendations?</span>
-                        <span class="faq-icon text-2xl">+</span>
+                <div class="faq-item rounded-lg border-2" style="background-color: var(--bg-cream); border-color: var(--healthcare-green);">
+                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 rounded-lg">
+                        <span class="font-semibold text-lg" style="color: var(--text-dark);">How do I know you're truly independent?</span>
+                        <span class="faq-icon text-2xl" style="color: var(--accent-coral);">+</span>
                     </button>
                     <div class="faq-content hidden px-6 pb-4">
-                        <p class="text-gray-600">We offer a 30-day money-back guarantee. If you're not satisfied with our recommendations, we'll refund your payment in full. We also provide one free revision of your report if your circumstances change within 30 days.</p>
+                        <p class="text-lg" style="color: var(--text-muted);">We never receive payments from care homes. Families pay us for independent advice. See our transparency policy for full details.</p>
                     </div>
                 </div>
                 
-                <div class="faq-item bg-white rounded-lg shadow-sm">
-                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 rounded-lg">
-                        <span class="font-semibold text-care-dark">How do I know you're truly independent?</span>
-                        <span class="faq-icon text-2xl">+</span>
+                <div class="faq-item rounded-lg border-2" style="background-color: var(--bg-cream); border-color: var(--healthcare-green);">
+                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 rounded-lg">
+                        <span class="font-semibold text-lg" style="color: var(--text-dark);">What if I don't like your recommendations?</span>
+                        <span class="faq-icon text-2xl" style="color: var(--accent-coral);">+</span>
                     </button>
                     <div class="faq-content hidden px-6 pb-4">
-                        <p class="text-gray-600">We never receive payments or commissions from care homes. Our business model is simple: families pay us for independent advice. Check our transparency policy for full details of our funding sources. We're also registered with the ICO and follow strict data protection guidelines.</p>
+                        <p class="text-lg" style="color: var(--text-muted);">30-day money-back guarantee. If you're not satisfied, we'll refund your payment in full. No questions asked.</p>
                     </div>
                 </div>
                 
-                <div class="faq-item bg-white rounded-lg shadow-sm">
-                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 rounded-lg">
-                        <span class="font-semibold text-care-dark">Is this just for expensive private care homes?</span>
-                        <span class="faq-icon text-2xl">+</span>
+                <div class="faq-item rounded-lg border-2" style="background-color: var(--bg-cream); border-color: var(--healthcare-green);">
+                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 rounded-lg">
+                        <span class="font-semibold text-lg" style="color: var(--text-dark);">Is this just for expensive private care homes?</span>
+                        <span class="faq-icon text-2xl" style="color: var(--accent-coral);">+</span>
                     </button>
                     <div class="faq-content hidden px-6 pb-4">
-                        <p class="text-gray-600">Not at all. We include care homes across all budget ranges, including those accepting local authority funding. We help families understand all funding options including NHS Continuing Healthcare, Council support, and deferred payment schemes.</p>
+                        <p class="text-lg" style="color: var(--text-muted);">No. We include all budget ranges including council-funded homes. We help with NHS Continuing Healthcare and deferred payment schemes.</p>
                     </div>
                 </div>
                 
-                <div class="faq-item bg-white rounded-lg shadow-sm">
-                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 rounded-lg">
-                        <span class="font-semibold text-care-dark">What if I need help urgently?</span>
-                        <span class="faq-icon text-2xl">+</span>
+                <div class="faq-item rounded-lg border-2" style="background-color: var(--bg-cream); border-color: var(--healthcare-green);">
+                    <button class="faq-button w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-100 rounded-lg">
+                        <span class="font-semibold text-lg" style="color: var(--text-dark);">What if I need help urgently?</span>
+                        <span class="faq-icon text-2xl" style="color: var(--accent-coral);">+</span>
                     </button>
                     <div class="faq-content hidden px-6 pb-4">
-                        <p class="text-gray-600">We understand care needs don't wait. Call us on 0800 123 4567 for urgent situations. We can provide initial guidance within hours and fast-track your report to 24 hours for Premium and Comprehensive services. We've helped families find emergency placements when needed.</p>
+                        <p class="text-lg" style="color: var(--text-muted);">We understand care needs don't wait. Contact us via email for urgent situations. We can provide initial guidance within hours and fast-track your report to 24 hours.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA Section -->
-    <section class="py-16 hero-gradient text-white">
+    <!-- Final CTA -->
+    <section class="section-padding final-cta-gradient text-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="fade-in">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Find the Perfect Care Home?</h2>
-                <p class="text-xl mb-8 text-blue-100">
-                    Join 500+ families who found their perfect care home without the stress and guesswork.
+                <p class="text-xl mb-8 text-slate-200">
+                    Join 500+ families who found their ideal care home without the stress.
                 </p>
                 
-                <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-8 mb-8">
-                    <div class="grid md:grid-cols-3 gap-6 text-center">
-                        <div>
-                            <div class="text-3xl mb-2">⏰</div>
-                            <div class="font-bold">48 Hours</div>
-                            <div class="text-sm text-blue-100">To personalised recommendations</div>
-                        </div>
-                        <div>
-                            <div class="text-3xl mb-2">🛡️</div>
-                            <div class="font-bold">30-Day Guarantee</div>
-                            <div class="text-sm text-blue-100">Risk-free investment</div>
-                        </div>
-                        <div>
-                            <div class="text-3xl mb-2">🎯</div>
-                            <div class="font-bold">15,000+ Homes</div>
-                            <div class="text-sm text-blue-100">Analysed for perfect matches</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-                    <button class="bg-care-accent hover:bg-yellow-500 text-care-dark font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 flex items-center">
-                        <span>Start My Personalised Report</span>
-                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
+                <div class="flex justify-center mb-8">
+                    <button class="primary-cta font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105">
+                        Start Your Report - £99
                     </button>
-                    <div class="flex items-center text-blue-100">
-                        <span class="mr-2">📞</span>
-                        <span>Or call: <strong class="text-white">0800 123 4567</strong></span>
-                    </div>
                 </div>
                 
-                <p class="text-sm text-blue-100">
-                    ⚡ Limited time: First 100 families get Premium Report for just £199 (usually £299)
+                <p class="text-sm text-slate-200">
+                    ⚡ 48-hour delivery guaranteed • 30-day money-back promise
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-care-dark text-white py-12">
+    <!-- Simplified Footer -->
+    <footer class="py-12 text-white" style="background-color: var(--text-dark);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
+            <div class="grid md:grid-cols-3 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4">CareAdvisor.care</h3>
-                    <p class="text-gray-300 mb-4">Independent care home selection experts helping UK families make informed decisions.</p>
-                    <div class="flex space-x-4">
-                        <span class="w-8 h-8 bg-gray-600 rounded"></span>
-                        <span class="w-8 h-8 bg-gray-600 rounded"></span>
-                        <span class="w-8 h-8 bg-gray-600 rounded"></span>
-                    </div>
+                    <h3 class="text-xl font-bold mb-4">RightCareHome</h3>
+                    <p class="text-gray-300 mb-4">Independent care home selection experts helping UK families.</p>
                 </div>
                 
                 <div>
                     <h4 class="font-bold mb-4">Services</h4>
                     <ul class="space-y-2 text-gray-300">
-                        <li>Basic Care Home Report</li>
-                        <li>Premium Report + Support</li>
-                        <li>Comprehensive Service</li>
-                        <li>Emergency Placements</li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-bold mb-4">Support</h4>
-                    <ul class="space-y-2 text-gray-300">
-                        <li>FAQ</li>
-                        <li>Contact Us</li>
-                        <li>Money Back Guarantee</li>
-                        <li>Transparency Policy</li>
+                        <li>Essential Report (£99)</li>
+                        <li>Premium Service (£149)</li>
+                        <li>Free Selection Guide</li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="font-bold mb-4">Contact</h4>
                     <ul class="space-y-2 text-gray-300">
-                        <li>📞 0800 123 4567</li>
-                        <li>✉️ hello@careadvisor.care</li>
-                        <li>🏢 London, UK</li>
-                        <li>🕒 Mon-Fri 9AM-6PM</li>
+                        <li>✉️ hello@rightcarehome.co.uk</li>
+                        <li>🕐 Mon-Fri 9AM-6PM</li>
                     </ul>
                 </div>
             </div>
             
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 CareAdvisor.care. All rights reserved. | Privacy Policy | Terms of Service | ICO Registration: ZA123456</p>
+                <p>&copy; 2025 RightCareHome. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Sticky CTA -->
     <div class="sticky-cta" id="stickyCTA">
-        <button class="bg-care-accent hover:bg-yellow-500 text-care-dark font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105">
-            Get My Report
+        <button class="primary-cta font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105">
+            Get Report £99
         </button>
-    </div>
-
-    <!-- Chat Widget -->
-    <div class="fixed bottom-20 left-6 z-50">
-        <button class="bg-care-blue hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-            </svg>
-        </button>
-        <div class="absolute -top-2 -right-2 w-3 h-3 bg-red-500 rounded-full pulse-ring"></div>
     </div>
 
     <!-- JavaScript -->
     <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
         // Fade in animation on scroll
         const observerOptions = {
             threshold: 0.1,
@@ -846,8 +1023,6 @@
 
         // Sticky CTA visibility
         const stickyCTA = document.getElementById('stickyCTA');
-        let lastScrollY = window.scrollY;
-
         window.addEventListener('scroll', () => {
             if (window.scrollY > 1000) {
                 stickyCTA.classList.add('visible');
@@ -856,7 +1031,7 @@
             }
         });
 
-        // FAQ accordion
+        // Enhanced FAQ accordion
         document.querySelectorAll('.faq-button').forEach(button => {
             button.addEventListener('click', () => {
                 const faqItem = button.closest('.faq-item');
@@ -877,22 +1052,11 @@
             });
         });
 
-        // Header background on scroll
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.9)';
-            }
-        });
-
-        // Form submission handling
+        // Form submission
         document.querySelectorAll('form').forEach(form => {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
-                // Add your form submission logic here
-                alert('Thank you! We\'ll send your personalised care home report within 48 hours.');
+                alert('Thank you! Check your email for the free guide in 2 minutes.');
             });
         });
 
@@ -900,33 +1064,12 @@
         document.querySelectorAll('button').forEach(button => {
             if (button.textContent.includes('Get') || button.textContent.includes('Start')) {
                 button.addEventListener('click', () => {
-                    // Scroll to form or open modal
-                    document.querySelector('form').scrollIntoView({ behavior: 'smooth' });
+                    // Scroll to pricing or open checkout
+                    if (document.getElementById('pricing')) {
+                        document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+                    }
                 });
             }
-        });
-
-        // Add loading states for better UX
-        function addLoadingState(button) {
-            const originalText = button.textContent;
-            button.textContent = 'Loading...';
-            button.disabled = true;
-            
-            setTimeout(() => {
-                button.textContent = originalText;
-                button.disabled = false;
-            }, 2000);
-        }
-
-        // Enhanced hover effects for pricing cards
-        document.querySelectorAll('.pricing-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-8px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0) scale(1)';
-            });
         });
     </script>
 </body>
