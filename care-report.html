@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Care Home Placement Report - The Patel Family</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-navy': '#1e293b',
+                        'primary-orange': '#f97316',
+                        'success-green': '#16a34a',
+                        'warning-amber': '#f59e0b',
+                        'bg-warm': '#fdf8f5',
+                        'bg-cream': '#f9f6f2',
+                        'text-dark': '#1e293b',
+                        'text-muted': '#64748b',
+                        'healthcare-blue': '#0f766e'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdf8f5;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        
+        .report-header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f766e 100%);
+            color: white;
+        }
+        
+        .ranking-card {
+            transition: all 0.3s ease;
+            border: 2px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ranking-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .ranking-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #f97316, #ea580c);
+        }
+        
+        .top-recommendation {
+            border-color: #f97316;
+            background: linear-gradient(135deg, #fdf8f5 0%, #fff7ed 100%);
+        }
+        
+        .score-badge {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+        
+        .methodology-card {
+            background: white;
+            border-left: 4px solid #f97316;
+            padding: 24px;
+            border-radius: 12px;
+            margin: 16px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .expert-tip {
+            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 16px 0;
+        }
+        
+        .action-item {
+            background: #f0fdf4;
+            border-left: 4px solid #16a34a;
+            padding: 16px;
+            margin: 12px 0;
+            border-radius: 8px;
+        }
+        
+        .comparison-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-bar {
+            background: #e2e8f0;
+            border-radius: 10px;
+            height: 8px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #f97316, #ea580c);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        
+        .confidence-indicator {
+            background: #dcfce7;
+            color: #166534;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .guarantee-seal {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(22, 163, 74, 0.3);
+        }
+        
+        .pdf-download-btn {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            border: 2px solid #f97316;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+        
+        .pdf-download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+        }
+        
+        .print-friendly {
+            print-color-adjust: exact;
+            -webkit-print-color-adjust: exact;
+        }
+        
+        @media print {
+            .no-print {
+                display: none;
+            }
+            
+            body {
+                background: white;
+            }
+            
+            .ranking-card {
+                border: 2px solid #d1d5db;
+                break-inside: avoid;
+                margin-bottom: 20px;
+            }
+            
+            .pdf-download-btn {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .pdf-download-btn {
+                position: relative;
+                top: auto;
+                right: auto;
+                width: 100%;
+                margin: 20px 0;
+                text-align: center;
+            }
+            
+            .ranking-card {
+                margin-bottom: 1.5rem;
+                padding: 1.5rem !important;
+            }
+            
+            .methodology-card {
+                padding: 1rem !important;
+            }
+            
+            .expert-tip {
+                padding: 1rem !important;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+            
+            .comparison-table {
+                font-size: 0.875rem;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 0.5rem !important;
+            }
+            
+            h1 {
+                font-size: 1.875rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            h2 {
+                font-size: 1.5rem !important;
+                line-height: 1.3 !important;
+            }
+            
+            h3 {
+                font-size: 1.25rem !important;
+            }
+            
+            .text-3xl {
+                font-size: 1.5rem !important;
+            }
+            
+            .text-2xl {
+                font-size: 1.25rem !important;
+            }
+            
+            .text-xl {
+                font-size: 1.125rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .max-w-6xl {
+                padding: 0 1rem !important;
+            }
+            
+            .p-8 {
+                padding: 1rem !important;
+            }
+            
+            .p-6 {
+                padding: 1rem !important;
+            }
+            
+            .p-4 {
+                padding: 0.75rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="print-friendly">
+    <!-- PDF Download Button -->
+    <button onclick="downloadPDF()" class="pdf-download-btn no-print">
+        📄 Download PDF Report
+    </button>
+
+    <!-- Header -->
+    <header class="report-header py-8 md:py-12">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 md:mb-8">
+                <div class="mb-4 md:mb-0">
+                    <h1 class="text-2xl md:text-3xl font-bold">RightCareHome</h1>
+                    <p class="text-blue-200">Personal Care Home Placement Report</p>
+                </div>
+                <div class="text-left md:text-right">
+                    <div class="bg-white/20 rounded-lg p-3 md:p-4">
+                        <p class="text-sm text-blue-200">Report Date</p>
+                        <p class="font-bold">11 September 2025</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white/10 rounded-xl p-4 md:p-6">
+                <h2 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">Personal Care Home Placement Report for the Patel Family</h2>
+                <p class="text-base md:text-lg text-blue-100">
+                    Expert recommendations for Sarah Patel (82 years) requiring specialised dementia care, 
+                    daily physiotherapy, and insulin-dependent diabetes management
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Executive Summary -->
+    <section class="py-8 md:py-12 bg-white">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-text-dark mb-3 md:mb-4">Executive Summary</h2>
+                <p class="text-lg md:text-xl text-text-muted max-w-4xl mx-auto">
+                    This report transforms weeks of stressful research and dozens of confusing phone calls into a 
+                    clear, specialist-verified shortlist—delivered in just 48 hours
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-12">
+                <div class="methodology-card">
+                    <div class="text-center">
+                        <div class="text-3xl md:text-4xl mb-3 md:mb-4">⚡</div>
+                        <h3 class="text-xl md:text-2xl font-bold text-primary-orange">48 Hours</h3>
+                        <p class="text-text-muted">From enquiry to specialist report</p>
+                    </div>
+                </div>
+                
+                <div class="methodology-card">
+                    <div class="text-center">
+                        <div class="text-3xl md:text-4xl mb-3 md:mb-4">🎯</div>
+                        <h3 class="text-xl md:text-2xl font-bold text-success-green">5 Precise</h3>
+                        <p class="text-text-muted">recommendations instead of hundreds</p>
+                    </div>
+                </div>
+                
+                <div class="methodology-card">
+                    <div class="text-center">
+                        <div class="text-3xl md:text-4xl mb-3 md:mb-4">🔍</div>
+                        <h3 class="text-xl md:text-2xl font-bold text-healthcare-blue">100% Independent</h3>
+                        <p class="text-text-muted">No commissions from care homes</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="expert-tip">
+                <h3 class="text-lg md:text-xl font-bold mb-3">🎯 Our Primary Recommendation</h3>
+                <p class="text-base md:text-lg">
+                    <strong>Meadowview Manor</strong> emerges as our primary recommendation due to its unparalleled medical 
+                    protocols—especially insulin management and daily physiotherapy—perfectly addressing Sarah's critical needs. 
+                    Their registered nurse adjusts insulin dosages daily, and they provide on-site physiotherapy seven days a week. 
+                    Whilst their CQC rating is 'Outstanding', what sets them apart is their 24/7 Urdu-speaking care assistant 
+                    and comprehensive diabetic care programme.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Findings -->
+    <section class="py-8 md:py-16 bg-bg-cream">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-text-dark mb-3 md:mb-4">Key Findings</h2>
+                <p class="text-lg md:text-xl text-text-muted">
+                    Five care homes expertly matched to Sarah's specific requirements
+                </p>
+            </div>
+            
+            <div class="space-y-4 md:space-y-6">
+                <!-- Finding 1 -->
+                <div class="methodology-card">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div class="mb-3 md:mb-0">
+                            <h3 class="text-lg md:text-xl font-bold text-text-dark">Meadowview Manor</h3>
+                            <p class="text-text-muted">Best overall match (96%)—exceptional medical and cultural support</p>
+                        </div>
+                        <div class="score-badge">96% Match</div>
+                    </div>
+                </div>
+                
+                <!-- Finding 2 -->
+                <div class="methodology-card">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div class="mb-3 md:mb-0">
+                            <h3 class="text-lg md:text-xl font-bold text-text-dark">Willow Brook Residential Home</h3>
+                            <p class="text-text-muted">Strong cultural fit and family satisfaction (93%)</p>
+                        </div>
+                        <div class="score-badge">93% Match</div>
+                    </div>
+                </div>
+                
+                <!-- Finding 3 -->
+                <div class="methodology-card">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div class="mb-3 md:mb-0">
+                            <h3 class="text-lg md:text-xl font-bold text-text-dark">Oakfield Dementia Care Centre</h3>
+                            <p class="text-text-muted">Outstanding dementia expertise (91%)</p>
+                        </div>
+                        <div class="score-badge">91% Match</div>
+                    </div>
+                </div>
+                
+                <!-- Finding 4 -->
+                <div class="methodology-card">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div class="mb-3 md:mb-0">
+                            <h3 class="text-lg md:text-xl font-bold text-text-dark">Brookside Court</h3>
+                            <p class="text-text-muted">Excellent value with good comfort features (89%)</p>
+                        </div>
+                        <div class="score-badge">89% Match</div>
+                    </div>
+                </div>
+                
+                <!-- Finding 5 -->
+                <div class="methodology-card">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div class="mb-3 md:mb-0">
+                            <h3 class="text-lg md:text-xl font-bold text-text-dark">Riverside Nursing Residence</h3>
+                            <p class="text-text-muted">Reliable budget option with strong safety protocols (87%)</p>
+                        </div>
+                        <div class="score-badge">87% Match</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Profile: Meadowview Manor -->
+    <section class="py-8 md:py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-text-dark mb-3 md:mb-4">Detailed Profile: Meadowview Manor</h2>
+                <p class="text-lg md:text-xl text-text-muted">
+                    Our top recommendation with comprehensive analysis
+                </p>
+            </div>
+            
+            <div class="ranking-card top-recommendation bg-white rounded-xl p-4 md:p-8 mb-6 md:mb-8">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 md:mb-6">
+                    <div class="mb-4 md:mb-0">
+                        <div class="flex items-center mb-3 md:mb-4">
+                            <div class="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-primary-orange to-warning-amber text-white rounded-full flex items-center justify-center text-xl md:text-2xl font-bold mr-3 md:mr-4">1</div>
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-bold text-text-dark">Meadowview Manor</h3>
+                                <p class="text-text-muted">Leicester, 5.2 miles from your location</p>
+                            </div>
+                        </div>
+                        <div class="score-badge">Match: 96% | CQC Outstanding Jan 2025</div>
+                    </div>
+                    <div class="text-left md:text-right">
+                        <p class="text-2xl md:text-3xl font-bold text-primary-orange">£1,100</p>
+                        <p class="text-text-muted">per week</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-4 md:gap-6 mb-4 md:mb-6">
+                    <div>
+                        <h4 class="font-bold text-healthcare-blue mb-2">Medical Critical (40%)</h4>
+                        <div class="progress-bar mb-2">
+                            <div class="progress-fill" style="width: 95%"></div>
+                        </div>
+                        <p class="text-sm text-text-muted">38/40 points • <span class="confidence-indicator">Phone Verified</span></p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-healthcare-blue mb-2">Personal & Cultural (35%)</h4>
+                        <div class="progress-bar mb-2">
+                            <div class="progress-fill" style="width: 96%"></div>
+                        </div>
+                        <p class="text-sm text-text-muted">24/25 points • <span class="confidence-indicator">Verified</span></p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-healthcare-blue mb-2">Comfort & Environment (25%)</h4>
+                        <div class="progress-bar mb-2">
+                            <div class="progress-fill" style="width: 95%"></div>
+                        </div>
+                        <p class="text-sm text-text-muted">19/20 points • <span class="confidence-indicator">Surveyed</span></p>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 rounded-lg p-4 md:p-6 mb-4 md:mb-6">
+                    <h4 class="font-bold text-text-dark mb-3">🎯 Why Meadowview Manor is ideal for Sarah:</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3 font-bold">✓</span>
+                            <span><strong>Insulin Management (10/10):</strong> Registered nurse adjusts dosages daily; confirmed by phone (95% confidence)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3 font-bold">✓</span>
+                            <span><strong>Physiotherapy (10/10):</strong> On-site daily therapy; verified via provider survey (95% confidence)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3 font-bold">✓</span>
+                            <span><strong>Language Support (10/10):</strong> 24/7 Urdu-speaking care assistant; phone-verified (100% confidence)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3 font-bold">✓</span>
+                            <span><strong>Dietary Requirements (10/10):</strong> Daily vegetarian, vegan, and gluten-free meals; confirmed via menu review (95%)</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="action-item">
+                    <h4 class="font-bold text-success-green mb-2">📋 Key Questions for Your Visit:</h4>
+                    <ul class="space-y-1 text-sm md:text-base">
+                        <li>• "How do you review and communicate insulin dose changes?"</li>
+                        <li>• "Can I meet the Urdu-speaking assistant who will support my mother?"</li>
+                        <li>• "What emergency response protocols are in place for falls or medical crises?"</li>
+                        <li>• "Please show me your weekly schedule for art, music, and gardening activities."</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comprehensive Comparative Analysis -->
+    <section class="py-8 md:py-16 bg-bg-cream">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-text-dark mb-3 md:mb-4">Comparative Analysis: Comparing Your Options</h2>
+                <p class="text-lg md:text-xl text-text-muted">
+                    This comprehensive comparison allows your family to evaluate the most important criteria across all five selected options, 
+                    helping you make an informed choice whilst considering any potential trade-offs
+                </p>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="comparison-table w-full bg-white min-w-full">
+                    <thead>
+                        <tr class="bg-primary-navy text-white">
+                            <th class="p-2 md:p-4 text-left font-bold text-xs md:text-sm">Care Home</th>
+                            <th class="p-2 md:p-4 text-center font-bold text-xs md:text-sm">Overall Match</th>
+                            <th class="p-2 md:p-4 text-center font-bold text-xs md:text-sm">CQC Rating</th>
+                            <th class="p-2 md:p-4 text-center font-bold text-xs md:text-sm">Distance</th>
+                            <th class="p-2 md:p-4 text-center font-bold text-xs md:text-sm">Weekly Fee</th>
+                            <th class="p-2 md:p-4 text-center font-bold text-xs md:text-sm">Daily Physiotherapy</th>
+                            <th class="p-2 md:p-4 text-center font-bold text-xs md:text-sm">Urdu-Speaking Staff</th>
+                            <th class="p-2 md:p-4 text-center font-bold text-xs md:text-sm">Safe Garden Access</th>
+                            <th class="p-2 md:p-4 text-center font-bold text-xs md:text-sm">En-suite Room</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b hover:bg-orange-50 bg-orange-25">
+                            <td class="p-2 md:p-4 font-bold text-xs md:text-sm text-primary-orange">
+                                Meadowview Manor
+                                <div class="text-xs text-gray-500 font-normal">Our top recommendation</div>
+                            </td>
+                            <td class="p-2 md:p-4 text-center">
+                                <div class="score-badge text-xs">96%</div>
+                            </td>
+                            <td class="p-2 md:p-4 text-center text-success-green font-bold text-xs md:text-sm">Outstanding</td>
+                            <td class="p-2 md:p-4 text-center font-semibold text-xs md:text-sm">5.2 mi</td>
+                            <td class="p-2 md:p-4 text-center font-bold text-primary-orange text-xs md:text-sm">£1,100</td>
+                            <td class="p-2 md:p-4 text-center text-success-green font-bold text-xs md:text-sm">✓ Yes</td>
+                            <td class="p-2 md:p-4 text-center text-success-green font-bold text-xs md:text-sm">✓ 24/7</td>
+                            <td class="p-2 md:p-4 text-center text-success-green font-bold text-xs md:text-sm">✓ Secure</td>
+                            <td class="p-2 md:p-4 text-center text-success-green font-bold text-xs md:text-sm">✓ All rooms</td>
+                        </tr>
+                        
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="p-2 md:p-4 font-bold text-xs md:text-sm text-text-dark">
+                                Willow Brook Residential
+                                <div class="text-xs text-gray-500 font-normal">Strong cultural support</div>
+                            </td>
+                            <td class="p-2 md:p-4 text-center">
+                                <div class="bg-healthcare-blue text-white px-2 py-1 rounded-full text-xs font-bold">93%</div>
+                            </td>
+                            <td class="p-2 md:p-4 text-center text-warning-amber font-bold text-xs md:text-sm">Good</td>
+                            <td class="p-2 md:p-4 text-center font-semibold text-xs md:text-sm">17.0 mi</td>
+                            <td class="p-2 md:p-4 text-center font-bold text-success-green text-xs md:text-sm">£1,050</td>
+                            <td class="p-2 md:p-4 text-center text-warning-amber font-bold text-xs md:text-sm">⚠ Limited</td>
+                            <td class="p-2 md:p-4 text-center text-success-green font-bold text-xs md:text-sm">✓ Yes</td>
+                            <td class="p-2 md:p-4 text-center text-success-green font-bold text-xs md:text-sm">✓ Yes</td>
+                            <td class="p-2 md:p-4 text-center text-success-green font-bold text-xs md:text-sm">✓ Yes</td>
+                        </tr>
+                        
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="p-2 md:p-4 font-bold text-xs md:text-sm text-text-dark">
+                                Oakfield Dementia Centre
+                                <div class="text-xs text-gray-500 font-normal">Specialist dementia care</div>
+                            </td>
+                            <td class="p-2 md:p-4 text-center">
+                                <div class="bg-healthcare-blue text-white px-2 py-1 rounded-full text-xs font-bold">91%</div>
+                            </td>
+                            <td class="p-2 md:p-4 text-center text-success-green font-bold text-xs md:text-sm">Outstanding</td>
+                            <td class="p-2 md:p-4 text-center font-semibold text-xs md:text-sm">3.0 mi</td>
+                            <td class="p-2 md:p-4 text-center font-bold text-warning-amber text-xs md:text-sm">£1,150</td>
+                            <td class="p-2 md:p-4 text-center text-success-green font-bold text-xs md:text-sm">✓ Yes</td>
+                            <td class="p-2 md:p-4 text-center text-red-500 font-bold text-xs md:text-sm">✗ No</td>
+                            <td class="p-2 md:p-4 text-center text-success-green font-bold text-xs md:text-sm">✓ Yes</td>
+                            <td class="p-2 md:p-4 text-center text-success-green font-bold text-xs md:text-sm">✓ Yes</td>
+                        </tr>
+                        
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="p-2 md:p-4 font-bold text-xs md:text-sm text-text-dark">
+                                Brookside Court
+                                <div class="text-xs text-gray-500 font-normal">Budget-friendly option</div>
+                            </td>
+                            <td class="p-2 md:p-4 text-center">
+                                <div class="bg-gray-500 text-white px-2 py-1 rounded-full text-xs font-bold">89%</div>
+                            </td>
+                            <td class="p-2 md:p-4 text-center text-warning-amber font-bold text-xs md:text-sm">Good</td>
+                            <td class="p-2 md:p-4 text-center font-semibold text-xs md:text-sm">14.0 mi</td>
+                            <td class="p-2 md:p-4 text-center font-bold text-success-green text-xs md:text-sm">£975</td>
+                            <td class="p-2 md:p-4 text-center text-red-500 font-bold text-xs md:text-sm">✗ No</td>
+                            <td class="p-2 md:p-4 text-center text-red-500 font-bold text-xs md:text-sm">✗ No</td>
+                            <td class="p-2 md:p-4 text-center text-success-green font-bold text-xs md:text-sm">✓ Yes</td>
+                            <td class="p-2 md:p-4 text-center text-success-green font-bold text-xs md:text-sm">✓ Yes</td>
+                        </tr>
+                        
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-2 md:p-4 font-bold text-xs md:text-sm text-text-dark">
+                                Riverside Nursing Residence
+                                <div class="text-xs text-gray-500 font-normal">Most affordable</div>
+                            </td>
+                            <td class="p-2 md:p-4 text-center">
+                                <div class="bg-gray-500 text-white px-2 py-1 rounded-full text-xs font-bold">87%</div>
+                            </td>
+                            <td class="p-2 md:p-4 text-center text-warning-amber font-bold text-xs md:text-sm">Good</td>
+                            <td class="p-2 md:p-4 text-center font-semibold text-xs md:text-sm">19.0 mi</td>
+                            <td class="p-2 md:p-4 text-center font-bold text-success-green text-xs md:text-sm">£900</td>
+                            <td class="p-2 md:p-4 text-center text-success-green font-bold text-xs md:text-sm">✓ Yes</td>
+                            <td class="p-2 md:p-4 text-center text-red-500 font-bold text-xs md:text-sm">✗ No</td>
+                            <td class="p-2 md:p-4 text-center text-success-green font-bold text-xs md:text-sm">✓ Yes</td>
+                            <td class="p-2 md:p-4 text-center text-success-green font-bold text-xs md:text-sm">✓ Yes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="mt-8 grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg p-6 border-l-4 border-success-green">
+                    <h4 class="font-bold text-success-green mb-2">✓ Strengths Across Options</h4>
+                    <ul class="text-sm space-y-1">
+                        <li>• All provide en-suite accommodation</li>
+                        <li>• All have secure garden access</li>
+                        <li>• Range of price points to suit budgets</li>
+                        <li>• Multiple CQC 'Outstanding' rated homes</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 border-l-4 border-warning-amber">
+                    <h4 class="font-bold text-warning-amber mb-2">⚠ Key Trade-offs</h4>
+                    <ul class="text-sm space-y-1">
+                        <li>• Lower cost = reduced language support</li>
+                        <li>• Closer distance ≠ always better match</li>
+                        <li>• Outstanding CQC ≠ guaranteed cultural fit</li>
+                        <li>• Specialist care may come at premium</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 border-l-4 border-primary-orange">
+                    <h4 class="font-bold text-primary-orange mb-2">🎯 Decision Factors</h4>
+                    <ul class="text-sm space-y-1">
+                        <li>• Medical needs are non-negotiable</li>
+                        <li>• Cultural support highly valued</li>
+                        <li>• Budget flexibility up to £1,150/week</li>
+                        <li>• Distance secondary to quality match</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit Preparation Guide -->
+    <section class="py-8 md:py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-text-dark mb-3 md:mb-4">Visit Preparation & Guide</h2>
+                <p class="text-lg md:text-xl text-text-muted">Essential steps to ensure productive visits</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                <div class="expert-tip">
+                    <h3 class="text-lg md:text-xl font-bold mb-4">📋 Pre-Visit Checklist</h3>
+                    <div class="space-y-3">
+                        <div class="action-item bg-white/20">
+                            <p class="text-sm md:text-base"><strong>Medical Documents:</strong> GP summary & current medication list</p>
+                        </div>
+                        <div class="action-item bg-white/20">
+                            <p class="text-sm md:text-base"><strong>Financial:</strong> Proof of financial arrangements</p>
+                        </div>
+                        <div class="action-item bg-white/20">
+                            <p class="text-sm md:text-base"><strong>Reference:</strong> Printed copy of this report</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="expert-tip">
+                    <h3 class="text-lg md:text-xl font-bold mb-4">👀 Observation Indicators</h3>
+                    <div class="space-y-3">
+                        <div class="action-item bg-white/20">
+                            <p class="text-sm md:text-base"><strong>Atmosphere:</strong> Warm, respectful staff interactions</p>
+                        </div>
+                        <div class="action-item bg-white/20">
+                            <p class="text-sm md:text-base"><strong>Engagement:</strong> Resident participation in activities</p>
+                        </div>
+                        <div class="action-item bg-white/20">
+                            <p class="text-sm md:text-base"><strong>Safety:</strong> Accessibility, absence of hazards</p>
+                        </div>
+                        <div class="action-item bg-white/20">
+                            <p class="text-sm md:text-base"><strong>Cleanliness:</strong> Overall hygiene in rooms and common areas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RightCareHome Methodology -->
+    <section class="py-8 md:py-16 bg-bg-cream">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-text-dark mb-3 md:mb-4">RightCareHome Advantage: Our Methodology</h2>
+                <p class="text-lg md:text-xl text-text-muted">
+                    We combine AI precision with human verification, ensuring every recommendation is transparent and trustworthy
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+                <div class="methodology-card text-center">
+                    <div class="text-3xl md:text-4xl mb-3 md:mb-4">🤖</div>
+                    <h3 class="text-lg font-bold mb-3">AI-Driven Analysis (70%)</h3>
+                    <p class="text-sm text-text-muted">Automated scanning of CQC data and provider websites</p>
+                </div>
+                
+                <div class="methodology-card text-center">
+                    <div class="text-3xl md:text-4xl mb-3 md:mb-4">📞</div>
+                    <h3 class="text-lg font-bold mb-3">Professional Verification (20%)</h3>
+                    <p class="text-sm text-text-muted">Structured surveys and phone calls confirm critical capabilities</p>
+                </div>
+                
+                <div class="methodology-card text-center">
+                    <div class="text-3xl md:text-4xl mb-3 md:mb-4">📊</div>
+                    <h3 class="text-lg font-bold mb-3">Review Mining (10%)</h3>
+                    <p class="text-sm text-text-muted">Continuous analysis of resident and family feedback</p>
+                </div>
+            </div>
+            
+            <div class="expert-tip mt-6 md:mt-8">
+                <h3 class="text-lg md:text-xl font-bold mb-3">⚖️ SmartCareMatching Algorithm</h3>
+                <p class="text-sm md:text-base mb-4">
+                    Our proprietary algorithm assigns weighted scores: 40% Critical Medical, 35% Personal & Cultural, 
+                    25% Comfort & Environment—yielding transparent overall match percentages.
+                </p>
+                <div class="grid md:grid-cols-4 gap-3 md:gap-4 text-center">
+                    <div class="bg-white/20 rounded-lg p-3">
+                        <div class="font-bold text-lg md:text-xl">40%</div>
+                        <div class="text-xs md:text-sm">Critical Medical</div>
+                    </div>
+                    <div class="bg-white/20 rounded-lg p-3">
+                        <div class="font-bold text-lg md:text-xl">35%</div>
+                        <div class="text-xs md:text-sm">Personal & Cultural</div>
+                    </div>
+                    <div class="bg-white/20 rounded-lg p-3">
+                        <div class="font-bold text-lg md:text-xl">25%</div>
+                        <div class="text-xs md:text-sm">Comfort & Environment</div>
+                    </div>
+                    <div class="bg-white/20 rounded-lg p-3">
+                        <div class="font-bold text-lg md:text-xl">96%</div>
+                        <div class="text-xs md:text-sm">Overall Match</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confidence & Guarantee -->
+    <section class="py-8 md:py-16 bg-primary-navy text-white">
+        <div class="max-w-4xl mx-auto px-4 md:px-6 text-center">
+            <div class="guarantee-seal mx-auto max-w-2xl">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6">🛡️ Confidence & Guarantee</h2>
+                <p class="text-base md:text-lg mb-4 md:mb-6">
+                    We recognise that you are paying for our expertise. That is why we take full responsibility 
+                    for the accuracy and freshness of the information provided.
+                </p>
+                <div class="grid md:grid-cols-3 gap-4 md:gap-6 text-center">
+                    <div>
+                        <div class="text-xl md:text-2xl font-bold">24hrs</div>
+                        <div class="text-xs md:text-sm">Data freshness guarantee</div>
+                    </div>
+                    <div>
+                        <div class="text-xl md:text-2xl font-bold">4 weeks</div>
+                        <div class="text-xs md:text-sm">Research time saved or refund</div>
+                    </div>
+                    <div>
+                        <div class="text-xl md:text-2xl font-bold">30 days</div>
+                        <div class="text-xs md:text-sm">Post-placement support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 md:py-12 bg-text-dark text-white">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                <div>
+                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4">RightCareHome</h3>
+                    <p class="text-gray-300 mb-3 md:mb-4 text-sm md:text-base">
+                        Professional care home selection service with personalised recommendations. 
+                        Independent advice with no care home commissions.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-3 md:mb-4">Contact for Enquiries</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm md:text-base">
+                        <li>📧 hello@rightcarehome.co.uk</li>
+                        <li>📞 +44 20 1234 5678</li>
+                        <li>🕐 Monday-Friday 9AM-6PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-6 md:mt-8 pt-6 md:pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2025 RightCareHome. Report prepared 11 September 2025. Confidential document.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add interaction for progress bars
+        window.addEventListener('load', () => {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 500);
+            });
+        });
+        
+        // PDF download functionality
+        function downloadPDF() {
+            // Hide the download button and print
+            const downloadBtn = document.querySelector('.pdf-download-btn');
+            downloadBtn.style.display = 'none';
+            
+            // Set page title for PDF
+            const originalTitle = document.title;
+            document.title = 'Personal_Care_Home_Report_Patel_Family';
+            
+            // Trigger print dialog
+            window.print();
+            
+            // Restore button and title after print dialog closes
+            setTimeout(() => {
+                downloadBtn.style.display = 'block';
+                document.title = originalTitle;
+            }, 1000);
+        }
+        
+        // Mobile-friendly interactions
+        document.addEventListener('touchstart', function() {}, {passive: true});
+        
+        // Smooth scrolling for mobile
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
