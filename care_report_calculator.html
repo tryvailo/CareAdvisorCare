@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Care Home Placement Report - The Patel Family</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdf8f5;
+            color: #1a1a1a;
+            line-height: 1.7;
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+        
+        .report-header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f766e 100%);
+            color: white;
+        }
+        
+        .ranking-card {
+            transition: all 0.3s ease;
+            border: 2px solid #d1d5db;
+            position: relative;
+            overflow: hidden;
+            background: #ffffff;
+        }
+        
+        .ranking-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .ranking-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #2563eb, #1d4ed8);
+        }
+        
+        .top-recommendation {
+            border-color: #2563eb;
+            background: linear-gradient(135deg, #fdf8f5 0%, #eff6ff 100%);
+        }
+        
+        .score-badge {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .methodology-card {
+            background: #ffffff;
+            border-left: 4px solid #2563eb;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .methodology-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+        }
+        
+        .expert-tip {
+            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        
+        .action-item {
+            background: #f0fdf4;
+            border-left: 4px solid #059669;
+            padding: 20px;
+            margin: 16px 0;
+            border-radius: 8px;
+        }
+        
+        .comparison-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 20px;
+        }
+        
+        .progress-bar {
+            background: #d1d5db;
+            border-radius: 10px;
+            height: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #2563eb, #1d4ed8);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        
+        .confidence-indicator {
+            background: #dcfce7;
+            color: #166534;
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .guarantee-seal {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.3);
+        }
+        
+        .pdf-download-btn {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            border: 2px solid #2563eb;
+            font-weight: 700;
+            padding: 16px 28px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            min-height: 48px;
+            cursor: pointer;
+        }
+        
+        .pdf-download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.5);
+        }
+        
+        .pdf-download-btn:focus {
+            outline: 3px solid #2563eb;
+            outline-offset: 2px;
+        }
+        
+        .calculator-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 2px solid #0f766e;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        .calc-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            margin-bottom: 1.5rem;
+        }
+        
+        .scenario-btn {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            min-height: 48px;
+            padding: 16px 20px;
+        }
+        
+        .scenario-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .scenario-btn:focus {
+            outline: 3px solid #2563eb;
+            outline-offset: 2px;
+        }
+        
+        .scenario-btn.active {
+            background: #2563eb !important;
+            color: white !important;
+            border-color: #2563eb !important;
+        }
+        
+        .print-friendly {
+            print-color-adjust: exact;
+            -webkit-print-color-adjust: exact;
+        }
+        
+        /* Enhanced form controls */
+        select, input[type="range"] {
+            min-height: 48px;
+            font-size: 1.125rem;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            padding: 12px 16px;
+        }
+        
+        select:focus, input:focus {
+            outline: 3px solid #2563eb;
+            outline-offset: 2px;
+            border-color: #2563eb;
+        }
+        
+        /* Button enhancements */
+        button {
+            min-height: 48px;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:focus {
+            outline: 3px solid #2563eb;
+            outline-offset: 2px;
+        }
+        
+        /* Link styles */
+        a {
+            text-decoration: underline;
+            color: #2563eb;
+        }
+        
+        a:hover {
+            color: #1d4ed8;
+        }
+        
+        /* Heading improvements */
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+        
+        h2 {
+            font-size: 2.25rem;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+        
+        h4 {
+            font-size: 1.25rem;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+        
+        /* Enhanced spacing */
+        section {
+            padding-top: calc(2rem * 1.25);
+            padding-bottom: calc(2rem * 1.25);
+        }
+        
+        .grid {
+            gap: 2rem;
+        }
+        
+        @media print {
+            .no-print {
+                display: none;
+            }
+            
+            body {
+                background: white;
+                font-size: 1rem;
+            }
+            
+            .ranking-card {
+                border: 2px solid #d1d5db;
+                break-inside: avoid;
+                margin-bottom: 24px;
+            }
+            
+            .pdf-download-btn {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .pdf-download-btn {
+                position: relative;
+                top: auto;
+                right: auto;
+                width: 100%;
+                margin: 24px 0;
+                text-align: center;
+            }
+            
+            .ranking-card {
+                margin-bottom: 2rem;
+                padding: 2rem !important;
+            }
+            
+            .methodology-card {
+                padding: 1.5rem !important;
+            }
+            
+            .expert-tip {
+                padding: 1.5rem !important;
+            }
+            
+            .calculator-section {
+                padding: 1.5rem !important;
+            }
+            
+            .calc-card {
+                padding: 1.5rem !important;
+            }
+            
+            .comparison-table {
+                font-size: 1rem;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px !important;
+            }
+            
+            h1 {
+                font-size: 2rem !important;
+            }
+            
+            h2 {
+                font-size: 1.875rem !important;
+            }
+            
+            body {
+                font-size: 1rem;
+            }
+            
+            section {
+                padding-top: calc(1.5rem * 1.25) !important;
+                padding-bottom: calc(1.5rem * 1.25) !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.75rem !important;
+            }
+            
+            h2 {
+                font-size: 1.5rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="print-friendly">
+    <!-- PDF Download Button -->
+    <button onclick="downloadPDF()" class="pdf-download-btn no-print" role="button" aria-label="Download PDF Report">
+        📄 Download PDF Report
+    </button>
+
+    <!-- Header -->
+    <header class="report-header py-10 md:py-16">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8 md:mb-10">
+                <div class="mb-6 md:mb-0">
+                    <h1 class="text-3xl md:text-4xl font-bold">RightCareHome</h1>
+                    <p class="text-blue-200 text-lg">Personal Care Home Placement Report</p>
+                </div>
+                <div class="text-left md:text-right">
+                    <div class="bg-white/20 rounded-lg p-4 md:p-5">
+                        <p class="text-base text-blue-200">Report Date</p>
+                        <p class="font-bold text-lg">11 September 2025</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white/10 rounded-xl p-6 md:p-8">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-5">Personal Care Home Placement Report for the Patel Family</h2>
+                <p class="text-lg md:text-xl text-blue-100">
+                    Expert recommendations for Sarah Patel (82 years) requiring specialised dementia care, 
+                    daily physiotherapy, and insulin-dependent diabetes management
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Executive Summary -->
+    <section class="py-10 md:py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-10 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 md:mb-5">Executive Summary</h2>
+                <p class="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto">
+                    This report transforms weeks of stressful research and dozens of confusing phone calls into a 
+                    clear, specialist-verified shortlist—delivered in just 48 hours
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 md:gap-10 mb-10 md:mb-16">
+                <div class="methodology-card">
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl mb-4 md:mb-5">⚡</div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-blue-500">48 Hours</h3>
+                        <p class="text-gray-600 text-lg">From enquiry to specialist report</p>
+                    </div>
+                </div>
+                
+                <div class="methodology-card">
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl mb-4 md:mb-5">🎯</div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-green-600">5 Precise</h3>
+                        <p class="text-gray-600 text-lg">recommendations instead of hundreds</p>
+                    </div>
+                </div>
+                
+                <div class="methodology-card">
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl mb-4 md:mb-5">🔍</div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-teal-600">100% Independent</h3>
+                        <p class="text-gray-600 text-lg">No commissions from care homes</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="expert-tip">
+                <h3 class="text-xl md:text-2xl font-bold mb-4">🎯 Our Primary Recommendation</h3>
+                <p class="text-lg md:text-xl">
+                    <strong>Meadowview Manor</strong> emerges as our primary recommendation due to its unparalleled medical 
+                    protocols—especially insulin management and daily physiotherapy—perfectly addressing Sarah's critical needs. 
+                    Their registered nurse adjusts insulin dosages daily, and they provide on-site physiotherapy seven days a week.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top 5 Recommendations -->
+    <section class="py-10 md:py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-10 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 md:mb-5">Top 5 Care Home Recommendations</h2>
+                <p class="text-xl md:text-2xl text-gray-600">
+                    Five care homes expertly matched to Sarah's specific requirements
+                </p>
+            </div>
+            
+            <!-- Recommendation #1 -->
+            <div class="ranking-card top-recommendation bg-white rounded-xl p-6 md:p-10 mb-8 md:mb-10">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-6 md:mb-8">
+                    <div class="mb-6 md:mb-0">
+                        <div class="flex items-center mb-4 md:mb-5">
+                            <div class="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-full flex items-center justify-center text-2xl md:text-3xl font-bold mr-4 md:mr-5">1</div>
+                            <div>
+                                <h3 class="text-2xl md:text-3xl font-bold text-gray-800">Meadowview Manor</h3>
+                                <p class="text-gray-600 text-lg">Leicester, 5.2 miles from your location</p>
+                            </div>
+                        </div>
+                        <div class="score-badge">Match: 96% | CQC Outstanding Jan 2025</div>
+                    </div>
+                    <div class="text-left md:text-right">
+                        <p class="text-3xl md:text-4xl font-bold text-blue-500">£1,100</p>
+                        <p class="text-gray-600 text-lg">per week</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">
+                    <div>
+                        <h4 class="font-bold text-teal-600 mb-3 text-lg">Medical Critical (40%)</h4>
+                        <div class="progress-bar mb-3">
+                            <div class="progress-fill" style="width: 95%"></div>
+                        </div>
+                        <p class="text-base text-gray-600">38/40 points • <span class="confidence-indicator">Phone Verified</span></p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-teal-600 mb-3 text-lg">Personal & Cultural (35%)</h4>
+                        <div class="progress-bar mb-3">
+                            <div class="progress-fill" style="width: 96%"></div>
+                        </div>
+                        <p class="text-base text-gray-600">24/25 points • <span class="confidence-indicator">Verified</span></p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-teal-600 mb-3 text-lg">Comfort & Environment (25%)</h4>
+                        <div class="progress-bar mb-3">
+                            <div class="progress-fill" style="width: 95%"></div>
+                        </div>
+                        <p class="text-base text-gray-600">19/20 points • <span class="confidence-indicator">Surveyed</span></p>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 rounded-lg p-6 md:p-8 mb-6 md:mb-8">
+                    <h4 class="font-bold text-gray-800 mb-4 text-lg">🎯 Why Meadowview Manor is ideal for Sarah:</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-4 font-bold text-xl">✓</span>
+                            <span><strong>Insulin Management (10/10):</strong> Registered nurse adjusts dosages daily; confirmed by phone (95% confidence)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-4 font-bold text-xl">✓</span>
+                            <span><strong>Physiotherapy (10/10):</strong> On-site daily therapy; verified via provider survey (95% confidence)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-4 font-bold text-xl">✓</span>
+                            <span><strong>Language Support (10/10):</strong> 24/7 Urdu-speaking care assistant; phone-verified (100% confidence)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-4 font-bold text-xl">✓</span>
+                            <span><strong>Dietary Requirements (10/10):</strong> Daily vegetarian, vegan, and gluten-free meals; confirmed via menu review (95%)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Additional recommendations summary cards -->
+            <div class="grid md:grid-cols-2 gap-8 mb-10">
+                <div class="methodology-card">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">2. Willow Brook Residential</h3>
+                        <div class="score-badge">93% Match</div>
+                    </div>
+                    <p class="text-gray-600 mb-3 text-lg">Strong cultural fit and family satisfaction</p>
+                    <div class="flex justify-between text-base">
+                        <span>£1,050/week • 17.0 miles</span>
+                        <span class="text-amber-600 font-bold">CQC: Good</span>
+                    </div>
+                </div>
+
+                <div class="methodology-card">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">3. Oakfield Dementia Centre</h3>
+                        <div class="score-badge">91% Match</div>
+                    </div>
+                    <p class="text-gray-600 mb-3 text-lg">Outstanding dementia expertise</p>
+                    <div class="flex justify-between text-base">
+                        <span>£1,150/week • 3.0 miles</span>
+                        <span class="text-green-600 font-bold">CQC: Outstanding</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COST CALCULATOR SECTION -->
+    <section class="py-10 md:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="calculator-section">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-5">💰 Total Care Cost Calculator</h2>
+                    <p class="text-xl text-gray-600 mb-3">See the complete financial picture over 1-5 years</p>
+                    <p class="text-base text-gray-500">Including all additional costs and inflation scenarios</p>
+                </div>
+
+                <!-- Calculator Controls -->
+                <div class="calc-card mb-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <label for="care-home-select" class="block font-bold text-gray-800 mb-3 text-lg">Select Care Home:</label>
+                            <select id="care-home-select" class="w-full p-4 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none text-lg" aria-label="Choose care home for cost calculation">
+                                <option value="">Choose a care home...</option>
+                                <option value="meadowview">Meadowview Manor (96% match) - £1,100/week</option>
+                                <option value="willow_brook">Willow Brook Residential (93% match) - £1,050/week</option>
+                                <option value="oakfield">Oakfield Dementia Centre (91% match) - £1,150/week</option>
+                                <option value="brookside">Brookside Court (89% match) - £975/week</option>
+                                <option value="riverside">Riverside Nursing (87% match) - £900/week</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="time-slider" class="block font-bold text-gray-800 mb-3 text-lg">
+                                Time Period: <span id="time-display" class="text-blue-500">3 years</span>
+                            </label>
+                            <input type="range" id="time-slider" min="1" max="5" step="0.5" value="3" 
+                                   class="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer mb-3"
+                                   aria-label="Select time period for cost calculation">
+                            <div class="flex justify-between text-base text-gray-500">
+                                <span>1 year</span>
+                                <span>5 years</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Grid -->
+                <div id="calculator-results" style="display: none;">
+                    <div class="grid lg:grid-cols-3 gap-8 mb-10">
+                        
+                        <!-- Basic Costs -->
+                        <div class="calc-card">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-5">Basic Care Costs</h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center py-3 border-b border-gray-200">
+                                    <span class="text-lg">Weekly Fee</span>
+                                    <span id="weekly-fee" class="font-bold text-blue-500 text-lg">£0</span>
+                                </div>
+                                <div class="flex justify-between items-center py-3 border-b border-gray-200">
+                                    <span class="text-lg">Annual Base Cost</span>
+                                    <span id="annual-cost" class="font-bold text-blue-500 text-lg">£0</span>
+                                </div>
+                                <div class="flex justify-between items-center py-3 font-bold text-xl">
+                                    <span>Basic Total</span>
+                                    <span id="basic-total" class="text-blue-500">£0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Costs -->
+                        <div class="calc-card">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-5">Additional Costs</h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center py-3 border-b border-gray-200">
+                                    <span class="text-lg">Registration Fee</span>
+                                    <span id="registration-fee" class="font-bold text-teal-600 text-lg">£0</span>
+                                </div>
+                                <div class="flex justify-between items-center py-3 border-b border-gray-200">
+                                    <span class="text-lg">Deposit (refundable)</span>
+                                    <span id="deposit-fee" class="font-bold text-gray-600 text-lg">£0</span>
+                                </div>
+                                <div class="flex justify-between items-center py-3 border-b border-gray-200">
+                                    <span class="text-lg">Activities & Social</span>
+                                    <span id="activity-cost" class="font-bold text-teal-600 text-lg">£0</span>
+                                </div>
+                                <div class="flex justify-between items-center py-3 border-b border-gray-200">
+                                    <span class="text-lg">Medical Extras</span>
+                                    <span id="medical-cost" class="font-bold text-teal-600 text-lg">£0</span>
+                                </div>
+                                <div class="flex justify-between items-center py-3">
+                                    <span class="text-lg">Transport & Visits</span>
+                                    <span id="transport-cost" class="font-bold text-teal-600 text-lg">£0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scenarios -->
+                        <div class="calc-card">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-5">Cost Scenarios</h3>
+                            <div class="space-y-3 mb-6">
+                                <button class="scenario-btn w-full px-5 py-4 border-2 border-gray-200 rounded-lg text-base transition-all duration-300 hover:border-blue-500" data-scenario="optimistic" role="button">
+                                    📈 Conservative<br>
+                                    <span class="text-sm text-gray-500">3% annual inflation</span>
+                                </button>
+                                <button class="scenario-btn active w-full px-5 py-4 border-2 border-blue-500 bg-blue-500 text-white rounded-lg text-base transition-all duration-300" data-scenario="realistic" role="button">
+                                    📊 Realistic<br>
+                                    <span class="text-sm opacity-80">5% annual inflation</span>
+                                </button>
+                                <button class="scenario-btn w-full px-5 py-4 border-2 border-gray-200 rounded-lg text-base transition-all duration-300 hover:border-blue-500" data-scenario="pessimistic" role="button">
+                                    📉 Cautious<br>
+                                    <span class="text-sm text-gray-500">7% annual inflation</span>
+                                </button>
+                            </div>
+                            <div class="bg-green-600 text-white p-6 rounded-lg text-center">
+                                <div class="text-base opacity-90 mb-2">Total Projected Cost:</div>
+                                <div id="total-projected" class="text-3xl font-bold">£0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cost Chart -->
+                    <div class="calc-card mb-10">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-5">Yearly Cost Progression</h3>
+                        <div style="height: 400px;">
+                            <canvas id="cost-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Table -->
+                    <div class="calc-card">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-5">Complete Cost Comparison (3 Years)</h3>
+                        <div class="overflow-x-auto">
+                            <table class="comparison-table w-full">
+                                <thead>
+                                    <tr class="bg-gray-800 text-white">
+                                        <th class="p-4 text-left font-bold text-lg">Care Home</th>
+                                        <th class="p-4 text-center font-bold text-lg">Weekly Fee</th>
+                                        <th class="p-4 text-center font-bold text-lg">3-Year Total</th>
+                                        <th class="p-4 text-center font-bold text-lg">Monthly Average</th>
+                                        <th class="p-4 text-center font-bold text-lg">Savings vs Highest</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="comparison-tbody">
+                                    <!-- Populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Tips -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+                        <h4 class="font-bold text-yellow-800 mb-3 text-lg">💰 Funding Options</h4>
+                        <p class="text-base text-yellow-700">Check eligibility for NHS Continuing Healthcare, Local Authority funding, or Attendance Allowance</p>
+                    </div>
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                        <h4 class="font-bold text-blue-800 mb-3 text-lg">👀 Hidden Costs</h4>
+                        <p class="text-base text-blue-700">Budget for personal items, clothing, toiletries, and outings (£100-200/month extra)</p>
+                    </div>
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                        <h4 class="font-bold text-green-800 mb-3 text-lg">📈 Annual Reviews</h4>
+                        <p class="text-base text-green-700">Care fees typically increase by 3-7% annually. Factor this into long-term planning</p>
+                    </div>
+                    <div class="bg-purple-50 border border-purple-200 rounded-lg p-6">
+                        <h4 class="font-bold text-purple-800 mb-3 text-lg">💳 Payment Methods</h4>
+                        <p class="text-base text-purple-700">Many homes offer monthly payment plans. Ask about discounts for annual payments</p>
+                    </div>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="bg-red-50 border border-red-200 rounded-lg p-6 mt-8">
+                    <p class="text-base text-red-800">
+                        <strong>Important:</strong> These estimates are based on current market rates and typical additional costs. 
+                        Actual costs may vary depending on individual care requirements and care home policies. 
+                        Always request detailed quotes from care homes directly.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comprehensive Comparison Table -->
+    <section class="py-10 md:py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-10 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 md:mb-5">Comprehensive Care Home Comparison</h2>
+                <p class="text-xl md:text-2xl text-gray-600">Complete comparison across all five recommended care homes</p>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="comparison-table w-full bg-white" style="min-width: 1000px;">
+                    <thead>
+                        <tr class="bg-gray-800 text-white">
+                            <th class="p-4 text-left font-bold text-lg">Care Home</th>
+                            <th class="p-4 text-center font-bold text-lg">Match %</th>
+                            <th class="p-4 text-center font-bold text-lg">CQC Rating</th>
+                            <th class="p-4 text-center font-bold text-lg">Weekly Fee</th>
+                            <th class="p-4 text-center font-bold text-lg">Daily Physio</th>
+                            <th class="p-4 text-center font-bold text-lg">Urdu Staff</th>
+                            <th class="p-4 text-center font-bold text-lg">Distance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b hover:bg-blue-25 bg-blue-50">
+                            <td class="p-4 font-bold">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">1</div>
+                                    Meadowview Manor
+                                </div>
+                            </td>
+                            <td class="p-4 text-center font-bold text-blue-500 text-lg">96%</td>
+                            <td class="p-4 text-center"><span class="bg-green-600 text-white px-3 py-2 rounded text-base font-bold">Outstanding</span></td>
+                            <td class="p-4 text-center font-bold text-lg">£1,100</td>
+                            <td class="p-4 text-center text-green-600 font-bold text-lg">✓ Yes</td>
+                            <td class="p-4 text-center text-green-600 font-bold text-lg">✓ 24/7</td>
+                            <td class="p-4 text-center text-lg">5.2 mi</td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="p-4 font-bold">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">2</div>
+                                    Willow Brook Residential
+                                </div>
+                            </td>
+                            <td class="p-4 text-center font-bold text-teal-600 text-lg">93%</td>
+                            <td class="p-4 text-center"><span class="bg-amber-500 text-white px-3 py-2 rounded text-base font-bold">Good</span></td>
+                            <td class="p-4 text-center font-bold text-lg">£1,050</td>
+                            <td class="p-4 text-center text-amber-500 font-bold text-lg">⚠ Limited</td>
+                            <td class="p-4 text-center text-green-600 font-bold text-lg">✓ Yes</td>
+                            <td class="p-4 text-center text-lg">17.0 mi</td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="p-4 font-bold">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">3</div>
+                                    Oakfield Dementia Centre
+                                </div>
+                            </td>
+                            <td class="p-4 text-center font-bold text-green-600 text-lg">91%</td>
+                            <td class="p-4 text-center"><span class="bg-green-600 text-white px-3 py-2 rounded text-base font-bold">Outstanding</span></td>
+                            <td class="p-4 text-center font-bold text-lg">£1,150</td>
+                            <td class="p-4 text-center text-green-600 font-bold text-lg">✓ Yes</td>
+                            <td class="p-4 text-center text-red-500 font-bold text-lg">✗ No</td>
+                            <td class="p-4 text-center text-lg">3.0 mi</td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="p-4 font-bold">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">4</div>
+                                    Brookside Court
+                                </div>
+                            </td>
+                            <td class="p-4 text-center font-bold text-amber-500 text-lg">89%</td>
+                            <td class="p-4 text-center"><span class="bg-amber-500 text-white px-3 py-2 rounded text-base font-bold">Good</span></td>
+                            <td class="p-4 text-center font-bold text-lg">£975</td>
+                            <td class="p-4 text-center text-red-500 font-bold text-lg">✗ No</td>
+                            <td class="p-4 text-center text-red-500 font-bold text-lg">✗ No</td>
+                            <td class="p-4 text-center text-lg">14.0 mi</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-4 font-bold">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 bg-gray-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">5</div>
+                                    Riverside Nursing
+                                </div>
+                            </td>
+                            <td class="p-4 text-center font-bold text-gray-600 text-lg">87%</td>
+                            <td class="p-4 text-center"><span class="bg-amber-500 text-white px-3 py-2 rounded text-base font-bold">Good</span></td>
+                            <td class="p-4 text-center font-bold text-lg">£900</td>
+                            <td class="p-4 text-center text-green-600 font-bold text-lg">✓ Yes</td>
+                            <td class="p-4 text-center text-red-500 font-bold text-lg">✗ No</td>
+                            <td class="p-4 text-center text-lg">19.0 mi</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit Preparation Guide -->
+    <section class="py-10 md:py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-10 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 md:mb-5">Visit Preparation & Guide</h2>
+                <p class="text-xl md:text-2xl text-gray-600">Essential steps to ensure productive visits</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 md:gap-10">
+                <div class="expert-tip">
+                    <h3 class="text-xl md:text-2xl font-bold mb-5">📋 Pre-Visit Checklist</h3>
+                    <div class="space-y-4">
+                        <div class="action-item bg-white/20">
+                            <p class="text-lg"><strong>Medical Documents:</strong> GP summary & current medication list</p>
+                        </div>
+                        <div class="action-item bg-white/20">
+                            <p class="text-lg"><strong>Financial:</strong> Proof of financial arrangements</p>
+                        </div>
+                        <div class="action-item bg-white/20">
+                            <p class="text-lg"><strong>Reference:</strong> Printed copy of this report</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="expert-tip">
+                    <h3 class="text-xl md:text-2xl font-bold mb-5">❓ Key Questions for Meadowview Manor</h3>
+                    <div class="space-y-4">
+                        <div class="action-item bg-white/20">
+                            <p class="text-lg">"How do you review and communicate insulin dose changes?"</p>
+                        </div>
+                        <div class="action-item bg-white/20">
+                            <p class="text-lg">"Can I meet the Urdu-speaking assistant who will support my mother?"</p>
+                        </div>
+                        <div class="action-item bg-white/20">
+                            <p class="text-lg">"What emergency response protocols are in place for falls?"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confidence & Guarantee -->
+    <section class="py-10 md:py-20 bg-gray-800 text-white">
+        <div class="max-w-4xl mx-auto px-4 md:px-6 text-center">
+            <div class="guarantee-seal mx-auto max-w-2xl">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8">🛡️ Confidence & Guarantee</h2>
+                <p class="text-lg md:text-xl mb-6 md:mb-8">
+                    We recognise that you are paying for our expertise. That is why we take full responsibility 
+                    for the accuracy and freshness of the information provided.
+                </p>
+                <div class="grid md:grid-cols-3 gap-6 md:gap-8 text-center">
+                    <div>
+                        <div class="text-2xl md:text-3xl font-bold">24hrs</div>
+                        <div class="text-base md:text-lg">Data freshness guarantee</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl md:text-3xl font-bold">4 weeks</div>
+                        <div class="text-base md:text-lg">Research time saved or refund</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl md:text-3xl font-bold">30 days</div>
+                        <div class="text-base md:text-lg">Post-placement support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 md:py-16 bg-gray-900 text-white">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-10">
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold mb-4 md:mb-5">RightCareHome</h3>
+                    <p class="text-gray-300 mb-4 md:mb-5 text-base md:text-lg">
+                        Professional care home selection service with personalised recommendations. 
+                        Independent advice with no care home commissions.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4 md:mb-5 text-lg">Contact for Enquiries</h4>
+                    <ul class="space-y-3 text-gray-300 text-base md:text-lg">
+                        <li>📧 <a href="mailto:hello@rightcarehome.co.uk" class="underline hover:text-white">hello@rightcarehome.co.uk</a></li>
+                        <li>📞 +44 20 1234 5678</li>
+                        <li>🕗 Monday-Friday 9AM-6PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 md:mt-10 pt-8 md:pt-10 text-center text-gray-400 text-base">
+                <p>&copy; 2025 RightCareHome. Report prepared 11 September 2025. Confidential document.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Care home data
+        const careHomes = {
+            'meadowview': {
+                name: 'Meadowview Manor',
+                weeklyFee: 1100,
+                registrationFee: 500,
+                depositWeeks: 6,
+                activities: 50,
+                medical: 200,
+                transport: 75
+            },
+            'willow_brook': {
+                name: 'Willow Brook Residential',
+                weeklyFee: 1050,
+                registrationFee: 400,
+                depositWeeks: 4,
+                activities: 40,
+                medical: 180,
+                transport: 95
+            },
+            'oakfield': {
+                name: 'Oakfield Dementia Centre',
+                weeklyFee: 1150,
+                registrationFee: 600,
+                depositWeeks: 6,
+                activities: 60,
+                medical: 250,
+                transport: 60
+            },
+            'brookside': {
+                name: 'Brookside Court',
+                weeklyFee: 975,
+                registrationFee: 300,
+                depositWeeks: 4,
+                activities: 35,
+                medical: 150,
+                transport: 85
+            },
+            'riverside': {
+                name: 'Riverside Nursing',
+                weeklyFee: 900,
+                registrationFee: 350,
+                depositWeeks: 5,
+                activities: 30,
+                medical: 120,
+                transport: 100
+            }
+        };
+
+        let currentHome = null;
+        let timePeriod = 3;
+        let scenario = 'realistic';
+        let costChart = null;
+
+        const scenarios = {
+            optimistic: { inflation: 0.03, multiplier: 0.8 },
+            realistic: { inflation: 0.05, multiplier: 1.0 },
+            pessimistic: { inflation: 0.07, multiplier: 1.3 }
+        };
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCalculator();
+            initializeProgressBars();
+            initializeComparison();
+        });
+
+        function initializeCalculator() {
+            const select = document.getElementById('care-home-select');
+            const slider = document.getElementById('time-slider');
+            const display = document.getElementById('time-display');
+            const buttons = document.querySelectorAll('.scenario-btn');
+
+            if (select) {
+                select.addEventListener('change', function(e) {
+                    currentHome = e.target.value;
+                    const results = document.getElementById('calculator-results');
+                    if (currentHome && results) {
+                        results.style.display = 'block';
+                        updateCalculations();
+                    } else if (results) {
+                        results.style.display = 'none';
+                    }
+                });
+            }
+
+            if (slider && display) {
+                slider.addEventListener('input', function(e) {
+                    timePeriod = parseFloat(e.target.value);
+                    display.textContent = timePeriod === 1 ? '1 year' : `${timePeriod} years`;
+                    if (currentHome) updateCalculations();
+                });
+            }
+
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    buttons.forEach(b => b.classList.remove('active', 'bg-blue-500', 'text-white'));
+                    this.classList.add('active', 'bg-blue-500', 'text-white');
+                    scenario = this.dataset.scenario;
+                    if (currentHome) updateCalculations();
+                });
+            });
+        }
+
+        function updateCalculations() {
+            if (!currentHome || !careHomes[currentHome]) return;
+
+            const home = careHomes[currentHome];
+            const config = scenarios[scenario];
+            
+            // Basic costs
+            const weeklyFee = home.weeklyFee;
+            const annualBase = weeklyFee * 52;
+            const basicTotal = annualBase * timePeriod;
+
+            // Additional costs per year
+            const monthlyExtras = (home.activities + home.medical + home.transport) * config.multiplier;
+            const annualExtras = monthlyExtras * 12;
+            
+            // Apply inflation
+            let totalCost = home.registrationFee;
+            let yearlyData = [];
+            
+            for (let year = 1; year <= Math.ceil(timePeriod); year++) {
+                const inflationMultiplier = Math.pow(1 + config.inflation, year - 1);
+                const yearFraction = year <= timePeriod ? 1 : (timePeriod % 1) || 1;
+                const yearlyBasic = annualBase * inflationMultiplier * yearFraction;
+                const yearlyExtra = annualExtras * inflationMultiplier * yearFraction;
+                
+                totalCost += yearlyBasic + yearlyExtra;
+                yearlyData.push({
+                    year: year,
+                    basic: yearlyBasic,
+                    extra: yearlyExtra
+                });
+                
+                if (year > timePeriod) break;
+            }
+
+            updateDisplay(home, weeklyFee, annualBase, basicTotal, totalCost, monthlyExtras, yearlyData);
+        }
+
+        function updateDisplay(home, weekly, annual, basic, total, monthly, yearly) {
+            updateElement('weekly-fee', `£${weekly.toLocaleString()}`);
+            updateElement('annual-cost', `£${annual.toLocaleString()}`);
+            updateElement('basic-total', `£${Math.round(basic).toLocaleString()}`);
+            updateElement('registration-fee', `£${home.registrationFee.toLocaleString()}`);
+            updateElement('deposit-fee', `£${(home.weeklyFee * home.depositWeeks).toLocaleString()}`);
+            updateElement('activity-cost', `£${Math.round(home.activities * 12 * timePeriod * scenarios[scenario].multiplier).toLocaleString()}`);
+            updateElement('medical-cost', `£${Math.round(home.medical * 12 * timePeriod * scenarios[scenario].multiplier).toLocaleString()}`);
+            updateElement('transport-cost', `£${Math.round(home.transport * 12 * timePeriod * scenarios[scenario].multiplier).toLocaleString()}`);
+            updateElement('total-projected', `£${Math.round(total).toLocaleString()}`);
+
+            updateChart(yearly);
+            updateComparisonTable();
+        }
+
+        function updateElement(id, value) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.textContent = value;
+                element.style.transition = 'all 0.3s ease';
+                element.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    element.style.transform = 'scale(1)';
+                }, 300);
+            }
+        }
+
+        function updateChart(yearlyData) {
+            const canvas = document.getElementById('cost-chart');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            
+            if (costChart) {
+                costChart.destroy();
+            }
+            
+            costChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: yearlyData.map(d => `Year ${d.year}`),
+                    datasets: [{
+                        label: 'Basic Care Costs',
+                        data: yearlyData.map(d => Math.round(d.basic)),
+                        backgroundColor: 'rgba(37, 99, 235, 0.8)',
+                        borderColor: 'rgb(37, 99, 235)',
+                        borderWidth: 1
+                    }, {
+                        label: 'Additional Services',
+                        data: yearlyData.map(d => Math.round(d.extra)),
+                        backgroundColor: 'rgba(15, 118, 110, 0.8)',
+                        borderColor: 'rgb(15, 118, 110)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { stacked: true },
+                        y: {
+                            stacked: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '£' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': £' + context.parsed.y.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateComparisonTable() {
+            const tbody = document.getElementById('comparison-tbody');
+            if (!tbody) return;
+            
+            // Calculate 3-year costs for all homes
+            const comparisons = Object.keys(careHomes).map(key => {
+                const home = careHomes[key];
+                const config = scenarios.realistic;
+                const annualBase = home.weeklyFee * 52;
+                const annualExtras = (home.activities + home.medical + home.transport) * 12;
+                
+                let total = home.registrationFee;
+                for (let year = 1; year <= 3; year++) {
+                    const multiplier = Math.pow(1 + config.inflation, year - 1);
+                    total += (annualBase + annualExtras) * multiplier;
+                }
+                
+                return {
+                    name: home.name,
+                    weekly: home.weeklyFee,
+                    total: total,
+                    monthly: total / 36
+                };
+            });
+            
+            // Sort by total cost
+            comparisons.sort((a, b) => a.total - b.total);
+            const highest = comparisons[comparisons.length - 1].total;
+            
+            tbody.innerHTML = '';
+            
+            comparisons.forEach((home, index) => {
+                const savings = highest - home.total;
+                const row = document.createElement('tr');
+                row.className = 'border-b hover:bg-gray-50';
+                if (index === 0) row.classList.add('bg-green-50');
+                
+                row.innerHTML = `
+                    <td class="p-4">
+                        ${index === 0 ? '🏆 ' : ''}
+                        <strong>${home.name}</strong>
+                    </td>
+                    <td class="p-4 text-center font-bold text-lg">£${home.weekly.toLocaleString()}</td>
+                    <td class="p-4 text-center font-bold text-lg">£${Math.round(home.total).toLocaleString()}</td>
+                    <td class="p-4 text-center text-lg">£${Math.round(home.monthly).toLocaleString()}</td>
+                    <td class="p-4 text-center ${savings > 1000 ? 'text-green-600 font-bold' : ''} text-lg">
+                        ${savings > 1000 ? '£' + Math.round(savings).toLocaleString() : '—'}
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function initializeProgressBars() {
+            setTimeout(() => {
+                document.querySelectorAll('.progress-fill').forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0%';
+                    setTimeout(() => bar.style.width = width, 100);
+                });
+            }, 500);
+        }
+
+        function initializeComparison() {
+            updateComparisonTable();
+        }
+
+        function downloadPDF() {
+            const btn = document.querySelector('.pdf-download-btn');
+            if (btn) btn.style.display = 'none';
+            
+            document.title = 'Personal_Care_Home_Report_Patel_Family';
+            window.print();
+            
+            setTimeout(() => {
+                if (btn) btn.style.display = 'block';
+                document.title = 'Personal Care Home Placement Report - The Patel Family';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
