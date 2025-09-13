@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RightCareHome - Professional Care Home Selection | NHS Recommended</title>
+    <meta name="description" content="Professional care home selection service trusted by NHS teams. Find quality care homes with verified availability and transparent pricing. 48-hour expert reports.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-navy': '#1e293b',
+                        'primary-orange': '#f97316',
+                        'success-green': '#16a34a',
+                        'warning-amber': '#f59e0b',
+                        'bg-warm': '#fdf8f5',
+                        'bg-cream': '#f9f6f2',
+                        'text-dark': '#1e293b',
+                        'text-muted': '#64748b',
+                        'healthcare-blue': '#0f766e'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+                        'bounce-gentle': 'bounceGentle 1s ease-in-out infinite',
+                        'gradient': 'gradient 3s ease infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(249, 115, 22, 0.3)' },
+                            '50%': { boxShadow: '0 0 30px rgba(249, 115, 22, 0.6)' }
+                        },
+                        bounceGentle: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' }
+                        },
+                        gradient: {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                            '100%': { backgroundPosition: '0% 50%' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdf8f5;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #fdf8f5 0%, #f9f6f2 50%, #fdf8f5 100%);
+            background-size: 200% 200%;
+            animation: gradient 8s ease infinite;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .primary-cta {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            border: 2px solid #f97316;
+            font-weight: 700;
+            padding: 18px 28px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .primary-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(249, 115, 22, 0.4);
+        }
+        
+        .primary-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .primary-cta:hover::before {
+            left: 100%;
+        }
+        
+        .secondary-cta {
+            background: transparent;
+            color: #0f766e;
+            border: 2px solid #0f766e;
+            font-weight: 700;
+            padding: 18px 28px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .secondary-cta:hover {
+            background: #0f766e;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(15, 118, 110, 0.3);
+        }
+        
+        .trust-badge {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            color: white;
+            font-weight: 600;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
+        }
+        
+        .hero-headline {
+            font-size: 2.75rem;
+            line-height: 1.15;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1e293b 0%, #0f766e 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .pricing-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #f97316, #ea580c);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .pricing-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .recommended {
+            border-color: #f97316;
+            position: relative;
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.875rem;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+        }
+        
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .faq-item {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .faq-item:hover {
+            border-color: #f97316;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.1);
+        }
+        
+        .faq-button {
+            width: 100%;
+            padding: 20px 24px;
+            text-align: left;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            cursor: pointer;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-button:hover {
+            background: #f8fafc;
+        }
+        
+        .faq-icon {
+            font-size: 1.5rem;
+            color: #f97316;
+            transition: transform 0.3s ease;
+            min-width: 24px;
+        }
+        
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            background: #f8fafc;
+        }
+        
+        .faq-content.show {
+            max-height: 200px;
+            padding: 20px 24px;
+        }
+        
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .floating-elements::before,
+        .floating-elements::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(15, 118, 110, 0.1) 100%);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-elements::before {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-elements::after {
+            top: 60%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .comparison-table {
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
+            border-radius: 12px 0 0 12px;
+        }
+        
+        .comparison-table th:last-child,
+        .comparison-table td:last-child {
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .stat-highlight {
+            background: white;
+            border-left: 4px solid #f97316;
+            padding: 24px;
+            border-radius: 12px;
+            margin: 16px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-highlight:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .delivery-indicator {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
+        }
+        
+        .professional-endorsement {
+            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+            color: white;
+            padding: 28px;
+            border-radius: 16px;
+            margin: 24px 0;
+            box-shadow: 0 8px 25px rgba(15, 118, 110, 0.3);
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #dc2626;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+            animation: bounce-gentle 2s ease-in-out infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-headline {
+                font-size: 2.25rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            .primary-cta, .secondary-cta {
+                min-height: 64px !important;
+                font-size: 1.1rem !important;
+                padding: 20px 24px !important;
+                width: 100% !important;
+            }
+            
+            .hero-section .grid {
+                grid-template-columns: 1fr !important;
+                gap: 2.5rem !important;
+            }
+            
+            .pricing-card {
+                width: 100% !important;
+                margin-bottom: 2rem !important;
+                padding: 1.5rem !important;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+            
+            .faq-button {
+                font-size: 1rem !important;
+                padding: 18px 20px !important;
+            }
+            
+            .faq-content.show {
+                max-height: 300px !important;
+                padding: 18px 20px !important;
+            }
+            
+            h1 {
+                font-size: 2.25rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            h2 {
+                font-size: 1.875rem !important;
+                line-height: 1.3 !important;
+            }
+            
+            .hero-section {
+                padding: 100px 0 60px 0 !important;
+            }
+            
+            input[type="email"] {
+                min-height: 60px !important;
+                font-size: 16px !important;
+                padding: 18px !important;
+                border-radius: 12px !important;
+            }
+            
+            .p-8 {
+                padding: 1.5rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-headline {
+                font-size: 1.875rem !important;
+                line-height: 1.15 !important;
+            }
+            
+            .primary-cta, .secondary-cta {
+                min-height: 68px !important;
+                font-size: 1rem !important;
+                padding: 22px 18px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-200 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-primary-navy">RightCareHome</h1>
+                    <span class="text-sm text-text-muted ml-1">.co.uk</span>
+                </div>
+                <div class="hidden md:block">
+                    <button class="primary-cta">
+                        Get Professional Report - £99
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section pt-24 pb-20 hero-gradient relative">
+        <div class="floating-elements"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left Column -->
+                <div class="fade-in">
+                    <h1 class="hero-headline text-text-dark mb-8">
+                        Professional Care Home Selection in <span class="text-primary-orange">48 Hours</span>
+                    </h1>
+                    
+                    <p class="text-xl mb-8 font-medium text-text-muted">
+                        Trusted by NHS discharge teams. <strong class="text-primary-orange">Independent, expert-verified recommendations</strong> for quality care homes with verified availability.
+                    </p>
+                    
+                    <!-- Simple Trust Line -->
+                    <p class="text-lg mb-8 font-semibold text-healthcare-blue">
+                        🏥 Recommended by NHS Discharge Teams • 1,200+ Families Helped • Independent Advice
+                    </p>
+                    
+                    <div class="mb-6">
+                        <button class="primary-cta text-lg px-10 py-5">
+                            Get My Care Home Report - £99
+                        </button>
+                    </div>
+                    
+                    <p class="text-text-muted">
+                        ⚡ Professional reports delivered within 48 hours
+                    </p>
+                </div>
+                
+                <!-- Right Column - Enhanced Free Guide -->
+                <div class="fade-in">
+                    <div class="bg-white rounded-2xl shadow-2xl p-8 border-2 border-success-green relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-success-green to-healthcare-blue"></div>
+                        
+                        <div class="text-center mb-6">
+                            <div class="bg-gradient-to-r from-success-green to-healthcare-blue text-white px-8 py-3 rounded-full inline-block mb-4 font-bold shadow-lg">
+                                FREE PROFESSIONAL GUIDE
+                            </div>
+                            <h2 class="text-2xl font-bold text-text-dark">Care Home Selection Checklist</h2>
+                            <p class="text-text-muted mt-2">Created by NHS discharge coordinators</p>
+                        </div>
+                        
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <span class="text-success-green mr-3 font-bold text-lg">✓</span>
+                                <span class="font-medium">Quality assessment framework</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-success-green mr-3 font-bold text-lg">✓</span>
+                                <span class="font-medium">Financial planning guide</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-success-green mr-3 font-bold text-lg">✓</span>
+                                <span class="font-medium">Essential questions to ask</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-success-green mr-3 font-bold text-lg">✓</span>
+                                <span class="font-medium">Red flags checklist</span>
+                            </li>
+                        </ul>
+                        
+                        <form class="space-y-4" id="guide-form">
+                            <input type="email" placeholder="Enter your email for instant access" 
+                                   class="w-full p-4 border-2 border-gray-200 rounded-lg focus:border-primary-orange focus:outline-none text-lg transition-all duration-300"
+                                   required>
+                            <button type="submit" class="secondary-cta w-full">
+                                Get Free Guide Now
+                            </button>
+                        </form>
+                        
+                        <p class="text-sm text-text-muted text-center mt-4">
+                            🔒 Your email is never shared with care homes
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold mb-8 text-text-dark">The Care Home Selection Challenge</h2>
+                <p class="text-xl text-text-muted max-w-3xl mx-auto">
+                    NHS discharge teams report these common challenges families face when selecting care homes.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="stat-highlight fade-in">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">📊</div>
+                        <h3 class="text-3xl font-bold text-warning-amber counter" data-target="68">0%</h3>
+                        <p class="text-text-muted font-medium">spend 4-8 weeks researching</p>
+                    </div>
+                </div>
+                
+                <div class="stat-highlight fade-in">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">💰</div>
+                        <h3 class="text-3xl font-bold text-primary-orange">£1,800+</h3>
+                        <p class="text-text-muted font-medium">average cost of poor placement</p>
+                    </div>
+                </div>
+                
+                <div class="stat-highlight fade-in">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">📅</div>
+                        <h3 class="text-3xl font-bold text-warning-amber">18 months</h3>
+                        <p class="text-text-muted font-medium">average CQC inspection gap</p>
+                    </div>
+                </div>
+                
+                <div class="stat-highlight fade-in">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">🏠</div>
+                        <h3 class="text-3xl font-bold text-healthcare-blue">5-7</h3>
+                        <p class="text-text-muted font-medium">homes typically visited</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Process -->
+    <section class="py-20 bg-bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold mb-8 text-text-dark">Our Professional Process</h2>
+                <p class="text-xl text-text-muted">
+                    Developed with NHS discharge coordinators and care quality experts.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-10">
+                <div class="bg-white rounded-2xl p-10 shadow-xl fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-primary-navy to-healthcare-blue text-white rounded-full flex items-center justify-center text-2xl font-bold mb-8">1</div>
+                    <h3 class="text-2xl font-bold mb-6 text-text-dark">Comprehensive Assessment</h3>
+                    <p class="text-text-muted text-lg">Professional questionnaire covering care needs, preferences, and practical requirements based on NHS assessment frameworks.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-10 shadow-xl fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-healthcare-blue to-success-green text-white rounded-full flex items-center justify-center text-2xl font-bold mb-8">2</div>
+                    <h3 class="text-2xl font-bold mb-6 text-text-dark">Expert Analysis</h3>
+                    <p class="text-text-muted text-lg">Our care specialists review current availability, staffing levels, recent inspections, and quality indicators across our database.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-10 shadow-xl fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-primary-orange to-warning-amber text-white rounded-full flex items-center justify-center text-2xl font-bold mb-8">3</div>
+                    <h3 class="text-2xl font-bold mb-6 text-text-dark">Professional Report</h3>
+                    <p class="text-text-muted text-lg">Detailed recommendations with visit preparation guide, questions to ask, and transparent pricing information.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-20 bg-white" id="pricing">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold mb-8 text-text-dark">Professional Care Home Reports</h2>
+                <p class="text-xl text-text-muted">Independent analysis with no care home commissions</p>
+            </div>
+            
+            <!-- Comparison Table -->
+            <div class="mb-16 fade-in">
+                <h3 class="text-2xl font-bold text-center mb-8 text-text-dark">How We Compare</h3>
+                <div class="overflow-x-auto">
+                    <table class="comparison-table w-full bg-white rounded-xl shadow-lg border border-gray-200">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="p-4 text-left font-bold text-text-dark border-b">Feature</th>
+                                <th class="p-4 text-center font-bold text-primary-orange border-b bg-orange-50">Us</th>
+                                <th class="p-4 text-center font-bold text-text-muted border-b">Directories<br><span class="text-sm font-normal">(e.g. Carehome.co.uk)</span></th>
+                                <th class="p-4 text-center font-bold text-text-muted border-b">Consultants<br><span class="text-sm font-normal">(e.g. Grace)</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="p-4 font-semibold text-text-dark">Speed</td>
+                                <td class="p-4 text-center text-success-green font-bold">48h</td>
+                                <td class="p-4 text-center text-warning-amber">Weeks</td>
+                                <td class="p-4 text-center text-warning-amber">1-2 Weeks</td>
+                            </tr>
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="p-4 font-semibold text-text-dark">Price</td>
+                                <td class="p-4 text-center text-success-green font-bold">£99-149</td>
+                                <td class="p-4 text-center text-text-muted">Free but limited</td>
+                                <td class="p-4 text-center text-warning-amber">£325-1075</td>
+                            </tr>
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="p-4 font-semibold text-text-dark">AI Personalization</td>
+                                <td class="p-4 text-center text-success-green font-bold">✓ Yes</td>
+                                <td class="p-4 text-center text-text-muted">✗ No</td>
+                                <td class="p-4 text-center text-text-muted">✗ No</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="p-4 font-semibold text-text-dark">Crisis Support</td>
+                                <td class="p-4 text-center text-success-green font-bold">✓ Yes</td>
+                                <td class="p-4 text-center text-text-muted">✗ No</td>
+                                <td class="p-4 text-center text-warning-amber">Limited</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                
+                <!-- Free Guide -->
+                <div class="pricing-card bg-gray-50 rounded-xl p-8">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold mb-2 text-text-dark">FREE GUIDE</h3>
+                        <div class="text-4xl font-bold mb-2 text-text-dark">£0</div>
+                        <p class="text-text-muted">For initial research</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3">✓</span>
+                            <span>Professional assessment framework</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3">✓</span>
+                            <span>Quality indicators checklist</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3">✓</span>
+                            <span>Financial planning guidance</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3">✓</span>
+                            <span>Essential questions template</span>
+                        </li>
+                    </ul>
+                    <button class="secondary-cta w-full">
+                        Download Free Guide
+                    </button>
+                </div>
+                
+                <!-- Professional Report -->
+                <div class="pricing-card recommended bg-white rounded-xl p-8 relative">
+                    <div class="popular-badge">MOST CHOSEN</div>
+                    <div class="text-center mb-6 mt-6">
+                        <h3 class="text-2xl font-bold mb-2 text-text-dark">PROFESSIONAL REPORT</h3>
+                        <div class="text-4xl font-bold mb-2 text-primary-orange">£99</div>
+                        <p class="text-text-muted">Independent expert analysis</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3">✓</span>
+                            <span><strong>3-5 verified care home matches</strong></span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3">✓</span>
+                            <span>Current availability confirmation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3">✓</span>
+                            <span>Quality assessment summary</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3">✓</span>
+                            <span>Transparent pricing information</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3">✓</span>
+                            <span>Visit preparation guide</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3">✓</span>
+                            <span>48-hour delivery guarantee</span>
+                        </li>
+                    </ul>
+                    <button class="primary-cta w-full">
+                        Get Professional Report
+                    </button>
+                    <div class="delivery-indicator">
+                        Next report delivery: Within 48 hours
+                    </div>
+                </div>
+                
+                <!-- Premium Service -->
+                <div class="pricing-card bg-primary-navy text-white rounded-xl p-8">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold mb-2">PREMIUM SERVICE</h3>
+                        <div class="text-4xl font-bold mb-2 text-primary-orange">£149</div>
+                        <p class="text-slate-200">Full support package</p>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3">✓</span>
+                            <span>Everything in Professional Report</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3">✓</span>
+                            <span><strong>30-minute expert consultation</strong></span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3">✓</span>
+                            <span>Direct contact with care homes</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3">✓</span>
+                            <span>Family meeting facilitation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-success-green mr-3">✓</span>
+                            <span>7-day follow-up support</span>
+                        </li>
+                    </ul>
+                    <button class="primary-cta w-full">
+                        Get Premium Service
+                    </button>
+                </div>
+                
+            </div>
+            
+            <!-- Guarantee -->
+            <div class="text-center mt-12 fade-in">
+                <div class="bg-success-green text-white rounded-2xl p-8 max-w-4xl mx-auto">
+                    <h3 class="text-2xl font-bold mb-4">🛡️ Professional Guarantee</h3>
+                    <p class="text-lg">
+                        If our report doesn't provide clear, actionable recommendations that meet your requirements, we'll provide a full refund within 30 days.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold mb-8 text-text-dark">Professional Endorsements</h2>
+                <div class="text-xl text-text-muted">
+                    Trusted by NHS teams and families across the UK
+                </div>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-8 shadow-lg fade-in">
+                    <div class="text-primary-orange mb-4">★★★★★</div>
+                    <blockquote class="text-text-muted mb-6 italic">
+                        "We regularly recommend RightCareHome to families. Their reports are thorough and help families make informed decisions during discharge planning."
+                    </blockquote>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-healthcare-blue rounded-full mr-4 flex items-center justify-center text-white font-bold">
+                            LR
+                        </div>
+                        <div>
+                            <div class="font-bold text-text-dark">Linda Roberts</div>
+                            <div class="text-sm text-text-muted">NHS Discharge Coordinator, Birmingham</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-8 shadow-lg fade-in">
+                    <div class="text-primary-orange mb-4">★★★★★</div>
+                    <blockquote class="text-text-muted mb-6 italic">
+                        "Saved us £300/week by finding a quality home £200 cheaper than our first choice. The report paid for itself in 4 days."
+                    </blockquote>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-success-green rounded-full mr-4 flex items-center justify-center text-white font-bold">
+                            SM
+                        </div>
+                        <div>
+                            <div class="font-bold text-text-dark">Sarah M.</div>
+                            <div class="text-sm text-text-muted">Edinburgh</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-8 shadow-lg fade-in">
+                    <div class="text-primary-orange mb-4">★★★★★</div>
+                    <blockquote class="text-text-muted mb-6 italic">
+                        "Professional, independent advice when we needed it most. The consultation helped us ask the right questions and make the best decision."
+                    </blockquote>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary-orange rounded-full mr-4 flex items-center justify-center text-white font-bold">
+                            DT
+                        </div>
+                        <div>
+                            <div class="font-bold text-text-dark">David Thompson</div>
+                            <div class="text-sm text-text-muted">Family, Manchester</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold mb-8 text-text-dark">Frequently Asked Questions</h2>
+                <p class="text-xl text-text-muted">Get answers to common questions about our service</p>
+            </div>
+            
+            <div class="space-y-4 fade-in">
+                <div class="faq-item">
+                    <button class="faq-button">
+                        <span class="flex-1">How do you ensure independence from care homes?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-lg text-text-muted">We never receive payments from care homes. Our only revenue comes from families purchasing reports, ensuring completely independent recommendations. This independence allows us to provide honest assessments and prioritize your needs over commercial interests.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-button">
+                        <span class="flex-1">How Does AI Make It Better?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-lg text-text-muted">Our AI system provides explainable recommendations based on your specific needs, unlike basic filters. We analyse 50+ quality indicators, current availability, and match them to your care requirements and preferences for personalized results that save you time and improve outcomes.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-button">
+                        <span class="flex-1">What makes your service different from free online directories?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-lg text-text-muted">We verify current availability, assess quality beyond basic ratings, and provide personalized matching based on specific care needs and preferences. Our reports include professional analysis, visit preparation guides, and ongoing support.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-button">
+                        <span class="flex-1">Do you work with all budget ranges?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-lg text-text-muted">Yes, we include council-funded homes, NHS Continuing Healthcare options, and private care across all budget ranges. Our reports clearly explain funding options and help you understand what's available within your budget.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-button">
+                        <span class="flex-1">What About Urgent Cases?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-lg text-text-muted">We offer 24h priority for hospital discharges. Contact us directly for urgent situations and we'll prioritize your report to support immediate discharge planning needs. Our team understands the pressure of urgent placements.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-button">
+                        <span class="flex-1">What if I need urgent help with discharge planning?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-lg text-text-muted">Contact us directly for urgent situations. We can prioritize reports and provide initial guidance within hours when families face immediate discharge deadlines. Our emergency support helps prevent delayed discharges.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20 bg-gradient-to-br from-primary-navy to-healthcare-blue text-white relative overflow-hidden">
+        <div class="floating-elements"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="fade-in">
+                <h2 class="text-4xl font-bold mb-8">Ready for Professional Care Home Guidance?</h2>
+                <p class="text-xl mb-10 text-slate-200">
+                    Join 1,200+ families who received expert, independent advice for their care home selection.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center mb-10">
+                    <button class="primary-cta">
+                        Get Professional Report - £99
+                    </button>
+                    <button class="secondary-cta bg-transparent border-white text-white hover:bg-white hover:text-primary-navy">
+                        Download Free Guide
+                    </button>
+                </div>
+                
+                <p class="text-sm text-slate-200">
+                    ⚡ 48-hour delivery • 30-day guarantee • NHS trusted
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-text-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">RightCareHome</h3>
+                    <p class="text-gray-300 mb-4">Professional care home selection service trusted by NHS teams and families across the UK.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>Professional Reports (£99)</li>
+                        <li>Premium Service (£149)</li>
+                        <li>Free Professional Guide</li>
+                        <li>NHS Partnership Programme</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>📧 hello@rightcarehome.co.uk</li>
+                        <li>📞 Professional helpline available</li>
+                        <li>🕗 Monday-Friday 9AM-6PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 RightCareHome. All rights reserved. | Independent care home selection service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Enhanced JavaScript -->
+    <script>
+        // Enhanced fade in animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Enhanced counter animation
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + '%';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + '%';
+                }
+            }, 16);
+        }
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        document.querySelectorAll('.counter').forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // Enhanced FAQ functionality with improved animations
+        document.querySelectorAll('.faq-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.closest('.faq-item');
+                const content = faqItem.querySelector('.faq-content');
+                const icon = button.querySelector('.faq-icon');
+                const isOpen = content.classList.contains('show');
+
+                // Close all other FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem) {
+                        const otherContent = item.querySelector('.faq-content');
+                        const otherIcon = item.querySelector('.faq-icon');
+                        otherContent.classList.remove('show');
+                        otherIcon.textContent = '+';
+                        otherIcon.style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                // Toggle current FAQ
+                if (isOpen) {
+                    content.classList.remove('show');
+                    icon.textContent = '+';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    content.classList.add('show');
+                    icon.textContent = '−';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Enhanced form submission with validation
+        document.getElementById('guide-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('input[type="email"]').value;
+            
+            if (email && email.includes('@')) {
+                // Success animation
+                const button = e.target.querySelector('button');
+                const originalText = button.textContent;
+                button.textContent = 'Sending...';
+                button.disabled = true;
+                
+                setTimeout(() => {
+                    button.textContent = '✓ Sent! Check your email';
+                    button.style.background = '#16a34a';
+                }, 1000);
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                    button.style.background = '';
+                    e.target.reset();
+                }, 3000);
+            }
+        });
+
+        // Enhanced button interactions
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('Get') || button.textContent.includes('Professional')) {
+                button.addEventListener('click', () => {
+                    // Add click animation
+                    button.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        button.style.transform = '';
+                    }, 150);
+                });
+            }
+        });
+
+        // Add loading states and micro-interactions
+        document.querySelectorAll('.primary-cta, .secondary-cta').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                button.style.transform = 'translateY(-2px)';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = '';
+            });
+        });
+    </script>
+</body>
+</html>
