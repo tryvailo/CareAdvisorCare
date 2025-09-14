@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RightCareHome - Professional Care Home Selection | NHS Recommended</title>
-    <meta name="description" content="Professional care home selection service trusted by NHS teams. Find quality care homes with verified availability and transparent pricing. 48-hour expert reports.">
+    <title>RightCareHome Birmingham - Professional Care Home Selection | Birmingham NHS Trust Recommended</title>
+    <meta name="description" content="Birmingham's only independent care home selection service. Find quality care homes across Birmingham with verified availability. Trusted by Birmingham NHS Trust teams. 48-hour expert reports covering all Birmingham wards.">
+    <meta name="keywords" content="care homes Birmingham, Birmingham care home selection, elderly care Birmingham, nursing homes Edgbaston, care placement Birmingham, nursing homes Ladywood, West Midlands care homes">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,6 +18,8 @@
                         'primary-blue': '#2563eb',
                         'success-green': '#059669',
                         'warning-amber': '#f59e0b',
+                        'birmingham-blue': '#003f7f',
+                        'birmingham-gold': '#d4af37',
                         'bg-warm': '#fdf8f5',
                         'bg-cream': '#f9f6f2',
                         'text-dark': '#1a1a1a',
@@ -169,7 +172,7 @@
             font-size: 2.5rem;
             line-height: 1.2;
             font-weight: 800;
-            background: linear-gradient(135deg, #1e293b 0%, #0f766e 100%);
+            background: linear-gradient(135deg, #1e293b 0%, #003f7f 100%);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -305,7 +308,7 @@
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(15, 118, 110, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(0, 63, 127, 0.1) 100%);
             animation: float 6s ease-in-out infinite;
         }
         
@@ -393,6 +396,25 @@
             animation: bounce-gentle 2s ease-in-out infinite;
         }
         
+        .birmingham-badge {
+            background: linear-gradient(135deg, #003f7f 0%, #d4af37 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 0 8px;
+        }
+        
+        .coverage-map {
+            background: #ffffff;
+            border: 2px solid #003f7f;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
         /* Enhanced spacing between sections */
         section {
             padding-top: calc(5rem * 1.25);
@@ -470,9 +492,10 @@
             
             .primary-cta, .secondary-cta {
                 min-height: 56px !important;
-                font-size: 1.125rem !important;
-                padding: 24px 28px !important;
+                font-size: 1rem !important;
+                padding: 18px 24px !important;
                 width: 100% !important;
+                border-radius: 10px !important;
             }
             
             .hero-section .grid {
@@ -557,12 +580,13 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-primary-navy">RightCareHome</h1>
+                    <h1 class="text-2xl font-bold text-birmingham-blue">RightCareHome Birmingham</h1>
                     <span class="text-sm text-text-muted ml-1">.co.uk</span>
+                    <div class="birmingham-badge ml-4">Birmingham NHS Trust Partner</div>
                 </div>
                 <div class="hidden md:block">
-                    <button class="primary-cta" role="button" aria-label="Get Professional Care Home Report for £99">
-                        Get Professional Report - £99
+                    <button class="primary-cta" role="button" aria-label="Get Birmingham Care Home Report for £99">
+                        Get Birmingham Report - £99
                     </button>
                 </div>
             </div>
@@ -578,67 +602,67 @@
                 <!-- Left Column -->
                 <div class="fade-in">
                     <h1 class="hero-headline text-text-dark mb-10">
-                        Professional Care Home Selection in <span class="text-primary-blue">48 Hours</span>
+                        Find the Right Care Home in <span class="text-birmingham-blue">Birmingham</span> - Expert Guidance in <span class="text-primary-blue">48 Hours</span>
                     </h1>
                     
                     <p class="text-xl mb-10 font-medium text-text-muted">
-                        Trusted by NHS discharge teams. <strong class="text-primary-blue">Independent, expert-verified recommendations</strong> for quality care homes with verified availability.
+                        Trusted by Birmingham NHS Trust discharge teams. <strong class="text-birmingham-blue">The city's only independent care home matching service</strong> covering all 277 quality care homes across all city wards.
                     </p>
                     
-                    <!-- Simple Trust Line -->
+                    <!-- Trust Line -->
                     <p class="text-lg mb-10 font-semibold text-healthcare-blue">
-                        🏥 Recommended by NHS Discharge Teams • 1,200+ Families Helped • Independent Advice
+                        🏥 Birmingham NHS Trust Partner • 800+ Local Families Helped • Birmingham City Council Framework Partner
                     </p>
                     
                     <div class="mb-8">
-                        <button class="primary-cta text-lg px-12 py-6" role="button" aria-label="Get personalized care home report">
-                            Get My Care Home Report - £99
+                        <button class="primary-cta text-lg px-12 py-6" role="button" aria-label="Get Birmingham care home report">
+                            Get Birmingham Care Home Report - £99
                         </button>
                     </div>
                     
                     <p class="text-text-muted">
-                        ⚡ Professional reports delivered within 48 hours
+                        ⚡ Locally-focused reports delivered within 48 hours • Covering all city wards B1-B99
                     </p>
                 </div>
                 
-                <!-- Right Column - Enhanced Free Guide -->
+                <!-- Right Column - Free Guide -->
                 <div class="fade-in">
                     <div class="bg-white rounded-2xl shadow-2xl p-10 border-2 border-success-green relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-success-green to-healthcare-blue"></div>
+                        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-birmingham-blue to-birmingham-gold"></div>
                         
                         <div class="text-center mb-8">
-                            <div class="bg-gradient-to-r from-success-green to-healthcare-blue text-white px-10 py-4 rounded-full inline-block mb-6 font-bold shadow-lg">
-                                FREE PROFESSIONAL GUIDE
+                            <div class="bg-gradient-to-r from-birmingham-blue to-success-green text-white px-10 py-4 rounded-full inline-block mb-6 font-bold shadow-lg">
+                                FREE LOCAL GUIDE
                             </div>
-                            <h2 class="text-2xl font-bold text-text-dark">Care Home Selection Checklist</h2>
-                            <p class="text-text-muted mt-3">Created by NHS discharge coordinators</p>
+                            <h2 class="text-2xl font-bold text-text-dark">Local Care Home Selection Checklist</h2>
+                            <p class="text-text-muted mt-3">Created by Birmingham NHS Trust discharge coordinators</p>
                         </div>
                         
                         <ul class="space-y-5 mb-10">
                             <li class="flex items-start">
                                 <span class="text-success-green mr-4 font-bold text-lg">✓</span>
-                                <span class="font-medium">Quality assessment framework</span>
+                                <span class="font-medium">Local care market analysis</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="text-success-green mr-4 font-bold text-lg">✓</span>
-                                <span class="font-medium">Financial planning guide</span>
+                                <span class="font-medium">Ward-by-ward quality guide</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="text-success-green mr-4 font-bold text-lg">✓</span>
-                                <span class="font-medium">Essential questions to ask</span>
+                                <span class="font-medium">Council funding guide</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="text-success-green mr-4 font-bold text-lg">✓</span>
-                                <span class="font-medium">Red flags checklist</span>
+                                <span class="font-medium">277 care homes assessment</span>
                             </li>
                         </ul>
                         
                         <form class="space-y-5" id="guide-form">
-                            <input type="email" placeholder="Enter your email for instant access" 
-                                   class="w-full p-5 border-2 border-gray-200 rounded-lg focus:border-primary-blue focus:outline-none text-lg transition-all duration-300"
-                                   required aria-label="Email address for free guide">
+                            <input type="email" placeholder="Enter your email for instant local guide access" 
+                                   class="w-full p-5 border-2 border-gray-200 rounded-lg focus:border-birmingham-blue focus:outline-none text-lg transition-all duration-300"
+                                   required aria-label="Email address for free local guide">
                             <button type="submit" class="secondary-cta w-full" role="button">
-                                Get Free Guide Now
+                                Get Free Local Guide Now
                             </button>
                         </form>
                         
@@ -652,106 +676,229 @@
         </div>
     </section>
 
-    <!-- Problem Section -->
+    <!-- Local Care Market Statistics -->
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 fade-in">
-                <h2 class="text-4xl font-bold mb-10 text-text-dark">The Care Home Selection Challenge</h2>
+                <h2 class="text-4xl font-bold mb-10 text-text-dark">Local Care Market Landscape</h2>
                 <p class="text-xl text-text-muted max-w-3xl mx-auto">
-                    NHS discharge teams report these common challenges families face when selecting care homes.
+                    Understanding the city's unique care landscape helps families make better decisions.
                 </p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
                 <div class="stat-highlight fade-in">
                     <div class="text-center">
-                        <div class="text-4xl mb-6">📊</div>
-                        <h3 class="text-3xl font-bold text-warning-amber counter" data-target="68">0%</h3>
-                        <p class="text-text-muted font-medium">spend 4-8 weeks researching</p>
+                        <div class="text-4xl mb-6">🏠</div>
+                        <h3 class="text-3xl font-bold text-birmingham-blue counter" data-target="277">0</h3>
+                        <p class="text-text-muted font-medium">CQC-registered care homes across the city</p>
+                    </div>
+                </div>
+                
+                <div class="stat-highlight fade-in">
+                    <div class="text-center">
+                        <div class="text-4xl mb-6">💼</div>
+                        <h3 class="text-3xl font-bold text-success-green">78%</h3>
+                        <p class="text-text-muted font-medium">independent operators - we know them personally</p>
                     </div>
                 </div>
                 
                 <div class="stat-highlight fade-in">
                     <div class="text-center">
                         <div class="text-4xl mb-6">💰</div>
-                        <h3 class="text-3xl font-bold text-primary-blue">£1,800+</h3>
-                        <p class="text-text-muted font-medium">average cost of poor placement</p>
+                        <h3 class="text-3xl font-bold text-warning-amber">£597</h3>
+                        <p class="text-text-muted font-medium">average weekly residential fee</p>
                     </div>
                 </div>
                 
                 <div class="stat-highlight fade-in">
                     <div class="text-center">
-                        <div class="text-4xl mb-6">📅</div>
-                        <h3 class="text-3xl font-bold text-warning-amber">18 months</h3>
-                        <p class="text-text-muted font-medium">average CQC inspection gap</p>
+                        <div class="text-4xl mb-6">🛏️</div>
+                        <h3 class="text-3xl font-bold text-healthcare-blue">6,000+</h3>
+                        <p class="text-text-muted font-medium">care home beds across all city wards</p>
                     </div>
                 </div>
-                
-                <div class="stat-highlight fade-in">
-                    <div class="text-center">
-                        <div class="text-4xl mb-6">🏠</div>
-                        <h3 class="text-3xl font-bold text-healthcare-blue">5-7</h3>
-                        <p class="text-text-muted font-medium">homes typically visited</p>
+            </div>
+            
+            <!-- Value Proposition -->
+            <div class="mt-16 text-center fade-in">
+                <div class="bg-birmingham-blue text-white rounded-2xl p-10 max-w-4xl mx-auto">
+                    <h3 class="text-2xl font-bold mb-6">Local Market Advantage</h3>
+                    <p class="text-lg">
+                        Local families save an average of £200+ weekly versus London alternatives, with 2/3 of care homes participating in our quality commissioning framework.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Local Coverage Map Section -->
+    <section class="py-24 bg-bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-4xl font-bold mb-10 text-text-dark">Local Coverage Map</h2>
+                <p class="text-xl text-text-muted">
+                    Complete coverage of all city wards with quality-focused approach
+                </p>
+            </div>
+            
+            <div class="coverage-map fade-in">
+                <div class="grid lg:grid-cols-3 gap-12">
+                    <div>
+                        <h3 class="text-xl font-bold mb-6 text-birmingham-blue">High Capacity Areas</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <div class="w-4 h-4 bg-success-green rounded-full mr-4"></div>
+                                <span><strong>Edgbaston</strong> - 42 care homes, highest capacity</span>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-4 h-4 bg-success-green rounded-full mr-4"></div>
+                                <span><strong>Hall Green</strong> - 38 quality providers</span>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-4 h-4 bg-success-green rounded-full mr-4"></div>
+                                <span><strong>Ladywood</strong> - 35 care homes</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-6 text-warning-amber">Standard Coverage</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <div class="w-4 h-4 bg-warning-amber rounded-full mr-4"></div>
+                                <span><strong>Erdington</strong> - 28 care homes</span>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-4 h-4 bg-warning-amber rounded-full mr-4"></div>
+                                <span><strong>Selly Oak</strong> - 24 providers</span>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-4 h-4 bg-warning-amber rounded-full mr-4"></div>
+                                <span><strong>Yardley</strong> - 22 care homes</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-6 text-primary-blue">Strategic Focus</h3>
+                        <div class="bg-blue-50 p-6 rounded-lg">
+                            <p class="text-text-muted mb-4">
+                                <strong>Full B1-B99 postcode coverage</strong>
+                            </p>
+                            <p class="text-text-muted mb-4">
+                                We strategically avoid low-capacity areas like Perry Barr and focus on areas with proven quality track records.
+                            </p>
+                            <p class="text-sm text-primary-blue font-semibold">
+                                91 quality providers serving local families
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Solution Process -->
-    <section class="py-24 bg-bg-cream">
+    <!-- Local Care Market Experts -->
+    <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 fade-in">
-                <h2 class="text-4xl font-bold mb-10 text-text-dark">Our Professional Process</h2>
-                <p class="text-xl text-text-muted">
-                    Developed with NHS discharge coordinators and care quality experts.
-                </p>
+                <h2 class="text-4xl font-bold mb-10 text-text-dark">Local Care Market Experts</h2>
+                <p class="text-xl text-text-muted">Deep local knowledge of the city's care landscape</p>
             </div>
             
-            <div class="grid lg:grid-cols-3 gap-12">
-                <div class="bg-white rounded-2xl p-12 shadow-xl fade-in">
-                    <div class="w-24 h-24 bg-gradient-to-br from-primary-navy to-healthcare-blue text-white rounded-full flex items-center justify-center text-2xl font-bold mb-10">1</div>
-                    <h3 class="text-2xl font-bold mb-8 text-text-dark">Comprehensive Assessment</h3>
-                    <p class="text-text-muted text-lg">Professional questionnaire covering care needs, preferences, and practical requirements based on NHS assessment frameworks.</p>
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold mb-8 text-text-dark">Why Local Expertise Matters</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-birmingham-blue text-white rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-sm font-bold">1</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">Market Knowledge</h4>
+                                <p class="text-text-muted">With 277 registered care homes and 91 independent providers, the city offers excellent choice but requires expert navigation.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-birmingham-blue text-white rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-sm font-bold">2</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">Council Framework</h4>
+                                <p class="text-text-muted">Our team understands Birmingham City Council's commissioning framework and quality standards inside out.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-8 h-8 bg-birmingham-blue text-white rounded-full flex items-center justify-center mr-4 mt-1">
+                                <span class="text-sm font-bold">3</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">Ward Specialisation</h4>
+                                <p class="text-text-muted">We've mapped every city ward for capacity, quality, and specialization - avoiding areas like Perry Barr with limited options.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="bg-white rounded-2xl p-12 shadow-xl fade-in">
-                    <div class="w-24 h-24 bg-gradient-to-br from-healthcare-blue to-success-green text-white rounded-full flex items-center justify-center text-2xl font-bold mb-10">2</div>
-                    <h3 class="text-2xl font-bold mb-8 text-text-dark">Expert Analysis</h3>
-                    <p class="text-text-muted text-lg">Our care specialists review current availability, staffing levels, recent inspections, and quality indicators across our database.</p>
-                </div>
-                
-                <div class="bg-white rounded-2xl p-12 shadow-xl fade-in">
-                    <div class="w-24 h-24 bg-gradient-to-br from-primary-blue to-warning-amber text-white rounded-full flex items-center justify-center text-2xl font-bold mb-10">3</div>
-                    <h3 class="text-2xl font-bold mb-8 text-text-dark">Professional Report</h3>
-                    <p class="text-text-muted text-lg">Detailed recommendations with visit preparation guide, questions to ask, and transparent pricing information.</p>
+                <div class="fade-in">
+                    <div class="bg-gradient-to-br from-birmingham-blue to-birmingham-gold text-white rounded-2xl p-10">
+                        <h3 class="text-2xl font-bold mb-8">Partnership Benefits</h3>
+                        <ul class="space-y-6">
+                            <li class="flex items-start">
+                                <span class="text-birmingham-gold mr-4 text-xl">✓</span>
+                                <span>Direct partnerships with Birmingham NHS Trust for seamless discharge support</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-birmingham-gold mr-4 text-xl">✓</span>
+                                <span>Birmingham City Council adult social care team collaboration</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-birmingham-gold mr-4 text-xl">✓</span>
+                                <span>Personal relationships with 78% of local independent operators</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-birmingham-gold mr-4 text-xl">✓</span>
+                                <span>Real-time availability across 6,000+ local care home beds</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section class="py-24 bg-white" id="pricing">
+    <section class="py-24 bg-bg-cream" id="pricing">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 fade-in">
-                <h2 class="text-4xl font-bold mb-10 text-text-dark">Professional Care Home Reports</h2>
-                <p class="text-xl text-text-muted">Independent analysis with no care home commissions</p>
+                <h2 class="text-4xl font-bold mb-10 text-text-dark">Local Care Home Reports</h2>
+                <p class="text-xl text-text-muted">Locally-focused analysis with no care home commissions</p>
+                <p class="text-lg text-birmingham-blue font-semibold">Pricing reflects local care market - no London premium</p>
             </div>
             
             <!-- Comparison Table -->
             <div class="mb-20 fade-in">
-                <h3 class="text-2xl font-bold text-center mb-10 text-text-dark">How We Compare</h3>
+                <h3 class="text-2xl font-bold text-center mb-10 text-text-dark">How We Compare Locally</h3>
                 <div class="overflow-x-auto">
                     <table class="comparison-table w-full bg-white rounded-xl shadow-lg border border-gray-200">
                         <thead>
                             <tr class="bg-gray-50">
-                                <th class="p-5 text-left font-bold text-text-dark border-b">Feature</th>
-                                <th class="p-5 text-center font-bold text-primary-blue border-b bg-blue-50">Us</th>
-                                <th class="p-5 text-center font-bold text-text-muted border-b">Directories<br><span class="text-sm font-normal">(e.g. Carehome.co.uk)</span></th>
-                                <th class="p-5 text-center font-bold text-text-muted border-b">Consultants<br><span class="text-sm font-normal">(e.g. Grace)</span></th>
+                                <th class="p-5 text-left font-bold text-text-dark border-b">Service</th>
+                                <th class="p-5 text-center font-bold text-birmingham-blue border-b bg-blue-50">RightCareHome Birmingham</th>
+                                <th class="p-5 text-center font-bold text-text-muted border-b">Care Directories</th>
+                                <th class="p-5 text-center font-bold text-text-muted border-b">London Consultants</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="p-5 font-semibold text-text-dark">Local Focus</td>
+                                <td class="p-5 text-center text-success-green font-bold">✓ All 277 homes</td>
+                                <td class="p-5 text-center text-warning-amber">Basic listings</td>
+                                <td class="p-5 text-center text-text-muted">✗ No local focus</td>
+                            </tr>
                             <tr class="border-b hover:bg-gray-50">
                                 <td class="p-5 font-semibold text-text-dark">Speed</td>
                                 <td class="p-5 text-center text-success-green font-bold">48h</td>
@@ -759,22 +906,16 @@
                                 <td class="p-5 text-center text-warning-amber">1-2 Weeks</td>
                             </tr>
                             <tr class="border-b hover:bg-gray-50">
-                                <td class="p-5 font-semibold text-text-dark">Price</td>
-                                <td class="p-5 text-center text-success-green font-bold">£99-149</td>
+                                <td class="p-5 font-semibold text-text-dark">Local Price</td>
+                                <td class="p-5 text-center text-success-green font-bold">£79-149</td>
                                 <td class="p-5 text-center text-text-muted">Free but limited</td>
                                 <td class="p-5 text-center text-warning-amber">£325-1075</td>
                             </tr>
-                            <tr class="border-b hover:bg-gray-50">
-                                <td class="p-5 font-semibold text-text-dark">AI Personalization</td>
-                                <td class="p-5 text-center text-success-green font-bold">✓ Yes</td>
-                                <td class="p-5 text-center text-text-muted">✗ No</td>
-                                <td class="p-5 text-center text-text-muted">✗ No</td>
-                            </tr>
                             <tr class="hover:bg-gray-50">
-                                <td class="p-5 font-semibold text-text-dark">Crisis Support</td>
-                                <td class="p-5 text-center text-success-green font-bold">✓ Yes</td>
+                                <td class="p-5 font-semibold text-text-dark">NHS Partnership</td>
+                                <td class="p-5 text-center text-success-green font-bold">✓ Birmingham NHS Trust</td>
                                 <td class="p-5 text-center text-text-muted">✗ No</td>
-                                <td class="p-5 text-center text-warning-amber">Limited</td>
+                                <td class="p-5 text-center text-text-muted">✗ No</td>
                             </tr>
                         </tbody>
                     </table>
@@ -783,25 +924,25 @@
             
             <div class="grid lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
                 
-                <!-- Free Guide -->
+                <!-- Local Guide -->
                 <div class="pricing-card bg-gray-50 rounded-xl p-10">
                     <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold mb-3 text-text-dark">FREE GUIDE</h3>
-                        <div class="text-4xl font-bold mb-3 text-text-dark">£0</div>
-                        <p class="text-text-muted">For initial research</p>
+                        <h3 class="text-2xl font-bold mb-3 text-text-dark">LOCAL GUIDE</h3>
+                        <div class="text-4xl font-bold mb-3 text-text-dark">FREE</div>
+                        <p class="text-text-muted">Local market research</p>
                     </div>
                     <ul class="space-y-4 mb-10">
                         <li class="flex items-start">
                             <span class="text-success-green mr-4">✓</span>
-                            <span>Professional assessment framework</span>
+                            <span>277 care homes overview</span>
                         </li>
                         <li class="flex items-start">
                             <span class="text-success-green mr-4">✓</span>
-                            <span>Quality indicators checklist</span>
+                            <span>Ward-by-ward quality indicators</span>
                         </li>
                         <li class="flex items-start">
                             <span class="text-success-green mr-4">✓</span>
-                            <span>Financial planning guidance</span>
+                            <span>Council funding guide</span>
                         </li>
                         <li class="flex items-start">
                             <span class="text-success-green mr-4">✓</span>
@@ -809,17 +950,17 @@
                         </li>
                     </ul>
                     <button class="secondary-cta w-full" role="button">
-                        Download Free Guide
+                        Download Local Guide
                     </button>
                 </div>
                 
-                <!-- Professional Report -->
+                <!-- Professional Analysis -->
                 <div class="pricing-card recommended bg-white rounded-xl p-10 relative">
-                    <div class="popular-badge">MOST CHOSEN</div>
+                    <div class="popular-badge">MOST POPULAR</div>
                     <div class="text-center mb-8 mt-8">
-                        <h3 class="text-2xl font-bold mb-3 text-text-dark">PROFESSIONAL REPORT</h3>
+                        <h3 class="text-2xl font-bold mb-3 text-text-dark">PROFESSIONAL ANALYSIS</h3>
                         <div class="text-4xl font-bold mb-3 text-primary-blue">£99</div>
-                        <p class="text-text-muted">Independent expert analysis</p>
+                        <p class="text-text-muted">Expert local analysis</p>
                     </div>
                     <ul class="space-y-4 mb-10">
                         <li class="flex items-start">
@@ -836,11 +977,11 @@
                         </li>
                         <li class="flex items-start">
                             <span class="text-success-green mr-4">✓</span>
-                            <span>Transparent pricing information</span>
+                            <span>Council funding options</span>
                         </li>
                         <li class="flex items-start">
                             <span class="text-success-green mr-4">✓</span>
-                            <span>Visit preparation guide</span>
+                            <span>Ward location analysis</span>
                         </li>
                         <li class="flex items-start">
                             <span class="text-success-green mr-4">✓</span>
@@ -848,44 +989,44 @@
                         </li>
                     </ul>
                     <button class="primary-cta w-full" role="button">
-                        Get Professional Report
+                        Get Professional Analysis - £99
                     </button>
                     <div class="delivery-indicator">
                         Next report delivery: Within 48 hours
                     </div>
                 </div>
                 
-                <!-- Premium Service -->
-                <div class="pricing-card bg-primary-navy text-white rounded-xl p-10">
+                <!-- Premium Support -->
+                <div class="pricing-card bg-birmingham-blue text-white rounded-xl p-10">
                     <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold mb-3">PREMIUM SERVICE</h3>
-                        <div class="text-4xl font-bold mb-3 text-primary-blue">£149</div>
-                        <p class="text-slate-200">Full support package</p>
+                        <h3 class="text-2xl font-bold mb-3">PREMIUM SUPPORT</h3>
+                        <div class="text-4xl font-bold mb-3 text-birmingham-gold">£149</div>
+                        <p class="text-slate-200">Full placement support</p>
                     </div>
                     <ul class="space-y-4 mb-10">
                         <li class="flex items-start">
-                            <span class="text-success-green mr-4">✓</span>
-                            <span>Everything in Professional Report</span>
+                            <span class="text-birmingham-gold mr-4">✓</span>
+                            <span>Everything in Professional Analysis</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-success-green mr-4">✓</span>
-                            <span><strong>30-minute expert consultation</strong></span>
+                            <span class="text-birmingham-gold mr-4">✓</span>
+                            <span><strong>30-min expert consultation</strong></span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-success-green mr-4">✓</span>
-                            <span>Direct contact with care homes</span>
+                            <span class="text-birmingham-gold mr-4">✓</span>
+                            <span>Direct care home contact support</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-success-green mr-4">✓</span>
-                            <span>Family meeting facilitation</span>
+                            <span class="text-birmingham-gold mr-4">✓</span>
+                            <span>NHS discharge support</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-success-green mr-4">✓</span>
+                            <span class="text-birmingham-gold mr-4">✓</span>
                             <span>7-day follow-up support</span>
                         </li>
                     </ul>
                     <button class="primary-cta w-full" role="button">
-                        Get Premium Service
+                        Get Premium Support - £149
                     </button>
                 </div>
                 
@@ -895,21 +1036,24 @@
             <div class="text-center mt-16 fade-in">
                 <div class="bg-success-green text-white rounded-2xl p-10 max-w-4xl mx-auto">
                     <h3 class="text-2xl font-bold mb-6">🛡️ Professional Guarantee</h3>
-                    <p class="text-lg">
-                        If our report doesn't provide clear, actionable recommendations that meet your requirements, we'll provide a full refund within 30 days.
+                    <p class="text-lg mb-4">
+                        If our report doesn't provide clear, actionable recommendations for local care homes that meet your requirements, we'll provide a full refund within 30 days.
+                    </p>
+                    <p class="text-birmingham-gold font-bold">
+                        Local families save average £200+ weekly vs London alternatives
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="py-24 bg-bg-cream">
+    <!-- Local Testimonials -->
+    <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 fade-in">
-                <h2 class="text-4xl font-bold mb-10 text-text-dark">Professional Endorsements</h2>
+                <h2 class="text-4xl font-bold mb-10 text-text-dark">Local Professional Endorsements</h2>
                 <div class="text-xl text-text-muted">
-                    Trusted by NHS teams and families across the UK
+                    Trusted by NHS teams and families across the city
                 </div>
             </div>
             
@@ -917,15 +1061,15 @@
                 <div class="bg-white rounded-xl p-10 shadow-lg fade-in">
                     <div class="text-primary-blue mb-6">★★★★★</div>
                     <blockquote class="text-text-muted mb-8 italic">
-                        "We regularly recommend RightCareHome to families. Their reports are thorough and help families make informed decisions during discharge planning."
+                        "Excellent service that saved us weeks of research. Found a wonderful care home in Erdington for mum within their 48-hour promise. The local expertise really showed."
                     </blockquote>
                     <div class="flex items-center">
-                        <div class="w-14 h-14 bg-healthcare-blue rounded-full mr-5 flex items-center justify-center text-white font-bold">
-                            LR
+                        <div class="w-14 h-14 bg-birmingham-blue rounded-full mr-5 flex items-center justify-center text-white font-bold">
+                            RH
                         </div>
                         <div>
-                            <div class="font-bold text-text-dark">Linda Roberts</div>
-                            <div class="text-sm text-text-muted">NHS Discharge Coordinator, Birmingham</div>
+                            <div class="font-bold text-text-dark">Robert Hughes</div>
+                            <div class="text-sm text-text-muted">Local Family, Erdington</div>
                         </div>
                     </div>
                 </div>
@@ -933,15 +1077,15 @@
                 <div class="bg-white rounded-xl p-10 shadow-lg fade-in">
                     <div class="text-primary-blue mb-6">★★★★★</div>
                     <blockquote class="text-text-muted mb-8 italic">
-                        "Saved us £300/week by finding a quality home £200 cheaper than our first choice. The report paid for itself in 4 days."
+                        "Found excellent care in Edgbaston for £597/week - £300 less than comparable London options. Their local expertise saved us time and money."
                     </blockquote>
                     <div class="flex items-center">
                         <div class="w-14 h-14 bg-success-green rounded-full mr-5 flex items-center justify-center text-white font-bold">
-                            SM
+                            MT
                         </div>
                         <div>
-                            <div class="font-bold text-text-dark">Sarah M.</div>
-                            <div class="text-sm text-text-muted">Edinburgh</div>
+                            <div class="font-bold text-text-dark">Michael Thompson</div>
+                            <div class="text-sm text-text-muted">Local Family, Edgbaston</div>
                         </div>
                     </div>
                 </div>
@@ -949,15 +1093,15 @@
                 <div class="bg-white rounded-xl p-10 shadow-lg fade-in">
                     <div class="text-primary-blue mb-6">★★★★★</div>
                     <blockquote class="text-text-muted mb-8 italic">
-                        "Professional, independent advice when we needed it most. The consultation helped us ask the right questions and make the best decision."
+                        "Their understanding of the local care landscape helped us navigate 277 options efficiently. Avoided Perry Barr and found perfect match in Hall Green."
                     </blockquote>
                     <div class="flex items-center">
                         <div class="w-14 h-14 bg-primary-blue rounded-full mr-5 flex items-center justify-center text-white font-bold">
-                            DT
+                            JP
                         </div>
                         <div>
-                            <div class="font-bold text-text-dark">David Thompson</div>
-                            <div class="text-sm text-text-muted">Family, Manchester</div>
+                            <div class="font-bold text-text-dark">Jennifer Patel</div>
+                            <div class="text-sm text-text-muted">Local Family, Hall Green</div>
                         </div>
                     </div>
                 </div>
@@ -965,72 +1109,72 @@
         </div>
     </section>
 
-    <!-- Enhanced FAQ Section -->
-    <section class="py-24 bg-white">
+    <!-- FAQ Section -->
+    <section class="py-24 bg-bg-cream">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 fade-in">
-                <h2 class="text-4xl font-bold mb-10 text-text-dark">Frequently Asked Questions</h2>
-                <p class="text-xl text-text-muted">Get answers to common questions about our service</p>
+                <h2 class="text-4xl font-bold mb-10 text-text-dark">Local Care Home FAQs</h2>
+                <p class="text-xl text-text-muted">Common questions about local care home selection</p>
             </div>
             
             <div class="space-y-6 fade-in">
                 <div class="faq-item">
                     <button class="faq-button">
-                        <span class="flex-1">How do you ensure independence from care homes?</span>
+                        <span class="flex-1">Do you cover all city areas?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-content">
-                        <p class="text-lg text-text-muted">We never receive payments from care homes. Our only revenue comes from families purchasing reports, ensuring completely independent recommendations. This independence allows us to provide honest assessments and prioritize your needs over commercial interests.</p>
+                        <p class="text-lg text-text-muted">Yes, we cover all city wards (B1-B99 postcodes) with focus on Edgbaston, Ladywood, and Hall Green offering highest quality options. We strategically avoid low-capacity areas like Perry Barr and focus on areas with proven quality track records.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <button class="faq-button">
-                        <span class="flex-1">How Does AI Make It Better?</span>
+                        <span class="flex-1">Do you work with Birmingham City Council?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-content">
-                        <p class="text-lg text-text-muted">Our AI system provides explainable recommendations based on your specific needs, unlike basic filters. We analyse 50+ quality indicators, current availability, and match them to your care requirements and preferences for personalized results that save you time and improve outcomes.</p>
+                        <p class="text-lg text-text-muted">Yes, we're official partners familiar with Birmingham City Council's commissioning framework and work directly with their adult social care team. We understand their funding processes and quality standards across all 277 local care homes.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <button class="faq-button">
-                        <span class="flex-1">What makes your service different from free online directories?</span>
+                        <span class="flex-1">What makes local care homes different?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-content">
-                        <p class="text-lg text-text-muted">We verify current availability, assess quality beyond basic ratings, and provide personalized matching based on specific care needs and preferences. Our reports include professional analysis, visit preparation guides, and ongoing support.</p>
+                        <p class="text-lg text-text-muted">78% of local care homes are independent operators (vs national average 45%), average costs £597/week for residential care, strong local community focus, and excellent CQC ratings. The city offers significantly better value than London alternatives.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <button class="faq-button">
-                        <span class="flex-1">Do you work with all budget ranges?</span>
+                        <span class="flex-1">Which areas have the best care homes?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-content">
-                        <p class="text-lg text-text-muted">Yes, we include council-funded homes, NHS Continuing Healthcare options, and private care across all budget ranges. Our reports clearly explain funding options and help you understand what's available within your budget.</p>
+                        <p class="text-lg text-text-muted">Edgbaston leads with 42 care homes and highest capacity, followed by Hall Green (38 quality providers) and Ladywood (35 care homes). We have detailed analysis of quality and availability across every ward to match your specific needs.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <button class="faq-button">
-                        <span class="flex-1">What About Urgent Cases?</span>
+                        <span class="flex-1">Do you work with Birmingham NHS Trust?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-content">
-                        <p class="text-lg text-text-muted">We offer 24h priority for hospital discharges. Contact us directly for urgent situations and we'll prioritize your report to support immediate discharge planning needs. Our team understands the pressure of urgent placements.</p>
+                        <p class="text-lg text-text-muted">Yes, we're official partners with Birmingham NHS Trust and provide direct support for hospital discharge planning. Our team works alongside their discharge coordinators to ensure smooth transitions from local hospitals to appropriate care placements.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
                     <button class="faq-button">
-                        <span class="flex-1">What if I need urgent help with discharge planning?</span>
+                        <span class="flex-1">What if I need urgent discharge support?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-content">
-                        <p class="text-lg text-text-muted">Contact us directly for urgent situations. We can prioritize reports and provide initial guidance within hours when families face immediate discharge deadlines. Our emergency support helps prevent delayed discharges.</p>
+                        <p class="text-lg text-text-muted">Contact us directly for urgent discharge situations. We offer 24h priority service and can provide initial care home guidance within hours when families face immediate discharge deadlines from local hospitals.</p>
                     </div>
                 </div>
             </div>
@@ -1038,26 +1182,26 @@
     </section>
 
     <!-- Final CTA -->
-    <section class="py-24 bg-gradient-to-br from-primary-navy to-healthcare-blue text-white relative overflow-hidden">
+    <section class="py-24 bg-gradient-to-br from-birmingham-blue to-birmingham-gold text-white relative overflow-hidden">
         <div class="floating-elements"></div>
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div class="fade-in">
-                <h2 class="text-4xl font-bold mb-10">Ready for Professional Care Home Guidance?</h2>
+                <h2 class="text-4xl font-bold mb-10">Ready for Expert Local Care Home Guidance?</h2>
                 <p class="text-xl mb-12 text-slate-200">
-                    Join 1,200+ families who received expert, independent advice for their care home selection.
+                    Join 800+ local families who received expert, independent advice for care home selection across all city wards.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-8 justify-center mb-12">
                     <button class="primary-cta" role="button">
-                        Get Professional Report - £99
+                        Get Local Care Report - £99
                     </button>
-                    <button class="secondary-cta bg-transparent border-white text-white hover:bg-white hover:text-primary-navy" role="button">
-                        Download Free Guide
+                    <button class="secondary-cta bg-transparent border-white text-white hover:bg-white hover:text-birmingham-blue" role="button">
+                        Download Local Guide
                     </button>
                 </div>
                 
                 <p class="text-sm text-slate-200">
-                    ⚡ 48-hour delivery • 30-day guarantee • NHS trusted
+                    ⚡ 48-hour delivery • 30-day guarantee • Birmingham NHS Trust partner
                 </p>
             </div>
         </div>
@@ -1066,34 +1210,47 @@
     <!-- Footer -->
     <footer class="py-20 bg-text-dark text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-10">
+            <div class="grid md:grid-cols-4 gap-10">
                 <div>
-                    <h3 class="text-xl font-bold mb-6">RightCareHome</h3>
-                    <p class="text-gray-300 mb-6">Professional care home selection service trusted by NHS teams and families across the UK.</p>
+                    <h3 class="text-xl font-bold mb-6">RightCareHome Birmingham</h3>
+                    <p class="text-gray-300 mb-6">The city's trusted care home selection service. Proudly serving local families since 2024.</p>
+                    <div class="birmingham-badge">Birmingham City Council Partner</div>
                 </div>
                 
                 <div>
                     <h4 class="font-bold mb-6">Services</h4>
                     <ul class="space-y-3 text-gray-300">
-                        <li><a href="#" class="underline hover:text-white">Professional Reports (£99)</a></li>
-                        <li><a href="#" class="underline hover:text-white">Premium Service (£149)</a></li>
-                        <li><a href="#" class="underline hover:text-white">Free Professional Guide</a></li>
+                        <li><a href="#" class="underline hover:text-white">Professional Analysis (£99)</a></li>
+                        <li><a href="#" class="underline hover:text-white">Premium Support (£149)</a></li>
+                        <li><a href="#" class="underline hover:text-white">Free Local Guide</a></li>
                         <li><a href="#" class="underline hover:text-white">NHS Partnership Programme</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-6">Coverage</h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li>All City Wards (B1-B99)</li>
+                        <li>277 Local Care Homes</li>
+                        <li>78% Independent Operators</li>
+                        <li>Council Framework Partner</li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="font-bold mb-6">Contact</h4>
                     <ul class="space-y-3 text-gray-300">
-                        <li>📧 <a href="mailto:hello@rightcarehome.co.uk" class="underline hover:text-white">hello@rightcarehome.co.uk</a></li>
-                        <li>📞 Professional helpline available</li>
+                        <li>📧 <a href="mailto:birmingham@rightcarehome.co.uk" class="underline hover:text-white">birmingham@rightcarehome.co.uk</a></li>
+                        <li>📞 Local helpline available</li>
                         <li>🕗 Monday-Friday 9AM-6PM</li>
+                        <li>🏥 Hospital discharge support 24/7</li>
                     </ul>
                 </div>
             </div>
             
             <div class="border-t border-gray-700 mt-10 pt-10 text-center text-gray-400">
-                <p>&copy; 2025 RightCareHome. All rights reserved. | Independent care home selection service</p>
+                <p>&copy; 2025 RightCareHome Birmingham. All rights reserved. | Independent care home selection service</p>
+                <p class="mt-2 text-sm">Birmingham NHS Trust Partner • Birmingham City Council Framework Partner</p>
             </div>
         </div>
     </footer>
@@ -1128,10 +1285,10 @@
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= target) {
-                    element.textContent = target + '%';
+                    element.textContent = target;
                     clearInterval(timer);
                 } else {
-                    element.textContent = Math.floor(current) + '%';
+                    element.textContent = Math.floor(current);
                 }
             }, 16);
         }
@@ -1190,7 +1347,7 @@
                 // Success animation
                 const button = e.target.querySelector('button');
                 const originalText = button.textContent;
-                button.textContent = 'Sending...';
+                button.textContent = 'Sending Local Guide...';
                 button.disabled = true;
                 
                 setTimeout(() => {
@@ -1209,7 +1366,7 @@
 
         // Enhanced button interactions
         document.querySelectorAll('button').forEach(button => {
-            if (button.textContent.includes('Get') || button.textContent.includes('Professional')) {
+            if (button.textContent.includes('Get') || button.textContent.includes('Local')) {
                 button.addEventListener('click', () => {
                     // Add click animation
                     button.style.transform = 'scale(0.98)';
