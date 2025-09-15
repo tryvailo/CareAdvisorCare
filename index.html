@@ -740,29 +740,34 @@
             observer.observe(el);
         });
 
-        // Area selector functionality
+        // Area selector functionality - Navigate to Birmingham regional page
         document.querySelectorAll('select').forEach(select => {
             select.addEventListener('change', function() {
                 const selectedArea = this.value;
-                if (selectedArea) {
-                    // Navigate to the area page
+                if (selectedArea === 'birmingham') {
+                    // Navigate to the Birmingham regional page
+                    window.location.href = '/birmingham/';
+                } else if (selectedArea) {
+                    // Navigate to other area pages when available
                     window.location.href = `/${selectedArea}/`;
                 }
             });
         });
 
         // Enhanced button interactions for area cards
-        document.querySelectorAll('.area-card a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                // Add click animation before navigation
-                e.preventDefault();
-                const originalTransform = this.style.transform;
-                this.style.transform = 'scale(0.98)';
-                
-                setTimeout(() => {
-                    window.location.href = this.href;
-                }, 150);
-            });
+        document.querySelectorAll('.area-card').forEach(card => {
+            const button = card.querySelector('button');
+            if (button && button.textContent.includes('Birmingham')) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Add click animation before navigation
+                    this.style.transform = 'scale(0.98)';
+                    
+                    setTimeout(() => {
+                        window.location.href = '/birmingham/';
+                    }, 150);
+                });
+            }
         });
 
         // Enhanced form submission with validation
