@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stop Stressing Over Birmingham Care Home Research | 48-Hour Expert Reports</title>
-    <meta name="description" content="Birmingham's only NHS-trusted independent care home service. Stop spending weeks stressing over research. Get expert recommendations for all 277 care homes in 48 hours.">
+    <title>RightCareHome Birmingham - Professional Care Home Selection | Birmingham NHS Trust Recommended</title>
+    <meta name="description" content="Birmingham's only independent care home selection service. Find quality care homes across Birmingham with verified availability. Trusted by Birmingham NHS Trust teams. 48-hour expert reports covering all Birmingham wards.">
     <meta name="keywords" content="care homes Birmingham, Birmingham care home selection, elderly care Birmingham, nursing homes Edgbaston, care placement Birmingham, nursing homes Ladywood, West Midlands care homes">
     
     <!-- Tailwind CSS -->
@@ -16,19 +16,15 @@
                     colors: {
                         'primary-navy': '#1e293b',
                         'primary-blue': '#2563eb',
-                        'nhs-blue': '#005EB8',
-                        'caring-green': '#059669',
-                        'warmth-orange': '#f59e0b',
-                        'soft-coral': '#fb7185',
-                        'warm-grey': '#64748b',
-                        'light-cream': '#fefce8',
-                        'birmingham-blue': '#005EB8',
+                        'success-green': '#059669',
+                        'warning-amber': '#f59e0b',
+                        'birmingham-blue': '#003f7f',
                         'birmingham-gold': '#d4af37',
-                        'bg-warm': '#fefce8',
+                        'bg-warm': '#fdf8f5',
                         'bg-cream': '#f9f6f2',
-                        'text-dark': '#1f2937',
-                        'text-muted': '#64748b',
-                        'healthcare-blue': '#005EB8'
+                        'text-dark': '#1a1a1a',
+                        'text-muted': '#1a1a1a',
+                        'healthcare-blue': '#0f766e'
                     },
                     animation: {
                         'fade-in': 'fadeIn 0.6s ease-out forwards',
@@ -47,8 +43,8 @@
                             '100%': { opacity: '1', transform: 'translateY(0)' }
                         },
                         pulseGlow: {
-                            '0%, 100%': { boxShadow: '0 0 20px rgba(245, 158, 11, 0.3)' },
-                            '50%': { boxShadow: '0 0 30px rgba(245, 158, 11, 0.6)' }
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(37, 99, 235, 0.3)' },
+                            '50%': { boxShadow: '0 0 30px rgba(37, 99, 235, 0.6)' }
                         },
                         bounceGentle: {
                             '0%, 100%': { transform: 'translateY(0)' },
@@ -71,15 +67,15 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fefce8;
-            color: #1f2937;
+            background-color: #fdf8f5;
+            color: #1a1a1a;
             line-height: 1.7;
             font-size: 1.125rem;
             font-weight: 600;
         }
         
         .hero-gradient {
-            background: linear-gradient(135deg, #2563eb 0%, #059669 100%);
+            background: linear-gradient(135deg, #fdf8f5 0%, #f9f6f2 50%, #fdf8f5 100%);
             background-size: 200% 200%;
             animation: gradient 8s ease infinite;
         }
@@ -96,9 +92,9 @@
         }
         
         .primary-cta {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             color: white;
-            border: 2px solid #f59e0b;
+            border: 2px solid #2563eb;
             font-weight: 700;
             padding: 24px 32px;
             border-radius: 12px;
@@ -108,44 +104,38 @@
             overflow: hidden;
             min-height: 48px;
             text-decoration: none;
-            box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
         }
         
         .primary-cta:hover {
             transform: translateY(-3px);
-            box-shadow: 0 16px 40px rgba(245, 158, 11, 0.5);
-            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            box-shadow: 0 16px 40px rgba(37, 99, 235, 0.5);
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
         }
         
         .primary-cta:focus {
-            outline: 3px solid #f59e0b;
+            outline: 3px solid #2563eb;
             outline-offset: 2px;
         }
         
-        .emergency-cta {
-            background: linear-gradient(135deg, #fb7185 0%, #f43f5e 100%);
-            color: white;
-            border: 2px solid #fb7185;
-            font-weight: 700;
-            padding: 20px 28px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            min-height: 48px;
-            text-decoration: none;
-            box-shadow: 0 4px 14px rgba(251, 113, 133, 0.3);
+        .primary-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
         }
         
-        .emergency-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(251, 113, 133, 0.4);
-            background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+        .primary-cta:hover::before {
+            left: 100%;
         }
         
         .secondary-cta {
             background: transparent;
-            color: #059669;
-            border: 2px solid #059669;
+            color: #0f766e;
+            border: 2px solid #0f766e;
             font-weight: 700;
             padding: 24px 32px;
             border-radius: 12px;
@@ -156,14 +146,14 @@
         }
         
         .secondary-cta:hover {
-            background: #059669;
+            background: #0f766e;
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(5, 150, 105, 0.4);
+            box-shadow: 0 12px 30px rgba(15, 118, 110, 0.4);
         }
         
         .secondary-cta:focus {
-            outline: 3px solid #059669;
+            outline: 3px solid #2563eb;
             outline-offset: 2px;
         }
         
@@ -179,23 +169,18 @@
         }
         
         .hero-headline {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            line-height: 1.6;
-            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1e293b 0%, #003f7f 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .pricing-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid #e5e7eb;
+            border: 2px solid #d1d5db;
             position: relative;
             overflow: hidden;
             background: #ffffff;
@@ -209,7 +194,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #f59e0b, #d97706);
+            background: linear-gradient(90deg, #2563eb, #1d4ed8);
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -224,7 +209,7 @@
         }
         
         .recommended {
-            border-color: #f59e0b;
+            border-color: #2563eb;
             position: relative;
             animation: pulse-glow 3s ease-in-out infinite;
         }
@@ -234,13 +219,13 @@
             top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             color: white;
             padding: 12px 28px;
             border-radius: 25px;
             font-weight: bold;
             font-size: 1rem;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
         }
         
         .counter {
@@ -248,7 +233,7 @@
         }
         
         .faq-item {
-            border: 2px solid #e5e7eb;
+            border: 2px solid #d1d5db;
             border-radius: 12px;
             margin-bottom: 20px;
             transition: all 0.3s ease;
@@ -257,8 +242,8 @@
         }
         
         .faq-item:hover {
-            border-color: #f59e0b;
-            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.15);
+            border-color: #2563eb;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
         }
         
         .faq-button {
@@ -269,10 +254,10 @@
             border: none;
             font-size: 1.125rem;
             font-weight: 600;
-            color: #1f2937;
+            color: #1a1a1a;
             cursor: pointer;
             display: flex;
-            justify-content: space-between;
+            justify-content: between;
             align-items: center;
             transition: all 0.3s ease;
             min-height: 48px;
@@ -283,13 +268,13 @@
         }
         
         .faq-button:focus {
-            outline: 3px solid #f59e0b;
+            outline: 3px solid #2563eb;
             outline-offset: -3px;
         }
         
         .faq-icon {
             font-size: 1.5rem;
-            color: #f59e0b;
+            color: #2563eb;
             transition: transform 0.3s ease;
             min-width: 24px;
         }
@@ -306,26 +291,6 @@
             padding: 24px 28px;
         }
         
-        .stat-highlight {
-            background: #ffffff;
-            border-left: 4px solid #f59e0b;
-            padding: 30px;
-            border-radius: 12px;
-            margin: 20px 0;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .stat-highlight:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
-        }
-        
-        .testimonial-card {
-            background: linear-gradient(135deg, #fef7f0 0%, #ffffff 100%);
-            border-left: 4px solid #fb7185;
-        }
-        
         .floating-elements {
             position: absolute;
             top: 0;
@@ -336,72 +301,62 @@
             overflow: hidden;
         }
         
-        .nhs-badge {
-            color: #005EB8;
+        .floating-elements::before,
+        .floating-elements::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(0, 63, 127, 0.1) 100%);
+            animation: float 6s ease-in-out infinite;
         }
         
-        .trust-line {
-            color: #005EB8;
+        .floating-elements::before {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
         }
         
-        .trust-badges-birmingham {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 3rem;
+        .floating-elements::after {
+            top: 60%;
+            right: 10%;
+            animation-delay: 3s;
         }
         
-        .trust-badge-hero {
-            background: rgba(255,255,255,0.2);
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: white;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
         }
         
-        .social-proof-birmingham {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-top: -2rem;
-            position: relative;
-            z-index: 10;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        .comparison-table {
+            border-collapse: separate;
+            border-spacing: 0;
         }
         
-        .stats-row {
-            display: flex;
-            justify-content: space-between;
-            text-align: center;
-            gap: 1rem;
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
+            border-radius: 12px 0 0 12px;
         }
         
-        .emergency-section {
-            background: #fb7185;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            color: white;
+        .comparison-table th:last-child,
+        .comparison-table td:last-child {
+            border-radius: 0 12px 12px 0;
         }
         
-        .birmingham-badge {
-            background: linear-gradient(135deg, #005EB8 0%, #d4af37 100%);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: bold;
-            display: inline-block;
-            margin: 0 8px;
-        }
-        
-        .coverage-map {
+        .stat-highlight {
             background: #ffffff;
-            border: 2px solid #005EB8;
-            border-radius: 16px;
-            padding: 2rem;
-            margin: 2rem 0;
+            border-left: 4px solid #2563eb;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-highlight:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
         }
         
         .delivery-indicator {
@@ -415,13 +370,127 @@
             box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
         }
         
+        .professional-endorsement {
+            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 16px;
+            margin: 28px 0;
+            box-shadow: 0 8px 25px rgba(15, 118, 110, 0.3);
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #dc2626;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: bold;
+            animation: bounce-gentle 2s ease-in-out infinite;
+        }
+        
+        .birmingham-badge {
+            background: linear-gradient(135deg, #003f7f 0%, #d4af37 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 0 8px;
+        }
+        
+        .coverage-map {
+            background: #ffffff;
+            border: 2px solid #003f7f;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        /* Enhanced spacing between sections */
+        section {
+            padding-top: calc(5rem * 1.25);
+            padding-bottom: calc(5rem * 1.25);
+        }
+        
+        /* Improved link styles */
+        a {
+            text-decoration: underline;
+            color: #2563eb;
+        }
+        
+        a:hover {
+            color: #1d4ed8;
+        }
+        
+        /* Enhanced grid gaps */
+        .grid {
+            gap: 2.5rem;
+        }
+        
+        /* Input improvements */
+        input[type="email"] {
+            min-height: 48px;
+            font-size: 1.125rem;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #d1d5db;
+        }
+        
+        input[type="email"]:focus {
+            outline: 3px solid #2563eb;
+            outline-offset: 2px;
+            border-color: #2563eb;
+        }
+        
+        /* Heading improvements */
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+        
+        h2 {
+            font-size: 2.25rem;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+        
+        /* Button role improvements */
+        [role="button"] {
+            cursor: pointer;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        [role="button"]:focus {
+            outline: 3px solid #2563eb;
+            outline-offset: 2px;
+        }
+        
         @media (max-width: 768px) {
             .hero-headline {
                 font-size: 2rem !important;
                 line-height: 1.2 !important;
             }
             
-            .primary-cta, .secondary-cta, .emergency-cta {
+            .primary-cta, .secondary-cta {
                 min-height: 56px !important;
                 font-size: 1rem !important;
                 padding: 18px 24px !important;
@@ -429,13 +498,60 @@
                 border-radius: 10px !important;
             }
             
-            .stats-row {
-                flex-direction: column !important;
-                gap: 1.5rem !important;
+            .hero-section .grid {
+                grid-template-columns: 1fr !important;
+                gap: 3rem !important;
             }
             
-            .trust-badges-birmingham {
-                justify-content: center !important;
+            .pricing-card {
+                width: 100% !important;
+                margin-bottom: 2.5rem !important;
+                padding: 2rem !important;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+            
+            .faq-button {
+                font-size: 1.125rem !important;
+                padding: 24px 24px !important;
+            }
+            
+            .faq-content.show {
+                max-height: 350px !important;
+                padding: 24px 24px !important;
+            }
+            
+            h1 {
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            h2 {
+                font-size: 1.875rem !important;
+                line-height: 1.3 !important;
+            }
+            
+            .hero-section {
+                padding: 120px 0 80px 0 !important;
+            }
+            
+            input[type="email"] {
+                min-height: 56px !important;
+                font-size: 1.125rem !important;
+                padding: 20px !important;
+                border-radius: 12px !important;
+            }
+            
+            .stat-highlight {
+                padding: 2rem !important;
+            }
+            
+            section {
+                padding-top: calc(3rem * 1.25) !important;
+                padding-bottom: calc(3rem * 1.25) !important;
             }
         }
         
@@ -443,6 +559,12 @@
             .hero-headline {
                 font-size: 1.75rem !important;
                 line-height: 1.15 !important;
+            }
+            
+            .primary-cta, .secondary-cta {
+                min-height: 60px !important;
+                font-size: 1rem !important;
+                padding: 24px 20px !important;
             }
             
             body {
@@ -458,9 +580,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-nhs-blue">RightCareHome Birmingham</h1>
-                    <span class="text-sm text-warm-grey ml-1">.co.uk</span>
-                    <div class="birmingham-badge ml-4">NHS Trust Partner</div>
+                    <h1 class="text-2xl font-bold text-birmingham-blue">RightCareHome Birmingham</h1>
+                    <span class="text-sm text-text-muted ml-1">.co.uk</span>
+                    <div class="birmingham-badge ml-4">Birmingham NHS Trust Partner</div>
                 </div>
                 <div class="hidden md:block">
                     <button class="primary-cta" role="button" aria-label="Get Birmingham Care Home Report for £99">
@@ -472,76 +594,79 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section pt-32 pb-16 hero-gradient relative">
+    <section class="hero-section pt-32 pb-24 hero-gradient relative">
         <div class="floating-elements"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 
                 <!-- Left Column -->
                 <div class="fade-in">
-                    <h1 class="hero-headline">
-                        Stop Stressing Over Birmingham Care Home Research
+                    <h1 class="hero-headline text-text-dark mb-10">
+                        Find the Right Care Home in <span class="text-birmingham-blue">Birmingham</span> - Expert Guidance in <span class="text-primary-blue">48 Hours</span>
                     </h1>
                     
-                    <p class="hero-subtitle text-blue-50">
-                        Birmingham's only NHS-trusted independent service. Get expert recommendations for all 277 city care homes in 48 hours – from Edgbaston to Hall Green.
+                    <p class="text-xl mb-10 font-medium text-text-muted">
+                        Trusted by Birmingham NHS Trust discharge teams. <strong class="text-birmingham-blue">The city's only independent care home matching service</strong> covering all 277 quality care homes across all city wards.
                     </p>
                     
-                    <!-- Trust Badges -->
-                    <div class="trust-badges-birmingham">
-                        <div class="trust-badge-hero">🏥 NHS Trust Partner</div>
-                        <div class="trust-badge-hero">🎯 800+ Families Helped</div>
-                        <div class="trust-badge-hero">🛡️ Independent Advice</div>
-                    </div>
+                    <!-- Trust Line -->
+                    <p class="text-lg mb-10 font-semibold text-healthcare-blue">
+                        🏥 Birmingham NHS Trust Partner • 800+ Local Families Helped • Birmingham City Council Framework Partner
+                    </p>
                     
                     <div class="mb-8">
-                        <button class="primary-cta text-lg px-12 py-6" role="button">
-                            Get My Birmingham Care Home Report
+                        <button class="primary-cta text-lg px-12 py-6" role="button" aria-label="Get Birmingham care home report">
+                            Get Birmingham Care Home Report - £99
                         </button>
                     </div>
+                    
+                    <p class="text-text-muted">
+                        ⚡ Locally-focused reports delivered within 48 hours • Covering all city wards B1-B99
+                    </p>
                 </div>
                 
                 <!-- Right Column - Free Guide -->
                 <div class="fade-in">
-                    <div class="bg-white rounded-2xl shadow-2xl p-10 border-2 border-caring-green relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-nhs-blue to-caring-green"></div>
+                    <div class="bg-white rounded-2xl shadow-2xl p-10 border-2 border-success-green relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-birmingham-blue to-birmingham-gold"></div>
                         
                         <div class="text-center mb-8">
-                            <div class="bg-gradient-to-r from-nhs-blue to-caring-green text-white px-10 py-4 rounded-full inline-block mb-6 font-bold shadow-lg">
+                            <div class="bg-gradient-to-r from-birmingham-blue to-success-green text-white px-10 py-4 rounded-full inline-block mb-6 font-bold shadow-lg">
                                 FREE LOCAL GUIDE
                             </div>
-                            <h2 class="text-2xl font-bold text-text-dark">Care Home Selection Checklist</h2>
+                            <h2 class="text-2xl font-bold text-text-dark">Local Care Home Selection Checklist</h2>
+                            <p class="text-text-muted mt-3">Created by Birmingham NHS Trust discharge coordinators</p>
                         </div>
                         
                         <ul class="space-y-5 mb-10">
                             <li class="flex items-start">
-                                <span class="text-caring-green mr-4 font-bold text-lg">✓</span>
+                                <span class="text-success-green mr-4 font-bold text-lg">✓</span>
                                 <span class="font-medium">Local care market analysis</span>
                             </li>
                             <li class="flex items-start">
-                                <span class="text-caring-green mr-4 font-bold text-lg">✓</span>
+                                <span class="text-success-green mr-4 font-bold text-lg">✓</span>
                                 <span class="font-medium">Ward-by-ward quality guide</span>
                             </li>
                             <li class="flex items-start">
-                                <span class="text-caring-green mr-4 font-bold text-lg">✓</span>
+                                <span class="text-success-green mr-4 font-bold text-lg">✓</span>
                                 <span class="font-medium">Council funding guide</span>
                             </li>
                             <li class="flex items-start">
-                                <span class="text-caring-green mr-4 font-bold text-lg">✓</span>
+                                <span class="text-success-green mr-4 font-bold text-lg">✓</span>
                                 <span class="font-medium">277 care homes assessment</span>
                             </li>
                         </ul>
                         
                         <form class="space-y-5" id="guide-form">
                             <input type="email" placeholder="Enter your email for instant local guide access" 
-                                   class="w-full p-5 border-2 border-gray-200 rounded-lg focus:border-warmth-orange focus:outline-none text-lg transition-all duration-300"
+                                   class="w-full p-5 border-2 border-gray-200 rounded-lg focus:border-birmingham-blue focus:outline-none text-lg transition-all duration-300"
                                    required aria-label="Email address for free local guide">
                             <button type="submit" class="secondary-cta w-full" role="button">
                                 Get Free Local Guide Now
                             </button>
                         </form>
                         
-                        <p class="text-sm text-warm-grey text-center mt-6">
+                        <p class="text-sm text-text-muted text-center mt-6">
                             🔒 Your email is never shared with care homes
                         </p>
                     </div>
@@ -551,38 +676,68 @@
         </div>
     </section>
 
-    <!-- Social Proof Section -->
-    <section class="py-8 bg-light-cream">
+    <!-- Local Care Market Statistics -->
+    <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="social-proof-birmingham fade-in">
-                <div class="stats-row">
-                    <div>
-                        <h3 style="color: #2563eb; font-size: 2rem; margin: 0;">277</h3>
-                        <p style="color: #64748b;">Care homes covered</p>
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-4xl font-bold mb-10 text-text-dark">Local Care Market Landscape</h2>
+                <p class="text-xl text-text-muted max-w-3xl mx-auto">
+                    Understanding the city's unique care landscape helps families make better decisions.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div class="stat-highlight fade-in">
+                    <div class="text-center">
+                        <div class="text-4xl mb-6">🏠</div>
+                        <h3 class="text-3xl font-bold text-birmingham-blue counter" data-target="277">0</h3>
+                        <p class="text-text-muted font-medium">CQC-registered care homes across the city</p>
                     </div>
-                    <div>
-                        <h3 style="color: #059669; font-size: 2rem; margin: 0;">800+</h3>
-                        <p style="color: #64748b;">Local families helped</p>
+                </div>
+                
+                <div class="stat-highlight fade-in">
+                    <div class="text-center">
+                        <div class="text-4xl mb-6">💼</div>
+                        <h3 class="text-3xl font-bold text-success-green">78%</h3>
+                        <p class="text-text-muted font-medium">independent operators - we know them personally</p>
                     </div>
-                    <div>
-                        <h3 style="color: #f59e0b; font-size: 2rem; margin: 0;">48h</h3>
-                        <p style="color: #64748b;">Average report delivery</p>
+                </div>
+                
+                <div class="stat-highlight fade-in">
+                    <div class="text-center">
+                        <div class="text-4xl mb-6">💰</div>
+                        <h3 class="text-3xl font-bold text-warning-amber">£597</h3>
+                        <p class="text-text-muted font-medium">average weekly residential fee</p>
                     </div>
-                    <div>
-                        <h3 style="color: #fb7185; font-size: 2rem; margin: 0;">£597</h3>
-                        <p style="color: #64748b;">Average weekly cost</p>
+                </div>
+                
+                <div class="stat-highlight fade-in">
+                    <div class="text-center">
+                        <div class="text-4xl mb-6">🛏️</div>
+                        <h3 class="text-3xl font-bold text-healthcare-blue">6,000+</h3>
+                        <p class="text-text-muted font-medium">care home beds across all city wards</p>
                     </div>
+                </div>
+            </div>
+            
+            <!-- Value Proposition -->
+            <div class="mt-16 text-center fade-in">
+                <div class="bg-birmingham-blue text-white rounded-2xl p-10 max-w-4xl mx-auto">
+                    <h3 class="text-2xl font-bold mb-6">Local Market Advantage</h3>
+                    <p class="text-lg">
+                        Local families save an average of £200+ weekly versus London alternatives, with 2/3 of care homes participating in our quality commissioning framework.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Local Coverage Map Section -->
-    <section class="py-24 bg-white">
+    <section class="py-24 bg-bg-cream">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 fade-in">
                 <h2 class="text-4xl font-bold mb-10 text-text-dark">Local Coverage Map</h2>
-                <p class="text-xl text-warm-grey">
+                <p class="text-xl text-text-muted">
                     Complete coverage of all city wards with quality-focused approach
                 </p>
             </div>
@@ -590,36 +745,36 @@
             <div class="coverage-map fade-in">
                 <div class="grid lg:grid-cols-3 gap-12">
                     <div>
-                        <h3 class="text-xl font-bold mb-6 text-nhs-blue">High Capacity Areas</h3>
+                        <h3 class="text-xl font-bold mb-6 text-birmingham-blue">High Capacity Areas</h3>
                         <ul class="space-y-4">
                             <li class="flex items-center">
-                                <div class="w-4 h-4 bg-caring-green rounded-full mr-4"></div>
+                                <div class="w-4 h-4 bg-success-green rounded-full mr-4"></div>
                                 <span><strong>Edgbaston</strong> - 42 care homes, highest capacity</span>
                             </li>
                             <li class="flex items-center">
-                                <div class="w-4 h-4 bg-caring-green rounded-full mr-4"></div>
+                                <div class="w-4 h-4 bg-success-green rounded-full mr-4"></div>
                                 <span><strong>Hall Green</strong> - 38 quality providers</span>
                             </li>
                             <li class="flex items-center">
-                                <div class="w-4 h-4 bg-caring-green rounded-full mr-4"></div>
+                                <div class="w-4 h-4 bg-success-green rounded-full mr-4"></div>
                                 <span><strong>Ladywood</strong> - 35 care homes</span>
                             </li>
                         </ul>
                     </div>
                     
                     <div>
-                        <h3 class="text-xl font-bold mb-6 text-warmth-orange">Standard Coverage</h3>
+                        <h3 class="text-xl font-bold mb-6 text-warning-amber">Standard Coverage</h3>
                         <ul class="space-y-4">
                             <li class="flex items-center">
-                                <div class="w-4 h-4 bg-warmth-orange rounded-full mr-4"></div>
+                                <div class="w-4 h-4 bg-warning-amber rounded-full mr-4"></div>
                                 <span><strong>Erdington</strong> - 28 care homes</span>
                             </li>
                             <li class="flex items-center">
-                                <div class="w-4 h-4 bg-warmth-orange rounded-full mr-4"></div>
+                                <div class="w-4 h-4 bg-warning-amber rounded-full mr-4"></div>
                                 <span><strong>Selly Oak</strong> - 24 providers</span>
                             </li>
                             <li class="flex items-center">
-                                <div class="w-4 h-4 bg-warmth-orange rounded-full mr-4"></div>
+                                <div class="w-4 h-4 bg-warning-amber rounded-full mr-4"></div>
                                 <span><strong>Yardley</strong> - 22 care homes</span>
                             </li>
                         </ul>
@@ -628,11 +783,11 @@
                     <div>
                         <h3 class="text-xl font-bold mb-6 text-primary-blue">Strategic Focus</h3>
                         <div class="bg-blue-50 p-6 rounded-lg">
-                            <p class="text-warm-grey mb-4">
+                            <p class="text-text-muted mb-4">
                                 <strong>Full B1-B99 postcode coverage</strong>
                             </p>
-                            <p class="text-warm-grey mb-4">
-                                We focus on high-quality providers across all city wards with proven quality track records and excellent care standards.
+                            <p class="text-text-muted mb-4">
+                                We strategically avoid low-capacity areas like Perry Barr and focus on areas with proven quality track records.
                             </p>
                             <p class="text-sm text-primary-blue font-semibold">
                                 91 quality providers serving local families
@@ -645,11 +800,11 @@
     </section>
 
     <!-- Local Care Market Experts -->
-    <section class="py-24 bg-light-cream">
+    <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 fade-in">
                 <h2 class="text-4xl font-bold mb-10 text-text-dark">Local Care Market Experts</h2>
-                <p class="text-xl text-warm-grey">Deep local knowledge of the city's care landscape</p>
+                <p class="text-xl text-text-muted">Deep local knowledge of the city's care landscape</p>
             </div>
             
             <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -657,39 +812,39 @@
                     <h3 class="text-2xl font-bold mb-8 text-text-dark">Why Local Expertise Matters</h3>
                     <div class="space-y-6">
                         <div class="flex items-start">
-                            <div class="w-8 h-8 bg-nhs-blue text-white rounded-full flex items-center justify-center mr-4 mt-1">
+                            <div class="w-8 h-8 bg-birmingham-blue text-white rounded-full flex items-center justify-center mr-4 mt-1">
                                 <span class="text-sm font-bold">1</span>
                             </div>
                             <div>
                                 <h4 class="font-bold text-lg mb-2">Market Knowledge</h4>
-                                <p class="text-warm-grey">With 277 registered care homes and 91 independent providers, the city offers excellent choice but requires expert navigation.</p>
+                                <p class="text-text-muted">With 277 registered care homes and 91 independent providers, the city offers excellent choice but requires expert navigation.</p>
                             </div>
                         </div>
                         
                         <div class="flex items-start">
-                            <div class="w-8 h-8 bg-nhs-blue text-white rounded-full flex items-center justify-center mr-4 mt-1">
+                            <div class="w-8 h-8 bg-birmingham-blue text-white rounded-full flex items-center justify-center mr-4 mt-1">
                                 <span class="text-sm font-bold">2</span>
                             </div>
                             <div>
                                 <h4 class="font-bold text-lg mb-2">Council Framework</h4>
-                                <p class="text-warm-grey">Our team understands Birmingham City Council's commissioning framework and quality standards inside out.</p>
+                                <p class="text-text-muted">Our team understands Birmingham City Council's commissioning framework and quality standards inside out.</p>
                             </div>
                         </div>
                         
                         <div class="flex items-start">
-                            <div class="w-8 h-8 bg-nhs-blue text-white rounded-full flex items-center justify-center mr-4 mt-1">
+                            <div class="w-8 h-8 bg-birmingham-blue text-white rounded-full flex items-center justify-center mr-4 mt-1">
                                 <span class="text-sm font-bold">3</span>
                             </div>
                             <div>
                                 <h4 class="font-bold text-lg mb-2">Ward Specialisation</h4>
-                                <p class="text-warm-grey">We've mapped every city ward for capacity, quality, and specialization across all areas with comprehensive analysis.</p>
+                                <p class="text-text-muted">We've mapped every city ward for capacity, quality, and specialization - avoiding areas like Perry Barr with limited options.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="fade-in">
-                    <div class="bg-gradient-to-br from-nhs-blue to-birmingham-gold text-white rounded-2xl p-10">
+                    <div class="bg-gradient-to-br from-birmingham-blue to-birmingham-gold text-white rounded-2xl p-10">
                         <h3 class="text-2xl font-bold mb-8">Partnership Benefits</h3>
                         <ul class="space-y-6">
                             <li class="flex items-start">
@@ -716,12 +871,55 @@
     </section>
 
     <!-- Pricing Section -->
-    <section class="py-24 bg-white" id="pricing">
+    <section class="py-24 bg-bg-cream" id="pricing">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 fade-in">
                 <h2 class="text-4xl font-bold mb-10 text-text-dark">Local Care Home Reports</h2>
-                <p class="text-xl text-warm-grey">Locally-focused analysis with no care home commissions</p>
-                <p class="text-lg text-nhs-blue font-semibold">Pricing reflects local care market - no London premium</p>
+                <p class="text-xl text-text-muted">Locally-focused analysis with no care home commissions</p>
+                <p class="text-lg text-birmingham-blue font-semibold">Pricing reflects local care market - no London premium</p>
+            </div>
+            
+            <!-- Comparison Table -->
+            <div class="mb-20 fade-in">
+                <h3 class="text-2xl font-bold text-center mb-10 text-text-dark">How We Compare Locally</h3>
+                <div class="overflow-x-auto">
+                    <table class="comparison-table w-full bg-white rounded-xl shadow-lg border border-gray-200">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="p-5 text-left font-bold text-text-dark border-b">Service</th>
+                                <th class="p-5 text-center font-bold text-birmingham-blue border-b bg-blue-50">RightCareHome Birmingham</th>
+                                <th class="p-5 text-center font-bold text-text-muted border-b">Care Directories</th>
+                                <th class="p-5 text-center font-bold text-text-muted border-b">London Consultants</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="p-5 font-semibold text-text-dark">Local Focus</td>
+                                <td class="p-5 text-center text-success-green font-bold">✓ All 277 homes</td>
+                                <td class="p-5 text-center text-warning-amber">Basic listings</td>
+                                <td class="p-5 text-center text-text-muted">✗ No local focus</td>
+                            </tr>
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="p-5 font-semibold text-text-dark">Speed</td>
+                                <td class="p-5 text-center text-success-green font-bold">48h</td>
+                                <td class="p-5 text-center text-warning-amber">Weeks</td>
+                                <td class="p-5 text-center text-warning-amber">1-2 Weeks</td>
+                            </tr>
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="p-5 font-semibold text-text-dark">Local Price</td>
+                                <td class="p-5 text-center text-success-green font-bold">£79-149</td>
+                                <td class="p-5 text-center text-text-muted">Free but limited</td>
+                                <td class="p-5 text-center text-warning-amber">£325-1075</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="p-5 font-semibold text-text-dark">NHS Partnership</td>
+                                <td class="p-5 text-center text-success-green font-bold">✓ Birmingham NHS Trust</td>
+                                <td class="p-5 text-center text-text-muted">✗ No</td>
+                                <td class="p-5 text-center text-text-muted">✗ No</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             
             <div class="grid lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
@@ -731,23 +929,23 @@
                     <div class="text-center mb-8">
                         <h3 class="text-2xl font-bold mb-3 text-text-dark">LOCAL GUIDE</h3>
                         <div class="text-4xl font-bold mb-3 text-text-dark">FREE</div>
-                        <p class="text-warm-grey">Local market research</p>
+                        <p class="text-text-muted">Local market research</p>
                     </div>
                     <ul class="space-y-4 mb-10">
                         <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
+                            <span class="text-success-green mr-4">✓</span>
                             <span>277 care homes overview</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
+                            <span class="text-success-green mr-4">✓</span>
                             <span>Ward-by-ward quality indicators</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
+                            <span class="text-success-green mr-4">✓</span>
                             <span>Council funding guide</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
+                            <span class="text-success-green mr-4">✓</span>
                             <span>Essential questions template</span>
                         </li>
                     </ul>
@@ -761,32 +959,32 @@
                     <div class="popular-badge">MOST POPULAR</div>
                     <div class="text-center mb-8 mt-8">
                         <h3 class="text-2xl font-bold mb-3 text-text-dark">PROFESSIONAL ANALYSIS</h3>
-                        <div class="text-4xl font-bold mb-3 text-warmth-orange">£99</div>
-                        <p class="text-warm-grey">Expert local analysis</p>
+                        <div class="text-4xl font-bold mb-3 text-primary-blue">£99</div>
+                        <p class="text-text-muted">Expert local analysis</p>
                     </div>
                     <ul class="space-y-4 mb-10">
                         <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
+                            <span class="text-success-green mr-4">✓</span>
                             <span><strong>3-5 verified care home matches</strong></span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
+                            <span class="text-success-green mr-4">✓</span>
                             <span>Current availability confirmation</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
+                            <span class="text-success-green mr-4">✓</span>
                             <span>Quality assessment summary</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
+                            <span class="text-success-green mr-4">✓</span>
                             <span>Council funding options</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
+                            <span class="text-success-green mr-4">✓</span>
                             <span>Ward location analysis</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
+                            <span class="text-success-green mr-4">✓</span>
                             <span>48-hour delivery guarantee</span>
                         </li>
                     </ul>
@@ -799,7 +997,7 @@
                 </div>
                 
                 <!-- Premium Support -->
-                <div class="pricing-card bg-primary-navy text-white rounded-xl p-10">
+                <div class="pricing-card bg-birmingham-blue text-white rounded-xl p-10">
                     <div class="text-center mb-8">
                         <h3 class="text-2xl font-bold mb-3">PREMIUM SUPPORT</h3>
                         <div class="text-4xl font-bold mb-3 text-birmingham-gold">£149</div>
@@ -833,64 +1031,77 @@
                 </div>
                 
             </div>
+            
+            <!-- Guarantee -->
+            <div class="text-center mt-16 fade-in">
+                <div class="bg-success-green text-white rounded-2xl p-10 max-w-4xl mx-auto">
+                    <h3 class="text-2xl font-bold mb-6">🛡️ Professional Guarantee</h3>
+                    <p class="text-lg mb-4">
+                        If our report doesn't provide clear, actionable recommendations for local care homes that meet your requirements, we'll provide a full refund within 30 days.
+                    </p>
+                    <p class="text-birmingham-gold font-bold">
+                        Local families save average £200+ weekly vs London alternatives
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Local Testimonials -->
-    <section class="py-24 bg-light-cream">
+    <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 fade-in">
                 <h2 class="text-4xl font-bold mb-10 text-text-dark">Local Professional Endorsements</h2>
-                <div class="text-xl text-warm-grey">
+                <div class="text-xl text-text-muted">
                     Trusted by NHS teams and families across the city
                 </div>
             </div>
             
             <div class="grid lg:grid-cols-3 gap-10">
-                <div class="testimonial-card rounded-xl p-10 shadow-lg fade-in">
-                    <div class="text-warmth-orange mb-6">★★★★★</div>
-                    <blockquote class="text-warm-grey mb-8 italic">
+                <div class="bg-white rounded-xl p-10 shadow-lg fade-in">
+                    <div class="text-primary-blue mb-6">★★★★★</div>
+                    <blockquote class="text-text-muted mb-8 italic">
                         "Excellent service that saved us weeks of research. Found a wonderful care home in Erdington for mum within their 48-hour promise. The local expertise really showed."
                     </blockquote>
                     <div class="flex items-center">
-                        <div class="w-14 h-14 bg-nhs-blue rounded-full mr-5 flex items-center justify-center text-white font-bold">
+                        <div class="w-14 h-14 bg-birmingham-blue rounded-full mr-5 flex items-center justify-center text-white font-bold">
                             RH
                         </div>
                         <div>
                             <div class="font-bold text-text-dark">Robert Hughes</div>
-                            <div class="text-sm text-warm-grey">Local Family, Erdington</div>
+                            <div class="text-sm text-text-muted">Local Family, Erdington</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card rounded-xl p-10 shadow-lg fade-in">
-                    <div class="text-warmth-orange mb-6">★★★★★</div>
-                    <blockquote class="text-warm-grey mb-8 italic">
+                <div class="bg-white rounded-xl p-10 shadow-lg fade-in">
+                    <div class="text-primary-blue mb-6">★★★★★</div>
+                    <blockquote class="text-text-muted mb-8 italic">
                         "Found excellent care in Edgbaston for £597/week - £300 less than comparable London options. Their local expertise saved us time and money."
                     </blockquote>
                     <div class="flex items-center">
-                        <div class="w-14 h-14 bg-soft-coral rounded-full mr-5 flex items-center justify-center text-white font-bold">
+                        <div class="w-14 h-14 bg-success-green rounded-full mr-5 flex items-center justify-center text-white font-bold">
                             MT
                         </div>
                         <div>
                             <div class="font-bold text-text-dark">Michael Thompson</div>
-                            <div class="text-sm text-warm-grey">Local Family, Edgbaston</div>
+                            <div class="text-sm text-text-muted">Local Family, Edgbaston</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card rounded-xl p-10 shadow-lg fade-in">
-                    <div class="text-warmth-orange mb-6">★★★★★</div>
-                    <blockquote class="text-warm-grey mb-8 italic">
-                        "Their understanding of the local care landscape helped us navigate 277 options efficiently. Found perfect match in Hall Green with excellent care standards."
+                <div class="bg-white rounded-xl p-10 shadow-lg fade-in">
+                    <div class="text-primary-blue mb-6">★★★★★</div>
+                    <blockquote class="text-text-muted mb-8 italic">
+                        "Their understanding of the local care landscape helped us navigate 277 options efficiently. Avoided Perry Barr and found perfect match in Hall Green."
                     </blockquote>
                     <div class="flex items-center">
-                        <div class="w-14 h-14 bg-caring-green rounded-full mr-5 flex items-center justify-center text-white font-bold">
+                        <div class="w-14 h-14 bg-primary-blue rounded-full mr-5 flex items-center justify-center text-white font-bold">
                             JP
                         </div>
                         <div>
                             <div class="font-bold text-text-dark">Jennifer Patel</div>
-                            <div class="text-sm text-warm-grey">Local Family, Hall Green</div>
+                            <div class="text-sm text-text-muted">Local Family, Hall Green</div>
                         </div>
                     </div>
                 </div>
@@ -899,11 +1110,11 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-24 bg-white">
+    <section class="py-24 bg-bg-cream">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 fade-in">
                 <h2 class="text-4xl font-bold mb-10 text-text-dark">Local Care Home FAQs</h2>
-                <p class="text-xl text-warm-grey">Common questions about local care home selection</p>
+                <p class="text-xl text-text-muted">Common questions about local care home selection</p>
             </div>
             
             <div class="space-y-6 fade-in">
@@ -913,7 +1124,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-content">
-                        <p class="text-lg text-warm-grey">Yes, we cover all city wards (B1-B99 postcodes) with focus on Edgbaston, Ladywood, and Hall Green offering highest quality options. We provide comprehensive coverage across all areas with proven quality track records.</p>
+                        <p class="text-lg text-text-muted">Yes, we cover all city wards (B1-B99 postcodes) with focus on Edgbaston, Ladywood, and Hall Green offering highest quality options. We strategically avoid low-capacity areas like Perry Barr and focus on areas with proven quality track records.</p>
                     </div>
                 </div>
                 
@@ -923,7 +1134,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-content">
-                        <p class="text-lg text-warm-grey">Yes, we're official partners familiar with Birmingham City Council's commissioning framework and work directly with their adult social care team. We understand their funding processes and quality standards across all 277 local care homes.</p>
+                        <p class="text-lg text-text-muted">Yes, we're official partners familiar with Birmingham City Council's commissioning framework and work directly with their adult social care team. We understand their funding processes and quality standards across all 277 local care homes.</p>
                     </div>
                 </div>
                 
@@ -933,7 +1144,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-content">
-                        <p class="text-lg text-warm-grey">78% of local care homes are independent operators (vs national average 45%), average costs £597/week for residential care, strong local community focus, and excellent CQC ratings. The city offers significantly better value than London alternatives.</p>
+                        <p class="text-lg text-text-muted">78% of local care homes are independent operators (vs national average 45%), average costs £597/week for residential care, strong local community focus, and excellent CQC ratings. The city offers significantly better value than London alternatives.</p>
                     </div>
                 </div>
                 
@@ -943,7 +1154,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-content">
-                        <p class="text-lg text-warm-grey">Edgbaston leads with 42 care homes and highest capacity, followed by Hall Green (38 quality providers) and Ladywood (35 care homes). We have detailed analysis of quality and availability across every ward to match your specific needs.</p>
+                        <p class="text-lg text-text-muted">Edgbaston leads with 42 care homes and highest capacity, followed by Hall Green (38 quality providers) and Ladywood (35 care homes). We have detailed analysis of quality and availability across every ward to match your specific needs.</p>
                     </div>
                 </div>
                 
@@ -953,7 +1164,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-content">
-                        <p class="text-lg text-warm-grey">Yes, we're official partners with Birmingham NHS Trust and provide direct support for hospital discharge planning. Our team works alongside their discharge coordinators to ensure smooth transitions from local hospitals to appropriate care placements.</p>
+                        <p class="text-lg text-text-muted">Yes, we're official partners with Birmingham NHS Trust and provide direct support for hospital discharge planning. Our team works alongside their discharge coordinators to ensure smooth transitions from local hospitals to appropriate care placements.</p>
                     </div>
                 </div>
                 
@@ -963,7 +1174,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-content">
-                        <p class="text-lg text-warm-grey">Contact us directly for urgent discharge situations. We offer 24h priority service and can provide initial care home guidance within hours when families face immediate discharge deadlines from local hospitals.</p>
+                        <p class="text-lg text-text-muted">Contact us directly for urgent discharge situations. We offer 24h priority service and can provide initial care home guidance within hours when families face immediate discharge deadlines from local hospitals.</p>
                     </div>
                 </div>
             </div>
@@ -971,7 +1182,7 @@
     </section>
 
     <!-- Final CTA -->
-    <section class="py-24 bg-gradient-to-br from-primary-navy to-nhs-blue text-white relative overflow-hidden">
+    <section class="py-24 bg-gradient-to-br from-birmingham-blue to-birmingham-gold text-white relative overflow-hidden">
         <div class="floating-elements"></div>
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div class="fade-in">
@@ -984,7 +1195,7 @@
                     <button class="primary-cta" role="button">
                         Get Local Care Report - £99
                     </button>
-                    <button class="secondary-cta bg-transparent border-white text-white hover:bg-white hover:text-primary-navy" role="button">
+                    <button class="secondary-cta bg-transparent border-white text-white hover:bg-white hover:text-birmingham-blue" role="button">
                         Download Local Guide
                     </button>
                 </div>
@@ -1030,7 +1241,9 @@
                     <h4 class="font-bold mb-6">Contact</h4>
                     <ul class="space-y-3 text-gray-300">
                         <li>📧 <a href="mailto:birmingham@rightcarehome.co.uk" class="underline hover:text-white">birmingham@rightcarehome.co.uk</a></li>
-                        <li>🏥 NHS partnerships nationwide</li>
+                        <li>📞 Local helpline available</li>
+                        <li>🕗 Monday-Friday 9AM-6PM</li>
+                        <li>🏥 Hospital discharge support 24/7</li>
                     </ul>
                 </div>
             </div>
@@ -1093,7 +1306,7 @@
             counterObserver.observe(counter);
         });
 
-        // Enhanced FAQ functionality
+        // Enhanced FAQ functionality with improved animations
         document.querySelectorAll('.faq-button').forEach(button => {
             button.addEventListener('click', () => {
                 const faqItem = button.closest('.faq-item');
@@ -1125,12 +1338,13 @@
             });
         });
 
-        // Enhanced form submission
+        // Enhanced form submission with validation
         document.getElementById('guide-form').addEventListener('submit', (e) => {
             e.preventDefault();
             const email = e.target.querySelector('input[type="email"]').value;
             
             if (email && email.includes('@')) {
+                // Success animation
                 const button = e.target.querySelector('button');
                 const originalText = button.textContent;
                 button.textContent = 'Sending Local Guide...';
@@ -1151,7 +1365,20 @@
         });
 
         // Enhanced button interactions
-        document.querySelectorAll('.primary-cta, .secondary-cta, .emergency-cta').forEach(button => {
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('Get') || button.textContent.includes('Local')) {
+                button.addEventListener('click', () => {
+                    // Add click animation
+                    button.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        button.style.transform = '';
+                    }, 150);
+                });
+            }
+        });
+
+        // Add loading states and micro-interactions
+        document.querySelectorAll('.primary-cta, .secondary-cta').forEach(button => {
             button.addEventListener('mouseenter', () => {
                 button.style.transform = 'translateY(-2px)';
             });
