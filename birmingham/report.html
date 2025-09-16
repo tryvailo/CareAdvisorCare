@@ -9,6 +9,64 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-navy': '#1e293b',
+                        'primary-blue': '#2563eb',
+                        'nhs-blue': '#005EB8',
+                        'caring-green': '#059669',
+                        'warmth-orange': '#f59e0b',
+                        'soft-coral': '#fb7185',
+                        'warm-grey': '#64748b',
+                        'light-cream': '#fefce8',
+                        'birmingham-blue': '#005EB8',
+                        'birmingham-gold': '#d4af37',
+                        'text-dark': '#1f2937',
+                        'text-muted': '#64748b',
+                        'healthcare-blue': '#005EB8'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+                        'bounce-gentle': 'bounceGentle 1s ease-in-out infinite',
+                        'gradient': 'gradient 3s ease infinite',
+                        'scale-in': 'scaleIn 0.3s ease-out forwards'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(245, 158, 11, 0.3)' },
+                            '50%': { boxShadow: '0 0 30px rgba(245, 158, 11, 0.6)' }
+                        },
+                        bounceGentle: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' }
+                        },
+                        gradient: {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                            '100%': { backgroundPosition: '0% 50%' }
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.95)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,31 +75,68 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
+        /* STEP 1 & 2: Enhanced Typography and Base Styles for Elderly Users */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fdf8f5;
-            color: #1a1a1a;
-            line-height: 1.7;
-            font-size: 1.125rem;
-            font-weight: 600;
+            background-color: #fefce8;
+            color: #1f2937;
+            line-height: 1.8;
+            font-size: 1.25rem;
+            font-weight: 500;
+            scroll-behavior: smooth;
         }
         
+        /* Improved readability for elderly users */
+        h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.2;
+            font-weight: 800;
+            color: #1f2937;
+        }
+        
+        h2 {
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+            line-height: 1.3;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        
+        h3 {
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            line-height: 1.4;
+            font-weight: 650;
+            color: #1f2937;
+        }
+        
+        h4 {
+            font-size: clamp(1.125rem, 2vw, 1.375rem);
+            line-height: 1.4;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        p, li, span {
+            font-size: 1.125rem;
+            line-height: 1.75;
+        }
+        
+        /* STEP 1: Updated Color Scheme - Warmer, More Trustworthy */
         .report-header {
-            background: linear-gradient(135deg, #003f7f 0%, #0f766e 100%);
+            background: linear-gradient(135deg, #005EB8 0%, #059669 100%);
+            background-size: 200% 200%;
+            animation: gradient 8s ease infinite;
             color: white;
         }
         
+        /* STEP 4 & 5: Enhanced Card Designs with Better Visual Hierarchy */
         .ranking-card {
-            transition: all 0.3s ease;
-            border: 2px solid #d1d5db;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid #e5e7eb;
             position: relative;
             overflow: hidden;
             background: #ffffff;
-        }
-        
-        .ranking-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
         }
         
         .ranking-card::before {
@@ -51,371 +146,631 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #003f7f, #d4af37);
+            background: linear-gradient(90deg, #005EB8, #d4af37);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .ranking-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+            border-color: #f59e0b;
+        }
+        
+        .ranking-card:hover::before {
+            transform: scaleX(1);
         }
         
         .top-recommendation {
-            border-color: #003f7f;
-            background: linear-gradient(135deg, #fdf8f5 0%, #eff6ff 100%);
+            border-color: #005EB8;
+            background: linear-gradient(135deg, #fefce8 0%, #eff6ff 100%);
+            animation: pulse-glow 3s ease-in-out infinite;
         }
         
+        /* STEP 1: Updated Score Badge */
         .score-badge {
-            background: linear-gradient(135deg, #003f7f 0%, #d4af37 100%);
+            background: linear-gradient(135deg, #005EB8 0%, #d4af37 100%);
             color: white;
-            padding: 10px 18px;
-            border-radius: 20px;
-            font-weight: bold;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 700;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(0, 63, 127, 0.3);
-        }
-        
-        .methodology-card {
-            background: #ffffff;
-            border-left: 4px solid #003f7f;
-            padding: 30px;
-            border-radius: 12px;
-            margin: 20px 0;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 94, 184, 0.3);
+            font-size: 1rem;
             transition: all 0.3s ease;
         }
         
-        .methodology-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+        .score-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 94, 184, 0.4);
         }
         
+        /* STEP 5: Enhanced Methodology Cards */
+        .methodology-card {
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-left: 4px solid #005EB8;
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 1.5rem 0;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .methodology-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b, #059669);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .methodology-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+            border-color: #f59e0b;
+        }
+        
+        .methodology-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        /* STEP 1: Updated Expert Tips with Warmer Colors */
         .expert-tip {
-            background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
             color: white;
-            padding: 24px;
-            border-radius: 12px;
-            margin: 20px 0;
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .expert-tip:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(5, 150, 105, 0.4);
         }
         
         .action-item {
             background: #f0fdf4;
             border-left: 4px solid #059669;
-            padding: 20px;
-            margin: 16px 0;
-            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-size: 1.125rem;
         }
         
+        .action-item:hover {
+            background: #ecfdf5;
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.1);
+        }
+        
+        /* STEP 4: Enhanced Tables */
         .comparison-table {
             border-collapse: separate;
             border-spacing: 0;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
         }
         
-        .comparison-table th,
+        .comparison-table th {
+            background: linear-gradient(135deg, #005EB8 0%, #0066cc 100%);
+            color: white;
+            padding: 1.5rem;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+        
         .comparison-table td {
-            padding: 20px;
+            padding: 1.25rem;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
         }
         
+        .comparison-table tr:hover td {
+            background: #f8fafc;
+            transform: scale(1.01);
+        }
+        
+        /* STEP 4: Enhanced Progress Bars */
         .progress-bar {
-            background: #d1d5db;
+            background: #e5e7eb;
             border-radius: 10px;
-            height: 10px;
+            height: 12px;
             overflow: hidden;
+            position: relative;
         }
         
         .progress-fill {
-            background: linear-gradient(90deg, #003f7f, #d4af37);
+            background: linear-gradient(90deg, #005EB8, #d4af37);
             height: 100%;
             border-radius: 10px;
-            transition: width 0.5s ease;
+            transition: width 0.8s ease;
+            position: relative;
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
         }
         
         .confidence-indicator {
             background: #dcfce7;
             color: #166534;
-            padding: 6px 14px;
-            border-radius: 15px;
+            padding: 8px 16px;
+            border-radius: 20px;
             font-size: 1rem;
             font-weight: 600;
+            transition: all 0.3s ease;
         }
         
+        .confidence-indicator:hover {
+            background: #bbf7d0;
+            transform: scale(1.05);
+        }
+        
+        /* STEP 1: Updated Guarantee Section */
         .guarantee-seal {
             background: linear-gradient(135deg, #059669 0%, #047857 100%);
             color: white;
-            padding: 24px;
-            border-radius: 15px;
+            padding: 2.5rem;
+            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.3);
+            box-shadow: 0 10px 30px rgba(5, 150, 105, 0.3);
+            transition: all 0.3s ease;
         }
         
+        .guarantee-seal:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(5, 150, 105, 0.4);
+        }
+        
+        /* STEP 3: Enhanced PDF Download Button */
         .pdf-download-btn {
-            background: linear-gradient(135deg, #003f7f 0%, #d4af37 100%);
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            border: 2px solid #003f7f;
+            border: 2px solid #f59e0b;
             font-weight: 700;
-            padding: 16px 28px;
-            border-radius: 12px;
+            padding: 18px 32px;
+            border-radius: 16px;
             transition: all 0.3s ease;
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 24px;
+            right: 24px;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 63, 127, 0.3);
-            min-height: 48px;
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+            min-height: 56px;
             cursor: pointer;
+            font-size: 1.125rem;
         }
         
         .pdf-download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0, 63, 127, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(245, 158, 11, 0.5);
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
         }
         
         .pdf-download-btn:focus {
-            outline: 3px solid #003f7f;
-            outline-offset: 2px;
+            outline: 3px solid #f59e0b;
+            outline-offset: 4px;
         }
         
+        .pdf-download-btn:active {
+            transform: translateY(-2px);
+        }
+        
+        /* STEP 8: Enhanced Calculator Section */
         .calculator-section {
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            border: 2px solid #0f766e;
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin: 2.5rem 0;
+            border: 2px solid #059669;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .calculator-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b, #059669);
         }
         
         .calc-card {
             background: #ffffff;
-            border-radius: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
             padding: 2rem;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-            margin-bottom: 1.5rem;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+            transition: all 0.4s ease;
         }
         
+        .calc-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+            border-color: #f59e0b;
+        }
+        
+        /* STEP 8: Enhanced Scenario Buttons */
         .scenario-btn {
             transition: all 0.3s ease;
             cursor: pointer;
-            min-height: 48px;
-            padding: 16px 20px;
+            min-height: 56px;
+            padding: 18px 24px;
+            border-radius: 12px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scenario-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #005EB8, #0066cc);
+            transition: width 0.3s ease;
+            z-index: -1;
         }
         
         .scenario-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+        
+        .scenario-btn:hover::before {
+            width: 100%;
         }
         
         .scenario-btn:focus {
-            outline: 3px solid #003f7f;
+            outline: 3px solid #f59e0b;
             outline-offset: 2px;
         }
         
         .scenario-btn.active {
-            background: #003f7f !important;
-            color: white !important;
-            border-color: #003f7f !important;
-        }
-        
-        .print-friendly {
-            print-color-adjust: exact;
-            -webkit-print-color-adjust: exact;
-        }
-        
-        .birmingham-badge {
-            background: linear-gradient(135deg, #003f7f 0%, #d4af37 100%);
+            background: linear-gradient(135deg, #005EB8 0%, #0066cc 100%);
             color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: bold;
-            display: inline-block;
+            border-color: #005EB8;
+            transform: scale(1.02);
         }
         
-        /* Enhanced form controls */
+        /* STEP 6: Enhanced Form Controls for Accessibility */
         select, input[type="range"] {
-            min-height: 48px;
+            min-height: 56px;
             font-size: 1.125rem;
             border: 2px solid #d1d5db;
-            border-radius: 8px;
-            padding: 12px 16px;
-        }
-        
-        select:focus, input:focus {
-            outline: 3px solid #003f7f;
-            outline-offset: 2px;
-            border-color: #003f7f;
-        }
-        
-        /* Button enhancements */
-        button {
-            min-height: 48px;
-            font-size: 1.125rem;
-            cursor: pointer;
+            border-radius: 12px;
+            padding: 16px 20px;
             transition: all 0.3s ease;
         }
         
+        select:focus, input:focus {
+            outline: 3px solid #f59e0b;
+            outline-offset: 2px;
+            border-color: #005EB8;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+        }
+        
+        select:hover, input:hover {
+            border-color: #005EB8;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* STEP 3: Enhanced Button Styles */
+        button {
+            min-height: 56px;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+        
         button:focus {
-            outline: 3px solid #003f7f;
+            outline: 3px solid #f59e0b;
             outline-offset: 2px;
         }
         
-        /* Link styles */
+        button:hover {
+            transform: translateY(-2px);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        /* STEP 6: Enhanced Link Accessibility */
         a {
             text-decoration: underline;
-            color: #003f7f;
+            color: #005EB8;
+            transition: all 0.3s ease;
+            font-weight: 600;
         }
         
         a:hover {
-            color: #1d4ed8;
+            color: #f59e0b;
+            transform: translateX(2px);
         }
         
-        /* Heading improvements */
-        h1 {
-            font-size: 2.5rem;
-            line-height: 1.2;
-            font-weight: 800;
+        a:focus {
+            outline: 3px solid #f59e0b;
+            outline-offset: 2px;
+            border-radius: 4px;
         }
         
-        h2 {
-            font-size: 2.25rem;
-            line-height: 1.3;
-            font-weight: 700;
-        }
-        
-        h3 {
-            font-size: 1.5rem;
-            line-height: 1.4;
-            font-weight: 600;
-        }
-        
-        h4 {
-            font-size: 1.25rem;
-            line-height: 1.4;
-            font-weight: 600;
-        }
-        
-        /* Enhanced spacing */
+        /* STEP 4: Enhanced Visual Hierarchy */
         section {
-            padding-top: calc(2rem * 1.25);
-            padding-bottom: calc(2rem * 1.25);
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            position: relative;
+        }
+        
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b, #059669);
+            border-radius: 2px;
+            opacity: 0.7;
         }
         
         .grid {
             gap: 2rem;
         }
         
+        /* STEP 1: Birmingham Badge Enhancement */
+        .birmingham-badge {
+            background: linear-gradient(135deg, #005EB8 0%, #d4af37 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(0, 94, 184, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .birmingham-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 18px rgba(0, 94, 184, 0.4);
+        }
+        
+        /* STEP 3: Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .scale-in {
+            animation: scale-in 0.3s ease-out forwards;
+        }
+        
+        /* STEP 8: Chart Container Enhancement */
+        #cost-chart {
+            padding: 1rem;
+            border-radius: 12px;
+        }
+        
+        /* STEP 7: Enhanced Mobile Responsiveness */
         @media print {
             .no-print {
-                display: none;
+                display: none !important;
             }
             
             body {
-                background: white;
-                font-size: 1rem;
+                background: white !important;
+                font-size: 1rem !important;
             }
             
             .ranking-card {
-                border: 2px solid #d1d5db;
+                border: 2px solid #d1d5db !important;
                 break-inside: avoid;
-                margin-bottom: 24px;
+                margin-bottom: 2rem !important;
             }
             
             .pdf-download-btn {
-                display: none;
+                display: none !important;
+            }
+            
+            section::before {
+                display: none !important;
             }
         }
         
         @media (max-width: 768px) {
+            body {
+                font-size: 1.125rem;
+            }
+            
             .pdf-download-btn {
                 position: relative;
                 top: auto;
                 right: auto;
                 width: 100%;
-                margin: 24px 0;
+                margin: 2rem 0;
                 text-align: center;
+                font-size: 1rem;
+                padding: 16px 24px;
             }
             
-            .ranking-card {
-                margin-bottom: 2rem;
-                padding: 2rem !important;
-            }
-            
-            .methodology-card {
-                padding: 1.5rem !important;
-            }
-            
-            .expert-tip {
-                padding: 1.5rem !important;
-            }
-            
-            .calculator-section {
-                padding: 1.5rem !important;
-            }
-            
+            .ranking-card,
+            .methodology-card,
+            .expert-tip,
+            .calculator-section,
             .calc-card {
                 padding: 1.5rem !important;
-            }
-            
-            .comparison-table {
-                font-size: 1rem;
+                margin-bottom: 2rem !important;
             }
             
             .comparison-table th,
             .comparison-table td {
                 padding: 12px !important;
-            }
-            
-            h1 {
-                font-size: 2rem !important;
-            }
-            
-            h2 {
-                font-size: 1.875rem !important;
-            }
-            
-            body {
-                font-size: 1rem;
+                font-size: 1rem !important;
             }
             
             section {
-                padding-top: calc(1.5rem * 1.25) !important;
-                padding-bottom: calc(1.5rem * 1.25) !important;
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+            
+            .scenario-btn {
+                min-height: 48px !important;
+                font-size: 1rem !important;
+                padding: 14px 20px !important;
+            }
+            
+            select, input {
+                min-height: 48px !important;
+                font-size: 1rem !important;
+                padding: 12px 16px !important;
             }
         }
         
         @media (max-width: 480px) {
-            h1 {
-                font-size: 1.75rem !important;
+            body {
+                font-size: 1rem;
             }
             
-            h2 {
-                font-size: 1.5rem !important;
+            .ranking-card,
+            .methodology-card,
+            .expert-tip,
+            .calculator-section,
+            .calc-card {
+                padding: 1.25rem !important;
             }
+            
+            .comparison-table {
+                font-size: 0.9rem !important;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 8px !important;
+            }
+        }
+        
+        /* STEP 6: Enhanced Focus Indicators for Screen Readers */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* STEP 3: Loading States */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+            position: relative;
+        }
+        
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            border: 2px solid #f59e0b;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        /* STEP 4: Enhanced Visual Feedback */
+        .highlight-update {
+            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.2), transparent);
+            animation: highlight 0.6s ease-out;
+        }
+        
+        @keyframes highlight {
+            0% { background-position: -200px 0; }
+            100% { background-position: 200px 0; }
         }
     </style>
 </head>
 
 <body class="print-friendly">
+    <!-- Skip Link for Screen Reader Users -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-warmth-orange text-white px-4 py-2 rounded">Skip to main content</a>
+    
     <!-- PDF Download Button -->
-    <button onclick="downloadPDF()" class="pdf-download-btn no-print" role="button" aria-label="Download Birmingham Care Report PDF">
+    <button onclick="downloadPDF()" class="pdf-download-btn no-print" role="button" aria-label="Download Birmingham Care Report PDF" tabindex="1">
         📄 Download PDF Report
     </button>
 
     <!-- Header -->
-    <header class="report-header py-10 md:py-16">
+    <header class="report-header py-12 md:py-20" role="banner">
         <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8 md:mb-10">
-                <div class="mb-6 md:mb-0">
-                    <h1 class="text-3xl md:text-4xl font-bold">RightCareHome Birmingham</h1>
-                    <p class="text-blue-200 text-lg">Personal Care Home Placement Report</p>
-                    <div class="birmingham-badge mt-2">Birmingham NHS Trust Partner</div>
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-10 md:mb-12 fade-in">
+                <div class="mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold">RightCareHome Birmingham</h1>
+                    <p class="text-blue-100 text-xl md:text-2xl mt-2">Personal Care Home Placement Report</p>
+                    <div class="birmingham-badge mt-4">Birmingham NHS Trust Partner</div>
                 </div>
                 <div class="text-left md:text-right">
-                    <div class="bg-white/20 rounded-lg p-4 md:p-5">
-                        <p class="text-base text-blue-200">Report Date</p>
-                        <p class="font-bold text-lg">13 September 2025</p>
+                    <div class="bg-white/20 rounded-xl p-6 md:p-7 backdrop-blur-sm">
+                        <p class="text-lg text-blue-200">Report Date</p>
+                        <p class="font-bold text-2xl">13 September 2025</p>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-white/10 rounded-xl p-6 md:p-8">
-                <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-5">Personal Care Home Placement Report for the Thompson Family</h2>
-                <p class="text-lg md:text-xl text-blue-100">
+            <div class="bg-white/15 backdrop-blur-sm rounded-xl p-8 md:p-10 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-7">Personal Care Home Placement Report for the Thompson Family</h2>
+                <p class="text-xl md:text-2xl text-blue-50 leading-relaxed">
                     Expert Birmingham recommendations for Margaret Thompson (78 years) requiring Type 2 diabetes management, 
                     mobility assistance (walker), and mild cognitive impairment support in Edgbaston area
                 </p>
@@ -424,45 +779,45 @@
     </header>
 
     <!-- Executive Summary -->
-    <section class="py-10 md:py-16 bg-white">
+    <section class="py-12 md:py-20 bg-white" id="main-content" role="main">
         <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="text-center mb-10 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 md:mb-5">Executive Summary</h2>
-                <p class="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto">
+            <div class="text-center mb-12 md:mb-20 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 md:mb-8">Executive Summary</h2>
+                <p class="text-2xl md:text-3xl text-gray-600 max-w-5xl mx-auto leading-relaxed">
                     This report transforms weeks of stressful research across Birmingham's 277 care homes into a 
                     clear, specialist-verified shortlist—delivered in just 48 hours with Birmingham NHS Trust expertise
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8 md:gap-10 mb-10 md:mb-16">
-                <div class="methodology-card">
+            <div class="grid md:grid-cols-3 gap-10 md:gap-12 mb-12 md:mb-20">
+                <div class="methodology-card fade-in" style="animation-delay: 0.1s">
                     <div class="text-center">
-                        <div class="text-4xl md:text-5xl mb-4 md:mb-5">⚡</div>
-                        <h3 class="text-2xl md:text-3xl font-bold text-blue-700">48 Hours</h3>
-                        <p class="text-gray-600 text-lg">From enquiry to Birmingham specialist report</p>
+                        <div class="text-5xl md:text-6xl mb-6 md:mb-7">⚡</div>
+                        <h3 class="text-3xl md:text-4xl font-bold text-birmingham-blue mb-3">48 Hours</h3>
+                        <p class="text-gray-600 text-xl">From enquiry to Birmingham specialist report</p>
                     </div>
                 </div>
                 
-                <div class="methodology-card">
+                <div class="methodology-card fade-in" style="animation-delay: 0.2s">
                     <div class="text-center">
-                        <div class="text-4xl md:text-5xl mb-4 md:mb-5">🎯</div>
-                        <h3 class="text-2xl md:text-3xl font-bold text-green-600">5 Precise</h3>
-                        <p class="text-gray-600 text-lg">Birmingham recommendations instead of hundreds</p>
+                        <div class="text-5xl md:text-6xl mb-6 md:mb-7">🎯</div>
+                        <h3 class="text-3xl md:text-4xl font-bold text-caring-green mb-3">5 Precise</h3>
+                        <p class="text-gray-600 text-xl">Birmingham recommendations instead of hundreds</p>
                     </div>
                 </div>
                 
-                <div class="methodology-card">
+                <div class="methodology-card fade-in" style="animation-delay: 0.3s">
                     <div class="text-center">
-                        <div class="text-4xl md:text-5xl mb-4 md:mb-5">🔍</div>
-                        <h3 class="text-2xl md:text-3xl font-bold text-teal-600">100% Independent</h3>
-                        <p class="text-gray-600 text-lg">No Birmingham care home commissions</p>
+                        <div class="text-5xl md:text-6xl mb-6 md:mb-7">🔍</div>
+                        <h3 class="text-3xl md:text-4xl font-bold text-warmth-orange mb-3">100% Independent</h3>
+                        <p class="text-gray-600 text-xl">No Birmingham care home commissions</p>
                     </div>
                 </div>
             </div>
             
-            <div class="expert-tip">
-                <h3 class="text-xl md:text-2xl font-bold mb-4">🎯 Our Primary Birmingham Recommendation</h3>
-                <p class="text-lg md:text-xl">
+            <div class="expert-tip fade-in">
+                <h3 class="text-2xl md:text-3xl font-bold mb-6">🎯 Our Primary Birmingham Recommendation</h3>
+                <p class="text-xl md:text-2xl leading-relaxed">
                     <strong>Manor House Care Home</strong> emerges as our primary recommendation due to its outstanding dementia expertise 
                     and diabetes management protocols—perfectly addressing Margaret's critical needs. Their registered nurse adjusts 
                     medication daily, and they provide on-site physiotherapy seven days a week, just 8.2 miles from your Edgbaston location.
@@ -472,109 +827,109 @@
     </section>
 
     <!-- Top 5 Birmingham Recommendations -->
-    <section class="py-10 md:py-20 bg-gray-50">
+    <section class="py-12 md:py-24 bg-light-cream">
         <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="text-center mb-10 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 md:mb-5">Top 5 Birmingham Care Home Recommendations</h2>
-                <p class="text-xl md:text-2xl text-gray-600">
+            <div class="text-center mb-12 md:mb-20 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 md:mb-8">Top 5 Birmingham Care Home Recommendations</h2>
+                <p class="text-2xl md:text-3xl text-gray-600 leading-relaxed">
                     Five Birmingham care homes expertly matched to Margaret's specific requirements
                 </p>
             </div>
             
             <!-- Recommendation #1 -->
-            <div class="ranking-card top-recommendation bg-white rounded-xl p-6 md:p-10 mb-8 md:mb-10">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-6 md:mb-8">
-                    <div class="mb-6 md:mb-0">
-                        <div class="flex items-center mb-4 md:mb-5">
-                            <div class="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-blue-800 to-blue-900 text-white rounded-full flex items-center justify-center text-2xl md:text-3xl font-bold mr-4 md:mr-5">1</div>
+            <div class="ranking-card top-recommendation bg-white rounded-xl p-8 md:p-12 mb-10 md:mb-12 fade-in" role="article" aria-labelledby="rec1-title">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-8 md:mb-10">
+                    <div class="mb-8 md:mb-0">
+                        <div class="flex items-center mb-6 md:mb-7">
+                            <div class="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-nhs-blue to-birmingham-blue text-white rounded-full flex items-center justify-center text-3xl md:text-4xl font-bold mr-6 md:mr-7 shadow-lg">1</div>
                             <div>
-                                <h3 class="text-2xl md:text-3xl font-bold text-gray-800">Manor House Care Home</h3>
-                                <p class="text-gray-600 text-lg">Acocks Green, Birmingham, 8.2 miles from your Edgbaston location</p>
+                                <h3 id="rec1-title" class="text-3xl md:text-4xl font-bold text-gray-800">Manor House Care Home</h3>
+                                <p class="text-gray-600 text-xl mt-2">Acocks Green, Birmingham, 8.2 miles from your Edgbaston location</p>
                             </div>
                         </div>
                         <div class="score-badge">Match: 96% (38/40 points) | CQC Outstanding</div>
                     </div>
                     <div class="text-left md:text-right">
-                        <p class="text-3xl md:text-4xl font-bold text-blue-800">£1,200</p>
-                        <p class="text-gray-600 text-lg">per week</p>
+                        <p class="text-4xl md:text-5xl font-bold text-birmingham-blue">£1,200</p>
+                        <p class="text-gray-600 text-xl">per week</p>
                     </div>
                 </div>
                 
-                <div class="grid md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">
+                <div class="grid md:grid-cols-3 gap-8 md:gap-10 mb-8 md:mb-10">
                     <div>
-                        <h4 class="font-bold text-teal-600 mb-3 text-lg">Medical Critical (40%)</h4>
-                        <div class="progress-bar mb-3">
-                            <div class="progress-fill" style="width: 95%"></div>
+                        <h4 class="font-bold text-caring-green mb-4 text-xl">Medical Critical (40%)</h4>
+                        <div class="progress-bar mb-4">
+                            <div class="progress-fill" style="width: 95%" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="Medical care score 95%"></div>
                         </div>
-                        <p class="text-base text-gray-600">38/40 points • <span class="confidence-indicator">Birmingham Verified</span></p>
+                        <p class="text-lg text-gray-600">38/40 points • <span class="confidence-indicator">Birmingham Verified</span></p>
                     </div>
                     <div>
-                        <h4 class="font-bold text-teal-600 mb-3 text-lg">Personal & Cultural (35%)</h4>
-                        <div class="progress-bar mb-3">
-                            <div class="progress-fill" style="width: 96%"></div>
+                        <h4 class="font-bold text-caring-green mb-4 text-xl">Personal & Cultural (35%)</h4>
+                        <div class="progress-bar mb-4">
+                            <div class="progress-fill" style="width: 96%" role="progressbar" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100" aria-label="Personal and cultural fit score 96%"></div>
                         </div>
-                        <p class="text-base text-gray-600">24/25 points • <span class="confidence-indicator">Phone Verified</span></p>
+                        <p class="text-lg text-gray-600">24/25 points • <span class="confidence-indicator">Phone Verified</span></p>
                     </div>
                     <div>
-                        <h4 class="font-bold text-teal-600 mb-3 text-lg">Comfort & Environment (25%)</h4>
-                        <div class="progress-bar mb-3">
-                            <div class="progress-fill" style="width: 95%"></div>
+                        <h4 class="font-bold text-caring-green mb-4 text-xl">Comfort & Environment (25%)</h4>
+                        <div class="progress-bar mb-4">
+                            <div class="progress-fill" style="width: 95%" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="Comfort and environment score 95%"></div>
                         </div>
-                        <p class="text-base text-gray-600">19/20 points • <span class="confidence-indicator">Site Surveyed</span></p>
+                        <p class="text-lg text-gray-600">19/20 points • <span class="confidence-indicator">Site Surveyed</span></p>
                     </div>
                 </div>
                 
-                <div class="bg-blue-50 rounded-lg p-6 md:p-8 mb-6 md:mb-8">
-                    <h4 class="font-bold text-gray-800 mb-4 text-lg">🎯 Why Manor House Care Home is ideal for Margaret:</h4>
-                    <ul class="space-y-3">
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-8 md:p-10 mb-8 md:mb-10">
+                    <h4 class="font-bold text-gray-800 mb-6 text-xl">🎯 Why Manor House Care Home is ideal for Margaret:</h4>
+                    <ul class="space-y-4">
                         <li class="flex items-start">
-                            <span class="text-green-600 mr-4 font-bold text-xl">✓</span>
-                            <span><strong>Diabetes Management (10/10):</strong> Registered nurse adjusts medication daily; confirmed by Birmingham NHS Trust (98% confidence)</span>
+                            <span class="text-caring-green mr-5 font-bold text-2xl">✓</span>
+                            <span class="text-lg"><strong>Diabetes Management (10/10):</strong> Registered nurse adjusts medication daily; confirmed by Birmingham NHS Trust (98% confidence)</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-green-600 mr-4 font-bold text-xl">✓</span>
-                            <span><strong>Daily Physiotherapy (10/10):</strong> On-site physiotherapy seven days a week; verified via provider survey (95% confidence)</span>
+                            <span class="text-caring-green mr-5 font-bold text-2xl">✓</span>
+                            <span class="text-lg"><strong>Daily Physiotherapy (10/10):</strong> On-site physiotherapy seven days a week; verified via provider survey (95% confidence)</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-green-600 mr-4 font-bold text-xl">✓</span>
-                            <span><strong>Cognitive Support (9/10):</strong> Specialized dementia care unit with memory activities; Birmingham Council approved (95% confidence)</span>
+                            <span class="text-caring-green mr-5 font-bold text-2xl">✓</span>
+                            <span class="text-lg"><strong>Cognitive Support (9/10):</strong> Specialized dementia care unit with memory activities; Birmingham Council approved (95% confidence)</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-green-600 mr-4 font-bold text-xl">✓</span>
-                            <span><strong>Cultural Fit (9/10):</strong> Traditional British meals, Church of England chaplaincy, English-speaking care team (100% confidence)</span>
+                            <span class="text-caring-green mr-5 font-bold text-2xl">✓</span>
+                            <span class="text-lg"><strong>Cultural Fit (9/10):</strong> Traditional British meals, Church of England chaplaincy, English-speaking care team (100% confidence)</span>
                         </li>
                     </ul>
                 </div>
                 
-                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-                    <h4 class="font-bold text-yellow-800 mb-3">🚌 Birmingham Transport Links</h4>
-                    <p class="text-yellow-700">Accessible via Birmingham bus routes 11 and 27, near A38. Family visits from Edgbaston take approximately 20 minutes by car, near Calthorpe Park.</p>
+                <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-8">
+                    <h4 class="font-bold text-yellow-800 mb-4 text-xl">🚌 Birmingham Transport Links</h4>
+                    <p class="text-yellow-700 text-lg leading-relaxed">Accessible via Birmingham bus routes 11 and 27, near A38. Family visits from Edgbaston take approximately 20 minutes by car, near Calthorpe Park.</p>
                 </div>
             </div>
 
             <!-- Additional Birmingham recommendations summary cards -->
-            <div class="grid md:grid-cols-2 gap-8 mb-10">
-                <div class="methodology-card">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-bold text-gray-800">2. Digby Manor Care Home</h3>
+            <div class="grid md:grid-cols-2 gap-10 mb-12">
+                <div class="methodology-card fade-in">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800">2. Digby Manor Care Home</h3>
                         <div class="score-badge">93% Match</div>
                     </div>
-                    <p class="text-gray-600 mb-3 text-lg">Strong diabetes protocols and family satisfaction</p>
-                    <div class="flex justify-between text-base">
+                    <p class="text-gray-600 mb-4 text-xl">Strong diabetes protocols and family satisfaction</p>
+                    <div class="flex justify-between text-lg">
                         <span>£1,050/week • 6.5 miles • Edgbaston</span>
                         <span class="text-amber-600 font-bold">CQC: Good</span>
                     </div>
                 </div>
 
-                <div class="methodology-card">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-bold text-gray-800">3. Bishops Manor Care Home</h3>
+                <div class="methodology-card fade-in">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800">3. Bishops Manor Care Home</h3>
                         <div class="score-badge">91% Match</div>
                     </div>
-                    <p class="text-gray-600 mb-3 text-lg">Outstanding dementia expertise, Birmingham</p>
-                    <div class="flex justify-between text-base">
+                    <p class="text-gray-600 mb-4 text-xl">Outstanding dementia expertise, Birmingham</p>
+                    <div class="flex justify-between text-lg">
                         <span>£1,150/week • 4.1 miles • Hall Green</span>
-                        <span class="text-green-600 font-bold">CQC: Good</span>
+                        <span class="text-caring-green font-bold">CQC: Good</span>
                     </div>
                 </div>
             </div>
@@ -582,21 +937,21 @@
     </section>
 
     <!-- BIRMINGHAM COST CALCULATOR SECTION -->
-    <section class="py-10 md:py-20 bg-white">
+    <section class="py-12 md:py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 md:px-6">
-            <div class="calculator-section">
-                <div class="text-center mb-10">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-5">💰 Birmingham Care Cost Calculator</h2>
-                    <p class="text-xl text-gray-600 mb-3">See the complete financial picture over 1-5 years for Birmingham care homes</p>
-                    <p class="text-base text-gray-500">Including Birmingham City Council funding options and inflation scenarios</p>
+            <div class="calculator-section fade-in">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">💰 Birmingham Care Cost Calculator</h2>
+                    <p class="text-2xl text-gray-600 mb-4">See the complete financial picture over 1-5 years for Birmingham care homes</p>
+                    <p class="text-lg text-gray-500">Including Birmingham City Council funding options and inflation scenarios</p>
                 </div>
 
                 <!-- Calculator Controls -->
-                <div class="calc-card mb-8">
-                    <div class="grid md:grid-cols-2 gap-8">
+                <div class="calc-card mb-10">
+                    <div class="grid md:grid-cols-2 gap-10">
                         <div>
-                            <label for="care-home-select" class="block font-bold text-gray-800 mb-3 text-lg">Select Birmingham Care Home:</label>
-                            <select id="care-home-select" class="w-full p-4 border-2 border-gray-200 rounded-lg focus:border-blue-800 focus:outline-none text-lg" aria-label="Choose Birmingham care home for cost calculation">
+                            <label for="care-home-select" class="block font-bold text-gray-800 mb-4 text-xl">Select Birmingham Care Home:</label>
+                            <select id="care-home-select" class="w-full" aria-label="Choose Birmingham care home for cost calculation">
                                 <option value="">Choose a Birmingham care home...</option>
                                 <option value="manor_house">Manor House Care Home (96% match) - £1,200/week</option>
                                 <option value="digby_manor">Digby Manor Care Home (93% match) - £1,050/week</option>
@@ -607,13 +962,13 @@
                         </div>
                         
                         <div>
-                            <label for="time-slider" class="block font-bold text-gray-800 mb-3 text-lg">
-                                Time Period: <span id="time-display" class="text-blue-800">3 years</span>
+                            <label for="time-slider" class="block font-bold text-gray-800 mb-4 text-xl">
+                                Time Period: <span id="time-display" class="text-birmingham-blue">3 years</span>
                             </label>
                             <input type="range" id="time-slider" min="1" max="5" step="0.5" value="3" 
-                                   class="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer mb-3"
+                                   class="w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer mb-4"
                                    aria-label="Select time period for Birmingham care cost calculation">
-                            <div class="flex justify-between text-base text-gray-500">
+                            <div class="flex justify-between text-lg text-gray-500">
                                 <span>1 year</span>
                                 <span>5 years</span>
                             </div>
@@ -623,98 +978,98 @@
 
                 <!-- Results Grid -->
                 <div id="calculator-results" style="display: none;">
-                    <div class="grid lg:grid-cols-3 gap-8 mb-10">
+                    <div class="grid lg:grid-cols-3 gap-10 mb-12">
                         
                         <!-- Basic Costs -->
                         <div class="calc-card">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-5">Basic Care Costs</h3>
-                            <div class="space-y-4">
-                                <div class="flex justify-between items-center py-3 border-b border-gray-200">
-                                    <span class="text-lg">Weekly Fee</span>
-                                    <span id="weekly-fee" class="font-bold text-blue-800 text-lg">£0</span>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Basic Care Costs</h3>
+                            <div class="space-y-6">
+                                <div class="flex justify-between items-center py-4 border-b border-gray-200">
+                                    <span class="text-xl">Weekly Fee</span>
+                                    <span id="weekly-fee" class="font-bold text-birmingham-blue text-xl">£0</span>
                                 </div>
-                                <div class="flex justify-between items-center py-3 border-b border-gray-200">
-                                    <span class="text-lg">Annual Base Cost</span>
-                                    <span id="annual-cost" class="font-bold text-blue-800 text-lg">£0</span>
+                                <div class="flex justify-between items-center py-4 border-b border-gray-200">
+                                    <span class="text-xl">Annual Base Cost</span>
+                                    <span id="annual-cost" class="font-bold text-birmingham-blue text-xl">£0</span>
                                 </div>
-                                <div class="flex justify-between items-center py-3 font-bold text-xl">
+                                <div class="flex justify-between items-center py-4 font-bold text-2xl">
                                     <span>Basic Total</span>
-                                    <span id="basic-total" class="text-blue-800">£0</span>
+                                    <span id="basic-total" class="text-birmingham-blue">£0</span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Additional Costs -->
                         <div class="calc-card">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-5">Additional Costs</h3>
-                            <div class="space-y-4">
-                                <div class="flex justify-between items-center py-3 border-b border-gray-200">
-                                    <span class="text-lg">Registration Fee</span>
-                                    <span id="registration-fee" class="font-bold text-teal-600 text-lg">£0</span>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Additional Costs</h3>
+                            <div class="space-y-6">
+                                <div class="flex justify-between items-center py-4 border-b border-gray-200">
+                                    <span class="text-xl">Registration Fee</span>
+                                    <span id="registration-fee" class="font-bold text-caring-green text-xl">£0</span>
                                 </div>
-                                <div class="flex justify-between items-center py-3 border-b border-gray-200">
-                                    <span class="text-lg">Deposit (refundable)</span>
-                                    <span id="deposit-fee" class="font-bold text-gray-600 text-lg">£0</span>
+                                <div class="flex justify-between items-center py-4 border-b border-gray-200">
+                                    <span class="text-xl">Deposit (refundable)</span>
+                                    <span id="deposit-fee" class="font-bold text-gray-600 text-xl">£0</span>
                                 </div>
-                                <div class="flex justify-between items-center py-3 border-b border-gray-200">
-                                    <span class="text-lg">Activities & Social</span>
-                                    <span id="activity-cost" class="font-bold text-teal-600 text-lg">£0</span>
+                                <div class="flex justify-between items-center py-4 border-b border-gray-200">
+                                    <span class="text-xl">Activities & Social</span>
+                                    <span id="activity-cost" class="font-bold text-caring-green text-xl">£0</span>
                                 </div>
-                                <div class="flex justify-between items-center py-3 border-b border-gray-200">
-                                    <span class="text-lg">Diabetes/Medical Extras</span>
-                                    <span id="medical-cost" class="font-bold text-teal-600 text-lg">£0</span>
+                                <div class="flex justify-between items-center py-4 border-b border-gray-200">
+                                    <span class="text-xl">Diabetes/Medical Extras</span>
+                                    <span id="medical-cost" class="font-bold text-caring-green text-xl">£0</span>
                                 </div>
-                                <div class="flex justify-between items-center py-3">
-                                    <span class="text-lg">Transport & Family Visits</span>
-                                    <span id="transport-cost" class="font-bold text-teal-600 text-lg">£0</span>
+                                <div class="flex justify-between items-center py-4">
+                                    <span class="text-xl">Transport & Family Visits</span>
+                                    <span id="transport-cost" class="font-bold text-caring-green text-xl">£0</span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Scenarios -->
                         <div class="calc-card">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-5">Cost Scenarios</h3>
-                            <div class="space-y-3 mb-6">
-                                <button class="scenario-btn w-full px-5 py-4 border-2 border-gray-200 rounded-lg text-base transition-all duration-300 hover:border-blue-800" data-scenario="optimistic" role="button">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Cost Scenarios</h3>
+                            <div class="space-y-4 mb-8">
+                                <button class="scenario-btn w-full border-2 border-gray-200 rounded-xl text-lg transition-all duration-300" data-scenario="optimistic" role="button">
                                     📈 Conservative<br>
-                                    <span class="text-sm text-gray-500">3% annual inflation</span>
+                                    <span class="text-base text-gray-500">3% annual inflation</span>
                                 </button>
-                                <button class="scenario-btn active w-full px-5 py-4 border-2 border-blue-800 bg-blue-800 text-white rounded-lg text-base transition-all duration-300" data-scenario="realistic" role="button">
+                                <button class="scenario-btn active w-full border-2 rounded-xl text-lg transition-all duration-300" data-scenario="realistic" role="button">
                                     📊 Realistic<br>
-                                    <span class="text-sm opacity-80">5% annual inflation</span>
+                                    <span class="text-base opacity-80">5% annual inflation</span>
                                 </button>
-                                <button class="scenario-btn w-full px-5 py-4 border-2 border-gray-200 rounded-lg text-base transition-all duration-300 hover:border-blue-800" data-scenario="pessimistic" role="button">
+                                <button class="scenario-btn w-full border-2 border-gray-200 rounded-xl text-lg transition-all duration-300" data-scenario="pessimistic" role="button">
                                     📉 Cautious<br>
-                                    <span class="text-sm text-gray-500">7% annual inflation</span>
+                                    <span class="text-base text-gray-500">7% annual inflation</span>
                                 </button>
                             </div>
-                            <div class="bg-green-600 text-white p-6 rounded-lg text-center">
-                                <div class="text-base opacity-90 mb-2">Total Projected Cost:</div>
-                                <div id="total-projected" class="text-3xl font-bold">£0</div>
+                            <div class="bg-gradient-to-r from-caring-green to-birmingham-gold text-white p-8 rounded-xl text-center">
+                                <div class="text-lg opacity-90 mb-3">Total Projected Cost:</div>
+                                <div id="total-projected" class="text-4xl font-bold">£0</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Cost Chart -->
-                    <div class="calc-card mb-10">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-5">Birmingham Care Cost Progression</h3>
-                        <div style="height: 400px;">
+                    <div class="calc-card mb-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Birmingham Care Cost Progression</h3>
+                        <div style="height: 450px;">
                             <canvas id="cost-chart"></canvas>
                         </div>
                     </div>
 
                     <!-- Comparison Table -->
                     <div class="calc-card">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-5">Complete Birmingham Cost Comparison</h3>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Complete Birmingham Cost Comparison</h3>
                         <div class="overflow-x-auto">
-                            <table class="comparison-table w-full">
+                            <table class="comparison-table w-full" role="table" aria-label="Birmingham care home cost comparison">
                                 <thead>
                                     <tr class="bg-blue-900 text-white">
-                                        <th class="p-4 text-left font-bold text-lg">Birmingham Care Home</th>
-                                        <th class="p-4 text-center font-bold text-lg">Weekly Fee</th>
-                                        <th class="p-4 text-center font-bold text-lg">5-Year Total</th>
-                                        <th class="p-4 text-center font-bold text-lg">Monthly Average</th>
-                                        <th class="p-4 text-center font-bold text-lg">vs London Savings</th>
+                                        <th class="p-6 text-left font-bold text-xl" scope="col">Birmingham Care Home</th>
+                                        <th class="p-6 text-center font-bold text-xl" scope="col">Weekly Fee</th>
+                                        <th class="p-6 text-center font-bold text-xl" scope="col">5-Year Total</th>
+                                        <th class="p-6 text-center font-bold text-xl" scope="col">Monthly Average</th>
+                                        <th class="p-6 text-center font-bold text-xl" scope="col">vs London Savings</th>
                                     </tr>
                                 </thead>
                                 <tbody id="comparison-tbody">
@@ -726,25 +1081,25 @@
                 </div>
 
                 <!-- Birmingham Financial Information -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                        <h4 class="font-bold text-blue-800 mb-3 text-lg">🏛️ Birmingham City Council</h4>
-                        <p class="text-base text-blue-700 mb-3">Asset limit: £23,250 for funding eligibility</p>
-                        <p class="text-base text-blue-700">Weekly funded rates: £728 residential, £831 nursing (2025/26)</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                    <div class="bg-blue-50 border border-blue-200 rounded-xl p-8">
+                        <h4 class="font-bold text-blue-800 mb-4 text-xl">🏛️ Birmingham City Council</h4>
+                        <p class="text-lg text-blue-700 mb-4">Asset limit: £23,250 for funding eligibility</p>
+                        <p class="text-lg text-blue-700">Weekly funded rates: £728 residential, £831 nursing (2025/26)</p>
                     </div>
-                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-                        <h4 class="font-bold text-yellow-800 mb-3 text-lg">💰 Birmingham Advantage</h4>
-                        <p class="text-base text-yellow-700">Birmingham families typically save £200-400 weekly vs London alternatives</p>
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-8">
+                        <h4 class="font-bold text-yellow-800 mb-4 text-xl">💰 Birmingham Advantage</h4>
+                        <p class="text-lg text-yellow-700">Birmingham families typically save £200-400 weekly vs London alternatives</p>
                     </div>
-                    <div class="bg-green-50 border border-green-200 rounded-lg p-6">
-                        <h4 class="font-bold text-green-800 mb-3 text-lg">📞 Local Support</h4>
-                        <p class="text-base text-green-700">Contact: Birmingham City Council Adult Social Care Assessment Team</p>
+                    <div class="bg-green-50 border border-green-200 rounded-xl p-8">
+                        <h4 class="font-bold text-green-800 mb-4 text-xl">📞 Local Support</h4>
+                        <p class="text-lg text-green-700">Contact: Birmingham City Council Adult Social Care Assessment Team</p>
                     </div>
                 </div>
 
                 <!-- Disclaimer -->
-                <div class="bg-red-50 border border-red-200 rounded-lg p-6 mt-8">
-                    <p class="text-base text-red-800">
+                <div class="bg-red-50 border border-red-200 rounded-xl p-8 mt-10">
+                    <p class="text-lg text-red-800">
                         <strong>Important:</strong> These estimates are based on Birmingham market rates and typical additional costs. 
                         Actual costs may vary depending on individual care requirements and care home policies. 
                         Always request detailed quotes from Birmingham care homes directly.
@@ -755,96 +1110,96 @@
     </section>
 
     <!-- Birmingham Comprehensive Comparison Table -->
-    <section class="py-10 md:py-20 bg-gray-50">
+    <section class="py-12 md:py-24 bg-light-cream">
         <div class="max-w-7xl mx-auto px-4 md:px-6">
-            <div class="text-center mb-10 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 md:mb-5">Birmingham Care Home Comparison</h2>
-                <p class="text-xl md:text-2xl text-gray-600">Complete comparison across all five recommended Birmingham care homes</p>
+            <div class="text-center mb-12 md:mb-20 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 md:mb-8">Birmingham Care Home Comparison</h2>
+                <p class="text-2xl md:text-3xl text-gray-600">Complete comparison across all five recommended Birmingham care homes</p>
             </div>
             
             <div class="overflow-x-auto">
-                <table class="comparison-table w-full bg-white" style="min-width: 1000px;">
+                <table class="comparison-table w-full bg-white" style="min-width: 1200px;" role="table" aria-label="Detailed Birmingham care home comparison">
                     <thead>
-                        <tr class="bg-blue-900 text-white">
-                            <th class="p-4 text-left font-bold text-lg">Birmingham Care Home</th>
-                            <th class="p-4 text-center font-bold text-lg">Match %</th>
-                            <th class="p-4 text-center font-bold text-lg">CQC Rating</th>
-                            <th class="p-4 text-center font-bold text-lg">Weekly Fee</th>
-                            <th class="p-4 text-center font-bold text-lg">Daily Physio</th>
-                            <th class="p-4 text-center font-bold text-lg">Cultural Fit</th>
-                            <th class="p-4 text-center font-bold text-lg">Distance</th>
+                        <tr>
+                            <th scope="col" class="text-left font-bold text-xl">Birmingham Care Home</th>
+                            <th scope="col" class="text-center font-bold text-xl">Match %</th>
+                            <th scope="col" class="text-center font-bold text-xl">CQC Rating</th>
+                            <th scope="col" class="text-center font-bold text-xl">Weekly Fee</th>
+                            <th scope="col" class="text-center font-bold text-xl">Daily Physio</th>
+                            <th scope="col" class="text-center font-bold text-xl">Cultural Fit</th>
+                            <th scope="col" class="text-center font-bold text-xl">Distance</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="border-b hover:bg-blue-25 bg-blue-50">
-                            <td class="p-4 font-bold">
+                            <td class="font-bold">
                                 <div class="flex items-center">
-                                    <div class="w-8 h-8 bg-blue-800 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">1</div>
+                                    <div class="w-10 h-10 bg-birmingham-blue text-white rounded-full flex items-center justify-center text-lg font-bold mr-4">1</div>
                                     Manor House Care Home
                                 </div>
                             </td>
-                            <td class="p-4 text-center font-bold text-blue-800 text-lg">96%</td>
-                            <td class="p-4 text-center"><span class="bg-green-600 text-white px-3 py-2 rounded text-base font-bold">Outstanding</span></td>
-                            <td class="p-4 text-center font-bold text-lg">£1,200</td>
-                            <td class="p-4 text-center text-green-600 font-bold text-lg">✓ Yes</td>
-                            <td class="p-4 text-center text-green-600 font-bold text-lg">✓ Excellent</td>
-                            <td class="p-4 text-center text-lg">8.2 mi</td>
+                            <td class="text-center font-bold text-birmingham-blue text-xl">96%</td>
+                            <td class="text-center"><span class="bg-caring-green text-white px-4 py-3 rounded-lg text-lg font-bold">Outstanding</span></td>
+                            <td class="text-center font-bold text-xl">£1,200</td>
+                            <td class="text-center text-caring-green font-bold text-xl">✓ Yes</td>
+                            <td class="text-center text-caring-green font-bold text-xl">✓ Excellent</td>
+                            <td class="text-center text-xl">8.2 mi</td>
                         </tr>
                         <tr class="border-b hover:bg-gray-50">
-                            <td class="p-4 font-bold">
+                            <td class="font-bold">
                                 <div class="flex items-center">
-                                    <div class="w-8 h-8 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">2</div>
+                                    <div class="w-10 h-10 bg-caring-green text-white rounded-full flex items-center justify-center text-lg font-bold mr-4">2</div>
                                     Digby Manor Care Home
                                 </div>
                             </td>
-                            <td class="p-4 text-center font-bold text-teal-600 text-lg">93%</td>
-                            <td class="p-4 text-center"><span class="bg-amber-500 text-white px-3 py-2 rounded text-base font-bold">Good</span></td>
-                            <td class="p-4 text-center font-bold text-lg">£1,050</td>
-                            <td class="p-4 text-center text-green-600 font-bold text-lg">✓ Yes</td>
-                            <td class="p-4 text-center text-green-600 font-bold text-lg">✓ Excellent</td>
-                            <td class="p-4 text-center text-lg">6.5 mi</td>
+                            <td class="text-center font-bold text-caring-green text-xl">93%</td>
+                            <td class="text-center"><span class="bg-warmth-orange text-white px-4 py-3 rounded-lg text-lg font-bold">Good</span></td>
+                            <td class="text-center font-bold text-xl">£1,050</td>
+                            <td class="text-center text-caring-green font-bold text-xl">✓ Yes</td>
+                            <td class="text-center text-caring-green font-bold text-xl">✓ Excellent</td>
+                            <td class="text-center text-xl">6.5 mi</td>
                         </tr>
                         <tr class="border-b hover:bg-gray-50">
-                            <td class="p-4 font-bold">
+                            <td class="font-bold">
                                 <div class="flex items-center">
-                                    <div class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">3</div>
+                                    <div class="w-10 h-10 bg-warmth-orange text-white rounded-full flex items-center justify-center text-lg font-bold mr-4">3</div>
                                     Bishops Manor Care Home
                                 </div>
                             </td>
-                            <td class="p-4 text-center font-bold text-green-600 text-lg">91%</td>
-                            <td class="p-4 text-center"><span class="bg-amber-500 text-white px-3 py-2 rounded text-base font-bold">Good</span></td>
-                            <td class="p-4 text-center font-bold text-lg">£1,150</td>
-                            <td class="p-4 text-center text-amber-500 font-bold text-lg">⚠ Limited</td>
-                            <td class="p-4 text-center text-green-600 font-bold text-lg">✓ Good</td>
-                            <td class="p-4 text-center text-lg">4.1 mi</td>
+                            <td class="text-center font-bold text-warmth-orange text-xl">91%</td>
+                            <td class="text-center"><span class="bg-warmth-orange text-white px-4 py-3 rounded-lg text-lg font-bold">Good</span></td>
+                            <td class="text-center font-bold text-xl">£1,150</td>
+                            <td class="text-center text-amber-500 font-bold text-xl">⚠ Limited</td>
+                            <td class="text-center text-caring-green font-bold text-xl">✓ Good</td>
+                            <td class="text-center text-xl">4.1 mi</td>
                         </tr>
                         <tr class="border-b hover:bg-gray-50">
-                            <td class="p-4 font-bold">
+                            <td class="font-bold">
                                 <div class="flex items-center">
-                                    <div class="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">4</div>
+                                    <div class="w-10 h-10 bg-amber-500 text-white rounded-full flex items-center justify-center text-lg font-bold mr-4">4</div>
                                     Edgbaston Manor Care Home
                                 </div>
                             </td>
-                            <td class="p-4 text-center font-bold text-amber-500 text-lg">89%</td>
-                            <td class="p-4 text-center"><span class="bg-amber-500 text-white px-3 py-2 rounded text-base font-bold">Good</span></td>
-                            <td class="p-4 text-center font-bold text-lg">£1,299</td>
-                            <td class="p-4 text-center text-green-600 font-bold text-lg">✓ Yes</td>
-                            <td class="p-4 text-center text-green-600 font-bold text-lg">✓ Excellent</td>
-                            <td class="p-4 text-center text-lg">3.0 mi</td>
+                            <td class="text-center font-bold text-amber-500 text-xl">89%</td>
+                            <td class="text-center"><span class="bg-warmth-orange text-white px-4 py-3 rounded-lg text-lg font-bold">Good</span></td>
+                            <td class="text-center font-bold text-xl">£1,299</td>
+                            <td class="text-center text-caring-green font-bold text-xl">✓ Yes</td>
+                            <td class="text-center text-caring-green font-bold text-xl">✓ Excellent</td>
+                            <td class="text-center text-xl">3.0 mi</td>
                         </tr>
                         <tr class="hover:bg-gray-50">
-                            <td class="p-4 font-bold">
+                            <td class="font-bold">
                                 <div class="flex items-center">
-                                    <div class="w-8 h-8 bg-gray-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">5</div>
+                                    <div class="w-10 h-10 bg-gray-500 text-white rounded-full flex items-center justify-center text-lg font-bold mr-4">5</div>
                                     Metchley Manor Care Home
                                 </div>
                             </td>
-                            <td class="p-4 text-center font-bold text-gray-600 text-lg">87%</td>
-                            <td class="p-4 text-center"><span class="bg-amber-500 text-white px-3 py-2 rounded text-base font-bold">Good</span></td>
-                            <td class="p-4 text-center font-bold text-lg">£1,099</td>
-                            <td class="p-4 text-center text-green-600 font-bold text-lg">✓ Yes</td>
-                            <td class="p-4 text-center text-green-600 font-bold text-lg">✓ Good</td>
-                            <td class="p-4 text-center text-lg">2.8 mi</td>
+                            <td class="text-center font-bold text-gray-600 text-xl">87%</td>
+                            <td class="text-center"><span class="bg-warmth-orange text-white px-4 py-3 rounded-lg text-lg font-bold">Good</span></td>
+                            <td class="text-center font-bold text-xl">£1,099</td>
+                            <td class="text-center text-caring-green font-bold text-xl">✓ Yes</td>
+                            <td class="text-center text-caring-green font-bold text-xl">✓ Good</td>
+                            <td class="text-center text-xl">2.8 mi</td>
                         </tr>
                     </tbody>
                 </table>
@@ -853,55 +1208,55 @@
     </section>
 
     <!-- Birmingham Visit Preparation Guide -->
-    <section class="py-10 md:py-20 bg-white">
+    <section class="py-12 md:py-24 bg-white">
         <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="text-center mb-10 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 md:mb-5">Birmingham Visit Preparation & Guide</h2>
-                <p class="text-xl md:text-2xl text-gray-600">Essential steps to ensure productive Birmingham care home visits</p>
+            <div class="text-center mb-12 md:mb-20 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 md:mb-8">Birmingham Visit Preparation & Guide</h2>
+                <p class="text-2xl md:text-3xl text-gray-600">Essential steps to ensure productive Birmingham care home visits</p>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-8 md:gap-10">
-                <div class="expert-tip">
-                    <h3 class="text-xl md:text-2xl font-bold mb-5">📋 Pre-Visit Checklist</h3>
-                    <div class="space-y-4">
+            <div class="grid md:grid-cols-2 gap-10 md:gap-12">
+                <div class="expert-tip fade-in">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6">📋 Pre-Visit Checklist</h3>
+                    <div class="space-y-5">
                         <div class="action-item bg-white/20">
-                            <p class="text-lg"><strong>Medical Documents:</strong> GP summary & current diabetes medication list</p>
+                            <p class="text-xl"><strong>Medical Documents:</strong> GP summary & current diabetes medication list</p>
                         </div>
                         <div class="action-item bg-white/20">
-                            <p class="text-lg"><strong>Birmingham Council:</strong> Assessment documentation if applicable</p>
+                            <p class="text-xl"><strong>Birmingham Council:</strong> Assessment documentation if applicable</p>
                         </div>
                         <div class="action-item bg-white/20">
-                            <p class="text-lg"><strong>Reference:</strong> Printed copy of this Birmingham report</p>
+                            <p class="text-xl"><strong>Reference:</strong> Printed copy of this Birmingham report</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="expert-tip">
-                    <h3 class="text-xl md:text-2xl font-bold mb-5">❓ Key Questions for Manor House Care Home</h3>
-                    <div class="space-y-4">
+                <div class="expert-tip fade-in">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6">❓ Key Questions for Manor House Care Home</h3>
+                    <div class="space-y-5">
                         <div class="action-item bg-white/20">
-                            <p class="text-lg">"How do you coordinate with Birmingham diabetes clinics and GPs?"</p>
+                            <p class="text-xl">"How do you coordinate with Birmingham diabetes clinics and GPs?"</p>
                         </div>
                         <div class="action-item bg-white/20">
-                            <p class="text-lg">"Can I meet the care team who will manage Margaret's insulin adjustments?"</p>
+                            <p class="text-xl">"Can I meet the care team who will manage Margaret's insulin adjustments?"</p>
                         </div>
                         <div class="action-item bg-white/20">
-                            <p class="text-lg">"What's your relationship with Birmingham NHS Trust hospitals for emergency care?"</p>
+                            <p class="text-xl">"What's your relationship with Birmingham NHS Trust hospitals for emergency care?"</p>
                         </div>
                         <div class="action-item bg-white/20">
-                            <p class="text-lg">"How do you support family visits from the Edgbaston area?"</p>
+                            <p class="text-xl">"How do you support family visits from the Edgbaston area?"</p>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-10">
-                <h4 class="font-bold text-blue-800 mb-3 text-lg">🗺️ Birmingham Geographic Notes</h4>
-                <p class="text-base text-blue-700 mb-3">
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-8 mt-12 fade-in">
+                <h4 class="font-bold text-blue-800 mb-4 text-xl">🗺️ Birmingham Geographic Notes</h4>
+                <p class="text-lg text-blue-700 mb-4">
                     <strong>Manor House Care Home:</strong> Located in Acocks Green (B13), close to Birmingham city center. 
                     Near Calthorpe Park, accessible via Birmingham bus routes 11 and 27, near A38.
                 </p>
-                <p class="text-base text-blue-700">
+                <p class="text-lg text-blue-700">
                     <strong>Family Access:</strong> From Edgbaston (B15), approximately 20 minutes by car during normal traffic. 
                     Public transport options via Birmingham city center.
                 </p>
@@ -910,26 +1265,26 @@
     </section>
 
     <!-- Confidence & Guarantee -->
-    <section class="py-10 md:py-20 bg-gray-800 text-white">
+    <section class="py-12 md:py-24 bg-gray-800 text-white" role="region" aria-labelledby="guarantee-heading">
         <div class="max-w-4xl mx-auto px-4 md:px-6 text-center">
-            <div class="guarantee-seal mx-auto max-w-2xl">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6 md:mb-8">🛡️ Birmingham Care Home Guarantee</h2>
-                <p class="text-lg md:text-xl mb-6 md:mb-8">
-                    We recognise that you are paying for our Birmingham expertise. That is why we take full responsibility 
+            <div class="guarantee-seal mx-auto max-w-3xl fade-in">
+                <h2 id="guarantee-heading" class="text-4xl md:text-5xl font-bold mb-8 md:mb-10">🛡️ Birmingham Care Home Guarantee</h2>
+                <p class="text-xl md:text-2xl mb-8 md:mb-10 leading-relaxed">
+                    We recognize that you are paying for our Birmingham expertise. That is why we take full responsibility 
                     for the accuracy and freshness of Birmingham care home information provided.
                 </p>
-                <div class="grid md:grid-cols-3 gap-6 md:gap-8 text-center">
+                <div class="grid md:grid-cols-3 gap-8 md:gap-10 text-center">
                     <div>
-                        <div class="text-2xl md:text-3xl font-bold">Data freshness</div>
-                        <div class="text-base md:text-lg">guarantee</div>
+                        <div class="text-3xl md:text-4xl font-bold mb-2">Data freshness</div>
+                        <div class="text-lg md:text-xl">guarantee</div>
                     </div>
                     <div>
-                        <div class="text-2xl md:text-3xl font-bold">Expert knowledge</div>
-                        <div class="text-base md:text-lg">of 277 Birmingham care homes</div>
+                        <div class="text-3xl md:text-4xl font-bold mb-2">Expert knowledge</div>
+                        <div class="text-lg md:text-xl">of 277 Birmingham care homes</div>
                     </div>
                     <div>
-                        <div class="text-2xl md:text-3xl font-bold">30 days</div>
-                        <div class="text-base md:text-lg">Post-placement support</div>
+                        <div class="text-3xl md:text-4xl font-bold mb-2">30 days</div>
+                        <div class="text-lg md:text-xl">Post-placement support</div>
                     </div>
                 </div>
             </div>
@@ -937,47 +1292,43 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 md:py-16 bg-gray-900 text-white">
+    <footer class="py-16 md:py-20 bg-gray-900 text-white" role="contentinfo">
         <div class="max-w-6xl mx-auto px-4 md:px-6">
-            <div class="grid md:grid-cols-3 gap-8 md:gap-10">
+            <div class="grid md:grid-cols-3 gap-10 md:gap-12">
                 <div>
-                    <h3 class="text-xl md:text-2xl font-bold mb-4 md:mb-5">RightCareHome Birmingham</h3>
-                    <p class="text-gray-300 mb-4 md:mb-5 text-base md:text-lg">
-                        Birmingham's trusted care home selection service with personalised recommendations. 
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6 md:mb-7 text-warmth-orange">RightCareHome Birmingham</h3>
+                    <p class="text-gray-200 mb-6 md:mb-7 text-lg md:text-xl leading-relaxed">
+                        Birmingham's trusted care home selection service with personalized recommendations. 
                         Independent advice with no Birmingham care home commissions.
                     </p>
                     <div class="birmingham-badge">Birmingham NHS Trust Partner</div>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold mb-4 md:mb-5 text-lg">Birmingham Expertise</h4>
-                    <ul class="space-y-3 text-gray-300 text-base md:text-lg">
+                    <h4 class="font-bold mb-6 md:mb-7 text-xl text-warmth-orange">Birmingham Expertise</h4>
+                    <ul class="space-y-4 text-gray-200 text-lg md:text-xl">
                         <li>• 277 Birmingham care homes mapped</li>
                         <li>• Birmingham City Council partnerships</li>
-                        <li>• 78% independent operators known personally</li>
                         <li>• Birmingham NHS Trust discharge support</li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold mb-4 md:mb-5 text-lg">Contact for Enquiries</h4>
-                    <ul class="space-y-3 text-gray-300 text-base md:text-lg">
-                        <li>📧 <a href="mailto:birmingham@rightcarehome.co.uk" class="underline hover:text-white">birmingham@rightcarehome.co.uk</a></li>
-                        <li>📞 Birmingham helpline available</li>
-                        <li>🕗 Monday-Friday 9AM-6PM</li>
-                        <li>🏥 Birmingham hospital discharge support 24/7</li>
+                    <h4 class="font-bold mb-6 md:mb-7 text-xl text-warmth-orange">Contact for Enquiries</h4>
+                    <ul class="space-y-4 text-gray-200 text-lg md:text-xl">
+                        <li>📧 <a href="mailto:birmingham@rightcarehome.co.uk" class="text-warmth-orange hover:text-yellow-300 font-bold">birmingham@rightcarehome.co.uk</a></li>
                     </ul>
                 </div>
             </div>
             
-            <div class="border-t border-gray-700 mt-8 md:mt-10 pt-8 md:pt-10 text-center text-gray-400 text-base">
+            <div class="border-t border-gray-700 mt-10 md:mt-12 pt-10 md:pt-12 text-center text-gray-300 text-lg">
                 <p>&copy; 2025 RightCareHome Birmingham. Report prepared 13 September 2025. Confidential document.</p>
-                <p class="mt-2 text-sm">Birmingham NHS Trust Partner • Birmingham City Council Framework Partner</p>
+                <p class="mt-3 text-base">Birmingham NHS Trust Partner • Birmingham City Council Framework Partner</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Enhanced JavaScript -->
     <script>
         // Birmingham care home data
         const careHomes = {
@@ -1039,12 +1390,39 @@
             pessimistic: { inflation: 0.07, multiplier: 1.3 }
         };
 
-        // Initialize when DOM is ready
+        // Enhanced initialization with animations
         document.addEventListener('DOMContentLoaded', function() {
             initializeCalculator();
             initializeProgressBars();
             initializeComparison();
+            initializeScrollAnimations();
         });
+
+        // Enhanced scroll animations
+        function initializeScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Stagger animations for grid items
+                        if (entry.target.parentElement && entry.target.parentElement.classList.contains('grid')) {
+                            const siblings = Array.from(entry.target.parentElement.children);
+                            const index = siblings.indexOf(entry.target);
+                            entry.target.style.animationDelay = `${index * 0.1}s`;
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
 
         function initializeCalculator() {
             const select = document.getElementById('care-home-select');
@@ -1053,12 +1431,21 @@
             const buttons = document.querySelectorAll('.scenario-btn');
 
             if (select) {
+                // Enhanced select with loading state
                 select.addEventListener('change', function(e) {
                     currentHome = e.target.value;
                     const results = document.getElementById('calculator-results');
+                    
                     if (currentHome && results) {
-                        results.style.display = 'block';
-                        updateCalculations();
+                        // Add loading state
+                        results.classList.add('loading');
+                        
+                        setTimeout(() => {
+                            results.style.display = 'block';
+                            results.classList.remove('loading');
+                            results.classList.add('scale-in');
+                            updateCalculations();
+                        }, 500);
                     } else if (results) {
                         results.style.display = 'none';
                     }
@@ -1069,16 +1456,36 @@
                 slider.addEventListener('input', function(e) {
                     timePeriod = parseFloat(e.target.value);
                     display.textContent = timePeriod === 1 ? '1 year' : `${timePeriod} years`;
+                    display.classList.add('highlight-update');
+                    setTimeout(() => display.classList.remove('highlight-update'), 600);
+                    
                     if (currentHome) updateCalculations();
                 });
             }
 
             buttons.forEach(btn => {
                 btn.addEventListener('click', function() {
-                    buttons.forEach(b => b.classList.remove('active', 'bg-blue-800', 'text-white'));
-                    this.classList.add('active', 'bg-blue-800', 'text-white');
+                    // Enhanced button states
+                    buttons.forEach(b => {
+                        b.classList.remove('active');
+                        b.style.background = '';
+                        b.style.color = '';
+                        b.style.borderColor = '#d1d5db';
+                    });
+                    
+                    this.classList.add('active');
                     scenario = this.dataset.scenario;
-                    if (currentHome) updateCalculations();
+                    
+                    if (currentHome) {
+                        // Add loading state to results
+                        const results = document.getElementById('calculator-results');
+                        if (results) results.classList.add('loading');
+                        
+                        setTimeout(() => {
+                            updateCalculations();
+                            if (results) results.classList.remove('loading');
+                        }, 300);
+                    }
                 });
             });
         }
@@ -1120,29 +1527,36 @@
             const config = scenarios[scenario];
             const basicTotal = annual * timePeriod;
             
-            updateElement('weekly-fee', `£${weekly.toLocaleString()}`);
-            updateElement('annual-cost', `£${annual.toLocaleString()}`);
-            updateElement('basic-total', `£${Math.round(basicTotal).toLocaleString()}`);
-            updateElement('registration-fee', `£${home.registrationFee.toLocaleString()}`);
-            updateElement('deposit-fee', `£${(home.weeklyFee * home.depositWeeks).toLocaleString()}`);
-            updateElement('activity-cost', `£${Math.round(home.activities * 12 * timePeriod * config.multiplier).toLocaleString()}`);
-            updateElement('medical-cost', `£${Math.round(home.medical * 12 * timePeriod * config.multiplier).toLocaleString()}`);
-            updateElement('transport-cost', `£${Math.round(home.transport * 12 * timePeriod * config.multiplier).toLocaleString()}`);
-            updateElement('total-projected', `£${Math.round(total).toLocaleString()}`);
+            // Enhanced update with animations
+            updateElementWithAnimation('weekly-fee', `£${weekly.toLocaleString()}`);
+            updateElementWithAnimation('annual-cost', `£${annual.toLocaleString()}`);
+            updateElementWithAnimation('basic-total', `£${Math.round(basicTotal).toLocaleString()}`);
+            updateElementWithAnimation('registration-fee', `£${home.registrationFee.toLocaleString()}`);
+            updateElementWithAnimation('deposit-fee', `£${(home.weeklyFee * home.depositWeeks).toLocaleString()}`);
+            updateElementWithAnimation('activity-cost', `£${Math.round(home.activities * 12 * timePeriod * config.multiplier).toLocaleString()}`);
+            updateElementWithAnimation('medical-cost', `£${Math.round(home.medical * 12 * timePeriod * config.multiplier).toLocaleString()}`);
+            updateElementWithAnimation('transport-cost', `£${Math.round(home.transport * 12 * timePeriod * config.multiplier).toLocaleString()}`);
+            updateElementWithAnimation('total-projected', `£${Math.round(total).toLocaleString()}`);
 
             updateChart(yearly);
             updateComparisonTable();
         }
 
-        function updateElement(id, value) {
+        function updateElementWithAnimation(id, value) {
             const element = document.getElementById(id);
             if (element) {
-                element.textContent = value;
-                element.style.transition = 'all 0.3s ease';
-                element.style.transform = 'scale(1.05)';
+                element.classList.add('highlight-update');
+                element.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                element.style.transform = 'scale(1.08)';
+                
                 setTimeout(() => {
+                    element.textContent = value;
                     element.style.transform = 'scale(1)';
-                }, 300);
+                }, 200);
+                
+                setTimeout(() => {
+                    element.classList.remove('highlight-update');
+                }, 600);
             }
         }
 
@@ -1163,22 +1577,31 @@
                     datasets: [{
                         label: 'Basic Care Costs',
                         data: yearlyData.map(d => Math.round(d.basic)),
-                        backgroundColor: 'rgba(0, 63, 127, 0.8)',
-                        borderColor: 'rgb(0, 63, 127)',
-                        borderWidth: 1
+                        backgroundColor: 'rgba(0, 94, 184, 0.8)',
+                        borderColor: 'rgb(0, 94, 184)',
+                        borderWidth: 2,
+                        borderRadius: 8
                     }, {
                         label: 'Additional Services',
                         data: yearlyData.map(d => Math.round(d.extra)),
                         backgroundColor: 'rgba(212, 175, 55, 0.8)',
                         borderColor: 'rgb(212, 175, 55)',
-                        borderWidth: 1
+                        borderWidth: 2,
+                        borderRadius: 8
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    animation: {
+                        duration: 1000,
+                        easing: 'easeOutQuart'
+                    },
                     scales: {
-                        x: { stacked: true },
+                        x: { 
+                            stacked: true,
+                            grid: { display: false }
+                        },
                         y: {
                             stacked: true,
                             ticks: {
@@ -1194,11 +1617,20 @@
                                 label: function(context) {
                                     return context.dataset.label + ': £' + context.parsed.y.toLocaleString();
                                 }
-                            }
+                            },
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            titleColor: '#ffffff',
+                            bodyColor: '#ffffff',
+                            borderColor: '#f59e0b',
+                            borderWidth: 2
                         },
                         title: {
                             display: true,
-                            text: 'Birmingham Care Home Cost Progression'
+                            text: 'Birmingham Care Home Cost Progression',
+                            font: { size: 18, weight: 'bold' }
+                        },
+                        legend: {
+                            labels: { font: { size: 14 } }
                         }
                     }
                 }
@@ -1226,7 +1658,7 @@
                     name: home.name,
                     weekly: home.weeklyFee,
                     total: total,
-                    monthly: total / 60 // 5 years = 60 months
+                    monthly: total / 60
                 };
             });
             
@@ -1236,23 +1668,23 @@
             tbody.innerHTML = '';
             
             comparisons.forEach((home, index) => {
-                // Calculate savings vs typical London equivalent (assume 30-40% higher)
                 const londonEquivalent = home.total * 1.35;
                 const londonSavings = londonEquivalent - home.total;
                 
                 const row = document.createElement('tr');
-                row.className = 'border-b hover:bg-gray-50';
+                row.className = 'border-b hover:bg-gray-50 transition-all duration-300';
                 if (index === 0) row.classList.add('bg-green-50');
                 
+                // Enhanced row with better formatting
                 row.innerHTML = `
-                    <td class="p-4">
+                    <td class="p-6">
                         ${index === 0 ? '🏆 ' : ''}
-                        <strong>${home.name}</strong>
+                        <strong class="text-lg">${home.name}</strong>
                     </td>
-                    <td class="p-4 text-center font-bold text-lg">£${home.weekly.toLocaleString()}</td>
-                    <td class="p-4 text-center font-bold text-lg">£${Math.round(home.total).toLocaleString()}</td>
-                    <td class="p-4 text-center text-lg">£${Math.round(home.monthly).toLocaleString()}</td>
-                    <td class="p-4 text-center text-green-600 font-bold text-lg">
+                    <td class="p-6 text-center font-bold text-xl">£${home.weekly.toLocaleString()}</td>
+                    <td class="p-6 text-center font-bold text-xl">£${Math.round(home.total).toLocaleString()}</td>
+                    <td class="p-6 text-center text-xl">£${Math.round(home.monthly).toLocaleString()}</td>
+                    <td class="p-6 text-center text-caring-green font-bold text-xl">
                         £${Math.round(londonSavings).toLocaleString()}
                     </td>
                 `;
@@ -1262,12 +1694,14 @@
 
         function initializeProgressBars() {
             setTimeout(() => {
-                document.querySelectorAll('.progress-fill').forEach(bar => {
+                document.querySelectorAll('.progress-fill').forEach((bar, index) => {
                     const width = bar.style.width;
                     bar.style.width = '0%';
-                    setTimeout(() => bar.style.width = width, 100);
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 200 + (index * 100));
                 });
-            }, 500);
+            }, 800);
         }
 
         function initializeComparison() {
@@ -1276,15 +1710,23 @@
 
         function downloadPDF() {
             const btn = document.querySelector('.pdf-download-btn');
-            if (btn) btn.style.display = 'none';
+            if (btn) {
+                btn.style.display = 'none';
+                btn.textContent = 'Preparing PDF...';
+            }
             
             document.title = 'Birmingham_Care_Home_Report_Thompson_Family';
-            window.print();
             
             setTimeout(() => {
-                if (btn) btn.style.display = 'block';
-                document.title = 'Personal Care Home Placement Report - The Thompson Family';
-            }, 1000);
+                window.print();
+                setTimeout(() => {
+                    if (btn) {
+                        btn.style.display = 'block';
+                        btn.textContent = '📄 Download PDF Report';
+                    }
+                    document.title = 'Personal Care Home Placement Report - The Thompson Family';
+                }, 1000);
+            }, 300);
         }
     </script>
 </body>
