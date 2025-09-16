@@ -111,6 +111,17 @@
             box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
         }
         
+        /* Header button specific styling - narrower width */
+        .header .primary-cta {
+            max-width: 200px;
+            padding: 18px 24px;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.2;
+        }
+        
         .primary-cta:hover {
             transform: translateY(-3px);
             box-shadow: 0 16px 40px rgba(245, 158, 11, 0.5);
@@ -414,6 +425,87 @@
             margin-top: 24px;
             box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
         }
+
+        /* Competitive advantages section */
+        .competitive-advantages {
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            padding: 6rem 0;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .advantage-card {
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .advantage-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b, #059669);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .advantage-card:hover {
+            transform: translateY(-8px);
+            border-color: #f59e0b;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .advantage-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .advantage-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            text-align: center;
+        }
+        
+        .advantage-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1f2937;
+            text-align: center;
+        }
+        
+        .advantage-card p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .advantage-card p:first-of-type {
+            color: #059669;
+            font-weight: 600;
+        }
+        
+        .competitor-comparison {
+            color: #64748b !important;
+            font-style: italic;
+            font-weight: 500 !important;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
         
         @media (max-width: 768px) {
             .hero-headline {
@@ -429,6 +521,12 @@
                 border-radius: 10px !important;
             }
             
+            /* Override header button constraints on mobile */
+            .header .primary-cta {
+                max-width: none !important;
+                width: 100% !important;
+            }
+            
             .stats-row {
                 flex-direction: column !important;
                 gap: 1.5rem !important;
@@ -436,6 +534,15 @@
             
             .trust-badges-birmingham {
                 justify-content: center !important;
+            }
+            
+            .advantage-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .advantage-card {
+                padding: 1.5rem;
             }
         }
         
@@ -454,7 +561,7 @@
 
 <body>
     <!-- Header -->
-    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-200 z-50">
+    <header class="header fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-200 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center">
@@ -464,7 +571,7 @@
                 </div>
                 <div class="hidden md:block">
                     <button class="primary-cta" role="button" aria-label="Get Birmingham Care Home Report for £99">
-                        Get Birmingham Report - £99
+                        Get Report - £99
                     </button>
                 </div>
             </div>
@@ -644,6 +751,62 @@
         </div>
     </section>
 
+    <!-- Why Families Choose Us Over Directories Section -->
+    <section class="competitive-advantages">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-4xl font-bold mb-10 text-text-dark">Why Families Choose Us Over Directories</h2>
+                <p class="text-xl text-warm-grey">
+                    Professional service vs basic listings - see the difference
+                </p>
+            </div>
+            
+            <div class="advantage-grid fade-in">
+                <div class="advantage-card">
+                    <div class="advantage-icon">⚡</div>
+                    <h3>48-Hour Guarantee</h3>
+                    <p><strong>Us:</strong> Professional analysis delivered within 48 hours</p>
+                    <p class="competitor-comparison"><strong>Other services:</strong> Weeks of manual research or instant but basic listings</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-icon">🎯</div>
+                    <h3>Smart Personalisation</h3>
+                    <p><strong>Us:</strong> Intelligent matching technology considers 50+ criteria including medical needs, cultural preferences, and family dynamics</p>
+                    <p class="competitor-comparison"><strong>Directories:</strong> Basic postcode + care type filtering only</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-icon">💡</div>
+                    <h3>Transparent Pricing</h3>
+                    <p><strong>Us:</strong> Clear, upfront costs with weekly rates and hidden fees revealed</p>
+                    <p class="competitor-comparison"><strong>Directories:</strong> Contact-gated pricing that wastes your time</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-icon">🔍</div>
+                    <h3>Real-Time Verification</h3>
+                    <p><strong>Us:</strong> Fresh availability and pricing checked within 48 hours</p>
+                    <p class="competitor-comparison"><strong>Other services:</strong> Outdated information from months-old databases</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-icon">🏥</div>
+                    <h3>NHS Partnership Trusted</h3>
+                    <p><strong>Us:</strong> Working directly with NHS discharge teams across England</p>
+                    <p class="competitor-comparison"><strong>Private consultants:</strong> £325-£1,075 fees with 1-2 week delays</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-icon">🛡️</div>
+                    <h3>No Commission Bias</h3>
+                    <p><strong>Us:</strong> Independent service - we're never paid by care homes, so our recommendations are genuinely in your best interest</p>
+                    <p class="competitor-comparison"><strong>Directories:</strong> Earn referral fees from care homes, creating hidden conflicts of interest</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Local Care Market Experts -->
     <section class="py-24 bg-light-cream">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -749,12 +912,6 @@
                                 <td class="p-5 text-center text-caring-green font-bold">48h</td>
                                 <td class="p-5 text-center text-warmth-orange">Weeks</td>
                                 <td class="p-5 text-center text-warmth-orange">1-2 Weeks</td>
-                            </tr>
-                            <tr class="border-b hover:bg-gray-50">
-                                <td class="p-5 font-semibold text-text-dark">Local Price</td>
-                                <td class="p-5 text-center text-caring-green font-bold">£79-149</td>
-                                <td class="p-5 text-center text-warm-grey">Free but limited</td>
-                                <td class="p-5 text-center text-warmth-orange">£325-1075</td>
                             </tr>
                             <tr class="hover:bg-gray-50">
                                 <td class="p-5 font-semibold text-text-dark">NHS Partnership</td>
@@ -947,6 +1104,54 @@
                         <div>
                             <div class="font-bold text-text-dark">Jennifer Patel</div>
                             <div class="text-sm text-warm-grey">Local Family, Hall Green</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card rounded-xl p-10 shadow-lg fade-in">
+                    <div class="text-warmth-orange mb-6">★★★★★</div>
+                    <blockquote class="text-warm-grey mb-8 italic">
+                        "This Birmingham-focused service saved us weeks of research. Their ward-level expertise found the ideal care home in Moseley quickly and clearly."
+                    </blockquote>
+                    <div class="flex items-center">
+                        <div class="w-14 h-14 bg-primary-blue rounded-full mr-5 flex items-center justify-center text-white font-bold">
+                            JM
+                        </div>
+                        <div>
+                            <div class="font-bold text-text-dark">Jennifer M.</div>
+                            <div class="text-sm text-warm-grey">Local Family, Kings Heath</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card rounded-xl p-10 shadow-lg fade-in">
+                    <div class="text-warmth-orange mb-6">★★★★★</div>
+                    <blockquote class="text-warm-grey mb-8 italic">
+                        "Their partnership with the city council and deep local knowledge made hospital discharge seamless. We got actionable recommendations within 48 hours."
+                    </blockquote>
+                    <div class="flex items-center">
+                        <div class="w-14 h-14 bg-warmth-orange rounded-full mr-5 flex items-center justify-center text-white font-bold">
+                            AK
+                        </div>
+                        <div>
+                            <div class="font-bold text-text-dark">Ahmed K.</div>
+                            <div class="text-sm text-warm-grey">Local Family, Small Heath</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card rounded-xl p-10 shadow-lg fade-in">
+                    <div class="text-warmth-orange mb-6">★★★★★</div>
+                    <blockquote class="text-warm-grey mb-8 italic">
+                        "The intelligent screening process matched mum's needs perfectly across Ladywood and Hall Green. We never felt overwhelmed."
+                    </blockquote>
+                    <div class="flex items-center">
+                        <div class="w-14 h-14 bg-soft-coral rounded-full mr-5 flex items-center justify-center text-white font-bold">
+                            SP
+                        </div>
+                        <div>
+                            <div class="font-bold text-text-dark">Sarah P.</div>
+                            <div class="text-sm text-warm-grey">Local Family, Harborne</div>
                         </div>
                     </div>
                 </div>
