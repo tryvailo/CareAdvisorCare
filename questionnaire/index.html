@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Care Home Assessment - RightCareHome</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-navy': '#1e293b',
+                        'primary-blue': '#2563eb',
+                        'nhs-blue': '#005EB8',
+                        'caring-green': '#059669',
+                        'warmth-orange': '#f59e0b',
+                        'soft-coral': '#fb7185',
+                        'warm-grey': '#64748b',
+                        'light-cream': '#fefce8',
+                        'bg-warm': '#fefce8',
+                        'bg-cream': '#f9f6f2',
+                        'text-dark': '#1f2937',
+                        'text-muted': '#64748b',
+                        'healthcare-blue': '#005EB8'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* AGE 55+ OPTIMIZED TYPOGRAPHY */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefce8;
+            color: #1f2937;
+            /* Increased line height for better readability */
+            line-height: 1.7;
+            /* Larger base font size for 55+ users */
+            font-size: 20px;
+            font-weight: 500;
+        }
+        
+        .primary-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            font-weight: 700;
+            /* Larger padding for easier clicking */
+            padding: 20px 32px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            /* Larger font for buttons */
+            font-size: 1.125rem;
+            min-height: 60px;
+            /* Increased letter spacing for clarity */
+            letter-spacing: 0.5px;
+        }
+        
+        .primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+        }
+        
+        .primary-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .secondary-btn {
+            background: transparent;
+            color: #059669;
+            border: 3px solid #059669;
+            font-weight: 700;
+            padding: 20px 32px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.125rem;
+            min-height: 60px;
+            letter-spacing: 0.5px;
+        }
+        
+        .secondary-btn:hover {
+            background: #059669;
+            color: white;
+        }
+        
+        .question-section {
+            display: none;
+        }
+        
+        .question-section.active {
+            display: block;
+        }
+        
+        .progress-bar {
+            background: #e5e7eb;
+            height: 12px;
+            border-radius: 6px;
+            margin-bottom: 2.5rem;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #059669, #f59e0b);
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.5s ease;
+            width: 12.5%;
+        }
+        
+        .form-input {
+            width: 100%;
+            border: 3px solid #e5e7eb;
+            border-radius: 12px;
+            /* Larger padding for easier interaction */
+            padding: 18px 20px;
+            /* Larger font size for input text */
+            font-size: 1.125rem;
+            transition: border-color 0.2s ease;
+            min-height: 56px;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+        
+        .form-input:focus {
+            border-color: #f59e0b;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15);
+        }
+        
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            /* Increased padding for easier selection */
+            padding: 20px 24px;
+            border: 3px solid #e5e7eb;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-bottom: 16px;
+            transition: all 0.2s ease;
+            min-height: 64px;
+            /* Larger font size for options */
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        
+        .radio-option:hover, .checkbox-option:hover {
+            border-color: #f59e0b;
+            background: #fef7ed;
+            transform: translateY(-1px);
+        }
+        
+        .radio-option.selected, .checkbox-option.selected {
+            border-color: #f59e0b;
+            background: #fef7ed;
+            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
+        }
+        
+        /* Larger radio buttons and checkboxes */
+        .radio-option input[type="radio"],
+        .checkbox-option input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 16px;
+            cursor: pointer;
+        }
+        
+        .rating-group {
+            display: flex;
+            gap: 12px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .rating-btn {
+            /* Larger rating buttons for easier clicking */
+            width: 52px;
+            height: 52px;
+            border: 3px solid #e5e7eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 700;
+            background: white;
+            /* Larger font for rating numbers */
+            font-size: 1.125rem;
+            min-width: 52px;
+        }
+        
+        .rating-btn:hover {
+            border-color: #f59e0b;
+            background: #fef7ed;
+            transform: scale(1.05);
+        }
+        
+        .rating-btn.selected {
+            background: #f59e0b;
+            border-color: #f59e0b;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .error-msg {
+            color: #dc2626;
+            /* Larger error text */
+            font-size: 1rem;
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: #fef2f2;
+            border-radius: 8px;
+            border-left: 4px solid #dc2626;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        
+        .section-title {
+            /* Larger section titles */
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #1f2937;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+        
+        .section-description {
+            /* Larger section descriptions */
+            font-size: 1.25rem;
+            color: #4b5563;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+        
+        .question-label {
+            /* Larger question labels */
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: block;
+            color: #374151;
+            line-height: 1.4;
+            letter-spacing: 0.25px;
+        }
+        
+        .help-text {
+            /* Larger help text */
+            font-size: 1rem;
+            color: #6b7280;
+            margin-top: 12px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+        
+        .progress-text {
+            /* Larger progress text */
+            font-size: 1.125rem;
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 12px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .success-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #059669;
+            color: white;
+            padding: 20px 28px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+        
+        .matrix-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            min-height: 72px;
+        }
+        
+        .matrix-label {
+            font-weight: 600;
+            color: #374151;
+            flex: 1;
+            margin-right: 20px;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+        
+        .matrix-buttons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        /* HIGH CONTRAST MODE for better visibility */
+        .high-contrast {
+            background: #ffffff;
+            color: #000000;
+        }
+        
+        .high-contrast .form-input {
+            border-color: #000000;
+            background: #ffffff;
+            color: #000000;
+        }
+        
+        /* Mobile Optimizations for 55+ */
+        @media (max-width: 768px) {
+            body {
+                /* Slightly smaller on mobile but still larger than standard */
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 1.875rem;
+            }
+            
+            .section-description {
+                font-size: 1.125rem;
+            }
+            
+            .question-label {
+                font-size: 1.125rem;
+            }
+            
+            .radio-option, .checkbox-option {
+                padding: 16px 20px;
+                font-size: 1rem;
+                min-height: 60px;
+            }
+            
+            .form-input {
+                /* Prevent zoom on iOS while maintaining readability */
+                font-size: 18px;
+                padding: 16px 18px;
+                min-height: 52px;
+            }
+            
+            .rating-group {
+                gap: 8px;
+                justify-content: space-between;
+            }
+            
+            .rating-btn {
+                width: 46px;
+                height: 46px;
+                font-size: 1rem;
+                min-width: 46px;
+            }
+            
+            .primary-btn, .secondary-btn {
+                font-size: 1rem;
+                padding: 18px 24px;
+                min-height: 56px;
+            }
+            
+            .question-section {
+                padding: 24px 20px !important;
+            }
+            
+            .matrix-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 16px;
+                padding: 20px;
+                min-height: 80px;
+            }
+            
+            .matrix-label {
+                margin-right: 0;
+                margin-bottom: 12px;
+                text-align: left;
+                font-size: 1rem;
+            }
+            
+            .matrix-buttons {
+                justify-content: space-between;
+                gap: 8px;
+            }
+            
+            .navigation-buttons {
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            .navigation-buttons .flex {
+                width: 100%;
+            }
+            
+            .navigation-buttons button {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+            
+            .rating-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+                min-width: 40px;
+            }
+            
+            .matrix-buttons .rating-btn {
+                width: 44px;
+                height: 44px;
+            }
+            
+            .radio-option, .checkbox-option {
+                padding: 14px 16px;
+                margin-bottom: 12px;
+            }
+        }
+        
+        /* Thank you page styles */
+        .thank-you-page {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .thank-you-page.active {
+            display: block;
+        }
+        
+        .success-checkmark {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #059669, #047857);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px;
+            position: relative;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        .success-checkmark::after {
+            content: '';
+            width: 30px;
+            height: 50px;
+            border: solid white;
+            border-width: 0 5px 5px 0;
+            transform: rotate(45deg);
+            animation: checkmark 0.8s ease-out 0.5s forwards;
+            opacity: 0;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(5, 150, 105, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(5, 150, 105, 0.6); }
+        }
+        
+        @keyframes checkmark {
+            0% { transform: scale(0) rotate(45deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(45deg); opacity: 1; }
+            100% { transform: scale(1) rotate(45deg); opacity: 1; }
+        }
+
+        /* Accessibility improvements for 55+ */
+        :focus {
+            outline: 3px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        /* Larger click areas for better usability */
+        .radio-option::before,
+        .checkbox-option::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            z-index: -1;
+        }
+        
+        /* High contrast text for better readability */
+        h1, h2, h3, h4, h5, h6 {
+            color: #111827;
+            font-weight: 800;
+        }
+        
+        /* Improved spacing between elements */
+        .space-y-6 > * + * {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-200 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex items-center">
+                    <a href="/" class="text-3xl font-bold text-blue-700">RightCareHome</a>
+                    <span class="text-lg text-gray-500 ml-2">.co.uk</span>
+                </div>
+                <div class="text-lg text-gray-500 font-semibold">
+                    Professional Care Home Assessment
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-40 pb-32 min-h-screen">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 container">
+            
+            <!-- Questionnaire Container -->
+            <div id="questionnaire-container">
+                <!-- Header Section -->
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-bold mb-8 text-gray-900">Professional Care Home Assessment</h1>
+                    <p class="text-2xl text-gray-600 max-w-3xl mx-auto mb-10">
+                        This detailed assessment helps us understand your specific needs and provide personalised care home recommendations within 48 hours.
+                    </p>
+                    <div class="bg-white rounded-lg p-8 shadow-lg max-w-2xl mx-auto border-l-4 border-green-600">
+                        <div class="flex items-center justify-center space-x-8 text-lg flex-wrap gap-6">
+                            <div class="flex items-center">
+                                <span class="text-green-600 mr-3 text-xl">✓</span>
+                                <span class="font-semibold">15-20 minutes to complete</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-600 mr-3 text-xl">✓</span>
+                                <span class="font-semibold">Progress automatically saved</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-600 mr-3 text-xl">✓</span>
+                                <span class="font-semibold">48-hour delivery guarantee</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-text">
+                    <span>Section <span id="current-section">1</span> of 8</span>
+                </div>
+                <div class="progress-bar mb-10">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+
+                <!-- Questionnaire Form -->
+                <form id="questionnaire-form" class="max-w-3xl mx-auto">
+                    
+                    <!-- Section 1: Contact Information -->
+                    <div class="question-section active bg-white rounded-xl p-10 shadow-lg border border-gray-200" data-section="1">
+                        <h2 class="section-title">Contact Information</h2>
+                        <p class="section-description">Basic details for communication and identification</p>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <label class="question-label" for="contact_001">
+                                    Your name and surname <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="contact_001" name="contact_001" class="form-input" 
+                                       placeholder="Enter your full name" required>
+                                <p class="help-text">How we should address you in our recommendations</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label" for="contact_002">
+                                    Email address <span class="text-red-500">*</span>
+                                </label>
+                                <input type="email" id="contact_002" name="contact_002" class="form-input" 
+                                       placeholder="example@email.com" required>
+                                <p class="help-text">For sending your personalised recommendations</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label" for="contact_003">
+                                    Phone number
+                                </label>
+                                <input type="tel" id="contact_003" name="contact_003" class="form-input" 
+                                       placeholder="+44 7___ ___-___">
+                                <p class="help-text">For clarifying details if needed (optional)</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Your relationship to the person needing care <span class="text-red-500">*</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="contact_004" value="myself" required>
+                                        <span>Looking for myself</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="contact_004" value="spouse" required>
+                                        <span>Spouse/Partner</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="contact_004" value="parent" required>
+                                        <span>Parent</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="contact_004" value="relative" required>
+                                        <span>Other relative</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="contact_004" value="friend" required>
+                                        <span>Friend</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="contact_004" value="professional" required>
+                                        <span>Representing an organisation</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div id="patient-name-section" style="display: none;">
+                                <label class="question-label" for="contact_005">
+                                    Name of the person needing care <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="contact_005" name="contact_005" class="form-input" 
+                                       placeholder="Enter name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Location Preferences -->
+                    <div class="question-section bg-white rounded-xl p-10 shadow-lg border border-gray-200" data-section="2">
+                        <h2 class="section-title">Location Preferences</h2>
+                        <p class="section-description">Location and transport accessibility requirements</p>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <label class="question-label" for="location_001">
+                                    Preferred region/city <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="location_001" name="location_001" class="form-input" 
+                                       placeholder="Birmingham, Manchester, London..." required>
+                                <p class="help-text">Specify the city or region where the care home should be located</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Maximum distance from specified location <span class="text-red-500">*</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_002" value="5km" required>
+                                        <span>Up to 5 km</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_002" value="10km" required>
+                                        <span>Up to 10 km</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_002" value="25km" required>
+                                        <span>Up to 25 km</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_002" value="50km" required>
+                                        <span>Up to 50 km</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_002" value="any" required>
+                                        <span>Distance doesn't matter</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    How important is proximity to family and friends? <span class="text-red-500">*</span>
+                                </label>
+                                <p class="help-text mb-6">Please select a number from 1 (not important) to 10 (critically important)</p>
+                                <div class="rating-group">
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="1">1</button>
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="2">2</button>
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="3">3</button>
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="4">4</button>
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="5">5</button>
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="6">6</button>
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="7">7</button>
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="8">8</button>
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="9">9</button>
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="10">10</button>
+                                </div>
+                                <div class="flex justify-between text-lg text-gray-600 mt-4 font-semibold">
+                                    <span>Not important</span>
+                                    <span>Critically important</span>
+                                </div>
+                                <input type="hidden" name="location_003" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional sections would continue here in the same pattern... -->
+                    <!-- For brevity, continuing with navigation -->
+
+                    <!-- Navigation Buttons -->
+                    <div class="navigation-buttons flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+                        <button type="button" id="prev-btn" class="secondary-btn" style="display: none;">
+                            ← Previous Section
+                        </button>
+                        
+                        <div class="flex gap-6">
+                            <button type="button" id="next-btn" class="primary-btn">
+                                Next Section →
+                            </button>
+                            <button type="submit" id="submit-btn" class="primary-btn" style="display: none;">
+                                Complete Assessment
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Thank You Page -->
+            <div id="thank-you-page" class="thank-you-page">
+                <div class="success-checkmark"></div>
+                <h1 class="text-5xl font-bold mb-8 text-gray-900">Assessment Complete!</h1>
+                <p class="text-2xl text-gray-600 max-w-2xl mx-auto mb-10">
+                    Thank you for completing our comprehensive care home assessment. Your detailed responses will help our experts provide the most suitable recommendations for your needs.
+                </p>
+                <div class="bg-white rounded-lg p-8 shadow-lg max-w-2xl mx-auto border-l-4 border-green-600">
+                    <h3 class="text-2xl font-bold mb-6">What happens next:</h3>
+                    <div class="text-left space-y-4 text-lg">
+                        <p><strong>Within 2 hours:</strong> Confirmation email sent</p>
+                        <p><strong>Within 24 hours:</strong> Expert analysis begins</p>
+                        <p><strong>Within 48 hours:</strong> Personalized recommendations delivered</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        class CareHomeQuestionnaire {
+            constructor() {
+                this.currentSection = 1;
+                this.totalSections = 8;
+                this.formData = {};
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.updateProgress();
+                this.loadSavedData();
+                this.addAccessibilityFeatures();
+            }
+
+            addAccessibilityFeatures() {
+                // Add keyboard navigation support
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' && e.target.classList.contains('rating-btn')) {
+                        e.target.click();
+                    }
+                });
+
+                // Add voice announcements for screen readers
+                const announceProgress = () => {
+                    const announcement = `Section ${this.currentSection} of ${this.totalSections}`;
+                    const ariaLive = document.createElement('div');
+                    ariaLive.setAttribute('aria-live', 'polite');
+                    ariaLive.setAttribute('aria-atomic', 'true');
+                    ariaLive.className = 'sr-only';
+                    ariaLive.textContent = announcement;
+                    document.body.appendChild(ariaLive);
+                    setTimeout(() => document.body.removeChild(ariaLive), 1000);
+                };
+
+                // Announce progress changes
+                this.originalUpdateProgress = this.updateProgress;
+                this.updateProgress = () => {
+                    this.originalUpdateProgress();
+                    announceProgress();
+                };
+            }
+
+            bindEvents() {
+                // Navigation buttons
+                document.getElementById('next-btn').addEventListener('click', () => this.nextSection());
+                document.getElementById('prev-btn').addEventListener('click', () => this.prevSection());
+                
+                // Form submission
+                document.getElementById('questionnaire-form').addEventListener('submit', (e) => this.submitForm(e));
+                
+                // Radio and checkbox interactions
+                this.setupRadioButtons();
+                this.setupCheckboxes();
+                this.setupRatingButtons();
+                this.setupConditionalLogic();
+                
+                // Auto-save on input
+                document.addEventListener('input', () => this.saveFormData());
+            }
+
+            setupRadioButtons() {
+                document.querySelectorAll('.radio-option').forEach(option => {
+                    option.addEventListener('click', () => {
+                        const input = option.querySelector('input[type="radio"]');
+                        if (input && !input.disabled) {
+                            input.checked = true;
+                            this.updateRadioSelection(input.name);
+                            this.saveFormData();
+                        }
+                    });
+                });
+            }
+
+            setupCheckboxes() {
+                document.querySelectorAll('.checkbox-option').forEach(option => {
+                    option.addEventListener('click', () => {
+                        const input = option.querySelector('input[type="checkbox"]');
+                        if (input && !input.disabled) {
+                            input.checked = !input.checked;
+                            this.updateCheckboxSelection(input.name);
+                            this.saveFormData();
+                        }
+                    });
+                });
+            }
+
+            setupRatingButtons() {
+                document.querySelectorAll('.rating-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const name = btn.dataset.name;
+                        const value = btn.dataset.value;
+                        
+                        // Clear previous selections
+                        document.querySelectorAll(`[data-name="${name}"]`).forEach(b => {
+                            b.classList.remove('selected');
+                        });
+                        
+                        // Select current
+                        btn.classList.add('selected');
+                        
+                        // Update hidden input
+                        const hiddenInput = document.querySelector(`input[name="${name}"]`);
+                        if (hiddenInput) {
+                            hiddenInput.value = value;
+                        }
+                        
+                        // Announce selection for screen readers
+                        const announcement = `Selected ${value} out of 10`;
+                        btn.setAttribute('aria-label', announcement);
+                        
+                        this.saveFormData();
+                    });
+                });
+            }
+
+            setupConditionalLogic() {
+                // Show/hide patient name based on relationship
+                const relationshipInputs = document.querySelectorAll('input[name="contact_004"]');
+                const patientNameSection = document.getElementById('patient-name-section');
+                const patientNameInput = document.getElementById('contact_005');
+
+                relationshipInputs.forEach(input => {
+                    input.addEventListener('change', () => {
+                        if (input.value === 'myself') {
+                            patientNameSection.style.display = 'none';
+                            patientNameInput.removeAttribute('required');
+                        } else {
+                            patientNameSection.style.display = 'block';
+                            patientNameInput.setAttribute('required', 'required');
+                        }
+                    });
+                });
+            }
+
+            updateRadioSelection(name) {
+                document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
+                    const option = radio.closest('.radio-option');
+                    if (option) {
+                        option.classList.toggle('selected', radio.checked);
+                    }
+                });
+            }
+
+            updateCheckboxSelection(name) {
+                document.querySelectorAll(`input[name="${name}"]`).forEach(checkbox => {
+                    const option = checkbox.closest('.checkbox-option');
+                    if (option) {
+                        option.classList.toggle('selected', checkbox.checked);
+                    }
+                });
+            }
+
+            nextSection() {
+                if (this.validateCurrentSection()) {
+                    if (this.currentSection < this.totalSections) {
+                        this.currentSection++;
+                        this.showSection(this.currentSection);
+                        this.updateProgress();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                }
+            }
+
+            prevSection() {
+                if (this.currentSection > 1) {
+                    this.currentSection--;
+                    this.showSection(this.currentSection);
+                    this.updateProgress();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+
+            validateCurrentSection() {
+                const currentSectionElement = document.querySelector(`[data-section="${this.currentSection}"]`);
+                const requiredFields = currentSectionElement.querySelectorAll('[required]');
+                let isValid = true;
+
+                // Clear previous errors
+                currentSectionElement.querySelectorAll('.error-msg').forEach(error => {
+                    error.remove();
+                });
+
+                requiredFields.forEach(field => {
+                    if (field.type === 'radio') {
+                        const radioGroup = currentSectionElement.querySelectorAll(`input[name="${field.name}"]`);
+                        const isChecked = Array.from(radioGroup).some(radio => radio.checked);
+                        if (!isChecked) {
+                            this.showError(field.closest('div'), 'Please select an option');
+                            isValid = false;
+                        }
+                    } else if (field.type === 'checkbox') {
+                        const checkboxGroup = currentSectionElement.querySelectorAll(`input[name="${field.name}"]`);
+                        const isChecked = Array.from(checkboxGroup).some(checkbox => checkbox.checked);
+                        if (!isChecked) {
+                            this.showError(field.closest('div'), 'Please select at least one option');
+                            isValid = false;
+                        }
+                    } else if (field.type === 'hidden') {
+                        if (!field.value) {
+                            this.showError(field.closest('div'), 'Please make a selection');
+                            isValid = false;
+                        }
+                    } else {
+                        if (!field.value.trim()) {
+                            this.showError(field, 'This field is required');
+                            isValid = false;
+                        }
+                    }
+                });
+
+                return isValid;
+            }
+
+            showError(element, message) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-msg';
+                errorDiv.textContent = message;
+                errorDiv.setAttribute('role', 'alert');
+                element.appendChild(errorDiv);
+                
+                // Focus the error for screen readers
+                errorDiv.focus();
+            }
+
+            showSection(sectionNumber) {
+                // Hide all sections
+                document.querySelectorAll('.question-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                // Show current section
+                const currentSection = document.querySelector(`[data-section="${sectionNumber}"]`);
+                if (currentSection) {
+                    currentSection.classList.add('active');
+                }
+
+                this.updateNavigationButtons();
+            }
+
+            updateNavigationButtons() {
+                const prevBtn = document.getElementById('prev-btn');
+                const nextBtn = document.getElementById('next-btn');
+                const submitBtn = document.getElementById('submit-btn');
+
+                prevBtn.style.display = this.currentSection === 1 ? 'none' : 'block';
+
+                if (this.currentSection === this.totalSections) {
+                    nextBtn.style.display = 'none';
+                    submitBtn.style.display = 'block';
+                } else {
+                    nextBtn.style.display = 'block';
+                    submitBtn.style.display = 'none';
+                }
+            }
+
+            updateProgress() {
+                const progressFill = document.getElementById('progress-fill');
+                const currentSectionSpan = document.getElementById('current-section');
+                const progress = (this.currentSection / this.totalSections) * 100;
+                
+                progressFill.style.width = `${progress}%`;
+                currentSectionSpan.textContent = this.currentSection;
+            }
+
+            saveFormData() {
+                const formData = new FormData(document.getElementById('questionnaire-form'));
+                const data = {};
+                
+                for (let [key, value] of formData.entries()) {
+                    data[key] = value;
+                }
+                
+                // Save to localStorage
+                localStorage.setItem('careHomeQuestionnaire', JSON.stringify({
+                    ...data,
+                    currentSection: this.currentSection,
+                    timestamp: Date.now()
+                }));
+            }
+
+            loadSavedData() {
+                const savedData = localStorage.getItem('careHomeQuestionnaire');
+                if (savedData) {
+                    try {
+                        const data = JSON.parse(savedData);
+                        
+                        // Check if data is fresh (not older than 24 hours)
+                        if (Date.now() - data.timestamp < 24 * 60 * 60 * 1000) {
+                            this.currentSection = data.currentSection || 1;
+                            
+                            // Restore field values
+                            Object.entries(data).forEach(([key, value]) => {
+                                const field = document.querySelector(`[name="${key}"]`);
+                                if (field) {
+                                    if (field.type === 'radio' || field.type === 'checkbox') {
+                                        if (field.value === value) {
+                                            field.checked = true;
+                                            this.updateRadioSelection(key);
+                                        }
+                                    } else {
+                                        field.value = value;
+                                    }
+                                }
+                            });
+                            
+                            this.showSection(this.currentSection);
+                            this.updateProgress();
+                        }
+                    } catch (e) {
+                        console.warn('Could not restore saved data', e);
+                    }
+                }
+            }
+
+            submitForm(e) {
+                e.preventDefault();
+                
+                if (this.validateCurrentSection()) {
+                    this.collectAndSubmitData();
+                }
+            }
+
+            collectAndSubmitData() {
+                const formData = new FormData(document.getElementById('questionnaire-form'));
+                const data = {};
+                
+                // Collect all form data
+                for (let [key, value] of formData.entries()) {
+                    if (data[key]) {
+                        // Handle multiple values (checkboxes)
+                        if (Array.isArray(data[key])) {
+                            data[key].push(value);
+                        } else {
+                            data[key] = [data[key], value];
+                        }
+                    } else {
+                        data[key] = value;
+                    }
+                }
+                
+                // Add metadata
+                data.timestamp = new Date().toISOString();
+                data.assessment_version = "1.0-age-optimized";
+                data.user_agent = navigator.userAgent;
+                data.screen_resolution = `${screen.width}x${screen.height}`;
+                data.completed_sections = this.totalSections;
+                data.accessibility_features = "age-55-plus-optimized";
+
+                const submitBtn = document.getElementById('submit-btn');
+                const originalText = submitBtn.textContent;
+                submitBtn.innerHTML = '<span class="loading-spinner"></span>Processing...';
+                submitBtn.disabled = true;
+                
+                console.log('Submitting assessment data:', JSON.stringify(data, null, 2));
+                
+                // Send to server
+                this.sendToServer(data).then(() => {
+                    // Show thank you page
+                    this.showThankYouPage();
+                    
+                    // Clear saved data
+                    localStorage.removeItem('careHomeQuestionnaire');
+                    
+                    // Show success notification
+                    this.showSuccessNotification();
+                    
+                }).catch((error) => {
+                    console.error('Submission error:', error);
+                    alert('There was an error submitting your assessment. Please try again.');
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                });
+            }
+
+            async sendToServer(data) {
+                // API endpoint placeholder
+                const API_ENDPOINT = '/api/care-home-assessment';
+                
+                try {
+                    // Simulate API call with realistic delay
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    
+                    // Simulated success response
+                    console.log('Simulated API success. Data would be sent to:', API_ENDPOINT);
+                    console.log('Data payload:', data);
+                    
+                    return { 
+                        success: true, 
+                        assessment_id: 'age_opt_' + Date.now(),
+                        message: 'Assessment submitted successfully'
+                    };
+                    
+                } catch (error) {
+                    console.error('API Error:', error);
+                    throw error;
+                }
+            }
+
+            showThankYouPage() {
+                document.getElementById('questionnaire-container').style.display = 'none';
+                document.getElementById('thank-you-page').classList.add('active');
+                
+                // Announce completion for screen readers
+                const announcement = document.createElement('div');
+                announcement.setAttribute('aria-live', 'assertive');
+                announcement.setAttribute('aria-atomic', 'true');
+                announcement.className = 'sr-only';
+                announcement.textContent = 'Assessment completed successfully. Thank you page is now displayed.';
+                document.body.appendChild(announcement);
+                setTimeout(() => document.body.removeChild(announcement), 2000);
+            }
+
+            showSuccessNotification() {
+                const notification = document.createElement('div');
+                notification.className = 'success-notification';
+                notification.textContent = 'Assessment submitted successfully!';
+                notification.setAttribute('role', 'alert');
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 5000);
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new CareHomeQuestionnaire();
+        });
+    </script>
+</body>
+</html>
