@@ -421,59 +421,6 @@
                 margin-bottom: 12px;
             }
         }
-        
-        /* Thank you page styles */
-        .thank-you-page {
-            display: none;
-            text-align: center;
-            padding: 40px 20px;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-        
-        .thank-you-page.active {
-            display: block;
-            opacity: 1;
-        }
-        
-        #questionnaire-container {
-            transition: opacity 0.3s ease-out;
-        }
-        
-        .success-checkmark {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #059669, #047857);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 32px;
-            position: relative;
-            animation: pulse-glow 2s ease-in-out infinite;
-        }
-        
-        .success-checkmark::after {
-            content: '';
-            width: 30px;
-            height: 50px;
-            border: solid white;
-            border-width: 0 5px 5px 0;
-            transform: rotate(45deg);
-            animation: checkmark 0.8s ease-out 0.5s forwards;
-            opacity: 0;
-        }
-        
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(5, 150, 105, 0.3); }
-            50% { box-shadow: 0 0 30px rgba(5, 150, 105, 0.6); }
-        }
-        
-        @keyframes checkmark {
-            0% { transform: scale(0) rotate(45deg); opacity: 0; }
-            50% { transform: scale(1.2) rotate(45deg); opacity: 1; }
-            100% { transform: scale(1) rotate(45deg); opacity: 1; }
-        }
 
         /* Accessibility improvements for 55+ */
         :focus {
@@ -517,10 +464,10 @@
                 <!-- Header Section -->
                 <div class="text-center mb-16">
                     <h1 class="text-5xl font-bold mb-8 text-gray-900">Professional Care Home Assessment</h1>
-                    <p class="text-2xl text-gray-600 max-w-3xl mx-auto mb-10">
-                        This detailed assessment helps us understand your specific needs and provide personalised care home recommendations within 48 hours.
+                    <p class="text-2xl text-gray-600 max-w-3xl mx-auto mb-6">
+                        48 specialised questions for maximally precise matching - far more detailed than any free service in the UK.
                     </p>
-                    <div class="bg-white rounded-lg p-8 shadow-lg max-w-2xl mx-auto border-l-4 border-green-600">
+                    <div class="bg-gradient-to-r from-blue-50 to-green-50 rounded-lg p-8 shadow-lg max-w-2xl mx-auto border border-blue-200 mb-8">
                         <div class="flex items-center justify-center space-x-8 text-lg flex-wrap gap-6">
                             <div class="flex items-center">
                                 <span class="text-green-600 mr-3 text-xl">✓</span>
@@ -536,14 +483,24 @@
                             </div>
                         </div>
                     </div>
+                    <div class="bg-white rounded-lg p-6 shadow-md max-w-2xl mx-auto border-l-4 border-orange-400">
+                        <p class="text-lg font-semibold text-gray-700 mb-2">Why this assessment works so well:</p>
+                        <p class="text-gray-600">Each question helps our AI understand your unique situation - from medical needs to cultural preferences - ensuring we recommend care homes that truly match your requirements.</p>
+                    </div>
                 </div>
 
                 <!-- Progress Bar -->
                 <div class="progress-text">
                     <span>Section <span id="current-section">1</span> of 8</span>
                 </div>
-                <div class="progress-bar mb-10">
+                <div class="progress-bar mb-6">
                     <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                
+                <!-- Motivational Progress Message -->
+                <div id="progress-motivation" class="text-center mb-8 p-4 rounded-lg bg-gradient-to-r from-blue-50 to-green-50 border border-blue-200">
+                    <p class="text-lg font-semibold text-blue-800">Ready to begin your personalised care home assessment</p>
+                    <p class="text-gray-600 mt-2">Each answer helps our AI create more accurate recommendations just for you</p>
                 </div>
 
                 <!-- Questionnaire Form -->
@@ -552,7 +509,7 @@
                     <!-- Section 1: Contact Information -->
                     <div class="question-section active bg-white rounded-xl p-10 shadow-lg border border-gray-200" data-section="1">
                         <h2 class="section-title">Contact Information</h2>
-                        <p class="section-description">Basic details for communication and identification</p>
+                        <p class="section-description">Essential details for personalised communication and recommendations</p>
                         
                         <div class="space-y-8">
                             <div>
@@ -561,7 +518,7 @@
                                 </label>
                                 <input type="text" id="contact_001" name="contact_001" class="form-input" 
                                        placeholder="Enter your full name" required>
-                                <p class="help-text">How we should address you in our recommendations</p>
+                                <p class="help-text">How we should address you in your personalised recommendations report</p>
                             </div>
 
                             <div>
@@ -570,7 +527,7 @@
                                 </label>
                                 <input type="email" id="contact_002" name="contact_002" class="form-input" 
                                        placeholder="example@email.com" required>
-                                <p class="help-text">For sending your personalised recommendations</p>
+                                <p class="help-text">For delivering your comprehensive care home recommendations securely</p>
                             </div>
 
                             <div>
@@ -579,47 +536,48 @@
                                 </label>
                                 <input type="tel" id="contact_003" name="contact_003" class="form-input" 
                                        placeholder="+44 7___ ___-___">
-                                <p class="help-text">For clarifying details if needed (optional)</p>
+                                <p class="help-text">For urgent queries or clarification if needed (optional)</p>
                             </div>
 
                             <div>
                                 <label class="question-label">
-                                    Your relationship to the person needing care <span class="text-red-500">*</span>
+                                    Your relationship to the person requiring care <span class="text-red-500">*</span>
                                 </label>
                                 <div class="space-y-4">
                                     <label class="radio-option">
                                         <input type="radio" name="contact_004" value="myself" required>
-                                        <span>Looking for myself</span>
+                                        <span>Looking for care for myself</span>
                                     </label>
                                     <label class="radio-option">
                                         <input type="radio" name="contact_004" value="spouse" required>
-                                        <span>Spouse/Partner</span>
+                                        <span>Spouse or partner</span>
                                     </label>
                                     <label class="radio-option">
                                         <input type="radio" name="contact_004" value="parent" required>
-                                        <span>Parent</span>
+                                        <span>Parent or grandparent</span>
                                     </label>
                                     <label class="radio-option">
                                         <input type="radio" name="contact_004" value="relative" required>
-                                        <span>Other relative</span>
+                                        <span>Other family member</span>
                                     </label>
                                     <label class="radio-option">
                                         <input type="radio" name="contact_004" value="friend" required>
-                                        <span>Friend</span>
+                                        <span>Friend or neighbour</span>
                                     </label>
                                     <label class="radio-option">
                                         <input type="radio" name="contact_004" value="professional" required>
-                                        <span>Representing an organisation</span>
+                                        <span>Professional representative</span>
                                     </label>
                                 </div>
                             </div>
 
                             <div id="patient-name-section" style="display: none;">
                                 <label class="question-label" for="contact_005">
-                                    Name of the person needing care <span class="text-red-500">*</span>
+                                    Name of the person requiring care <span class="text-red-500">*</span>
                                 </label>
                                 <input type="text" id="contact_005" name="contact_005" class="form-input" 
-                                       placeholder="Enter name">
+                                       placeholder="Enter their name">
+                                <p class="help-text">This helps us personalise our recommendations and communication</p>
                             </div>
                         </div>
                     </div>
@@ -627,42 +585,42 @@
                     <!-- Section 2: Location Preferences -->
                     <div class="question-section bg-white rounded-xl p-10 shadow-lg border border-gray-200" data-section="2">
                         <h2 class="section-title">Location Preferences</h2>
-                        <p class="section-description">Location and transport accessibility requirements</p>
+                        <p class="section-description">Geographic and transport requirements for convenient family access</p>
                         
                         <div class="space-y-8">
                             <div>
                                 <label class="question-label" for="location_001">
-                                    Preferred region/city <span class="text-red-500">*</span>
+                                    Preferred region or town <span class="text-red-500">*</span>
                                 </label>
                                 <input type="text" id="location_001" name="location_001" class="form-input" 
                                        placeholder="Birmingham, Manchester, London..." required>
-                                <p class="help-text">Specify the city or region where the care home should be located</p>
+                                <p class="help-text">Please specify the town or region where you'd prefer the care home to be located</p>
                             </div>
 
                             <div>
                                 <label class="question-label">
-                                    Maximum distance from specified location
+                                    Maximum distance from your preferred location
                                 </label>
                                 <div class="space-y-4">
                                     <label class="radio-option">
                                         <input type="radio" name="location_002" value="5km">
-                                        <span>Up to 5 km</span>
+                                        <span>Up to 5 kilometres</span>
                                     </label>
                                     <label class="radio-option">
                                         <input type="radio" name="location_002" value="10km">
-                                        <span>Up to 10 km</span>
+                                        <span>Up to 10 kilometres</span>
                                     </label>
                                     <label class="radio-option">
                                         <input type="radio" name="location_002" value="25km">
-                                        <span>Up to 25 km</span>
+                                        <span>Up to 25 kilometres</span>
                                     </label>
                                     <label class="radio-option">
                                         <input type="radio" name="location_002" value="50km">
-                                        <span>Up to 50 km</span>
+                                        <span>Up to 50 kilometres</span>
                                     </label>
                                     <label class="radio-option">
                                         <input type="radio" name="location_002" value="any">
-                                        <span>Distance doesn't matter</span>
+                                        <span>Distance isn't a primary concern</span>
                                     </label>
                                 </div>
                             </div>
@@ -671,7 +629,7 @@
                                 <label class="question-label">
                                     How important is proximity to family and friends?
                                 </label>
-                                <p class="help-text mb-6">Please select a number from 1 (not important) to 10 (critically important)</p>
+                                <p class="help-text mb-6">Please rate from 1 (not important at all) to 10 (absolutely essential)</p>
                                 <div class="rating-group">
                                     <button type="button" class="rating-btn" data-name="location_003" data-value="1">1</button>
                                     <button type="button" class="rating-btn" data-name="location_003" data-value="2">2</button>
@@ -686,7 +644,7 @@
                                 </div>
                                 <div class="flex justify-between text-lg text-gray-600 mt-4 font-semibold">
                                     <span>Not important</span>
-                                    <span>Critically important</span>
+                                    <span>Absolutely essential</span>
                                 </div>
                                 <input type="hidden" name="location_003">
                             </div>
@@ -756,69 +714,74 @@
                     <!-- Section 3: Budget & Funding -->
                     <div class="question-section bg-white rounded-xl p-10 shadow-lg border border-gray-200" data-section="3">
                         <h2 class="section-title">Budget & Funding</h2>
-                        <p class="section-description">Financial capabilities and payment methods</p>
+                        <p class="section-description">Financial arrangements and payment preferences</p>
                         
                         <div class="space-y-8">
                             <div>
                                 <label class="question-label">
-                                    Planned monthly budget <span class="text-red-500">*</span>
+                                    Planned weekly budget <span class="text-red-500">*</span>
                                 </label>
+                                <p class="help-text mb-4">Care home fees in the UK are typically charged weekly</p>
                                 <div class="space-y-4">
                                     <label class="radio-option">
+                                        <input type="radio" name="budget_001" value="1000" required>
+                                        <span>Up to £1,000 per week</span>
+                                    </label>
+                                    <label class="radio-option">
                                         <input type="radio" name="budget_001" value="1500" required>
-                                        <span>Up to £1,500</span>
+                                        <span>£1,000 - £1,500 per week</span>
                                     </label>
                                     <label class="radio-option">
-                                        <input type="radio" name="budget_001" value="2500" required>
-                                        <span>£1,500 - £2,500</span>
+                                        <input type="radio" name="budget_001" value="2000" required>
+                                        <span>£1,500 - £2,000 per week</span>
                                     </label>
                                     <label class="radio-option">
-                                        <input type="radio" name="budget_001" value="4000" required>
-                                        <span>£2,500 - £4,000</span>
-                                    </label>
-                                    <label class="radio-option">
-                                        <input type="radio" name="budget_001" value="6000" required>
-                                        <span>£4,000 - £6,000</span>
+                                        <input type="radio" name="budget_001" value="3000" required>
+                                        <span>£2,000 - £3,000 per week</span>
                                     </label>
                                     <label class="radio-option">
                                         <input type="radio" name="budget_001" value="unlimited" required>
-                                        <span>More than £6,000</span>
+                                        <span>More than £3,000 per week</span>
                                     </label>
                                     <label class="radio-option">
                                         <input type="radio" name="budget_001" value="unknown" required>
-                                        <span>Not yet determined</span>
+                                        <span>Budget not yet determined</span>
                                     </label>
                                 </div>
                             </div>
 
                             <div>
                                 <label class="question-label">
-                                    Funding methods (select all that apply)
+                                    Funding sources (please select all that apply)
                                 </label>
                                 <div class="space-y-4">
                                     <label class="checkbox-option">
                                         <input type="checkbox" name="budget_002" value="personal_funds">
-                                        <span>Personal savings</span>
+                                        <span>Personal savings and investments</span>
                                     </label>
                                     <label class="checkbox-option">
                                         <input type="checkbox" name="budget_002" value="family_support">
-                                        <span>Family support</span>
+                                        <span>Family financial support</span>
                                     </label>
                                     <label class="checkbox-option">
                                         <input type="checkbox" name="budget_002" value="property_sale">
-                                        <span>Property sale</span>
+                                        <span>Proceeds from property sale</span>
                                     </label>
                                     <label class="checkbox-option">
                                         <input type="checkbox" name="budget_002" value="pension">
-                                        <span>Pension</span>
+                                        <span>State or private pension</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="budget_002" value="local_authority">
+                                        <span>Local authority funding</span>
                                     </label>
                                     <label class="checkbox-option">
                                         <input type="checkbox" name="budget_002" value="nhs_funding">
-                                        <span>NHS/Local authority funding</span>
+                                        <span>NHS Continuing Healthcare</span>
                                     </label>
                                     <label class="checkbox-option">
                                         <input type="checkbox" name="budget_002" value="exploring">
-                                        <span>Exploring options</span>
+                                        <span>Still exploring funding options</span>
                                     </label>
                                 </div>
                             </div>
@@ -834,11 +797,11 @@
                                     </label>
                                     <label class="radio-option">
                                         <input type="radio" name="budget_003" value="moderate">
-                                        <span>Could exceed slightly for quality care</span>
+                                        <span>Could stretch budget slightly for exceptional care</span>
                                     </label>
                                     <label class="radio-option">
                                         <input type="radio" name="budget_003" value="flexible">
-                                        <span>Budget less important than suitable care</span>
+                                        <span>Quality of care more important than price</span>
                                     </label>
                                     <label class="radio-option">
                                         <input type="radio" name="budget_003" value="value_focused">
@@ -1879,23 +1842,6 @@
                 </form>
             </div>
 
-            <!-- Thank You Page -->
-            <div id="thank-you-page" class="thank-you-page">
-                <div class="success-checkmark"></div>
-                <h1 class="text-5xl font-bold mb-8 text-gray-900">Assessment Complete!</h1>
-                <p class="text-2xl text-gray-600 max-w-2xl mx-auto mb-10">
-                    Thank you for completing our comprehensive care home assessment. Your detailed responses will help our experts provide the most suitable recommendations for your needs.
-                </p>
-                <div class="bg-white rounded-lg p-8 shadow-lg max-w-2xl mx-auto border-l-4 border-green-600">
-                    <h3 class="text-2xl font-bold mb-6">What happens next:</h3>
-                    <div class="text-left space-y-4 text-lg">
-                        <p><strong>Within 2 hours:</strong> Confirmation email sent</p>
-                        <p><strong>Within 24 hours:</strong> Expert analysis begins</p>
-                        <p><strong>Within 48 hours:</strong> Personalised recommendations delivered</p>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </main>
 
@@ -2057,11 +2003,41 @@
                 if (this.validateCurrentSection()) {
                     if (this.currentSection < this.totalSections) {
                         this.currentSection++;
+                        
+                        // Show 50% celebration milestone
+                        if (this.currentSection === 4) {
+                            this.showMilestoneMessage();
+                        }
+                        
                         this.showSection(this.currentSection);
                         this.updateProgress();
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
                 }
+            }
+            
+            showMilestoneMessage() {
+                // Create celebration message
+                const celebration = document.createElement('div');
+                celebration.className = 'fixed top-20 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-green-500 to-blue-500 text-white p-6 rounded-xl shadow-2xl z-50 text-center max-w-md';
+                celebration.innerHTML = `
+                    <div class="text-3xl mb-2">🎉</div>
+                    <h3 class="text-xl font-bold mb-2">Halfway Complete!</h3>
+                    <p class="text-sm">Your profile is already much more detailed than any free service. The AI is building a comprehensive picture of your needs.</p>
+                `;
+                
+                document.body.appendChild(celebration);
+                
+                // Auto-remove after 4 seconds
+                setTimeout(() => {
+                    celebration.style.opacity = '0';
+                    celebration.style.transform = 'translate(-50%, -100%) scale(0.9)';
+                    celebration.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        celebration.remove();
+                    }, 500);
+                }, 3500);
             }
 
             prevSection() {
@@ -2180,6 +2156,56 @@
                 if (currentSectionSpan) {
                     currentSectionSpan.textContent = this.currentSection;
                 }
+                
+                // Update motivational message
+                this.updateMotivationalMessage(progress);
+            }
+            
+            updateMotivationalMessage(progress) {
+                const motivationDiv = document.getElementById('progress-motivation');
+                if (!motivationDiv) return;
+                
+                let title, subtitle;
+                
+                if (this.currentSection === 1) {
+                    title = "Ready to begin your personalised care home assessment";
+                    subtitle = "Each answer helps our AI create more accurate recommendations just for you";
+                } else if (this.currentSection === 2) {
+                    title = "Excellent! Each answer makes your recommendations more personalised";
+                    subtitle = "Location preferences help us find care homes in the right area for your family";
+                } else if (this.currentSection === 3) {
+                    title = "Brilliant progress! Budget information ensures realistic recommendations";
+                    subtitle = "No hidden costs - we'll show you exactly what to expect financially";
+                } else if (this.currentSection === 4) {
+                    title = "Halfway there! Your profile is already far more detailed than any free service";
+                    subtitle = "Medical needs are crucial - this ensures we find homes with the right expertise";
+                } else if (this.currentSection === 5) {
+                    title = "Outstanding! Cultural preferences make a real difference to daily comfort";
+                    subtitle = "Language and religious needs often determine long-term happiness in care";
+                } else if (this.currentSection === 6) {
+                    title = "Nearly finished! Comfort preferences create truly personalised matches";
+                    subtitle = "Activities and lifestyle choices help identify homes where you'll feel at home";
+                } else if (this.currentSection === 7) {
+                    title = "Almost there! Family involvement shapes your care experience significantly";
+                    subtitle = "Visiting arrangements and family support are essential for peace of mind";
+                } else if (this.currentSection === 8) {
+                    title = "Final section! Your comprehensive profile is ready for AI analysis";
+                    subtitle = "Timeline and additional details complete your unique care home requirements";
+                }
+                
+                motivationDiv.innerHTML = `
+                    <p class="text-lg font-semibold text-blue-800">${title}</p>
+                    <p class="text-gray-600 mt-2">${subtitle}</p>
+                `;
+                
+                // Update styling based on progress
+                if (progress >= 50) {
+                    motivationDiv.className = 'text-center mb-8 p-4 rounded-lg bg-gradient-to-r from-green-50 to-blue-50 border border-green-200';
+                }
+                
+                if (progress >= 75) {
+                    motivationDiv.className = 'text-center mb-8 p-4 rounded-lg bg-gradient-to-r from-orange-50 to-green-50 border border-orange-200';
+                }
             }
 
             saveFormData() {
@@ -2278,75 +2304,107 @@
                         submitBtn.innerHTML = originalText;
                         submitBtn.disabled = false;
                         this.showErrorMessage('Sorry, there was an error submitting your assessment. Please try again.');
-                        console.error('❌ Submission error:', error);
+                        console.error('⚠ Submission error:', error);
                     });
                 }
             }
 
             collectAllFormData() {
-                // Define all 48 expected fields
-                const allFields = [
+                // Define all 50 expected fields with their sections
+                const allFields = {
                     // Section 1: Contact Information (5 fields)
-                    'contact_001', 'contact_002', 'contact_003', 'contact_004', 'contact_005',
+                    contact: ['contact_001', 'contact_002', 'contact_003', 'contact_004', 'contact_005'],
                     
                     // Section 2: Location Preferences (5 fields)
-                    'location_001', 'location_002', 'location_003', 'location_004', 'location_005',
+                    location: ['location_001', 'location_002', 'location_003', 'location_004', 'location_005'],
                     
                     // Section 3: Budget & Funding (3 fields)
-                    'budget_001', 'budget_002', 'budget_003',
+                    budget: ['budget_001', 'budget_002', 'budget_003'],
                     
                     // Section 4: Care Type & Medical Needs (11 fields)
-                    'care_001', 'care_002', 'care_003', 'care_004', 
-                    'care_005_bathing', 'care_005_dressing', 'care_005_eating', 
-                    'care_005_toilet', 'care_005_mobility', 'care_005_medication', 'care_006',
+                    care: ['care_001', 'care_002', 'care_003', 'care_004', 
+                           'care_005_bathing', 'care_005_dressing', 'care_005_eating', 
+                           'care_005_toilet', 'care_005_mobility', 'care_005_medication', 'care_006'],
                     
                     // Section 5: Cultural & Language Preferences (4 fields)
-                    'culture_001', 'culture_002', 'culture_003', 'culture_004',
+                    culture: ['culture_001', 'culture_002', 'culture_003', 'culture_004'],
                     
                     // Section 6: Comfort & Activities (8 fields)
-                    'comfort_001', 'comfort_002', 'comfort_003', 'comfort_004',
-                    'comfort_005', 'comfort_006', 'comfort_007', 'comfort_008',
+                    comfort: ['comfort_001', 'comfort_002', 'comfort_003', 'comfort_004',
+                             'comfort_005', 'comfort_006', 'comfort_007', 'comfort_008'],
                     
                     // Section 7: Family & Visiting (4 fields)
-                    'family_001', 'family_002', 'family_003', 'family_004',
+                    family: ['family_001', 'family_002', 'family_003', 'family_004'],
                     
                     // Section 8: Timeline & Additional Information (8 fields)
-                    'timeline_001', 'timeline_002', 'timeline_003', 'timeline_004',
-                    'timeline_005', 'timeline_006', 'timeline_007', 'timeline_008'
-                ];
-                
-                const formData = {};
-                
-                // Collect data for each field
-                allFields.forEach(fieldName => {
-                    const field = document.querySelector(`[name="${fieldName}"]`);
+                    timeline: ['timeline_001', 'timeline_002', 'timeline_003', 'timeline_004',
+                              'timeline_005', 'timeline_006', 'timeline_007', 'timeline_008'],
                     
-                    if (field) {
-                        if (field.type === 'radio') {
-                            // For radio buttons, get the checked value
-                            const checkedRadio = document.querySelector(`[name="${fieldName}"]:checked`);
-                            formData[fieldName] = checkedRadio ? checkedRadio.value : null;
-                            
-                        } else if (field.type === 'checkbox') {
-                            // For checkboxes, get all checked values as array
-                            const checkedBoxes = document.querySelectorAll(`[name="${fieldName}"]:checked`);
-                            formData[fieldName] = Array.from(checkedBoxes).map(box => box.value);
-                            
-                        } else if (field.type === 'hidden') {
-                            // For hidden fields (rating scales)
-                            formData[fieldName] = field.value || null;
-                            
-                        } else {
-                            // For text, email, textarea fields
-                            formData[fieldName] = field.value.trim() || null;
+                    // System fields (2 fields)
+                    system: ['system_001', 'system_002']
+                };
+                
+                const structuredData = {};
+                let totalFieldsProcessed = 0;
+                let filledFields = 0;
+                
+                // Process each section
+                Object.entries(allFields).forEach(([sectionName, fieldNames]) => {
+                    structuredData[sectionName] = {};
+                    
+                    fieldNames.forEach(fieldName => {
+                        totalFieldsProcessed++;
+                        let value = null;
+                        
+                        // Try to find the field
+                        const field = document.querySelector(`[name="${fieldName}"]`);
+                        
+                        if (field) {
+                            if (field.type === 'radio') {
+                                // For radio buttons, get the checked value
+                                const checkedRadio = document.querySelector(`[name="${fieldName}"]:checked`);
+                                value = checkedRadio ? checkedRadio.value : null;
+                                
+                            } else if (field.type === 'checkbox') {
+                                // For checkboxes, get all checked values as array
+                                const checkedBoxes = document.querySelectorAll(`[name="${fieldName}"]:checked`);
+                                value = Array.from(checkedBoxes).map(box => box.value);
+                                
+                            } else if (field.type === 'hidden') {
+                                // For hidden fields (rating scales)
+                                value = field.value || null;
+                                
+                            } else {
+                                // For text, email, textarea fields
+                                value = field.value.trim() || null;
+                            }
                         }
-                    } else {
-                        // Field not found - set as null
-                        formData[fieldName] = null;
-                    }
+                        
+                        // Count non-null values
+                        if (value !== null && value !== '' && !(Array.isArray(value) && value.length === 0)) {
+                            filledFields++;
+                        }
+                        
+                        structuredData[sectionName][fieldName] = value;
+                    });
                 });
                 
-                return formData;
+                // Add completion statistics
+                structuredData._statistics = {
+                    total_fields: totalFieldsProcessed,
+                    filled_fields: filledFields,
+                    completion_rate: Math.round((filledFields / totalFieldsProcessed) * 100),
+                    sections_completed: this.totalSections,
+                    form_duration_minutes: Math.round((Date.now() - (this.startTime || Date.now())) / 60000)
+                };
+                
+                console.log(`📊 Data Collection Summary:`);
+                console.log(`   Total Fields: ${totalFieldsProcessed}`);
+                console.log(`   Filled Fields: ${filledFields}`);
+                console.log(`   Completion Rate: ${structuredData._statistics.completion_rate}%`);
+                console.log(`   Form Duration: ${structuredData._statistics.form_duration_minutes} minutes`);
+                
+                return structuredData;
             }
 
             async sendToAPI(data) {
@@ -2355,10 +2413,10 @@
                 console.log('📋 Complete Assessment Data (JSON):');
                 console.log(JSON.stringify(data, null, 2));
                 console.log('📈 Data size:', new Blob([JSON.stringify(data)]).size + ' bytes');
-                console.log('🔢 Total fields collected:', data.meta.total_fields);
+                console.log('📢 Total fields collected:', data.meta.total_fields);
                 console.log('⏱️ Form completion time:', data.meta.form_duration_minutes + ' minutes');
                 
-                // 🔄 PRODUCTION ENDPOINT (currently commented out)
+                // 📄 PRODUCTION ENDPOINT (currently commented out)
                 /*
                 try {
                     // Replace with your actual n8n webhook URL
@@ -2413,34 +2471,23 @@
             }
 
             showThankYouPage() {
-                console.log('🎉 Redirecting to thank you page...');
+                console.log('🎉 Completing assessment and redirecting...');
                 
-                // Hide questionnaire
-                const questionnaireContainer = document.getElementById('questionnaire-container');
-                const thankYouPage = document.getElementById('thank-you-page');
+                // Generate unique assessment ID
+                const assessmentId = Date.now().toString().slice(-6);
                 
-                if (questionnaireContainer && thankYouPage) {
-                    // Smooth transition
-                    questionnaireContainer.style.opacity = '0';
-                    
-                    setTimeout(() => {
-                        questionnaireContainer.style.display = 'none';
-                        thankYouPage.style.display = 'block';
-                        thankYouPage.classList.add('active');
-                        
-                        // Animate thank you page
-                        setTimeout(() => {
-                            thankYouPage.style.opacity = '1';
-                        }, 100);
-                    }, 300);
-                    
-                    // Scroll to top smoothly
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    
-                    console.log('✅ Thank you page displayed successfully');
-                } else {
-                    console.error('❌ Thank you page elements not found');
-                }
+                // Store assessment ID for potential use
+                localStorage.setItem('assessmentId', assessmentId);
+                
+                // Redirect to thank you page with parameters
+                const redirectUrl = `thank-you.html?completed=true&ref=RCH-2025-${assessmentId}`;
+                
+                // Add slight delay for better UX (shows loading state)
+                setTimeout(() => {
+                    window.location.href = redirectUrl;
+                }, 1000);
+                
+                console.log(`✅ Redirecting to: ${redirectUrl}`);
             }
 
             showErrorMessage(message) {
@@ -2464,3 +2511,4 @@
     </script>
 </body>
 </html>
+                                    
