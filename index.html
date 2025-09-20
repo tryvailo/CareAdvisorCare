@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stop Stressing Over Care Home Research | 48-Hour Expert Reports</title>
-    <meta name="description" content="Stop spending weeks stressing over care home research. Get expert, independent recommendations in 48 hours. No commissions, NHS-trusted specialists.">
+    <title>The Right Care Home, Matched in Hours — Not Weeks | 48-Hour Expert Reports</title>
+    <meta name="description" content="Professional care home assessment delivered within 48 hours. Get expert, independent recommendations. No commissions, NHS-trusted specialists.">
+    
+    <!-- External CSS Files -->
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -26,283 +35,32 @@
                         'text-dark': '#1f2937',
                         'text-muted': '#64748b',
                         'healthcare-blue': '#005EB8'
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.6s ease-out forwards',
-                        'slide-up': 'slideUp 0.8s ease-out forwards',
-                        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
-                        'bounce-gentle': 'bounceGentle 1s ease-in-out infinite',
-                        'gradient': 'gradient 3s ease infinite'
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' }
-                        },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(40px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' }
-                        },
-                        pulseGlow: {
-                            '0%, 100%': { boxShadow: '0 0 20px rgba(245, 158, 11, 0.3)' },
-                            '50%': { boxShadow: '0 0 30px rgba(245, 158, 11, 0.6)' }
-                        },
-                        bounceGentle: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-5px)' }
-                        },
-                        gradient: {
-                            '0%': { backgroundPosition: '0% 50%' },
-                            '50%': { backgroundPosition: '100% 50%' },
-                            '100%': { backgroundPosition: '0% 50%' }
-                        }
                     }
                 }
             }
         }
     </script>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #fefce8;
-            color: #1f2937;
-            line-height: 1.7;
-            font-size: 1.125rem;
-            font-weight: 600;
-        }
-        
-        .hero-gradient {
-            background: linear-gradient(135deg, #2563eb 0%, #059669 100%);
-            background-size: 200% 200%;
-            animation: gradient 8s ease infinite;
-        }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .primary-cta {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            color: white;
-            border: 2px solid #f59e0b;
-            font-weight: 700;
-            padding: 24px 32px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            font-size: 1.125rem;
-            position: relative;
-            overflow: hidden;
-            min-height: 48px;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        
-        .primary-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 16px 40px rgba(245, 158, 11, 0.5);
-            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-        }
-        
-        .secondary-cta {
-            background: transparent;
-            color: #059669;
-            border: 2px solid #059669;
-            font-weight: 700;
-            padding: 24px 32px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            font-size: 1.125rem;
-            min-height: 48px;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        
-        .secondary-cta:hover {
-            background: #059669;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(5, 150, 105, 0.4);
-        }
-        
-        .hero-headline {
-            font-size: 2.5rem;
-            line-height: 1.2;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .area-selector {
-            background: white;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 16px 20px;
-            font-size: 1.125rem;
-            color: #1f2937;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-height: 48px;
-        }
-        
-        .area-selector:hover {
-            border-color: #f59e0b;
-            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
-        }
-        
-        .area-card {
-            background: white;
-            border: 2px solid #e5e7eb;
-            border-radius: 16px;
-            padding: 24px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .area-card:hover {
-            border-color: #f59e0b;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(245, 158, 11, 0.15);
-        }
-        
-        .area-card.popular {
-            border-color: #f59e0b;
-            background: linear-gradient(135deg, #fef3c7 0%, #ffffff 100%);
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        
-        .stat-highlight {
-            background: #ffffff;
-            border-left: 4px solid #f59e0b;
-            padding: 30px;
-            border-radius: 12px;
-            margin: 20px 0;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .stat-highlight:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
-        }
-        
-        .testimonial-card {
-            background: linear-gradient(135deg, #fef7f0 0%, #ffffff 100%);
-            border-left: 4px solid #fb7185;
-        }
-        
-        /* Competitive Advantage Styles */
-        .competitive-advantages {
-            background: #f8f9fa;
-            padding: 60px 0;
-        }
-
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .advantage-card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .advantage-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .advantage-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .competitor-comparison {
-            color: #6c757d;
-            font-style: italic;
-            margin-top: 10px;
-            font-size: 0.9rem;
-        }
-
-        .testimonial.competitive-advantage {
-            border-left: 4px solid #28a745;
-            background: #f8f9fa;
-        }
-        
-        @media (max-width: 768px) {
-            .hero-headline {
-                font-size: 2rem !important;
-                line-height: 1.2 !important;
-            }
-            
-            .primary-cta, .secondary-cta {
-                min-height: 56px !important;
-                font-size: 1.125rem !important;
-                padding: 24px 28px !important;
-                width: 100% !important;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr !important;
-            }
-
-            .comparison-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .advantage-card {
-                padding: 20px;
-            }
-        }
-    </style>
 </head>
 
 <body>
     <!-- Header -->
-    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-200 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-nhs-blue">RightCareHome</h1>
-                    <span class="text-sm text-warm-grey ml-1">.co.uk</span>
-                </div>
-                <div class="hidden md:flex items-center space-x-4">
-                    <select class="area-selector" aria-label="Choose your area">
-                        <option value="">Choose your area</option>
-                        <option value="birmingham">Birmingham</option>
-                        <option value="" disabled>Manchester (Coming Soon)</option>
-                        <option value="" disabled>London (Coming Soon)</option>
-                    </select>
-                    <button class="primary-cta">
-                        Get Professional Report - £99
-                    </button>
-                </div>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>RightCareHome</h1>
+                <span class="text-sm text-warm-grey">.co.uk</span>
             </div>
+            <nav class="header-nav hidden md:flex">
+                <select class="area-selector" aria-label="Choose your area">
+                    <option value="">Choose your area</option>
+                    <option value="birmingham">Birmingham</option>
+                    <option value="" disabled>Manchester (Coming Soon)</option>
+                    <option value="" disabled>London (Coming Soon)</option>
+                </select>
+                <button class="primary-cta">
+                    Receive Your Expert Report - £99
+                </button>
+            </nav>
         </div>
     </header>
 
@@ -314,26 +72,31 @@
                 <!-- Left Column -->
                 <div class="fade-in">
                     <h1 class="hero-headline text-white mb-10">
-                        Stop Spending Weeks Stressing Over Care Home Research
+                        The Right Care Home, Matched in Hours — Not Weeks
                     </h1>
                     
                     <p class="text-xl mb-8 font-medium text-blue-50">
-                        Get expert, independent care home recommendations in 48 hours. No commissions, no bias – just honest advice from <strong class="text-white">NHS-trusted UK care specialists</strong>.
+                        Professional care home assessment delivered within 48 hours. No commissions, no bias — just honest advice from <strong class="text-white">NHS-trusted UK care specialists</strong>.
                     </p>
                     
-                    <!-- Simple Trust Line -->
-                    <p class="text-lg mb-10 font-semibold text-blue-100">
-                        🏥 Recommended by NHS Discharge Teams • 1,200+ Families Helped • Independent Advice
-                    </p>
+                    <!-- Trust Line -->
+                    <div class="mb-10">
+                        <p class="text-lg mb-4 font-semibold text-blue-100">
+                            🏥 Recommended by NHS Discharge Teams • 689+ Families Helped • Independent Advice
+                        </p>
+                        <p class="text-base font-medium text-blue-200 bg-blue-800 bg-opacity-30 rounded-lg px-4 py-3">
+                            <strong>Truly independent:</strong> we charge families, not providers — no commissions
+                        </p>
+                    </div>
                     
                     <div class="mb-8">
                         <button class="primary-cta text-lg px-12 py-6">
-                            Get My Care Home Report - £99
+                            Receive Your Expert Care Home Report - £99
                         </button>
                     </div>
                     
                     <p class="text-blue-100">
-                        ⚡ Professional reports delivered within 48 hours • Independent analysis
+                        ⚡ 48-Hour Delivery Promise or Full Refund • Professional assessment
                     </p>
                 </div>
                 
@@ -379,7 +142,7 @@
                                    class="w-full p-5 border-2 border-gray-200 rounded-lg focus:border-warmth-orange focus:outline-none text-lg transition-all duration-300"
                                    required aria-label="Email address for free guide">
                             <button type="submit" class="secondary-cta w-full" role="button">
-                                Get Free Guide Now
+                                Receive Free Guide Now
                             </button>
                         </form>
                         
@@ -399,7 +162,7 @@
             <div class="text-center mb-20 fade-in">
                 <h2 class="text-4xl font-bold mb-10 text-text-dark">Choose Your Area</h2>
                 <p class="text-xl text-warm-grey max-w-3xl mx-auto">
-                    Get localized expertise for your region. Our reports include local market insights, regional care standards, and area-specific recommendations.
+                    Get local expertise for your region. Our reports include local market insights, regional care standards, and area-specific recommendations.
                 </p>
             </div>
             
@@ -412,7 +175,7 @@
                         <p class="text-warm-grey mb-4">277 verified care homes</p>
                         <div class="text-sm text-warmth-orange font-semibold">MOST POPULAR</div>
                         <button class="mt-4 px-6 py-2 bg-warmth-orange text-white rounded-lg font-semibold hover:bg-amber-600 transition-colors">
-                            Get Birmingham Report
+                            Receive Birmingham Report
                         </button>
                     </div>
                 </div>
@@ -460,379 +223,153 @@
             <div class="text-center mb-20 fade-in">
                 <h2 class="text-4xl font-bold mb-10 text-text-dark">Why Families Choose Us Over Care Home Directories</h2>
                 <p class="text-xl text-warm-grey max-w-4xl mx-auto">
-                    Stop wasting time with generic listings. Get intelligent screening technology combined with expert human oversight for personalized recommendations.
+                    Professional assessment vs basic listings. Get comprehensive analysis combined with expert human oversight for personalised recommendations.
                 </p>
             </div>
             
             <div class="comparison-grid">
                 <div class="advantage-card fade-in">
                     <div class="advantage-icon">⚡</div>
-                    <h3 class="text-xl font-bold text-text-dark mb-4">48-Hour Guarantee</h3>
-                    <p class="mb-4"><strong>Us:</strong> Professional analysis delivered within 48 hours</p>
+                    <h3 class="text-xl font-bold text-text-dark mb-4">48-Hour Delivery Promise</h3>
+                    <p class="mb-4"><strong>Our service:</strong> Professional assessment delivered within 48 hours</p>
                     <p class="competitor-comparison"><strong>Other services:</strong> Weeks of manual research or instant but basic listings</p>
                 </div>
 
                 <div class="advantage-card fade-in">
                     <div class="advantage-icon">🎯</div>
-                    <h3 class="text-xl font-bold text-text-dark mb-4">Intelligent Personalisation</h3>
-                    <p class="mb-4"><strong>Us:</strong> Smart matching technology considers 50+ criteria including medical needs, cultural preferences, and family dynamics</p>
+                    <h3 class="text-xl font-bold text-text-dark mb-4">Comprehensive Assessment</h3>
+                    <p class="mb-4"><strong>Our approach:</strong> Professional matching service considers medical needs, cultural preferences, and family dynamics across 40+ criteria</p>
                     <p class="competitor-comparison"><strong>Directories:</strong> Basic postcode + care type filtering only</p>
                 </div>
 
                 <div class="advantage-card fade-in">
                     <div class="advantage-icon">💡</div>
                     <h3 class="text-xl font-bold text-text-dark mb-4">Transparent Pricing</h3>
-                    <p class="mb-4"><strong>Us:</strong> Clear, upfront costs with weekly rates and hidden fees revealed</p>
+                    <p class="mb-4"><strong>Our service:</strong> Clear, upfront costs with weekly rates and hidden fees revealed</p>
                     <p class="competitor-comparison"><strong>Directories:</strong> Contact-gated pricing that wastes your time</p>
                 </div>
 
                 <div class="advantage-card fade-in">
-                    <div class="advantage-icon">🔍</div>
+                    <div class="advantage-icon">📋</div>
                     <h3 class="text-xl font-bold text-text-dark mb-4">Real-Time Verification</h3>
-                    <p class="mb-4"><strong>Us:</strong> Fresh availability and pricing checked within 48 hours</p>
+                    <p class="mb-4"><strong>Our service:</strong> Fresh availability and pricing checked within 48 hours</p>
                     <p class="competitor-comparison"><strong>Other services:</strong> Outdated information from months-old databases</p>
                 </div>
 
                 <div class="advantage-card fade-in">
                     <div class="advantage-icon">🏥</div>
                     <h3 class="text-xl font-bold text-text-dark mb-4">NHS Partnership Trusted</h3>
-                    <p class="mb-4"><strong>Us:</strong> Working directly with NHS discharge teams across England</p>
+                    <p class="mb-4"><strong>Our service:</strong> Working directly with NHS discharge teams across England</p>
                     <p class="competitor-comparison"><strong>Private consultants:</strong> £325-£1,075 fees with 1-2 week delays</p>
                 </div>
 
                 <div class="advantage-card fade-in">
                     <div class="advantage-icon">🛡️</div>
                     <h3 class="text-xl font-bold text-text-dark mb-4">No Commission Bias</h3>
-                    <p class="mb-4"><strong>Us:</strong> Independent service - we're never paid by care homes, so our recommendations are genuinely in your best interest</p>
+                    <p class="mb-4"><strong>Our guarantee:</strong> Independent service - we're never paid by care homes, so our recommendations are genuinely in your best interest</p>
                     <p class="competitor-comparison"><strong>Directories:</strong> Earn referral fees from care homes, creating hidden conflicts of interest</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- National Expertise Section -->
+    <!-- FAQ Section -->
     <section class="py-24 bg-light-cream">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20 fade-in">
-                <h2 class="text-4xl font-bold mb-10 text-text-dark">National Expertise, Local Knowledge</h2>
-                <p class="text-xl text-warm-grey max-w-4xl mx-auto">
-                    Understanding regional care markets across England. From NHS funding variations to local quality standards - we know what matters in your area.
-                </p>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-highlight fade-in">
-                    <div class="text-center">
-                        <div class="text-4xl mb-6">🏥</div>
-                        <h3 class="text-3xl font-bold text-nhs-blue">NHS Partnerships</h3>
-                        <p class="text-warm-grey font-medium mt-2">Working with NHS Trusts nationwide</p>
-                        <p class="text-sm text-warm-grey mt-3">Birmingham • Manchester • London partnerships established</p>
-                    </div>
-                </div>
-                
-                <div class="stat-highlight fade-in">
-                    <div class="text-center">
-                        <div class="text-4xl mb-6">📊</div>
-                        <h3 class="text-3xl font-bold text-warmth-orange">Regional Analysis</h3>
-                        <p class="text-warm-grey font-medium mt-2">Understanding local care markets</p>
-                        <p class="text-sm text-warm-grey mt-3">Pricing trends • Quality variations • Availability patterns • Local regulations</p>
-                    </div>
-                </div>
-                
-                <div class="stat-highlight fade-in">
-                    <div class="text-center">
-                        <div class="text-4xl mb-6">🎯</div>
-                        <h3 class="text-3xl font-bold text-caring-green">Local Expertise</h3>
-                        <p class="text-warm-grey font-medium mt-2">Specialists in every available city</p>
-                        <p class="text-sm text-warm-grey mt-3">Care coordinators • Local inspectors • Regional specialists • Area managers</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Enhanced Testimonials -->
-    <section class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20 fade-in">
-                <h2 class="text-4xl font-bold mb-10 text-text-dark">Trusted Across England</h2>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold mb-6 text-text-dark">Frequently Asked Questions</h2>
                 <p class="text-xl text-warm-grey">
-                    NHS coordinators and families from every region rely on our expertise
+                    Common questions about our care home selection service
                 </p>
             </div>
             
-            <div class="grid lg:grid-cols-3 gap-10 mb-12">
-                <!-- Birmingham NHS -->
-                <div class="testimonial-card rounded-xl p-10 shadow-lg border border-gray-100 fade-in">
-                    <div class="text-warmth-orange mb-6">★★★★★</div>
-                    <blockquote class="text-warm-grey mb-8 italic">
-                        "We regularly recommend RightCareHome to families. Their Birmingham reports are thorough and help families make informed decisions during discharge planning."
-                    </blockquote>
-                    <div class="flex items-center">
-                        <div class="w-14 h-14 bg-nhs-blue rounded-full mr-5 flex items-center justify-center text-white font-bold">
-                            LR
-                        </div>
-                        <div>
-                            <div class="font-bold text-text-dark">Linda Roberts</div>
-                            <div class="text-sm text-warm-grey">NHS Discharge Coordinator, Birmingham</div>
-                        </div>
+            <div class="space-y-6 fade-in">
+                <div class="faq-item bg-white rounded-xl shadow-lg">
+                    <button class="faq-button w-full p-6 text-left flex justify-between items-center">
+                        <span class="flex-1 font-semibold text-lg text-text-dark">Is bed availability guaranteed?</span>
+                        <span class="faq-icon text-2xl text-warmth-orange">+</span>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <p class="text-lg text-warm-grey">Not in v1. We highlight homes with recent updates and high likelihood of availability. A bed‑verification concierge is coming soon.</p>
                     </div>
                 </div>
                 
-                <!-- Manchester Family -->
-                <div class="testimonial-card rounded-xl p-10 shadow-lg border border-gray-100 fade-in">
-                    <div class="text-warmth-orange mb-6">★★★★★</div>
-                    <blockquote class="text-warm-grey mb-8 italic">
-                        "Found the perfect care home in Manchester within our budget. The local market insights were invaluable - saved us weeks of research."
-                    </blockquote>
-                    <div class="flex items-center">
-                        <div class="w-14 h-14 bg-soft-coral rounded-full mr-5 flex items-center justify-center text-white font-bold">
-                            DT
-                        </div>
-                        <div>
-                            <div class="font-bold text-text-dark">David Thompson</div>
-                            <div class="text-sm text-warm-grey">Family, Manchester</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- London Family -->
-                <div class="testimonial-card rounded-xl p-10 shadow-lg border border-gray-100 fade-in">
-                    <div class="text-warmth-orange mb-6">★★★★★</div>
-                    <blockquote class="text-warm-grey mb-8 italic">
-                        "London care home prices are complex - their report broke down all the costs clearly and found us options we never knew existed."
-                    </blockquote>
-                    <div class="flex items-center">
-                        <div class="w-14 h-14 bg-caring-green rounded-full mr-5 flex items-center justify-center text-white font-bold">
-                            SC
-                        </div>
-                        <div>
-                            <div class="font-bold text-text-dark">Sarah Chen</div>
-                            <div class="text-sm text-warm-grey">Family, London</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- New Competitive Advantage Testimonials -->
-            <div class="grid lg:grid-cols-3 gap-10">
-                <div class="testimonial-card competitive-advantage rounded-xl p-10 shadow-lg border border-gray-100 fade-in">
-                    <div class="text-warmth-orange mb-6">★★★★★</div>
-                    <blockquote class="text-warm-grey mb-8 italic">
-                        "After weeks of frustration browsing endless online listings, this service gave us exactly what we needed - 5 perfect matches with clear explanations why each suited mum's dementia care requirements. No more overwhelm!"
-                    </blockquote>
-                    <div class="flex items-center">
-                        <div class="w-14 h-14 bg-caring-green rounded-full mr-5 flex items-center justify-center text-white font-bold">
-                            MT
-                        </div>
-                        <div>
-                            <div class="font-bold text-text-dark">Margaret T.</div>
-                            <div class="text-sm text-warm-grey">Daughter, Birmingham</div>
-                        </div>
+                <div class="faq-item bg-white rounded-xl shadow-lg">
+                    <button class="faq-button w-full p-6 text-left flex justify-between items-center">
+                        <span class="flex-1 font-semibold text-lg text-text-dark">Do you take commissions from care homes?</span>
+                        <span class="faq-icon text-2xl text-warmth-orange">+</span>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <p class="text-lg text-warm-grey">No. We're independent and fee‑only for families. This ensures our recommendations are genuinely in your best interest, not influenced by care home payments.</p>
                     </div>
                 </div>
 
-                <div class="testimonial-card competitive-advantage rounded-xl p-10 shadow-lg border border-gray-100 fade-in">
-                    <div class="text-warmth-orange mb-6">★★★★★</div>
-                    <blockquote class="text-warm-grey mb-8 italic">
-                        "Other services quoted £775 and 2-week delays. RightCareHome delivered superior analysis for £149 in just 48 hours, including detailed pricing transparency we couldn't find elsewhere."
-                    </blockquote>
-                    <div class="flex items-center">
-                        <div class="w-14 h-14 bg-warmth-orange rounded-full mr-5 flex items-center justify-center text-white font-bold">
-                            DS
-                        </div>
-                        <div>
-                            <div class="font-bold text-text-dark">David S.</div>
-                            <div class="text-sm text-warm-grey">Son, Manchester</div>
-                        </div>
+                <div class="faq-item bg-white rounded-xl shadow-lg">
+                    <button class="faq-button w-full p-6 text-left flex justify-between items-center">
+                        <span class="flex-1 font-semibold text-lg text-text-dark">How does the 48-hour delivery work?</span>
+                        <span class="faq-icon text-2xl text-warmth-orange">+</span>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <p class="text-lg text-warm-grey">Once you complete our comprehensive assessment, our care specialists analyze your needs and match them against our verified database. Your personalized report is delivered via email within 48 hours, or you receive a full refund.</p>
                     </div>
                 </div>
 
-                <div class="testimonial-card competitive-advantage rounded-xl p-10 shadow-lg border border-gray-100 fade-in">
-                    <div class="text-warmth-orange mb-6">★★★★★</div>
-                    <blockquote class="text-warm-grey mb-8 italic">
-                        "The intelligent screening process found care options that perfectly matched dad's cultural and dietary needs - something generic directory searches completely missed."
-                    </blockquote>
-                    <div class="flex items-center">
-                        <div class="w-14 h-14 bg-soft-coral rounded-full mr-5 flex items-center justify-center text-white font-bold">
-                            PK
-                        </div>
-                        <div>
-                            <div class="font-bold text-text-dark">Priya K.</div>
-                            <div class="text-sm text-warm-grey">Daughter, London</div>
-                        </div>
+                <div class="faq-item bg-white rounded-xl shadow-lg">
+                    <button class="faq-button w-full p-6 text-left flex justify-between items-center">
+                        <span class="flex-1 font-semibold text-lg text-text-dark">What areas do you cover?</span>
+                        <span class="faq-icon text-2xl text-warmth-orange">+</span>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <p class="text-lg text-warm-grey">Currently, we provide comprehensive coverage for Birmingham with 277 verified care homes. Manchester, London, and other major cities are launching soon. Contact us for early access in coming soon areas.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Pricing Section -->
-    <section class="py-24 bg-light-cream" id="pricing">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20 fade-in">
-                <h2 class="text-4xl font-bold mb-10 text-text-dark">Professional Care Home Reports</h2>
-                <p class="text-xl text-warm-grey">Independent analysis across England • No care home commissions</p>
-            </div>
-            
-            <div class="grid lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
-                
-                <!-- Free Guide -->
-                <div class="bg-white rounded-xl p-8 shadow-lg border border-gray-200">
-                    <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold mb-3 text-text-dark">FREE GUIDE</h3>
-                        <div class="text-4xl font-bold mb-3 text-text-dark">£0</div>
-                        <p class="text-warm-grey">National guidance framework</p>
-                    </div>
-                    <ul class="space-y-4 mb-10">
-                        <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
-                            <span>UK-wide assessment framework</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
-                            <span>Regional pricing insights</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
-                            <span>Local quality indicators</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
-                            <span>Area selection guidance</span>
-                        </li>
-                    </ul>
-                    <button class="secondary-cta w-full">
-                        Download National Guide
+                <div class="faq-item bg-white rounded-xl shadow-lg">
+                    <button class="faq-button w-full p-6 text-left flex justify-between items-center">
+                        <span class="flex-1 font-semibold text-lg text-text-dark">How is this different from NHS discharge support?</span>
+                        <span class="faq-icon text-2xl text-warmth-orange">+</span>
                     </button>
-                </div>
-                
-                <!-- Professional Report -->
-                <div class="bg-white rounded-xl p-8 shadow-xl border-2 border-warmth-orange relative">
-                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        <span class="bg-warmth-orange text-white px-6 py-2 rounded-full font-bold text-sm">MOST CHOSEN</span>
-                    </div>
-                    <div class="text-center mb-8 mt-4">
-                        <h3 class="text-2xl font-bold mb-3 text-text-dark">PROFESSIONAL REPORT</h3>
-                        <div class="text-4xl font-bold mb-3 text-warmth-orange">£99</div>
-                        <p class="text-warm-grey">Localized expert analysis</p>
-                    </div>
-                    <ul class="space-y-4 mb-10">
-                        <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
-                            <span><strong>3-5 verified local matches</strong></span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
-                            <span>Regional market insights</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
-                            <span>Local availability confirmation</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
-                            <span>Area-specific pricing analysis</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
-                            <span>48-hour delivery guarantee</span>
-                        </li>
-                    </ul>
-                    <button class="primary-cta w-full">
-                        Get Localized Report
-                    </button>
-                    <div class="mt-4 p-3 bg-green-100 rounded-lg text-center text-caring-green font-semibold">
-                        Available in Birmingham only
+                    <div class="faq-content hidden px-6 pb-6">
+                        <p class="text-lg text-warm-grey">We work alongside NHS teams to provide additional independent guidance. While NHS discharge teams focus on immediate placement needs, we provide comprehensive analysis of quality, costs, and long-term suitability for your specific requirements.</p>
                     </div>
                 </div>
-                
-                <!-- Premium Service -->
-                <div class="bg-primary-navy text-white rounded-xl p-8 shadow-xl">
-                    <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold mb-3">PREMIUM SERVICE</h3>
-                        <div class="text-4xl font-bold mb-3 text-white">£149</div>
-                        <p class="text-slate-200">Full support package</p>
-                    </div>
-                    <ul class="space-y-4 mb-10">
-                        <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
-                            <span>Everything in Professional Report</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
-                            <span><strong>30-min expert consultation</strong></span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
-                            <span>Multi-area analysis available</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
-                            <span>Family meeting facilitation</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-caring-green mr-4">✓</span>
-                            <span>7-day follow-up support</span>
-                        </li>
-                    </ul>
-                    <button class="primary-cta w-full">
-                        Get Premium Service
-                    </button>
-                </div>
-                
-            </div>
-        </div>
-    </section>
 
-    <!-- Final CTA -->
-    <section class="py-24 bg-gradient-to-br from-primary-navy to-nhs-blue text-white relative overflow-hidden">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <div class="fade-in">
-                <h2 class="text-4xl font-bold mb-10">Ready for Professional Care Home Guidance?</h2>
-                <p class="text-xl mb-8 text-slate-200">
-                    Join 1,200+ families across England who received expert, independent advice for their care home selection.
-                </p>
-                
-                <!-- Area Selection in CTA -->
-                <div class="max-w-md mx-auto mb-8">
-                    <select class="w-full p-4 rounded-lg text-text-dark font-semibold" aria-label="Choose your area for report">
-                        <option value="">Choose your area for localized report</option>
-                        <option value="birmingham">Birmingham</option>
-                        <option value="" disabled>Manchester (Coming Soon)</option>
-                        <option value="" disabled>London (Coming Soon)</option>
-                    </select>
-                </div>
-                
-                <div class="flex flex-col sm:flex-row gap-6 justify-center mb-10">
-                    <button class="primary-cta">
-                        Get Localized Report - £99
+                <div class="faq-item bg-white rounded-xl shadow-lg">
+                    <button class="faq-button w-full p-6 text-left flex justify-between items-center">
+                        <span class="flex-1 font-semibold text-lg text-text-dark">What's included in the £99 report?</span>
+                        <span class="faq-icon text-2xl text-warmth-orange">+</span>
                     </button>
-                    <button class="secondary-cta bg-transparent border-white text-white hover:bg-white hover:text-primary-navy">
-                        Download National Guide
-                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <div class="text-lg text-warm-grey space-y-2">
+                            <p>Your comprehensive report includes:</p>
+                            <ul class="list-disc list-inside space-y-1 ml-4">
+                                <li>5 personalised care home recommendations</li>
+                                <li>Detailed comparison table with CQC ratings</li>
+                                <li>Hidden costs analysis and fee breakdown</li>
+                                <li>Professional visit checklist</li>
+                                <li>Complete annual cost calculator</li>
+                                <li>Explanations for each match</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                
-                <p class="text-sm text-slate-200">
-                    ⚡ 48-hour delivery nationwide • 30-day guarantee • NHS trusted across England
-                </p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-20 bg-text-dark text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-10">
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
                 <div>
-                    <h3 class="text-xl font-bold mb-6">RightCareHome</h3>
+                    <h3>RightCareHome</h3>
                     <p class="text-gray-300 mb-6">UK's leading care home selection service trusted by NHS teams and families across England.</p>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold mb-6">Services</h4>
+                    <h4>Services</h4>
                     <ul class="space-y-3 text-gray-300">
-                        <li><a href="#" class="hover:text-white">Professional Reports (£99)</a></li>
+                        <li><a href="#" class="hover:text-white">Expert Reports (£99)</a></li>
                         <li><a href="#" class="hover:text-white">Premium Service (£149)</a></li>
                         <li><a href="#" class="hover:text-white">Free National Guide</a></li>
                         <li><a href="#" class="hover:text-white">NHS Partnership Programme</a></li>
@@ -840,7 +377,7 @@
                 </div>
                 
                 <div>
-                    <h4 class="font-bold mb-6">Available Areas</h4>
+                    <h4>Available Areas</h4>
                     <ul class="space-y-3 text-gray-300">
                         <li><a href="#" class="hover:text-white">Birmingham Care Homes</a></li>
                         <li class="text-gray-500">Manchester (Coming Soon)</li>
@@ -850,7 +387,7 @@
                 </div>
                 
                 <div>
-                    <h4 class="font-bold mb-6">Contact</h4>
+                    <h4>Contact</h4>
                     <ul class="space-y-3 text-gray-300">
                         <li>📧 <a href="mailto:hello@rightcarehome.co.uk" class="hover:text-white">hello@rightcarehome.co.uk</a></li>
                         <li>🏥 NHS partnerships nationwide</li>
@@ -858,11 +395,198 @@
                 </div>
             </div>
             
-            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+            <div class="footer-bottom">
                 <p>&copy; 2025 RightCareHome. All rights reserved. | Independent care home selection service across England</p>
             </div>
         </div>
     </footer>
+
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+        }
+        
+        .competitive-advantages {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .advantage-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .advantage-card:hover {
+            border-color: #059669;
+            transform: translateY(-5px);
+        }
+        
+        .advantage-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .competitor-comparison {
+            color: #64748b;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+        
+        .area-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .area-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .area-card.popular {
+            border: 2px solid #f59e0b;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .primary-cta {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .primary-cta:hover {
+            background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(5, 150, 105, 0.3);
+        }
+        
+        .secondary-cta {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .secondary-cta:hover {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            transform: translateY(-2px);
+        }
+        
+        .faq-button {
+            transition: all 0.3s ease;
+        }
+        
+        .faq-button:hover {
+            background-color: #f8fafc;
+        }
+        
+        .faq-content {
+            transition: all 0.3s ease;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 50;
+        }
+        
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1f2937;
+            margin: 0;
+        }
+        
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .area-selector {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            background: white;
+            font-weight: 500;
+        }
+        
+        .footer {
+            background: #1e293b;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer h3, .footer h4 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #475569;
+            padding-top: 2rem;
+            text-align: center;
+            color: #94a3b8;
+        }
+    </style>
 
     <script>
         // Enhanced fade in animation
@@ -881,6 +605,23 @@
 
         document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
+        });
+
+        // FAQ functionality
+        document.querySelectorAll('.faq-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const content = this.parentNode.querySelector('.faq-content');
+                const icon = this.querySelector('.faq-icon');
+                
+                // Toggle content
+                if (content.classList.contains('hidden')) {
+                    content.classList.remove('hidden');
+                    icon.textContent = '-';
+                } else {
+                    content.classList.add('hidden');
+                    icon.textContent = '+';
+                }
+            });
         });
 
         // Area selector functionality - Navigate to Birmingham regional page

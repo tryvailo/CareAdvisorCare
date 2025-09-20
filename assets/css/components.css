@@ -1,0 +1,690 @@
+/* components.css - Компоненты интерфейса - ПОЛНАЯ ВЕРСИЯ С ВСЕМИ СТИЛЯМИ ИЗ ОРИГИНАЛА */
+
+/* Кнопки - ПОЛНЫЕ СТИЛИ ИЗ ОРИГИНАЛА */
+.btn {
+  display: inline-block;
+  padding: 24px 32px;
+  border-radius: var(--border-radius);
+  font-weight: 700;
+  font-size: 1.125rem;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+  min-height: 48px;
+  line-height: 1.2;
+}
+
+.primary-cta {
+  background: linear-gradient(135deg, var(--warmth-orange) 0%, #d97706 100%);
+  color: white;
+  border: 2px solid var(--warmth-orange);
+  font-weight: 700;
+  padding: 24px 32px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-size: 1.125rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 48px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+}
+
+.primary-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(245, 158, 11, 0.5);
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  color: white;
+}
+
+.primary-cta:focus {
+  outline: 3px solid var(--warmth-orange);
+  outline-offset: 2px;
+}
+
+.primary-cta:active {
+  transform: translateY(-1px);
+}
+
+.primary-cta:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.primary-cta-pulse {
+  animation: ctaPulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ОБНОВЛЕНО: Header button specific styling - увеличенная ширина */
+.header .primary-cta,
+.header-cta-button {
+  min-width: 280px;
+  padding: 18px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* Дополнительная специфичность для header кнопки */
+.header-nav .header-cta-button {
+  min-width: 280px !important;
+  max-width: none !important;
+}
+
+.secondary-cta {
+  background: transparent;
+  color: var(--caring-green);
+  border: 2px solid var(--caring-green);
+  font-weight: 700;
+  padding: 24px 32px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-size: 1.125rem;
+  min-height: 48px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.secondary-cta:hover {
+  background: var(--caring-green);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(5, 150, 105, 0.4);
+}
+
+.secondary-cta:focus {
+  outline: 3px solid var(--caring-green);
+  outline-offset: 2px;
+}
+
+.secondary-cta:active {
+  transform: translateY(-1px);
+}
+
+.secondary-cta:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.emergency-cta {
+  background: linear-gradient(135deg, var(--soft-coral) 0%, #f43f5e 100%);
+  color: white;
+  border: 2px solid var(--soft-coral);
+  font-weight: 700;
+  padding: 20px 28px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  min-height: 48px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(251, 113, 133, 0.3);
+}
+
+.emergency-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(251, 113, 133, 0.4);
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+  color: white;
+}
+
+.emergency-cta:active {
+  transform: translateY(-1px);
+}
+
+.emergency-cta:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Бейджи - ПОЛНЫЕ СТИЛИ ИЗ ОРИГИНАЛА */
+.trust-badge {
+  background: linear-gradient(135deg, var(--caring-green) 0%, #047857 100%);
+  color: white;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 1rem;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+}
+
+.trust-badge-hero {
+  background: rgba(255,255,255,0.2);
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.trust-badges-birmingham {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.birmingham-badge {
+  background: linear-gradient(135deg, var(--nhs-blue) 0%, var(--birmingham-gold) 100%);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0 8px;
+}
+
+/* Hero Section Styles - ДОБАВЛЕНО ИЗ ОРИГИНАЛА */
+.hero-headline {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Формы */
+.form-input {
+  width: 100%;
+  padding: 16px 20px;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--border-radius);
+  font-size: 1.125rem;
+  color: var(--text-dark);
+  background: white;
+  transition: var(--transition);
+  min-height: 48px;
+}
+
+.form-input:hover {
+  border-color: var(--warmth-orange);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+}
+
+.form-input:focus {
+  border-color: var(--warmth-orange);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+}
+
+.area-selector {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--border-radius);
+  padding: 16px 20px;
+  font-size: 1.125rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: var(--transition);
+  min-height: 48px;
+}
+
+.area-selector:hover {
+  border-color: var(--warmth-orange);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+}
+
+/* Карточки */
+.card {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--border-radius-large);
+  padding: 2rem;
+  transition: var(--transition);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.area-card {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--border-radius-large);
+  padding: 24px;
+  transition: var(--transition);
+  cursor: pointer;
+  text-align: center;
+}
+
+.area-card:hover {
+  border-color: var(--warmth-orange);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(245, 158, 11, 0.15);
+}
+
+.area-card.popular {
+  border-color: var(--warmth-orange);
+  background: linear-gradient(135deg, #fef3c7 0%, #ffffff 100%);
+}
+
+.stat-highlight {
+  background: #ffffff;
+  border-left: 4px solid var(--warmth-orange);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  margin: 20px 0;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+}
+
+.stat-highlight:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-card {
+  background: linear-gradient(135deg, #fef7f0 0%, #ffffff 100%);
+  border-left: 4px solid var(--soft-coral);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* Ценовые карточки */
+.pricing-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid #e5e7eb;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: var(--border-radius-large);
+}
+
+.pricing-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--warmth-orange), #d97706);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+}
+
+.pricing-card:hover::before {
+  transform: scaleX(1);
+}
+
+.pricing-card.recommended {
+  border-color: var(--warmth-orange);
+  position: relative;
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--warmth-orange) 0%, #d97706 100%);
+  color: white;
+  padding: 12px 28px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+}
+
+/* Конкурентные преимущества - ИСПРАВЛЕНО */
+.advantage-card {
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--border-radius-large);
+  padding: 2rem;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.advantage-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--warmth-orange), var(--caring-green));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.advantage-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--warmth-orange);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+}
+
+.advantage-card:hover::before {
+  transform: scaleX(1);
+}
+
+.advantage-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  text-align: center;
+}
+
+.advantage-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+.advantage-card p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.advantage-card p:first-of-type {
+  color: var(--caring-green);
+  font-weight: 600;
+}
+
+.competitor-comparison {
+  color: var(--warm-grey) !important;
+  font-style: italic;
+  font-weight: 500 !important;
+  padding-top: 0.5rem;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 0.5rem;
+}
+
+/* Guide Form - ДОБАВЛЕНО */
+.guide-card {
+  background: white;
+  border: 2px solid var(--caring-green);
+  border-radius: var(--border-radius-large);
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.guide-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--caring-green), var(--nhs-blue));
+}
+
+.guide-badge {
+  background: linear-gradient(135deg, var(--caring-green) 0%, var(--nhs-blue) 100%);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+}
+
+.guide-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.guide-features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.guide-features li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.checkmark {
+  color: var(--caring-green);
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.feature-text {
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.guide-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.guide-form select,
+.guide-form input {
+  padding: 16px 20px;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--border-radius);
+  font-size: 1.1rem;
+  transition: var(--transition);
+}
+
+.guide-form select:focus,
+.guide-form input:focus {
+  border-color: var(--caring-green);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+}
+
+.guide-disclaimer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--warm-grey);
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+/* FAQ */
+.faq-item {
+  border: 2px solid #e5e7eb;
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+  transition: var(--transition);
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.faq-item:hover {
+  border-color: var(--warmth-orange);
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.15);
+}
+
+.faq-button {
+  width: 100%;
+  padding: 24px 28px;
+  text-align: left;
+  background: none;
+  border: none;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition);
+  min-height: 48px;
+}
+
+.faq-button:hover {
+  background: #f8fafc;
+}
+
+.faq-button:focus {
+  outline: 3px solid var(--warmth-orange);
+  outline-offset: -3px;
+}
+
+.faq-icon {
+  font-size: 1.5rem;
+  color: var(--warmth-orange);
+  transition: transform 0.3s ease;
+  min-width: 24px;
+}
+
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  background: #f8fafc;
+}
+
+.faq-content.show {
+  max-height: 250px;
+  padding: 24px 28px;
+}
+
+/* Индикаторы доставки */
+.delivery-indicator {
+  background: linear-gradient(135deg, var(--caring-green) 0%, #047857 100%);
+  color: white;
+  padding: 20px 28px;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  text-align: center;
+  margin-top: 24px;
+  box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+}
+
+/* Социальные доказательства */
+.social-proof-birmingham {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  margin-top: -2rem;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Экстренные секции */
+.emergency-section {
+  background: var(--soft-coral);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  color: white;
+}
+
+/* Карта покрытия */
+.coverage-map {
+  background: #ffffff;
+  border: 2px solid var(--nhs-blue);
+  border-radius: var(--border-radius-large);
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+/* Счетчики */
+.counter {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Плавающие элементы */
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* NHS Badge и trust line - ДОБАВЛЕНО ИЗ ОРИГИНАЛА */
+.nhs-badge {
+  color: var(--nhs-blue);
+}
+
+.trust-line {
+  color: var(--nhs-blue);
+}
+
+/* Stats row - ДОБАВЛЕНО ИЗ ОРИГИНАЛА */
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  gap: 1rem;
+}
+
+/* Competitive advantages section - ПОЛНАЯ ВЕРСИЯ ИЗ ОРИГИНАЛА */
+.competitive-advantages {
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  padding: 6rem 0;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* ОБНОВЛЕНО: Адаптивность для header кнопки */
+@media (max-width: 1200px) {
+  .header .primary-cta,
+  .header-cta-button {
+    min-width: 260px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .header .primary-cta,
+  .header-cta-button {
+    min-width: 240px;
+    font-size: 0.9rem;
+    padding: 16px 24px;
+  }
+}

@@ -1,0 +1,401 @@
+/* responsive.css - Адаптивные стили - ПОЛНАЯ ВЕРСИЯ С ВСЕМИ СТИЛЯМИ ИЗ ОРИГИНАЛА */
+
+/* Desktop и большие экраны (по умолчанию) */
+@media (min-width: 1200px) {
+  .section-container {
+    padding: 0 3rem;
+  }
+  
+  .hero-container {
+    padding: 0 3rem;
+  }
+}
+
+/* Планшеты и средние экраны */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .hero-headline {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .trust-badges-birmingham {
+    justify-content: center !important;
+    margin-bottom: 2rem;
+  }
+  
+  /* Секции адаптация */
+  .section {
+    padding: 4rem 0;
+  }
+  
+  .section-container {
+    padding: 0 1rem;
+  }
+  
+  .section-header {
+    margin-bottom: 3rem;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  /* Кнопки адаптация - ПОЛНЫЕ СТИЛИ ИЗ ОРИГИНАЛА */
+  .btn,
+  .primary-cta, 
+  .secondary-cta, 
+  .emergency-cta {
+    min-height: 56px !important;
+    font-size: 1rem !important;
+    padding: 18px 24px !important;
+    width: 100% !important;
+    border-radius: 10px !important;
+  }
+  
+  .header .primary-cta {
+    max-width: none !important;
+    width: 100% !important;
+  }
+  
+  /* Сетки адаптация */
+  .grid-2,
+  .grid-3,
+  .grid-responsive-2,
+  .grid-responsive-3,
+  .grid-responsive-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .advantage-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .advantage-card {
+    padding: 1.5rem;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Footer адаптация */
+  .footer-container {
+    padding: 0 1rem;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  /* FAQ адаптация */
+  .faq-button {
+    padding: 20px 24px;
+    font-size: 1rem;
+  }
+  
+  .faq-content.show {
+    padding: 20px 24px;
+  }
+}
+
+/* Мобильные устройства - ПОЛНЫЕ СТИЛИ ИЗ ОРИГИНАЛА */
+@media (max-width: 480px) {
+  /* Типографика */
+  .hero-headline {
+    font-size: 1.75rem !important;
+    line-height: 1.15 !important;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  body {
+    font-size: 1rem;
+  }
+  
+  /* Header мобильная адаптация - ИЗ ОРИГИНАЛА */
+  .header-container {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .header-nav {
+    width: 100%;
+  }
+  
+  .header .primary-cta {
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Hero мобильная адаптация - ИЗ ОРИГИНАЛА */
+  .hero-section {
+    padding-top: 8rem;
+  }
+  
+  .trust-badges-birmingham {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .trust-badge-hero {
+    text-align: center;
+    justify-content: center;
+  }
+  
+  /* Карточки мобильная адаптация */
+  .card,
+  .area-card,
+  .advantage-card,
+  .stat-highlight,
+  .testimonial-card {
+    padding: 1rem;
+  }
+  
+  /* Формы мобильная адаптация */
+  .form-input,
+  .area-selector {
+    padding: 12px 16px;
+    font-size: 16px; /* Предотвращает zoom на iOS */
+  }
+  
+  /* FAQ мобильная адаптация */
+  .faq-button {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .faq-icon {
+    align-self: flex-end;
+  }
+  
+  /* Spacing мобильная адаптация */
+  .section {
+    padding: 3rem 0;
+  }
+  
+  .section-header {
+    margin-bottom: 2rem;
+  }
+  
+  /* Guide form mobile */
+  .guide-card {
+    padding: 1.5rem;
+  }
+  
+  .guide-form select,
+  .guide-form input {
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 360px) {
+  .hero-headline {
+    font-size: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.375rem;
+  }
+  
+  .btn,
+  .primary-cta, 
+  .secondary-cta, 
+  .emergency-cta {
+    padding: 16px 20px;
+  }
+  
+  .card,
+  .area-card,
+  .advantage-card,
+  .stat-highlight,
+  .testimonial-card,
+  .guide-card {
+    padding: 0.875rem;
+  }
+}
+
+/* Высота экрана адаптация */
+@media (max-height: 600px) {
+  .hero-section {
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+  }
+  
+  .section {
+    padding: 2rem 0;
+  }
+}
+
+/* Landscape мобильные устройства */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero-section {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+  }
+  
+  .hero-headline {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .trust-badges-birmingham {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Print стили */
+@media print {
+  .header,
+  .footer,
+  .floating-elements {
+    display: none;
+  }
+  
+  .hero-section {
+    padding-top: 0;
+  }
+  
+  .btn,
+  .primary-cta,
+  .secondary-cta,
+  .emergency-cta {
+    display: none;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .card,
+  .area-card,
+  .advantage-card {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+}
+
+/* Высокие разрешения */
+@media (min-width: 1400px) {
+  .hero-headline {
+    font-size: 4rem;
+  }
+  
+  .section-title {
+    font-size: 3rem;
+  }
+}
+
+/* Accessibility: уменьшение анимаций */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .fade-in {
+    opacity: 1;
+    transform: none;
+  }
+  
+  .hero-gradient {
+    animation: none;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--caring-green) 100%);
+  }
+  
+  .primary-cta-pulse {
+    animation: none;
+  }
+}: 3rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .advantage-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+}
+
+/* Планшеты */
+@media (max-width: 768px) {
+  /* Header адаптация */
+  .header-container {
+    padding: 0 1rem;
+    height: 70px;
+  }
+  
+  .header h1 {
+    font-size: 1.25rem;
+  }
+  
+  .birmingham-badge {
+    display: none;
+  }
+  
+  .header-nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  /* Hero адаптация - ПОЛНЫЕ СТИЛИ ИЗ ОРИГИНАЛА */
+  .hero-section {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+  
+  .hero-container {
+    padding: 0 1rem;
+  }
+  
+  .hero-headline {
+    font-size
