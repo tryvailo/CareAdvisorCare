@@ -1,4 +1,4 @@
-/* responsive.css - Адаптивные стили - ПОЛНАЯ ВЕРСИЯ С ВСЕМИ СТИЛЯМИ */
+/* responsive.css - Адаптивные стили - ПОЛНАЯ ВЕРСИЯ С ВСЕМИ СТИЛЯМИ ИЗ ОРИГИНАЛА */
 
 /* Desktop и большие экраны (по умолчанию) */
 @media (min-width: 1200px) {
@@ -55,12 +55,10 @@
     font-size: 1.125rem;
   }
   
-  /* Кнопки адаптация - ПОЛНЫЕ СТИЛИ */
+  /* Кнопки адаптация - ПОЛНЫЕ СТИЛИ ИЗ ОРИГИНАЛА */
   .btn,
   .primary-cta, 
-  .primary-btn,
   .secondary-cta, 
-  .secondary-btn,
   .emergency-cta {
     min-height: 56px !important;
     font-size: 1rem !important;
@@ -69,13 +67,9 @@
     border-radius: 10px !important;
   }
   
-  .header .primary-cta,
-  .header-cta-button {
+  .header .primary-cta {
     max-width: none !important;
     width: 100% !important;
-    min-width: 240px;
-    font-size: 0.9rem;
-    padding: 16px 24px;
   }
   
   /* Сетки адаптация */
@@ -109,12 +103,6 @@
     grid-template-columns: 1fr;
   }
   
-  /* Thank you page grids */
-  .thank-you-grid-2,
-  .thank-you-grid-4 {
-    grid-template-columns: 1fr;
-  }
-  
   /* Footer адаптация */
   .footer-container {
     padding: 0 1rem;
@@ -136,8 +124,8 @@
   }
 }
 
-/* Мобильные устройства */
-@media (max-width: 768px) {
+/* Мобильные устройства - ПОЛНЫЕ СТИЛИ ИЗ ОРИГИНАЛА */
+@media (max-width: 480px) {
   /* Типографика */
   .hero-headline {
     font-size: 1.75rem !important;
@@ -152,24 +140,7 @@
     font-size: 1rem;
   }
   
-  /* Questionnaire specific mobile styles */
-  .questionnaire-page body {
-    font-size: 18px;
-  }
-  
-  .questionnaire-page .section-title {
-    font-size: 1.875rem;
-  }
-  
-  .questionnaire-page .section-description {
-    font-size: 1.125rem;
-  }
-  
-  .questionnaire-page .question-label {
-    font-size: 1.125rem;
-  }
-  
-  /* Header мобильная адаптация */
+  /* Header мобильная адаптация - ИЗ ОРИГИНАЛА */
   .header-container {
     flex-direction: column;
     height: auto;
@@ -186,26 +157,8 @@
     text-align: center;
   }
   
-  /* Questionnaire header specific */
-  .questionnaire-page header .header-content {
-    height: 5rem;
-  }
-  
-  .questionnaire-page header .logo {
-    font-size: 1.5rem;
-  }
-  
-  .questionnaire-page header .header-text {
-    font-size: 1rem;
-  }
-  
-  /* Hero мобильная адаптация */
+  /* Hero мобильная адаптация - ИЗ ОРИГИНАЛА */
   .hero-section {
-    padding-top: 8rem;
-  }
-  
-  .questionnaire-page .hero-section,
-  .questionnaire-page main {
     padding-top: 8rem;
   }
   
@@ -228,92 +181,11 @@
     padding: 1rem;
   }
   
-  /* Thank you page cards */
-  .thank-you-page .feature-card,
-  .thank-you-page .contact-card {
-    padding: 1.5rem;
-  }
-  
-  .thank-you-page .timeline-step {
-    padding: 1rem;
-  }
-  
-  .thank-you-page .step-number {
-    width: 25px;
-    height: 25px;
-    font-size: 0.8rem;
-    margin-right: 0.75rem;
-  }
-  
   /* Формы мобильная адаптация */
   .form-input,
   .area-selector {
     padding: 12px 16px;
     font-size: 16px; /* Предотвращает zoom на iOS */
-  }
-  
-  .questionnaire-page .form-input {
-    font-size: 18px;
-    padding: 16px 18px;
-    min-height: 52px;
-  }
-  
-  /* Questionnaire specific form elements */
-  .radio-option, .checkbox-option {
-    padding: 16px 20px;
-    font-size: 1rem;
-    min-height: 60px;
-  }
-  
-  .rating-group {
-    gap: 8px;
-    justify-content: space-between;
-  }
-  
-  .rating-btn {
-    width: 46px;
-    height: 46px;
-    font-size: 1rem;
-    min-width: 46px;
-  }
-  
-  .matrix-row {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 16px;
-    padding: 20px;
-    min-height: 80px;
-  }
-  
-  .matrix-label {
-    margin-right: 0;
-    margin-bottom: 12px;
-    text-align: left;
-    font-size: 1rem;
-  }
-  
-  .matrix-buttons {
-    justify-content: space-between;
-    gap: 8px;
-  }
-  
-  .navigation-buttons {
-    flex-direction: column;
-    gap: 16px;
-  }
-  
-  .navigation-buttons .button-group {
-    width: 100%;
-  }
-  
-  .navigation-buttons .flex {
-    width: 100%;
-  }
-  
-  .navigation-buttons button,
-  .navigation-buttons .primary-btn,
-  .navigation-buttons .secondary-btn {
-    flex: 1;
   }
   
   /* FAQ мобильная адаптация */
@@ -346,20 +218,10 @@
     padding: 14px 16px;
     font-size: 16px;
   }
-  
-  /* Resource cards mobile */
-  .resource-card {
-    padding: 1.25rem;
-  }
-  
-  .reference-number-display {
-    margin: 1.5rem auto;
-    padding: 1.25rem;
-  }
 }
 
 /* Очень маленькие экраны */
-@media (max-width: 480px) {
+@media (max-width: 360px) {
   .hero-headline {
     font-size: 1.5rem;
   }
@@ -368,15 +230,9 @@
     font-size: 1.375rem;
   }
   
-  .questionnaire-page .section-title {
-    font-size: 1.875rem;
-  }
-  
   .btn,
-  .primary-cta,
-  .primary-btn,
-  .secondary-cta,
-  .secondary-btn,
+  .primary-cta, 
+  .secondary-cta, 
   .emergency-cta {
     padding: 16px 20px;
   }
@@ -388,73 +244,6 @@
   .testimonial-card,
   .guide-card {
     padding: 0.875rem;
-  }
-  
-  /* Questionnaire specific very small screens */
-  .questionnaire-page .container {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-  
-  .rating-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 0.9rem;
-    min-width: 40px;
-  }
-  
-  .matrix-buttons .rating-btn {
-    width: 44px;
-    height: 44px;
-  }
-  
-  .radio-option, .checkbox-option {
-    padding: 14px 16px;
-    margin-bottom: 12px;
-  }
-  
-  /* Thank you page small screens */
-  .thank-you-page .timeline-step .flex {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .thank-you-page .step-number {
-    margin-right: 0;
-    margin-bottom: 0.5rem;
-  }
-  
-  .resource-card {
-    padding: 1rem;
-  }
-  
-  .resource-card h4 {
-    font-size: 1rem;
-  }
-  
-  .resource-card p {
-    font-size: 0.9rem;
-  }
-  
-  /* Header for very small screens */
-  .questionnaire-page header .header-content {
-    height: 4rem;
-    flex-direction: column;
-    gap: 0.5rem;
-    justify-content: center;
-  }
-  
-  .questionnaire-page header .logo {
-    font-size: 1.25rem;
-  }
-  
-  .questionnaire-page header .header-text {
-    font-size: 0.875rem;
-  }
-  
-  .questionnaire-page main {
-    padding-top: 6rem;
   }
 }
 
@@ -490,27 +279,6 @@
   .trust-badges-birmingham {
     margin-bottom: 1rem;
   }
-  
-  /* Questionnaire landscape specific */
-  .questionnaire-page main {
-    padding-top: 6rem;
-    padding-bottom: 4rem;
-  }
-  
-  .questionnaire-page .section-title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .questionnaire-page .section-description {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .navigation-buttons {
-    margin-top: 2rem;
-    padding-top: 1rem;
-  }
 }
 
 /* Print стили */
@@ -527,9 +295,7 @@
   
   .btn,
   .primary-cta,
-  .primary-btn,
   .secondary-cta,
-  .secondary-btn,
   .emergency-cta {
     display: none;
   }
@@ -544,12 +310,6 @@
   .advantage-card {
     border: 1px solid #ccc;
     box-shadow: none;
-  }
-  
-  /* Thank you page print styles */
-  .thank-you-page .success-checkmark,
-  .navigation-buttons {
-    display: none;
   }
 }
 
@@ -588,34 +348,54 @@
   .primary-cta-pulse {
     animation: none;
   }
-  
-  .thank-you-page .success-checkmark {
-    animation: none;
+}: 3rem;
   }
   
-  .rating-btn:hover,
-  .primary-btn:hover,
-  .primary-cta:hover,
-  .secondary-btn:hover,
-  .secondary-cta:hover {
-    transform: none;
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .advantage-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
   }
 }
 
-/* High DPI screens */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .rating-btn,
-  .primary-btn,
-  .primary-cta,
-  .secondary-btn,
-  .secondary-cta,
-  .form-input {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+/* Планшеты */
+@media (max-width: 768px) {
+  /* Header адаптация */
+  .header-container {
+    padding: 0 1rem;
+    height: 70px;
   }
-}
-
-/* Dark mode support (для будущего использования) */
-@media (prefers-color-scheme: dark) {
-  /* Dark mode styles can be added here if needed */
-}
+  
+  .header h1 {
+    font-size: 1.25rem;
+  }
+  
+  .birmingham-badge {
+    display: none;
+  }
+  
+  .header-nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  /* Hero адаптация - ПОЛНЫЕ СТИЛИ ИЗ ОРИГИНАЛА */
+  .hero-section {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+  
+  .hero-container {
+    padding: 0 1rem;
+  }
+  
+  .hero-headline {
+    font-size

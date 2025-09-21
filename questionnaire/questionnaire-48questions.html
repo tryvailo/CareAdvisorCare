@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Care Home Assessment - RightCareHome</title>
+    <meta name="description" content="Comprehensive 48-question care home assessment for personalized recommendations in the UK.">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="../assets/css/base.css" as="style">
+    <link rel="preload" href="../assets/css/components.css" as="style">
+    <link rel="preload" href="../assets/js/main.js" as="script">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-navy': '#1e293b',
+                        'primary-blue': '#2563eb',
+                        'nhs-blue': '#005EB8',
+                        'caring-green': '#059669',
+                        'warmth-orange': '#f59e0b',
+                        'soft-coral': '#fb7185',
+                        'warm-grey': '#64748b',
+                        'light-cream': '#fefce8',
+                        'bg-warm': '#fefce8',
+                        'bg-cream': '#f9f6f2',
+                        'text-dark': '#1f2937',
+                        'text-muted': '#64748b',
+                        'healthcare-blue': '#005EB8'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- CSS Files - ПРАВИЛЬНЫЙ ПОРЯДОК ЗАГРУЗКИ -->
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/questionnaire.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+
+<body class="questionnaire-page">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="flex items-center">
+                <a href="../index.html" class="logo">
+                    <h1>RightCareHome</h1>
+                </a>
+                <span class="text-lg text-warm-grey ml-2">.co.uk</span>
+            </div>
+            <div class="header-nav">
+                <div class="header-text">
+                    Professional Care Home Assessment
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            
+            <!-- Questionnaire Container -->
+            <div id="questionnaire-container">
+                <!-- Header Section -->
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-bold mb-8 text-gray-900">Professional Care Home Assessment</h1>
+                    <p class="text-2xl text-gray-600 max-w-3xl mx-auto mb-6">
+                        48 specialised questions for maximally precise matching - far more detailed than any free service in the UK.
+                    </p>
+                    <div class="bg-gradient-to-r from-blue-50 to-green-50 rounded-lg p-8 shadow-lg max-w-2xl mx-auto border border-blue-200 mb-8">
+                        <div class="flex items-center justify-center space-x-8 text-lg flex-wrap gap-6">
+                            <div class="flex items-center">
+                                <span class="text-green-600 mr-3 text-xl">✓</span>
+                                <span class="font-semibold">15-20 minutes to complete</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-600 mr-3 text-xl">✓</span>
+                                <span class="font-semibold">Progress automatically saved</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-600 mr-3 text-xl">✓</span>
+                                <span class="font-semibold">48-hour delivery guarantee</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-md max-w-2xl mx-auto border-l-4 border-orange-400">
+                        <p class="text-lg font-semibold text-gray-700 mb-2">Why this assessment works so well:</p>
+                        <p class="text-gray-600">Each question helps our AI understand your unique situation - from medical needs to cultural preferences - ensuring we recommend care homes that truly match your requirements.</p>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-text">
+                    <span>Section <span id="current-section">1</span> of 8</span>
+                </div>
+                <div class="progress-bar mb-6">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                
+                <!-- Motivational Progress Message -->
+                <div id="progress-motivation" class="text-center mb-8 p-4 rounded-lg bg-gradient-to-r from-blue-50 to-green-50 border border-blue-200">
+                    <p class="text-lg font-semibold text-blue-800">Ready to begin your personalised care home assessment</p>
+                    <p class="text-gray-600 mt-2">Each answer helps our AI create more accurate recommendations just for you</p>
+                </div>
+
+                <!-- Questionnaire Form -->
+                <form id="questionnaire-form" class="max-w-3xl mx-auto">
+                    
+                    <!-- Section 1: Contact Information -->
+                    <div class="question-section active bg-white rounded-xl p-10 shadow-lg border border-gray-200" data-section="1">
+                        <h2 class="section-title">Contact Information</h2>
+                        <p class="section-description">Essential details for personalised communication and recommendations</p>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <label class="question-label" for="contact_001">
+                                    Your name and surname <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="contact_001" name="contact_001" class="form-input" 
+                                       placeholder="Enter your full name" required>
+                                <p class="help-text">How we should address you in your personalised recommendations report</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label" for="contact_002">
+                                    Email address <span class="text-red-500">*</span>
+                                </label>
+                                <input type="email" id="contact_002" name="contact_002" class="form-input" 
+                                       placeholder="example@email.com" required>
+                                <p class="help-text">For delivering your comprehensive care home recommendations securely</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label" for="contact_003">
+                                    Phone number
+                                </label>
+                                <input type="tel" id="contact_003" name="contact_003" class="form-input" 
+                                       placeholder="+44 7___ ___-___">
+                                <p class="help-text">For urgent queries or clarification if needed (optional)</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Your relationship to the person requiring care <span class="text-red-500">*</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="contact_004" value="myself" required>
+                                        <span>Looking for care for myself</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="contact_004" value="spouse" required>
+                                        <span>Spouse or partner</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="contact_004" value="parent" required>
+                                        <span>Parent or grandparent</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="contact_004" value="relative" required>
+                                        <span>Other family member</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="contact_004" value="friend" required>
+                                        <span>Friend or neighbour</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="contact_004" value="professional" required>
+                                        <span>Professional representative</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div id="patient-name-section" style="display: none;">
+                                <label class="question-label" for="contact_005">
+                                    Name of the person requiring care <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="contact_005" name="contact_005" class="form-input" 
+                                       placeholder="Enter their name">
+                                <p class="help-text">This helps us personalise our recommendations and communication</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Location Preferences -->
+                    <div class="question-section bg-white rounded-xl p-10 shadow-lg border border-gray-200" data-section="2">
+                        <h2 class="section-title">Location Preferences</h2>
+                        <p class="section-description">Geographic and transport requirements for convenient family access</p>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <label class="question-label" for="location_001">
+                                    Preferred region or town <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="location_001" name="location_001" class="form-input" 
+                                       placeholder="Birmingham, Manchester, London..." required>
+                                <p class="help-text">Please specify the town or region where you'd prefer the care home to be located</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Maximum distance from your preferred location
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_002" value="5km">
+                                        <span>Up to 5 kilometres</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_002" value="10km">
+                                        <span>Up to 10 kilometres</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_002" value="25km">
+                                        <span>Up to 25 kilometres</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_002" value="50km">
+                                        <span>Up to 50 kilometres</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_002" value="any">
+                                        <span>Distance isn't a primary concern</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    How important is proximity to family and friends?
+                                </label>
+                                <p class="help-text mb-6">Please rate from 1 (not important at all) to 10 (absolutely essential)</p>
+                                <div class="rating-group">
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="1">1</button>
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="2">2</button>
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="3">3</button>
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="4">4</button>
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="5">5</button>
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="6">6</button>
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="7">7</button>
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="8">8</button>
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="9">9</button>
+                                    <button type="button" class="rating-btn" data-name="location_003" data-value="10">10</button>
+                                </div>
+                                <div class="flex justify-between text-lg text-gray-600 mt-4 font-semibold">
+                                    <span>Not important</span>
+                                    <span>Absolutely essential</span>
+                                </div>
+                                <input type="hidden" name="location_003">
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Access to public transport
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_004" value="essential">
+                                        <span>Essential requirement</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_004" value="preferred">
+                                        <span>Desirable</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_004" value="not_important">
+                                        <span>Not important</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_004" value="own_transport">
+                                        <span>Have own transport arrangements</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Important facilities nearby (select all that apply)
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="location_005" value="hospital">
+                                        <span>Hospital or GP surgery</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="location_005" value="pharmacy">
+                                        <span>Pharmacy</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="location_005" value="park">
+                                        <span>Park or green space</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="location_005" value="shops">
+                                        <span>Shops and amenities</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="location_005" value="church">
+                                        <span>Places of worship</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="location_005" value="library">
+                                        <span>Library or cultural centres</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="location_005" value="none">
+                                        <span>Not important</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: Budget & Funding -->
+                    <div class="question-section bg-white rounded-xl p-10 shadow-lg border border-gray-200" data-section="3">
+                        <h2 class="section-title">Budget & Funding</h2>
+                        <p class="section-description">Financial arrangements and payment preferences</p>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <label class="question-label">
+                                    Planned weekly budget <span class="text-red-500">*</span>
+                                </label>
+                                <p class="help-text mb-4">Care home fees in the UK are typically charged weekly</p>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="budget_001" value="1000" required>
+                                        <span>Up to £1,000 per week</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="budget_001" value="1500" required>
+                                        <span>£1,000 - £1,500 per week</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="budget_001" value="2000" required>
+                                        <span>£1,500 - £2,000 per week</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="budget_001" value="3000" required>
+                                        <span>£2,000 - £3,000 per week</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="budget_001" value="unlimited" required>
+                                        <span>More than £3,000 per week</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="budget_001" value="unknown" required>
+                                        <span>Budget not yet determined</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Funding sources (please select all that apply)
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="budget_002" value="personal_funds">
+                                        <span>Personal savings and investments</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="budget_002" value="family_support">
+                                        <span>Family financial support</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="budget_002" value="property_sale">
+                                        <span>Proceeds from property sale</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="budget_002" value="pension">
+                                        <span>State or private pension</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="budget_002" value="local_authority">
+                                        <span>Local authority funding</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="budget_002" value="nhs_funding">
+                                        <span>NHS Continuing Healthcare</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="budget_002" value="exploring">
+                                        <span>Still exploring funding options</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Budget flexibility
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="budget_003" value="strict">
+                                        <span>Must stay strictly within stated budget</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="budget_003" value="moderate">
+                                        <span>Could stretch budget slightly for exceptional care</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="budget_003" value="flexible">
+                                        <span>Quality of care more important than price</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="budget_003" value="value_focused">
+                                        <span>Seeking best value for money</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 4: Care Type & Medical Needs -->
+                    <div class="question-section bg-white rounded-xl p-10 shadow-lg border border-gray-200" data-section="4">
+                        <h2 class="section-title">Care Type & Medical Needs</h2>
+                        <p class="section-description">Determining the required level of medical care</p>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <label class="question-label">
+                                    Required types of care (select all that apply) <span class="text-red-500">*</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_001" value="residential">
+                                        <span>General care (help with daily living, meals)</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_001" value="nursing">
+                                        <span>Medical care (nurses 24/7)</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_001" value="dementia">
+                                        <span>Specialised dementia care</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_001" value="palliative">
+                                        <span>Palliative care</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_001" value="respite">
+                                        <span>Temporary placement</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_001" value="rehabilitation">
+                                        <span>Rehabilitation services</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_001" value="unsure">
+                                        <span>Not sure</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Medical conditions (select all that apply) <span class="text-red-500">*</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="dementia">
+                                        <span>Dementia/Alzheimer's disease</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="diabetes">
+                                        <span>Diabetes</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="heart">
+                                        <span>Heart conditions</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="stroke">
+                                        <span>Stroke effects</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="parkinsons">
+                                        <span>Parkinson's disease</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="mobility">
+                                        <span>Mobility problems</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="mental_health">
+                                        <span>Mental health conditions</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="cancer">
+                                        <span>Cancer</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="respiratory">
+                                        <span>Respiratory conditions</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="none">
+                                        <span>No serious medical conditions</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label" for="care_003">
+                                    Additional medical conditions or special needs
+                                </label>
+                                <textarea id="care_003" name="care_003" class="form-input" rows="3" 
+                                          placeholder="Describe any other medical needs..."></textarea>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Level of mobility <span class="text-red-500">*</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="care_004" value="mobile" required>
+                                        <span>Fully mobile</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="care_004" value="walking_aid" required>
+                                        <span>Uses walking stick/frame</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="care_004" value="wheelchair_part" required>
+                                        <span>Partially uses wheelchair</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="care_004" value="wheelchair_full" required>
+                                        <span>Permanently in wheelchair</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="care_004" value="bedridden" required>
+                                        <span>Bedridden</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="care_004" value="changing" required>
+                                        <span>Mobility is declining</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Level of assistance needed in daily activities
+                                </label>
+                                <p class="help-text mb-6">Rate the need for help from 1 (fully independent) to 5 (full assistance required)</p>
+                                
+                                <div class="bg-gray-50 rounded-lg p-6 space-y-6">
+                                    <div class="matrix-row">
+                                        <span class="matrix-label">Bathing and hygiene</span>
+                                        <div class="matrix-buttons">
+                                            <button type="button" class="rating-btn" data-name="care_005_bathing" data-value="1">1</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_bathing" data-value="2">2</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_bathing" data-value="3">3</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_bathing" data-value="4">4</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_bathing" data-value="5">5</button>
+                                        </div>
+                                        <input type="hidden" name="care_005_bathing">
+                                    </div>
+                                    
+                                    <div class="matrix-row">
+                                        <span class="matrix-label">Dressing</span>
+                                        <div class="matrix-buttons">
+                                            <button type="button" class="rating-btn" data-name="care_005_dressing" data-value="1">1</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_dressing" data-value="2">2</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_dressing" data-value="3">3</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_dressing" data-value="4">4</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_dressing" data-value="5">5</button>
+                                        </div>
+                                        <input type="hidden" name="care_005_dressing">
+                                    </div>
+                                    
+                                    <div class="matrix-row">
+                                        <span class="matrix-label">Eating</span>
+                                        <div class="matrix-buttons">
+                                            <button type="button" class="rating-btn" data-name="care_005_eating" data-value="1">1</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_eating" data-value="2">2</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_eating" data-value="3">3</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_eating" data-value="4">4</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_eating" data-value="5">5</button>
+                                        </div>
+                                        <input type="hidden" name="care_005_eating">
+                                    </div>
+                                    
+                                    <div class="matrix-row">
+                                        <span class="matrix-label">Toilet use</span>
+                                        <div class="matrix-buttons">
+                                            <button type="button" class="rating-btn" data-name="care_005_toilet" data-value="1">1</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_toilet" data-value="2">2</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_toilet" data-value="3">3</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_toilet" data-value="4">4</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_toilet" data-value="5">5</button>
+                                        </div>
+                                        <input type="hidden" name="care_005_toilet">
+                                    </div>
+                                    
+                                    <div class="matrix-row">
+                                        <span class="matrix-label">Moving around</span>
+                                        <div class="matrix-buttons">
+                                            <button type="button" class="rating-btn" data-name="care_005_mobility" data-value="1">1</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_mobility" data-value="2">2</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_mobility" data-value="3">3</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_mobility" data-value="4">4</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_mobility" data-value="5">5</button>
+                                        </div>
+                                        <input type="hidden" name="care_005_mobility">
+                                    </div>
+                                    
+                                    <div class="matrix-row">
+                                        <span class="matrix-label">Taking medication</span>
+                                        <div class="matrix-buttons">
+                                            <button type="button" class="rating-btn" data-name="care_005_medication" data-value="1">1</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_medication" data-value="2">2</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_medication" data-value="3">3</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_medication" data-value="4">4</button>
+                                            <button type="button" class="rating-btn" data-name="care_005_medication" data-value="5">5</button>
+                                        </div>
+                                        <input type="hidden" name="care_005_medication">
+                                    </div>
+                                </div>
+                                
+                                <div class="flex justify-between text-lg text-gray-600 mt-4 font-semibold">
+                                    <span>1 = Independent</span>
+                                    <span>3 = Moderate help</span>
+                                    <span>5 = Full assistance</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Required special equipment
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_006" value="hoist">
+                                        <span>Lifting equipment</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_006" value="special_bed">
+                                        <span>Special bed/mattress</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_006" value="oxygen">
+                                        <span>Oxygen therapy</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_006" value="catheter">
+                                        <span>Catheter/stoma care</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_006" value="peg_feeding">
+                                        <span>Tube feeding</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_006" value="monitoring">
+                                        <span>Medical monitoring</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_006" value="none">
+                                        <span>None required</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 5: Cultural & Language Preferences -->
+                    <div class="question-section bg-white rounded-xl p-10 shadow-lg border border-gray-200" data-section="5">
+                        <h2 class="section-title">Cultural & Language Preferences</h2>
+                        <p class="section-description">Language, religious and cultural needs</p>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <label class="question-label">
+                                    Language requirements
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="culture_001" value="english_primary">
+                                        <span>English - primary language</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="culture_001" value="multilingual">
+                                        <span>Bilingual care desirable</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="culture_001" value="other_language">
+                                        <span>Other language preferred</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="culture_001" value="no_requirements">
+                                        <span>No language requirements</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div id="other-language-section" style="display: none;">
+                                <label class="question-label" for="culture_002">
+                                    Specify preferred language
+                                </label>
+                                <input type="text" id="culture_002" name="culture_002" class="form-input" 
+                                       placeholder="e.g., Polish, Urdu, Gujarati...">
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Religious requirements
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="culture_003" value="christian">
+                                        <span>Christian</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="culture_003" value="muslim">
+                                        <span>Muslim</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="culture_003" value="jewish">
+                                        <span>Jewish</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="culture_003" value="hindu">
+                                        <span>Hindu</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="culture_003" value="sikh">
+                                        <span>Sikh</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="culture_003" value="buddhist">
+                                        <span>Buddhist</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="culture_003" value="other_religion">
+                                        <span>Other religion</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="culture_003" value="secular">
+                                        <span>Not religious</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="culture_003" value="no_preference">
+                                        <span>No preference</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Important cultural aspects
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="culture_004" value="dietary_laws">
+                                        <span>Religious dietary requirements</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="culture_004" value="prayer_facilities">
+                                        <span>Prayer facilities</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="culture_004" value="religious_events">
+                                        <span>Religious celebrations</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="culture_004" value="cultural_activities">
+                                        <span>Cultural activities</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="culture_004" value="traditional_food">
+                                        <span>Traditional cuisine</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="culture_004" value="cultural_sensitivity">
+                                        <span>Cultural understanding</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="culture_004" value="none">
+                                        <span>Not important</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 6: Comfort & Activities -->
+                    <div class="question-section bg-white rounded-xl p-10 shadow-lg border border-gray-200" data-section="6">
+                        <h2 class="section-title">Comfort & Activities</h2>
+                        <p class="section-description">Living conditions and leisure activities</p>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <label class="question-label">
+                                    Preferred size of facility
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="comfort_001" value="small">
+                                        <span>Small home (up to 30 residents)</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="comfort_001" value="medium">
+                                        <span>Medium home (30-60 residents)</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="comfort_001" value="large">
+                                        <span>Large home (over 60 residents)</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="comfort_001" value="no_preference">
+                                        <span>Size doesn't matter</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Accommodation preferences
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_002" value="single_ensuite">
+                                        <span>Single room with en-suite</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_002" value="single_shared">
+                                        <span>Single room with shared facilities</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_002" value="shared_acceptable">
+                                        <span>Shared room acceptable</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_002" value="ground_floor">
+                                        <span>Ground floor essential</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_002" value="garden_access">
+                                        <span>Garden access important</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_002" value="quiet_area">
+                                        <span>Quiet area</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_002" value="no_specific">
+                                        <span>No specific requirements</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    How important is having a garden and outdoor space?
+                                </label>
+                                <p class="help-text mb-6">Please select a number from 1 (not important) to 10 (critically important)</p>
+                                <div class="rating-group">
+                                    <button type="button" class="rating-btn" data-name="comfort_003" data-value="1">1</button>
+                                    <button type="button" class="rating-btn" data-name="comfort_003" data-value="2">2</button>
+                                    <button type="button" class="rating-btn" data-name="comfort_003" data-value="3">3</button>
+                                    <button type="button" class="rating-btn" data-name="comfort_003" data-value="4">4</button>
+                                    <button type="button" class="rating-btn" data-name="comfort_003" data-value="5">5</button>
+                                    <button type="button" class="rating-btn" data-name="comfort_003" data-value="6">6</button>
+                                    <button type="button" class="rating-btn" data-name="comfort_003" data-value="7">7</button>
+                                    <button type="button" class="rating-btn" data-name="comfort_003" data-value="8">8</button>
+                                    <button type="button" class="rating-btn" data-name="comfort_003" data-value="9">9</button>
+                                    <button type="button" class="rating-btn" data-name="comfort_003" data-value="10">10</button>
+                                </div>
+                                <div class="flex justify-between text-lg text-gray-600 mt-4 font-semibold">
+                                    <span>Not important</span>
+                                    <span>Critically important</span>
+                                </div>
+                                <input type="hidden" name="comfort_003">
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    How important are social activities and entertainment?
+                                </label>
+                                <p class="help-text mb-6">Please select a number from 1 (not important) to 10 (critically important)</p>
+                                <div class="rating-group">
+                                    <button type="button" class="rating-btn" data-name="comfort_004" data-value="1">1</button>
+                                    <button type="button" class="rating-btn" data-name="comfort_004" data-value="2">2</button>
+                                    <button type="button" class="rating-btn" data-name="comfort_004" data-value="3">3</button>
+                                    <button type="button" class="rating-btn" data-name="comfort_004" data-value="4">4</button>
+                                    <button type="button" class="rating-btn" data-name="comfort_004" data-value="5">5</button>
+                                    <button type="button" class="rating-btn" data-name="comfort_004" data-value="6">6</button>
+                                    <button type="button" class="rating-btn" data-name="comfort_004" data-value="7">7</button>
+                                    <button type="button" class="rating-btn" data-name="comfort_004" data-value="8">8</button>
+                                    <button type="button" class="rating-btn" data-name="comfort_004" data-value="9">9</button>
+                                    <button type="button" class="rating-btn" data-name="comfort_004" data-value="10">10</button>
+                                </div>
+                                <div class="flex justify-between text-lg text-gray-600 mt-4 font-semibold">
+                                    <span>Not important</span>
+                                    <span>Critically important</span>
+                                </div>
+                                <input type="hidden" name="comfort_004">
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Interests and hobbies (for organising activities)
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_005" value="reading">
+                                        <span>Reading</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_005" value="music">
+                                        <span>Music</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_005" value="art">
+                                        <span>Arts and crafts</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_005" value="gardening">
+                                        <span>Gardening</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_005" value="games">
+                                        <span>Board games</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_005" value="tv_movies">
+                                        <span>TV/Films</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_005" value="socialising">
+                                        <span>Socialising</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_005" value="exercise">
+                                        <span>Physical exercise</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_005" value="cooking">
+                                        <span>Cooking</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_005" value="pets">
+                                        <span>Animals</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_005" value="none">
+                                        <span>Prefers quiet activities</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Attitude towards pets
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="comfort_006" value="bring_own">
+                                        <span>Would like to bring own pet</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="comfort_006" value="facility_pets">
+                                        <span>Enjoys facility pets</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="comfort_006" value="therapy_animals">
+                                        <span>Interested in pet therapy</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="comfort_006" value="no_animals">
+                                        <span>Prefers no animals</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="comfort_006" value="no_preference">
+                                        <span>No preference</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Dining preferences
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_007" value="communal_dining">
+                                        <span>Communal dining room</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_007" value="room_service">
+                                        <span>Option to eat in room</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_007" value="flexible_times">
+                                        <span>Flexible meal times</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_007" value="special_diet">
+                                        <span>Special diet accommodation</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_007" value="home_cooking">
+                                        <span>Home-style cooking</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_007" value="no_preference">
+                                        <span>No specific preferences</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label" for="comfort_008">
+                                    Dietary restrictions or special requirements
+                                </label>
+                                <textarea id="comfort_008" name="comfort_008" class="form-input" rows="3" 
+                                          placeholder="Describe dietary requirements: diabetic diet, vegetarian, allergies..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 7: Family & Visiting -->
+                    <div class="question-section bg-white rounded-xl p-10 shadow-lg border border-gray-200" data-section="7">
+                        <h2 class="section-title">Family & Visiting</h2>
+                        <p class="section-description">Family visits and involvement arrangements</p>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <label class="question-label">
+                                    Visiting arrangements
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="family_001" value="unrestricted">
+                                        <span>Unrestricted visiting hours</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="family_001" value="extended">
+                                        <span>Extended visiting hours</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="family_001" value="standard">
+                                        <span>Standard hours acceptable</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="family_001" value="flexible">
+                                        <span>Flexibility important</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="family_001" value="not_important">
+                                        <span>Visits will be infrequent</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Expected frequency of visits
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="family_002" value="daily">
+                                        <span>Daily</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="family_002" value="several_weekly">
+                                        <span>Several times per week</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="family_002" value="weekly">
+                                        <span>Weekly</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="family_002" value="monthly">
+                                        <span>Several times per month</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="family_002" value="rarely">
+                                        <span>Rarely</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="family_002" value="special_occasions">
+                                        <span>Special occasions only</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Important facilities for visiting
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="family_003" value="parking">
+                                        <span>Convenient parking</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="family_003" value="private_space">
+                                        <span>Private meeting space</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="family_003" value="overnight_stays">
+                                        <span>Overnight stays for relatives</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="family_003" value="meal_together">
+                                        <span>Shared meal opportunities</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="family_003" value="outdoor_space">
+                                        <span>Outdoor areas for walks</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="family_003" value="children_friendly">
+                                        <span>Child-friendly visiting</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="family_003" value="none">
+                                        <span>No specific requirements</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    How important is family involvement in care planning?
+                                </label>
+                                <p class="help-text mb-6">Please select a number from 1 (trust staff completely) to 10 (want active involvement)</p>
+                                <div class="rating-group">
+                                    <button type="button" class="rating-btn" data-name="family_004" data-value="1">1</button>
+                                    <button type="button" class="rating-btn" data-name="family_004" data-value="2">2</button>
+                                    <button type="button" class="rating-btn" data-name="family_004" data-value="3">3</button>
+                                    <button type="button" class="rating-btn" data-name="family_004" data-value="4">4</button>
+                                    <button type="button" class="rating-btn" data-name="family_004" data-value="5">5</button>
+                                    <button type="button" class="rating-btn" data-name="family_004" data-value="6">6</button>
+                                    <button type="button" class="rating-btn" data-name="family_004" data-value="7">7</button>
+                                    <button type="button" class="rating-btn" data-name="family_004" data-value="8">8</button>
+                                    <button type="button" class="rating-btn" data-name="family_004" data-value="9">9</button>
+                                    <button type="button" class="rating-btn" data-name="family_004" data-value="10">10</button>
+                                </div>
+                                <div class="flex justify-between text-lg text-gray-600 mt-4 font-semibold">
+                                    <span>Trust staff completely</span>
+                                    <span>Want active involvement</span>
+                                </div>
+                                <input type="hidden" name="family_004">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 8: Timeline & Additional Information -->
+                    <div class="question-section bg-white rounded-xl p-10 shadow-lg border border-gray-200" data-section="8">
+                        <h2 class="section-title">Timeline & Additional Information</h2>
+                        <p class="section-description">Urgency of placement and special requirements</p>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <label class="question-label">
+                                    Timeline for placement <span class="text-red-500">*</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_001" value="immediate" required>
+                                        <span>Urgent (within 2 weeks)</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_001" value="month" required>
+                                        <span>Within a month</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_001" value="three_months" required>
+                                        <span>Within 3 months</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_001" value="six_months" required>
+                                        <span>Within 6 months</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_001" value="planning" required>
+                                        <span>Future planning (over 6 months)</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_001" value="exploring" required>
+                                        <span>Still exploring options</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Current living situation
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_002" value="own_home_alone">
+                                        <span>Living at home alone</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_002" value="own_home_family">
+                                        <span>Living at home with family</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_002" value="family_home">
+                                        <span>Living in relative's home</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_002" value="assisted_living">
+                                        <span>In assisted living</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_002" value="hospital">
+                                        <span>In hospital</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_002" value="other_facility">
+                                        <span>In another care facility</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_002" value="temporary">
+                                        <span>Temporary accommodation</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Previous experience with care homes
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_003" value="first_time">
+                                        <span>First time looking for care home</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_003" value="visited_before">
+                                        <span>Have visited care homes before</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_003" value="negative_experience">
+                                        <span>Had negative experience in the past</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_003" value="relocating">
+                                        <span>Moving from another care home</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_003" value="positive_experience">
+                                        <span>Family has positive experience</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Main concerns about care homes
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="timeline_004" value="quality_care">
+                                        <span>Quality of care</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="timeline_004" value="staff_turnover">
+                                        <span>Staff turnover</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="timeline_004" value="cost">
+                                        <span>Cost of services</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="timeline_004" value="independence_loss">
+                                        <span>Loss of independence</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="timeline_004" value="safety">
+                                        <span>Safety</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="timeline_004" value="social_isolation">
+                                        <span>Social isolation</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="timeline_004" value="food_quality">
+                                        <span>Food quality</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="timeline_004" value="cleanliness">
+                                        <span>Cleanliness and hygiene</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="timeline_004" value="medical_access">
+                                        <span>Access to medical care</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="timeline_004" value="family_distance">
+                                        <span>Distance from family</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Importance of official ratings and licences
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_005" value="critical">
+                                        <span>Only high ratings acceptable</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_005" value="important">
+                                        <span>Important but not critical</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_005" value="moderate">
+                                        <span>Moderately important</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_005" value="personal_fit">
+                                        <span>Personal fit more important than ratings</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_005" value="unknown">
+                                        <span>Unfamiliar with rating system</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label" for="timeline_006">
+                                    Additional information
+                                </label>
+                                <p class="help-text mb-4">Please share any special circumstances, requirements, or concerns that will help us find the most suitable options</p>
+                                <textarea id="timeline_006" name="timeline_006" class="form-input" rows="4" 
+                                          placeholder="Any additional information that will help with the selection..."></textarea>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Preferred method for receiving recommendations
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_007" value="email_only">
+                                        <span>Email only</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_007" value="phone_discussion">
+                                        <span>Phone discussion</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_007" value="in_person">
+                                        <span>In-person meeting</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_007" value="combined">
+                                        <span>Combined approach</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="question-label" for="timeline_008">
+                                    Convenient time for contact
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_008" value="morning">
+                                        <span>Morning (9:00-12:00)</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_008" value="afternoon">
+                                        <span>Afternoon (12:00-17:00)</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_008" value="evening">
+                                        <span>Evening (17:00-20:00)</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_008" value="anytime">
+                                        <span>Any time</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_008" value="weekend">
+                                        <span>Prefer weekends</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- System Requirements Section -->
+                            <div class="mt-12 pt-8 border-t-2 border-gray-300">
+                                <h3 class="text-xl font-bold mb-6 text-gray-800">Legal Requirements</h3>
+                                
+                                <div class="space-y-6">
+                                    <div class="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg">
+                                        <label class="checkbox-option bg-transparent border-none p-0 mb-0">
+                                            <input type="checkbox" name="system_001" value="gdpr_consent" required class="mr-4">
+                                            <span class="text-base leading-relaxed">
+                                                <strong>Data Processing Consent (GDPR) <span class="text-red-500">*</span></strong><br>
+                                                I consent to the processing of my personal data for the purpose of receiving care home recommendations. 
+                                                I understand that my data will be processed securely and will not be shared with third parties without my consent. 
+                                                I can withdraw this consent at any time by contacting us.
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div class="bg-green-50 border-l-4 border-green-400 p-6 rounded-r-lg">
+                                        <label class="checkbox-option bg-transparent border-none p-0 mb-0">
+                                            <input type="checkbox" name="system_002" value="terms_consent" required class="mr-4">
+                                            <span class="text-base leading-relaxed">
+                                                <strong>Terms of Service Agreement <span class="text-red-500">*</span></strong><br>
+                                                I agree to the Terms of Service and understand that this assessment is for informational purposes only. 
+                                                The recommendations provided do not constitute professional advice, and I should conduct my own due diligence 
+                                                when selecting a care home.
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="navigation-buttons">
+                        <button type="button" id="prev-btn" class="secondary-btn" style="display: none;">
+                            ← Previous Section
+                        </button>
+                        
+                        <div class="button-group">
+                            <button type="button" id="next-btn" class="primary-btn">
+                                Next Section →
+                            </button>
+                            <button type="submit" id="submit-btn" class="primary-btn" style="display: none;">
+                                Complete Assessment
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript Files - ПРАВИЛЬНЫЙ ПОРЯДОК -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/questionnaire.js"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 /* questionnaire.css - Questionnaire-specific styles */
 
 /* AGE 55+ OPTIMIZED TYPOGRAPHY */
-body {
+.questionnaire-page body {
     font-family: 'Inter', sans-serif;
     background-color: #fefce8;
     color: #1f2937;
@@ -10,112 +10,7 @@ body {
     font-weight: 500;
 }
 
-/* Animation Keyframes */
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulseGlow {
-    0%, 100% {
-        box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
-    }
-    50% {
-        box-shadow: 0 0 30px rgba(245, 158, 11, 0.6);
-    }
-}
-
-@keyframes bounceGentle {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-5px);
-    }
-}
-
-@keyframes checkmark {
-    0% {
-        transform: scale(0) rotate(45deg);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1.2) rotate(45deg);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1) rotate(45deg);
-        opacity: 1;
-    }
-}
-
-/* Button Styles */
-.primary-btn {
-    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-    color: white;
-    font-weight: 700;
-    padding: 20px 32px;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1.125rem;
-    min-height: 60px;
-    letter-spacing: 0.5px;
-}
-
-.primary-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
-}
-
-.primary-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.secondary-btn {
-    background: transparent;
-    color: #059669;
-    border: 3px solid #059669;
-    font-weight: 700;
-    padding: 20px 32px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1.125rem;
-    min-height: 60px;
-    letter-spacing: 0.5px;
-}
-
-.secondary-btn:hover {
-    background: #059669;
-    color: white;
-}
-
-/* Section Management */
+/* Question Section Management */
 .question-section {
     display: none;
 }
@@ -124,130 +19,32 @@ body {
     display: block;
 }
 
-/* Progress Bar */
-.progress-bar {
-    background: #e5e7eb;
-    height: 12px;
-    border-radius: 6px;
-    margin-bottom: 2.5rem;
+/* Progress specific to questionnaire */
+.progress-text {
+    font-size: 1.125rem;
+    color: #6b7280;
+    text-align: center;
+    margin-bottom: 12px;
+    font-weight: 600;
 }
 
-.progress-fill {
-    background: linear-gradient(90deg, #059669, #f59e0b);
-    height: 100%;
-    border-radius: 6px;
-    transition: width 0.5s ease;
-    width: 12.5%;
-}
-
-/* Form Elements */
-.form-input {
-    width: 100%;
+/* Enhanced form inputs for 55+ users */
+.questionnaire-page .form-input {
     border: 3px solid #e5e7eb;
-    border-radius: 12px;
     padding: 18px 20px;
     font-size: 1.125rem;
-    transition: border-color 0.2s ease;
     min-height: 56px;
     line-height: 1.4;
     font-weight: 500;
 }
 
-.form-input:focus {
+.questionnaire-page .form-input:focus {
     border-color: #f59e0b;
-    outline: none;
     box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15);
 }
 
-/* Radio and Checkbox Options */
-.radio-option, .checkbox-option {
-    display: flex;
-    align-items: center;
-    padding: 20px 24px;
-    border: 3px solid #e5e7eb;
-    border-radius: 12px;
-    cursor: pointer;
-    margin-bottom: 16px;
-    transition: all 0.2s ease;
-    min-height: 64px;
-    font-size: 1.1rem;
-    font-weight: 500;
-    line-height: 1.5;
-}
-
-.radio-option:hover, .checkbox-option:hover {
-    border-color: #f59e0b;
-    background: #fef7ed;
-    transform: translateY(-1px);
-}
-
-.radio-option.selected, .checkbox-option.selected {
-    border-color: #f59e0b;
-    background: #fef7ed;
-    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
-}
-
-.radio-option input[type="radio"],
-.checkbox-option input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    margin-right: 16px;
-    cursor: pointer;
-}
-
-/* Rating Buttons */
-.rating-group {
-    display: flex;
-    gap: 12px;
-    margin: 20px 0;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.rating-btn {
-    width: 52px;
-    height: 52px;
-    border: 3px solid #e5e7eb;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-weight: 700;
-    background: white;
-    font-size: 1.125rem;
-    min-width: 52px;
-}
-
-.rating-btn:hover {
-    border-color: #f59e0b;
-    background: #fef7ed;
-    transform: scale(1.05);
-}
-
-.rating-btn.selected {
-    background: #f59e0b;
-    border-color: #f59e0b;
-    color: white;
-    transform: scale(1.1);
-}
-
-/* Error Messages */
-.error-msg {
-    color: #dc2626;
-    font-size: 1rem;
-    margin-top: 12px;
-    padding: 12px 16px;
-    background: #fef2f2;
-    border-radius: 8px;
-    border-left: 4px solid #dc2626;
-    font-weight: 600;
-    line-height: 1.4;
-}
-
-/* Typography */
-.section-title {
+/* Typography specific to questionnaire */
+.questionnaire-page .section-title {
     font-size: 2.25rem;
     font-weight: 800;
     margin-bottom: 20px;
@@ -256,7 +53,7 @@ body {
     letter-spacing: -0.5px;
 }
 
-.section-description {
+.questionnaire-page .section-description {
     font-size: 1.25rem;
     color: #4b5563;
     margin-bottom: 40px;
@@ -264,7 +61,7 @@ body {
     font-weight: 500;
 }
 
-.question-label {
+.questionnaire-page .question-label {
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 12px;
@@ -274,7 +71,7 @@ body {
     letter-spacing: 0.25px;
 }
 
-.help-text {
+.questionnaire-page .help-text {
     font-size: 1rem;
     color: #6b7280;
     margin-top: 12px;
@@ -282,153 +79,52 @@ body {
     font-weight: 500;
 }
 
-.progress-text {
-    font-size: 1.125rem;
-    color: #6b7280;
-    text-align: center;
-    margin-bottom: 12px;
-    font-weight: 600;
-}
-
-/* Loading Spinner */
-.loading-spinner {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    border: 3px solid #ffffff;
-    border-radius: 50%;
-    border-top-color: transparent;
-    animation: spin 1s ease-in-out infinite;
-    margin-right: 12px;
-}
-
-/* Success Notification */
-.success-notification {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #059669;
-    color: white;
-    padding: 20px 28px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    z-index: 1000;
-    font-weight: 700;
-    font-size: 1.125rem;
-}
-
-/* Matrix Questions */
-.matrix-row {
+/* Navigation buttons specific styling */
+.navigation-buttons {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 16px 20px;
-    margin-bottom: 12px;
-    background: #f8fafc;
-    border-radius: 12px;
-    border: 2px solid #e2e8f0;
-    min-height: 72px;
+    align-items: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e5e7eb;
 }
 
-.matrix-label {
-    font-weight: 600;
-    color: #374151;
-    flex: 1;
-    margin-right: 20px;
-    font-size: 1.1rem;
-    line-height: 1.4;
-}
-
-.matrix-buttons {
+.button-group {
     display: flex;
-    gap: 12px;
+    gap: 1rem;
 }
 
-/* Accessibility Improvements */
-:focus {
-    outline: 3px solid #f59e0b;
-    outline-offset: 2px;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    color: #111827;
-    font-weight: 800;
-}
-
+/* Utility classes for questionnaire */
 .space-y-8 > * + * {
     margin-top: 2rem;
 }
 
-/* Mobile Optimizations for 55+ */
+/* Mobile Optimizations for 55+ users */
 @media (max-width: 768px) {
-    body {
+    .questionnaire-page body {
         font-size: 18px;
     }
     
-    .section-title {
+    .questionnaire-page .section-title {
         font-size: 1.875rem;
     }
     
-    .section-description {
+    .questionnaire-page .section-description {
         font-size: 1.125rem;
     }
     
-    .question-label {
+    .questionnaire-page .question-label {
         font-size: 1.125rem;
     }
     
-    .radio-option, .checkbox-option {
-        padding: 16px 20px;
-        font-size: 1rem;
-        min-height: 60px;
-    }
-    
-    .form-input {
+    .questionnaire-page .form-input {
         font-size: 18px;
         padding: 16px 18px;
         min-height: 52px;
     }
     
-    .rating-group {
-        gap: 8px;
-        justify-content: space-between;
-    }
-    
-    .rating-btn {
-        width: 46px;
-        height: 46px;
-        font-size: 1rem;
-        min-width: 46px;
-    }
-    
-    .primary-btn, .secondary-btn {
-        font-size: 1rem;
-        padding: 18px 24px;
-        min-height: 56px;
-    }
-    
     .question-section {
         padding: 24px 20px !important;
-    }
-    
-    .matrix-row {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 16px;
-        padding: 20px;
-        min-height: 80px;
-    }
-    
-    .matrix-label {
-        margin-right: 0;
-        margin-bottom: 12px;
-        text-align: left;
-        font-size: 1rem;
-    }
-    
-    .matrix-buttons {
-        justify-content: space-between;
-        gap: 8px;
     }
     
     .navigation-buttons {
@@ -436,35 +132,87 @@ h1, h2, h3, h4, h5, h6 {
         gap: 16px;
     }
     
+    .navigation-buttons .button-group {
+        width: 100%;
+    }
+    
     .navigation-buttons .flex {
         width: 100%;
     }
     
-    .navigation-buttons button {
+    .navigation-buttons button,
+    .navigation-buttons .primary-btn,
+    .navigation-buttons .secondary-btn {
         flex: 1;
     }
 }
 
 @media (max-width: 480px) {
-    .container {
+    .questionnaire-page .container {
         padding-left: 16px;
         padding-right: 16px;
     }
-    
-    .rating-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 0.9rem;
-        min-width: 40px;
+}
+
+/* Header adjustments for questionnaire page */
+@media (max-width: 768px) {
+    .questionnaire-page header .header-content {
+        height: 5rem;
     }
     
-    .matrix-buttons .rating-btn {
-        width: 44px;
-        height: 44px;
+    .questionnaire-page header .logo {
+        font-size: 1.5rem;
     }
     
-    .radio-option, .checkbox-option {
-        padding: 14px 16px;
-        margin-bottom: 12px;
+    .questionnaire-page header .header-text {
+        font-size: 1rem;
+    }
+    
+    .questionnaire-page main {
+        padding-top: 8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .questionnaire-page header .header-content {
+        height: 4rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+    
+    .questionnaire-page header .logo {
+        font-size: 1.25rem;
+    }
+    
+    .questionnaire-page header .header-text {
+        font-size: 0.875rem;
+    }
+    
+    .questionnaire-page main {
+        padding-top: 6rem;
+    }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .questionnaire-page main {
+        padding-top: 6rem;
+        padding-bottom: 4rem;
+    }
+    
+    .questionnaire-page .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .questionnaire-page .section-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .navigation-buttons {
+        margin-top: 2rem;
+        padding-top: 1rem;
     }
 }

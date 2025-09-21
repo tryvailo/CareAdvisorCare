@@ -1,297 +1,35 @@
-/**
- * Main JavaScript - Enhanced functionality for RightCareHome
- * Combines original functionality with new questionnaire features
- */
+// main.js - Main JavaScript functionality
 
-// Utility functions
-const Utils = {
-    // Enhanced fade in animation
-    initFadeInAnimations() {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-    },
-
-    // Auto-trigger animations on load
-    triggerAnimationsOnLoad() {
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                document.querySelectorAll('.fade-in').forEach(el => {
-                    el.classList.add('visible');
-                });
-            }, 200);
-        });
-    },
-
-    // Add keyboard navigation support
-    addKeyboardSupport() {
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && e.target.classList.contains('rating-btn')) {
-                e.target.click();
-            }
-        });
-    },
-
-    // Show notification
-    showNotification(message, type = 'success') {
-        const notification = document.createElement('div');
-        notification.className = 'success-notification';
-        
-        if (type === 'error') {
-            notification.style.background = '#dc2626';
-        }
-        
-        notification.textContent = message;
-        document.body.appendChild(notification);
-        
-        setTimeout(() => {
-            notification.style.opacity = '0';
-            notification.style.transform = 'translateX(100%)';
-            setTimeout(() => notification.remove(), 300);
-        }, 5000);
-    },
-
-    // Generate reference number
-    generateReferenceNumber() {
-        const year = new Date().getFullYear();
-        const random = String(Math.floor(Math.random() * 10000)).padStart(4, '0');
-        return `RCH-${year}-${random}`;
-    },
-
-    // Handle URL parameters
-    getUrlParams() {
-        return new URLSearchParams(window.location.search);
-    },
-
-    // Smooth scroll to top
-    scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    },
-
-    // Local storage helpers
-    saveToStorage(key, data, expiration = 24 * 60 * 60 * 1000) {
-        const item = {
-            data: data,
-            expiry: Date.now() + expiration
-        };
-        localStorage.setItem(key, JSON.stringify(item));
-    },
-
-    loadFromStorage(key) {
-        const item = localStorage.getItem(key);
-        if (!item) return null;
-
-        try {
-            const parsed = JSON.parse(item);
-            if (Date.now() > parsed.expiry) {
-                localStorage.removeItem(key);
-                return null;
-            }
-            return parsed.data;
-        } catch (e) {
-            localStorage.removeItem(key);
-            return null;
-        }
-    },
-
-    removeFromStorage(key) {
-        localStorage.removeItem(key);
-    },
-
-    // Analytics helpers
-    trackEvent(eventName, eventData = {}) {
-        // Google Analytics tracking (if available)
-        if (typeof gtag !== 'undefined') {
-            gtag('event', eventName, eventData);
-        }
-        
-        // Console logging for development
-        console.log('Event tracked:', eventName, eventData);
-    },
-
-    // Form validation helpers
-    validateEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
-    },
-
-    validatePhone(phone) {
-        const re = /^[\+]?[\d\s\-\(\)]{7,15}$/;
-        return re.test(phone.replace(/\s/g, ''));
-    },
-
-    // Format text helpers
-    formatPhoneNumber(phone) {
-        // Basic UK phone number formatting
-        const cleaned = phone.replace(/\D/g, '');
-        if (cleaned.startsWith('44')) {
-            return '+44 ' + cleaned.slice(2);
-        }
-        return phone;
-    },
-
-    // Loading state helpers
-    showLoading(button) {
-        const originalText = button.innerHTML;
-        button.innerHTML = '<span class="loading-spinner"></span>Processing...';
-        button.disabled = true;
-        return originalText;
-    },
-
-    hideLoading(button, originalText) {
-        button.innerHTML = originalText;
-        button.disabled = false;
-    },
-
-    // Device detection
-    isMobile() {
-        return window.innerWidth <= 768;
-    },
-
-    isTablet() {
-        return window.innerWidth > 768 && window.innerWidth <= 1024;
-    },
-
-    // Accessibility helpers
-    announceToScreenReader(message) {
-        const announcement = document.createElement('div');
-        announcement.setAttribute('aria-live', 'polite');
-        announcement.setAttribute('aria-atomic', 'true');
-        announcement.className = 'sr-only';
-        announcement.textContent = message;
-        
-        document.body.appendChild(announcement);
-        
-        setTimeout(() => {
-            document.body.removeChild(announcement);
-        }, 1000);
-    },
-
-    // Print helpers
-    preparePrintView() {
-        // Add print-specific styling if needed
-        const printStyles = document.createElement('style');
-        printStyles.textContent = `
-            @media print {
-                header, footer { display: none; }
-                main { padding-top: 0; }
-                .no-print { display: none; }
-            }
-        `;
-        document.head.appendChild(printStyles);
-    }
-};
-
-// Navigation helpers
-const Navigation = {
-    // Handle external links
-    initExternalLinks() {
-        document.querySelectorAll('a[href^="http"]').forEach(link => {
-            if (!link.href.includes(window.location.hostname)) {
-                link.setAttribute('target', '_blank');
-                link.setAttribute('rel', 'noopener noreferrer');
-            }
-        });
-    },
-
-    // Handle smooth internal navigation
-    initSmoothScroll() {
-        document.querySelectorAll('a[href^="#"]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(link.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    }
-};
-
-// Performance helpers
-const Performance = {
-    // Preload critical resources
-    preloadResources() {
-        const criticalResources = [
-            '/assets/css/base.css',
-            '/assets/css/components.css',
-            '/assets/fonts/inter.woff2'
-        ];
-
-        criticalResources.forEach(resource => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.href = resource;
-            
-            if (resource.endsWith('.css')) {
-                link.as = 'style';
-            } else if (resource.includes('font')) {
-                link.as = 'font';
-                link.crossOrigin = 'anonymous';
-            }
-            
-            document.head.appendChild(link);
-        });
-    },
-
-    // Lazy load non-critical resources
-    lazyLoadImages() {
-        const images = document.querySelectorAll('img[data-src]');
-        
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.removeAttribute('data-src');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-
-        images.forEach(img => imageObserver.observe(img));
-    }
-};
-
-// Main initialization
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Core initialization
-    Utils.initFadeInAnimations();
-    Utils.addKeyboardSupport();
-    Navigation.initExternalLinks();
-    Navigation.initSmoothScroll();
-    
-    // Performance optimizations
-    Performance.preloadResources();
-    Performance.lazyLoadImages();
-    
-    // Accessibility
-    Utils.preparePrintView();
+    // Enhanced fade in animation observer
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all fade-in elements
+    document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+    });
 
     // Area selector functionality - Navigate to regional pages
     document.querySelectorAll('select').forEach(select => {
         select.addEventListener('change', function() {
             const selectedArea = this.value;
             if (selectedArea === 'birmingham') {
+                // Navigate to the Birmingham regional page
                 window.location.href = '/birmingham/';
             } else if (selectedArea && selectedArea !== '' && !this.options[this.selectedIndex].disabled) {
+                // Navigate to other area pages when available
                 window.location.href = `/${selectedArea}/`;
             }
         });
@@ -301,8 +39,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.area-card').forEach(card => {
         const button = card.querySelector('button');
         if (button && button.textContent.includes('Birmingham')) {
+            // Make entire card clickable
             card.addEventListener('click', function(e) {
                 e.preventDefault();
+                // Add click animation before navigation
                 this.style.transform = 'scale(0.98)';
                 
                 setTimeout(() => {
@@ -313,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
             button.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
+                // Add click animation before navigation
                 this.style.transform = 'scale(0.98)';
                 
                 setTimeout(() => {
@@ -338,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Validation
             if (!email || !email.includes('@') || !area) {
-                Utils.showNotification('Please fill in all fields correctly', 'error');
+                showNotification('Please fill in all fields correctly', 'error');
                 return;
             }
             
@@ -352,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 button.textContent = '✓ Sent! Check your email';
                 button.style.background = '#059669';
-                Utils.showNotification('Free guide sent to your email!', 'success');
+                showNotification('Free guide sent to your email!', 'success');
             }, 1000);
             
             // Reset form
@@ -372,12 +113,14 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Check if this is a report purchase button
             if (this.textContent.includes('Report') || this.textContent.includes('£99')) {
-                Utils.showNotification('Redirecting to questionnaire...', 'info');
+                // Navigate to questionnaire or checkout
+                showNotification('Redirecting to questionnaire...', 'info');
                 setTimeout(() => {
                     window.location.href = '/questionnaire/';
                 }, 1000);
             } else if (this.textContent.includes('Premium') || this.textContent.includes('£149')) {
-                Utils.showNotification('Redirecting to premium service...', 'info');
+                // Navigate to premium service
+                showNotification('Redirecting to premium service...', 'info');
                 setTimeout(() => {
                     window.location.href = '/premium/';
                 }, 1000);
@@ -391,9 +134,11 @@ document.addEventListener('DOMContentLoaded', function() {
             button.addEventListener('click', function(e) {
                 e.preventDefault();
                 
+                // Scroll to guide form or trigger modal
                 const guideForm = document.querySelector('.guide-form');
                 if (guideForm) {
                     guideForm.scrollIntoView({ behavior: 'smooth' });
+                    // Focus on email input
                     setTimeout(() => {
                         const emailInput = guideForm.querySelector('input[type="email"]');
                         if (emailInput) emailInput.focus();
@@ -401,6 +146,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         }
+    });
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
     });
 
     // Header background on scroll
@@ -451,6 +210,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Testimonial carousel (if multiple testimonials)
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    if (testimonialCards.length > 3) {
+        let currentTestimonial = 0;
+        
+        // Hide testimonials beyond the first 3
+        testimonialCards.forEach((card, index) => {
+            if (index >= 3) {
+                card.style.display = 'none';
+            }
+        });
+        
+        // Add navigation if needed
+        const testimonialSection = document.querySelector('.testimonials-grid').parentNode;
+        const navHTML = `
+            <div class="testimonial-nav text-center mt-8">
+                <button class="testimonial-prev px-4 py-2 bg-gray-200 rounded-lg mr-4">Previous</button>
+                <button class="testimonial-next px-4 py-2 bg-blue-600 text-white rounded-lg">Next</button>
+            </div>
+        `;
+        testimonialSection.insertAdjacentHTML('beforeend', navHTML);
+    }
+
     // Mobile menu toggle (if mobile menu exists)
     const mobileMenuButton = document.querySelector('.mobile-menu-button');
     const mobileMenu = document.querySelector('.mobile-menu');
@@ -459,6 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileMenuButton.addEventListener('click', function() {
             mobileMenu.classList.toggle('hidden');
             
+            // Animate hamburger icon
             const icon = this.querySelector('svg');
             if (icon) {
                 icon.style.transform = mobileMenu.classList.contains('hidden') 
@@ -485,6 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Form field enhancements
     document.querySelectorAll('.form-input, .area-selector').forEach(input => {
+        // Add focus/blur animations
         input.addEventListener('focus', function() {
             this.parentNode.classList.add('focused');
         });
@@ -498,10 +282,75 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
+        // Check if already filled on page load
         if (input.value) {
             input.parentNode.classList.add('filled');
         }
     });
+
+    // Notification system
+    function showNotification(message, type = 'info') {
+        // Remove existing notifications
+        document.querySelectorAll('.notification').forEach(n => n.remove());
+        
+        const notification = document.createElement('div');
+        notification.className = `notification fixed top-4 right-4 z-50 px-6 py-4 rounded-lg shadow-lg max-w-sm ${getNotificationClass(type)}`;
+        notification.innerHTML = `
+            <div class="flex items-center">
+                <span class="mr-3">${getNotificationIcon(type)}</span>
+                <span class="font-medium">${message}</span>
+                <button class="ml-4 text-lg leading-none" onclick="this.parentNode.parentNode.remove()">×</button>
+            </div>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.remove();
+            }
+        }, 5000);
+        
+        // Slide in animation
+        setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+            notification.style.opacity = '1';
+        }, 100);
+    }
+    
+    function getNotificationClass(type) {
+        switch(type) {
+            case 'success': return 'bg-green-500 text-white';
+            case 'error': return 'bg-red-500 text-white';
+            case 'warning': return 'bg-yellow-500 text-white';
+            default: return 'bg-blue-500 text-white';
+        }
+    }
+    
+    function getNotificationIcon(type) {
+        switch(type) {
+            case 'success': return '✓';
+            case 'error': return '✕';
+            case 'warning': return '⚠';
+            default: return 'ℹ';
+        }
+    }
+
+    // Loading state for buttons
+    function setButtonLoading(button, loading = true) {
+        if (loading) {
+            button.originalText = button.textContent;
+            button.disabled = true;
+            button.innerHTML = `
+                <span class="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></span>
+                Loading...
+            `;
+        } else {
+            button.disabled = false;
+            button.textContent = button.originalText || button.textContent;
+        }
+    }
 
     // Initialize tooltips (if any)
     document.querySelectorAll('[data-tooltip]').forEach(element => {
@@ -520,7 +369,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Analytics tracking
+    // Performance optimizations
+    let ticking = false;
+    
+    function updateOnScroll() {
+        // Batch DOM updates
+        requestAnimationFrame(() => {
+            // Update scroll-based animations here
+            ticking = false;
+        });
+    }
+    
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            ticking = true;
+            updateOnScroll();
+        }
+    });
+
+    // Initialize everything
+    console.log('RightCareHome UI initialized successfully');
+    
+    // Analytics tracking (placeholder)
     function trackEvent(category, action, label) {
         // Add Google Analytics or other tracking here
         console.log('Event tracked:', { category, action, label });
@@ -533,10 +403,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    console.log('RightCareHome main.js initialized successfully');
 });
-
-// Export for use in other modules
-window.CareHomeUtils = Utils;
-window.CareHomeNavigation = Navigation;
-window.CareHomePerformance = Performance;

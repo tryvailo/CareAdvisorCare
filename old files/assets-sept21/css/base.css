@@ -159,25 +159,6 @@ a:hover {
   }
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes checkmark {
-  0% {
-    transform: scale(0) rotate(45deg);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.2) rotate(45deg);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1) rotate(45deg);
-    opacity: 1;
-  }
-}
-
 /* Классы анимаций */
 .fade-in {
   opacity: 0;
@@ -351,12 +332,6 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-/* Focus styles for accessibility */
-:focus {
-  outline: 3px solid var(--warmth-orange);
-  outline-offset: 2px;
 }
 
 /* Базовые медиа-запросы */

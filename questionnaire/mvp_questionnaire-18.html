@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Care Home Assessment - RightCareHome</title>
+    <meta name="description" content="Professional 18-question care home assessment with safety focus for personalized recommendations in the UK.">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="../assets/css/base.css" as="style">
+    <link rel="preload" href="../assets/css/components.css" as="style">
+    <link rel="preload" href="../assets/js/main.js" as="script">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-navy': '#1e293b',
+                        'primary-blue': '#2563eb',
+                        'nhs-blue': '#005EB8',
+                        'caring-green': '#059669',
+                        'warmth-orange': '#f59e0b',
+                        'soft-coral': '#fb7185',
+                        'warm-grey': '#64748b',
+                        'light-cream': '#fefce8',
+                        'bg-warm': '#fefce8',
+                        'bg-cream': '#f9f6f2',
+                        'text-dark': '#1f2937',
+                        'text-muted': '#64748b',
+                        'healthcare-blue': '#005EB8'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/questionnaire.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    
+    <style>
+        .priority-indicator {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+        
+        .priority-critical {
+            background-color: #fee2e2;
+            color: #dc2626;
+            border: 1px solid #fca5a5;
+        }
+        
+        .priority-high {
+            background-color: #fef3c7;
+            color: #d97706;
+            border: 1px solid #fcd34d;
+        }
+        
+        .safety-section {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+        }
+        
+        .safety-icon {
+            color: #3b82f6;
+            font-size: 24px;
+            margin-right: 8px;
+        }
+
+        .form-input.error {
+            border-color: #dc2626;
+        }
+
+        .error-message {
+            color: #dc2626;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .navigation-buttons button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body class="questionnaire-page">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="flex items-center">
+                <a href="../index.html" class="logo">
+                    <h1>RightCareHome</h1>
+                </a>
+                <span class="text-lg text-warm-grey ml-2">.co.uk</span>
+            </div>
+            <div class="header-nav">
+                <div class="header-text">
+                    Professional Care Home Assessment
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            
+            <!-- Questionnaire Container -->
+            <div id="questionnaire-container">
+                <!-- Header Section -->
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-bold mb-8 text-gray-900">Professional Care Home Assessment</h1>
+                    <p class="text-2xl text-gray-600 max-w-3xl mx-auto mb-6">
+                        18 focused questions including essential safety checks for comprehensive care home recommendations.
+                    </p>
+                    <div class="bg-gradient-to-r from-blue-50 to-green-50 rounded-lg p-8 shadow-lg max-w-2xl mx-auto border border-blue-200 mb-8">
+                        <div class="flex items-center justify-center space-x-8 text-lg flex-wrap gap-6">
+                            <div class="flex items-center">
+                                <span class="text-green-600 mr-3 text-xl">✓</span>
+                                <span class="font-semibold">7-9 minutes to complete</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-600 mr-3 text-xl">✓</span>
+                                <span class="font-semibold">Safety-focused assessment</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-600 mr-3 text-xl">✓</span>
+                                <span class="font-semibold">24-hour delivery guarantee</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-md max-w-2xl mx-auto border-l-4 border-orange-400">
+                        <p class="text-lg font-semibold text-gray-700 mb-2">Professional safety in simple format:</p>
+                        <p class="text-gray-600">The only quick service that includes essential safety questions alongside care preferences for truly comprehensive recommendations.</p>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-text">
+                    <span>Section <span id="current-section">1</span> of 5</span>
+                </div>
+                <div class="progress-bar mb-6">
+                    <div class="progress-fill" id="progress-fill" style="width: 20%;"></div>
+                </div>
+                
+                <!-- Motivational Progress Message -->
+                <div id="progress-motivation" class="text-center mb-8 p-4 rounded-lg bg-gradient-to-r from-blue-50 to-green-50 border border-blue-200">
+                    <p class="text-lg font-semibold text-blue-800">Ready to begin your professional care assessment</p>
+                    <p class="text-gray-600 mt-2">Each answer helps us create safer, more accurate recommendations</p>
+                </div>
+
+                <!-- Questionnaire Form -->
+                <form id="questionnaire-form" class="max-w-3xl mx-auto" novalidate>
+                    
+                    <!-- Section 1: Contact & Emergency Information -->
+                    <div class="question-section active bg-white rounded-xl p-10 shadow-lg border border-gray-200" data-section="1">
+                        <h2 class="section-title">Contact & Emergency Information</h2>
+                        <p class="section-description">Essential details for communication and emergency situations</p>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <label class="question-label" for="contact_001">
+                                    Your name and surname <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="contact_001" name="contact_001" class="form-input" 
+                                       placeholder="Enter your full name" required>
+                                <p class="help-text">How we should address you in your personalised recommendations</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label" for="contact_002">
+                                    Email address for results <span class="text-red-500">*</span>
+                                </label>
+                                <input type="email" id="contact_002" name="contact_002" class="form-input" 
+                                       placeholder="example@email.com" required>
+                                <p class="help-text">We'll send your personalised care home recommendations to this address</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Your relationship to the person requiring care <span class="text-red-500">*</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="contact_004" value="son_daughter" required>
+                                        <span>Son/daughter</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="contact_004" value="spouse" required>
+                                        <span>Spouse/partner</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="contact_004" value="relative" required>
+                                        <span>Other family member</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="contact_004" value="friend" required>
+                                        <span>Friend/neighbour</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="contact_004" value="self" required>
+                                        <span>Looking for care for myself</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="contact_004" value="professional" required>
+                                        <span>Social worker/professional</span>
+                                    </label>
+                                </div>
+                                <p class="help-text">This helps us better understand your needs</p>
+                            </div>
+
+                            <div id="patient-name-section">
+                                <label class="question-label" for="contact_005">
+                                    Name of the person requiring care (if not for yourself)
+                                </label>
+                                <input type="text" id="contact_005" name="contact_005" class="form-input" 
+                                       placeholder="Enter their name">
+                                <p class="help-text">This helps us personalise our recommendations</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label" for="emergency_contact">
+                                    Emergency contact (name and phone) <span class="text-red-500">*</span>
+                                    <span class="priority-indicator priority-high">HIGH PRIORITY</span>
+                                </label>
+                                <input type="text" id="emergency_contact" name="emergency_contact" class="form-input" 
+                                       placeholder="e.g. Anna Smith +44 7xxx xxx xxx" required>
+                                <p class="help-text">Who to notify in emergency situations - critical for care home records</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Location & Budget -->
+                    <div class="question-section bg-white rounded-xl p-10 shadow-lg border border-gray-200" data-section="2">
+                        <h2 class="section-title">Location & Budget</h2>
+                        <p class="section-description">Geographic and financial preferences</p>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <label class="question-label" for="location_001">
+                                    Preferred city or region <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="location_001" name="location_001" class="form-input" 
+                                       placeholder="Start typing city name..." required>
+                                <p class="help-text">Near which city would you prefer the care home to be located</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Maximum distance from preferred location <span class="text-red-500">*</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_002" value="5km" required>
+                                        <span>Up to 5 km</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_002" value="15km" required>
+                                        <span>Up to 15 km</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_002" value="30km" required>
+                                        <span>Up to 30 km</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_002" value="50km" required>
+                                        <span>Up to 50 km</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="location_002" value="no_limit" required>
+                                        <span>Distance not important</span>
+                                    </label>
+                                </div>
+                                <p class="help-text">How far can the suitable care home be located</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Planned monthly budget <span class="text-red-500">*</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="budget_001" value="under_3000" required>
+                                        <span>Up to £3,000</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="budget_001" value="3000_5000" required>
+                                        <span>£3,000 - £5,000</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="budget_001" value="5000_7000" required>
+                                        <span>£5,000 - £7,000</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="budget_001" value="7000_10000" required>
+                                        <span>£7,000 - £10,000</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="budget_001" value="over_10000" required>
+                                        <span>Over £10,000</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="budget_001" value="need_advice" required>
+                                        <span>Need budget guidance</span>
+                                    </label>
+                                </div>
+                                <p class="help-text">Approximate range you're considering</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: Medical Needs -->
+                    <div class="question-section bg-white rounded-xl p-10 shadow-lg border border-gray-200" data-section="3">
+                        <h2 class="section-title">Medical Needs</h2>
+                        <p class="section-description">Required level of care and medical support</p>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <label class="question-label">
+                                    What types of care are needed? <span class="text-red-500">*</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_001" value="residential_care">
+                                        <span>General care (residential care)</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_001" value="nursing_care">
+                                        <span>Medical care (nursing care)</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_001" value="dementia_care">
+                                        <span>Specialised dementia care</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_001" value="palliative_care">
+                                        <span>Palliative care</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_001" value="respite_care">
+                                        <span>Temporary care (respite care)</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_001" value="not_sure">
+                                        <span>Not sure, need consultation</span>
+                                    </label>
+                                </div>
+                                <p class="help-text">You can select multiple options</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Main medical conditions (if any) <span class="text-red-500">*</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="dementia_alzheimers">
+                                        <span>Dementia/Alzheimer's disease</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="mobility_issues">
+                                        <span>Mobility problems</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="diabetes">
+                                        <span>Diabetes</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="heart_conditions">
+                                        <span>Heart conditions</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="stroke">
+                                        <span>Stroke effects</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="mental_health">
+                                        <span>Mental health conditions</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="parkinsons">
+                                        <span>Parkinson's disease</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="none">
+                                        <span>No serious medical problems</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="care_002" value="other">
+                                        <span>Other (will specify in comments)</span>
+                                    </label>
+                                </div>
+                                <p class="help-text">This helps us find homes with appropriate specialisation</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Level of mobility and independence <span class="text-red-500">*</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="care_004" value="fully_mobile" required>
+                                        <span>Fully mobile and independent</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="care_004" value="walking_aid" required>
+                                        <span>Uses walking aids (stick, frame)</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="care_004" value="wheelchair_partial" required>
+                                        <span>Sometimes uses wheelchair</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="care_004" value="wheelchair_full" required>
+                                        <span>Permanently in wheelchair</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="care_004" value="bed_bound" required>
+                                        <span>Bed-bound</span>
+                                    </label>
+                                </div>
+                                <p class="help-text">Current mobility level of the person needing care</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Medication management complexity <span class="text-red-500">*</span>
+                                    <span class="priority-indicator priority-high">HIGH PRIORITY</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="medications_complexity" value="none" required>
+                                        <span>Takes no medications</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="medications_complexity" value="simple" required>
+                                        <span>1-2 simple medications</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="medications_complexity" value="moderate" required>
+                                        <span>Several medications, simple routine</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="medications_complexity" value="complex" required>
+                                        <span>Many medications, complex routine</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="medications_complexity" value="managed" required>
+                                        <span>Requires full medication management</span>
+                                    </label>
+                                </div>
+                                <p class="help-text">How complex is the medication routine - critical for choosing appropriate level of medical care</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 4: Safety & Special Needs -->
+                    <div class="question-section safety-section rounded-xl p-10 shadow-lg" data-section="4">
+                        <h2 class="section-title">
+                            <span class="safety-icon">🛡️</span>Safety & Special Needs
+                            <span class="priority-indicator priority-critical">SAFETY CRITICAL</span>
+                        </h2>
+                        <p class="section-description">Essential information for ensuring safety and proper care</p>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <label class="question-label">
+                                    Fall history in the past year <span class="text-red-500">*</span>
+                                    <span class="priority-indicator priority-critical">CRITICAL</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="safety_falls" value="no_falls" required>
+                                        <span>No falls occurred</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="safety_falls" value="rare_falls" required>
+                                        <span>1-2 falls, no serious consequences</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="safety_falls" value="frequent_falls" required>
+                                        <span>3+ falls or serious injuries</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="safety_falls" value="high_risk" required>
+                                        <span>High risk of falling</span>
+                                    </label>
+                                </div>
+                                <p class="help-text">Critical for choosing appropriate safety level - impacts care home selection significantly</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Major allergies (if any) <span class="text-red-500">*</span>
+                                    <span class="priority-indicator priority-high">HIGH PRIORITY</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="allergies_major" value="food_allergies">
+                                        <span>Food allergies</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="allergies_major" value="medication_allergies">
+                                        <span>Medication allergies</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="allergies_major" value="environmental">
+                                        <span>Environmental allergies (dust, pollen)</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="allergies_major" value="latex">
+                                        <span>Latex</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="allergies_major" value="animals">
+                                        <span>Animals</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="allergies_major" value="none">
+                                        <span>No allergies</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="allergies_major" value="other">
+                                        <span>Other allergies</span>
+                                    </label>
+                                </div>
+                                <p class="help-text">Essential for safety and care planning - helps exclude unsuitable homes</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Special dietary requirements <span class="text-red-500">*</span>
+                                    <span class="priority-indicator priority-high">HIGH PRIORITY</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="dietary_requirements" value="diabetic">
+                                        <span>Diabetic diet</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="dietary_requirements" value="pureed_soft">
+                                        <span>Pureed/soft food</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="dietary_requirements" value="low_sodium">
+                                        <span>Low sodium</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="dietary_requirements" value="vegetarian">
+                                        <span>Vegetarian/vegan</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="dietary_requirements" value="kosher_halal">
+                                        <span>Kosher/halal food</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="dietary_requirements" value="texture_modified">
+                                        <span>Modified texture (dysphagia)</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="dietary_requirements" value="none">
+                                        <span>No special requirements</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="dietary_requirements" value="other">
+                                        <span>Other requirements</span>
+                                    </label>
+                                </div>
+                                <p class="help-text">For ensuring proper nutrition and safety</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    Social personality type <span class="text-red-500">*</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="social_personality" value="very_social" required>
+                                        <span>Very sociable, loves activities</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="social_personality" value="moderately_social" required>
+                                        <span>Moderately sociable</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="social_personality" value="selective_social" required>
+                                        <span>Selectively social</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="social_personality" value="prefers_quiet" required>
+                                        <span>Prefers quiet and peace</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="social_personality" value="unsure" required>
+                                        <span>Hard to say</span>
+                                    </label>
+                                </div>
+                                <p class="help-text">Helps match to appropriate social environment for better quality of life</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 5: Additional Preferences -->
+                    <div class="question-section bg-white rounded-xl p-10 shadow-lg border border-gray-200" data-section="5">
+                        <h2 class="section-title">Additional Preferences</h2>
+                        <p class="section-description">Living conditions and timeline</p>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <label class="question-label">
+                                    Accommodation preferences <span class="text-red-500">*</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_002" value="single_room">
+                                        <span>Single room</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_002" value="shared_room">
+                                        <span>Shared room (cheaper option)</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_002" value="ensuite_bathroom">
+                                        <span>En-suite bathroom</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_002" value="ground_floor">
+                                        <span>Ground floor (no stairs)</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_002" value="garden_access">
+                                        <span>Garden access</span>
+                                    </label>
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" name="comfort_002" value="no_preference">
+                                        <span>No specific preferences</span>
+                                    </label>
+                                </div>
+                                <p class="help-text">Important living conditions for you</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label">
+                                    When is placement needed? <span class="text-red-500">*</span>
+                                </label>
+                                <div class="space-y-4">
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_001" value="urgent" required>
+                                        <span>Urgent (within 2 weeks)</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_001" value="soon" required>
+                                        <span>Within the next month</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_001" value="planning" required>
+                                        <span>Planning for 2-3 months</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="timeline_001" value="future" required>
+                                        <span>Just exploring options (6+ months)</span>
+                                    </label>
+                                </div>
+                                <p class="help-text">This helps us prioritise recommendations</p>
+                            </div>
+
+                            <div>
+                                <label class="question-label" for="timeline_006">
+                                    Additional information or special requirements
+                                </label>
+                                <textarea id="timeline_006" name="timeline_006" class="form-input" rows="4" 
+                                          placeholder="Tell us about any special needs, preferences, or questions..."></textarea>
+                                <p class="help-text">Any additional information that will help us better match options</p>
+                            </div>
+
+                            <!-- Legal Requirements Section -->
+                            <div class="mt-12 pt-8 border-t-2 border-gray-300">
+                                <h3 class="text-xl font-bold mb-6 text-gray-800">Legal Requirements</h3>
+                                
+                                <div class="space-y-6">
+                                    <div class="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg">
+                                        <label class="checkbox-option bg-transparent border-none p-0 mb-0">
+                                            <input type="checkbox" name="system_001" value="gdpr_consent" required class="mr-4">
+                                            <span class="text-base leading-relaxed">
+                                                <strong>Data Processing Consent (GDPR) <span class="text-red-500">*</span></strong><br>
+                                                I consent to the processing of my personal data for the purpose of receiving care home recommendations. 
+                                                I understand that my data will be processed securely and will not be shared with third parties without my consent. 
+                                                I can withdraw this consent at any time by contacting us.
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div class="bg-green-50 border-l-4 border-green-400 p-6 rounded-r-lg">
+                                        <label class="checkbox-option bg-transparent border-none p-0 mb-0">
+                                            <input type="checkbox" name="system_002" value="terms_consent" required class="mr-4">
+                                            <span class="text-base leading-relaxed">
+                                                <strong>Terms of Service Agreement <span class="text-red-500">*</span></strong><br>
+                                                I agree to the Terms of Service and understand that this assessment is for informational purposes only. 
+                                                The recommendations provided do not constitute professional advice, and I should conduct my own due diligence 
+                                                when selecting a care home.
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="navigation-buttons">
+                        <button type="button" id="prev-btn" class="secondary-btn" style="display: none;">
+                            ← Previous Section
+                        </button>
+                        
+                        <div class="button-group">
+                            <button type="button" id="next-btn" class="primary-btn" disabled>
+                                Next Section →
+                            </button>
+                            <button type="submit" id="submit-btn" class="primary-btn" style="display: none;" disabled>
+                                Complete Assessment
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
+                <!-- Completion Message (initially hidden) -->
+                <div id="completion-message" class="hidden text-center py-16">
+                    <div class="bg-white rounded-xl p-12 shadow-lg border border-gray-200 max-w-2xl mx-auto">
+                        <div class="text-6xl mb-6">✓</div>
+                        <h2 class="text-3xl font-bold mb-6 text-gray-900">Thank you! Conducting professional analysis...</h2>
+                        <p class="text-xl text-gray-600 mb-8">
+                            We've received your request with important safety and special needs information. Personalised recommendations will be ready within 24 hours.
+                        </p>
+                        <div class="bg-blue-50 rounded-lg p-6 text-left">
+                            <h3 class="text-lg font-semibold mb-4 text-blue-800">Next steps:</h3>
+                            <ul class="space-y-2 text-blue-700">
+                                <li>• Analysis of medical and safety requirements</li>
+                                <li>• Verification of care home specialisations</li>
+                                <li>• Matching with allergy and dietary needs</li>
+                                <li>• Consideration of social type and preferences</li>
+                                <li>• Preparation of personalised report with 3-5 best options</li>
+                                <li>• Delivery of safe recommendations to your email</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript Files -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/questionnaire.js"></script>
+    
+    <script>
+        // MVP v1.0 Improved - 5 sections with safety focus
+        document.addEventListener('DOMContentLoaded', function() {
+            const totalSections = 5;
+            let currentSection = 1;
+            const questionnaireForm = document.getElementById('questionnaire-form');
+            const sections = document.querySelectorAll('.question-section');
+            const nextBtn = document.getElementById('next-btn');
+            const prevBtn = document.getElementById('prev-btn');
+            const submitBtn = document.getElementById('submit-btn');
+            
+            // Motivational messages for each section
+            const motivationalMessages = {
+                1: {
+                    title: "Ready to begin your professional care assessment",
+                    subtitle: "Each answer helps us create safer, more accurate recommendations"
+                },
+                2: {
+                    title: "Great start! Now let's look at location and budget",
+                    subtitle: "Geographic preferences help us find conveniently located options"
+                },
+                3: {
+                    title: "Excellent progress! Medical needs are crucial",
+                    subtitle: "Understanding care requirements ensures appropriate matching"
+                },
+                4: {
+                    title: "Critical safety section - this makes the difference",
+                    subtitle: "Safety information ensures we recommend only appropriate homes"
+                },
+                5: {
+                    title: "Final section! Just a few more details",
+                    subtitle: "These preferences will fine-tune your personalised recommendations"
+                }
+            };
+            
+            const currentSectionElement = document.getElementById('current-section');
+            const progressFill = document.getElementById('progress-fill');
+            const progressMotivation = document.getElementById('progress-motivation');
+            
+            // Function to save form data to localStorage
+            function saveFormData() {
+                const formData = new FormData(questionnaireForm);
+                const data = Object.fromEntries(formData.entries());
+                localStorage.setItem('questionnaireData', JSON.stringify(data));
+            }
+
+            // Function to load form data from localStorage
+            function loadFormData() {
+                const savedData = localStorage.getItem('questionnaireData');
+                if (savedData) {
+                    const data = JSON.parse(savedData);
+                    for (const [key, value] of Object.entries(data)) {
+                        const input = questionnaireForm.querySelector(`[name="${key}"][value="${value}"]`) || questionnaireForm.querySelector(`[name="${key}"]`);
+                        if (input) {
+                            if (input.type === 'radio' || input.type === 'checkbox') {
+                                input.checked = true;
+                            } else {
+                                input.value = value;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            function updateProgress() {
+                const progressPercentage = (currentSection / totalSections) * 100;
+                progressFill.style.width = progressPercentage + '%';
+                currentSectionElement.textContent = currentSection;
+                
+                // Update motivational message
+                const message = motivationalMessages[currentSection];
+                if (message && progressMotivation) {
+                    progressMotivation.innerHTML = `
+                        <p class="text-lg font-semibold text-blue-800">${message.title}</p>
+                        <p class="text-gray-600 mt-2">${message.subtitle}</p>
+                    `;
+                }
+                updateNavigationButtons();
+            }
+
+            // Validation function for current section
+            function validateCurrentSection() {
+                const currentSectionEl = sections[currentSection - 1];
+                let isValid = true;
+                const requiredInputs = currentSectionEl.querySelectorAll('input:required, textarea:required');
+                
+                requiredInputs.forEach(input => {
+                    const parent = input.closest('div');
+                    let isFieldValid = true;
+
+                    if (input.type === 'radio' || input.type === 'checkbox') {
+                        const fieldName = input.name;
+                        const radioGroup = document.querySelectorAll(`input[name="${fieldName}"]:checked`);
+                        if (radioGroup.length === 0) {
+                            isFieldValid = false;
+                        }
+                    } else if (!input.value.trim()) {
+                        isFieldValid = false;
+                    } else if (input.type === 'email' && !/^[^@]+@[^@]+\.[^@]+$/.test(input.value)) {
+                         isFieldValid = false;
+                    }
+                    
+                    if (!isFieldValid) {
+                        isValid = false;
+                        parent.classList.add('error');
+                        let errorMessage = parent.querySelector('.error-message');
+                        if (!errorMessage) {
+                            errorMessage = document.createElement('p');
+                            errorMessage.className = 'error-message';
+                            errorMessage.textContent = 'This field is required.';
+                            parent.appendChild(errorMessage);
+                        }
+                    } else {
+                        parent.classList.remove('error');
+                        const errorMessage = parent.querySelector('.error-message');
+                        if (errorMessage) {
+                            errorMessage.remove();
+                        }
+                    }
+                });
+                
+                return isValid;
+            }
+
+            function updateNavigationButtons() {
+                const isValid = validateCurrentSection();
+                if (currentSection === totalSections) {
+                    nextBtn.style.display = 'none';
+                    submitBtn.style.display = 'block';
+                    submitBtn.disabled = !isValid;
+                } else {
+                    nextBtn.style.display = 'block';
+                    submitBtn.style.display = 'none';
+                    nextBtn.disabled = !isValid;
+                }
+            }
+
+            function showSection(sectionNumber) {
+                sections.forEach((section, index) => {
+                    section.classList.toggle('active', index + 1 === sectionNumber);
+                });
+                
+                currentSection = sectionNumber;
+                updateProgress();
+                
+                // Update navigation buttons
+                prevBtn.style.display = sectionNumber > 1 ? 'block' : 'none';
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            
+            // Navigation event listeners
+            nextBtn.addEventListener('click', function() {
+                if (!this.disabled) {
+                    if (currentSection < totalSections) {
+                        showSection(currentSection + 1);
+                    }
+                }
+            });
+            
+            prevBtn.addEventListener('click', function() {
+                if (currentSection > 1) {
+                    showSection(currentSection - 1);
+                }
+            });
+            
+            // Form submission
+            questionnaireForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (validateCurrentSection()) {
+                    saveFormData();
+                    // Hide form and show completion message
+                    document.getElementById('questionnaire-container').style.display = 'none';
+                    document.getElementById('completion-message').classList.remove('hidden');
+                    // Clear saved data on completion
+                    localStorage.removeItem('questionnaireData');
+                    
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+            
+            // Event listener for all form inputs to trigger validation and saving
+            questionnaireForm.addEventListener('input', function(e) {
+                if (e.target.closest('.question-section.active')) {
+                    validateCurrentSection();
+                    saveFormData();
+                }
+            });
+
+            // Handle conditional display of patient name field
+            const relationshipInputs = document.querySelectorAll('input[name="contact_004"]');
+            const patientNameSection = document.getElementById('patient-name-section');
+            const patientNameInput = document.getElementById('contact_005');
+            
+            relationshipInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    if (this.value === 'self') {
+                        patientNameSection.style.display = 'none';
+                        patientNameInput.removeAttribute('required');
+                        patientNameInput.value = '';
+                    } else {
+                        patientNameSection.style.display = 'block';
+                        patientNameInput.setAttribute('required', 'required');
+                    }
+                    saveFormData();
+                });
+            });
+            
+            // Initialize first section
+            loadFormData();
+            showSection(currentSection);
+            validateCurrentSection();
+        });
+    </script>
+</body>
+</html>
