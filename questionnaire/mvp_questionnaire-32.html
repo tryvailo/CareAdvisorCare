@@ -579,7 +579,7 @@
                                     </label>
                                     <label class="checkbox-option">
                                         <input type="checkbox" name="specialized_services" value="not_sure">
-                                        <span>Not sure, need a consultation</span>
+                                        <span>Not sure</span>
                                     </label>
                                 </div>
                                 <p class="help-text">Select any additional support services needed</p>
@@ -1391,9 +1391,7 @@
                                     <input type="checkbox" name="system_002" value="terms_consent" required class="mr-4">
                                     <span class="text-base leading-relaxed">
                                         <strong>Terms of Service Agreement <span class="text-red-500">*</span></strong><br>
-                                        I agree to the Terms of Service and understand that this assessment is for informational purposes only. 
-                                        The recommendations provided do not constitute professional advice, and I should conduct my own due diligence 
-                                        when selecting a care home.
+                                        I agree and understand that RightCareHome provides information only, not professional care placement. The recommendations provided do not constitute professional advice, and I will conduct my own due diligence when selecting a care home.
                                     </span>
                                 </label>
                             </div>
@@ -1460,6 +1458,7 @@
             const nextBtn = document.getElementById('next-btn');
             const prevBtn = document.getElementById('prev-btn');
             const submitBtn = document.getElementById('submit-btn');
+            let formSubmitted = false;
             
             // Motivational messages for each section
             const motivationalMessages = {
@@ -1558,11 +1557,10 @@
                         <p class="text-gray-600 mt-2">${message.subtitle}</p>
                     `;
                 }
-                updateNavigationButtons();
             }
 
             // Validation function for current section
-            function validateCurrentSection() {
+            function validateCurrentSection(showErrors = true) {
                 const currentSectionEl = sections[currentSection - 1];
                 let isValid = true;
                 const processedFields = new Set();
@@ -1593,13 +1591,15 @@
                     
                     if (!isFieldValid) {
                         isValid = false;
-                        parent.classList.add('error');
-                        let errorMessage = parent.querySelector('.error-message');
-                        if (!errorMessage) {
-                            errorMessage = document.createElement('p');
-                            errorMessage.className = 'error-message';
-                            errorMessage.textContent = 'This field is required.';
-                            parent.appendChild(errorMessage);
+                        if (showErrors) {
+                            parent.classList.add('error');
+                            let errorMessage = parent.querySelector('.error-message');
+                            if (!errorMessage) {
+                                errorMessage = document.createElement('p');
+                                errorMessage.className = 'error-message';
+                                errorMessage.textContent = 'This field is required.';
+                                parent.appendChild(errorMessage);
+                            }
                         }
                     } else {
                         parent.classList.remove('error');
@@ -1612,9 +1612,9 @@
                 
                 return isValid;
             }
-
+            
             function updateNavigationButtons() {
-                const isValid = validateCurrentSection();
+                const isValid = validateCurrentSection(false); // Don't show errors on initial check
                 if (currentSection === totalSections) {
                     nextBtn.style.display = 'none';
                     submitBtn.style.display = 'block';
@@ -1647,7 +1647,7 @@
             
             // Navigation event listeners
             nextBtn.addEventListener('click', function() {
-                if (!this.disabled) {
+                if (validateCurrentSection()) { // Validate with errors on click
                     if (currentSection < totalSections) {
                         showSection(currentSection + 1);
                         saveFormData();
@@ -1729,7 +1729,7 @@
             loadFormData();
             showSection(currentSection);
             
-            // Initial check for validation and button state
+            // Initial check for navigation buttons based on loaded data
             updateNavigationButtons();
         });
     </script>
