@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="report-title">Personal Care Home Placement Report</title>
+    <meta name="description" content="Professional care home placement report with algorithmic analysis and expert recommendations.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-navy': '#1e293b',
+                        'primary-blue': '#2563eb',
+                        'nhs-blue': '#005EB8',
+                        'caring-green': '#059669',
+                        'warmth-orange': '#f59e0b',
+                        'soft-coral': '#fb7185',
+                        'warm-grey': '#64748b',
+                        'light-cream': '#fefce8',
+                        'birmingham-blue': '#005EB8',
+                        'birmingham-gold': '#d4af37',
+                        'text-dark': '#1f2937',
+                        'text-muted': '#64748b',
+                        'healthcare-blue': '#005EB8'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fefce8;
+            color: #1f2937;
+            line-height: 1.8;
+            font-size: 1.125rem;
+            scroll-behavior: smooth;
+        }
+        
+        /* Loading State */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error-message {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #fca5a5;
+            margin: 1rem 0;
+        }
+        
+        /* Enhanced Card Designs */
+        .ranking-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid #e5e7eb;
+            position: relative;
+            overflow: hidden;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .ranking-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .top-recommendation {
+            border-color: #005EB8;
+            background: linear-gradient(135deg, #fefce8 0%, #eff6ff 100%);
+        }
+        
+        .methodology-card {
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-left: 4px solid #005EB8;
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 1.5rem 0;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+        }
+        
+        .expert-tip {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.3);
+        }
+        
+        /* Progress bars */
+        .progress-bar {
+            background: #e5e7eb;
+            border-radius: 10px;
+            height: 12px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #005EB8, #d4af37);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.8s ease;
+        }
+        
+        /* Source Indicators */
+        .source-indicator {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 4px;
+        }
+        
+        .source-official {
+            background-color: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+        
+        .source-market {
+            background-color: #fef3c7;
+            color: #d97706;
+            border: 1px solid #fcd34d;
+        }
+        
+        .source-financial {
+            background-color: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #93c5fd;
+        }
+        
+        .source-algorithmic {
+            background-color: #f3e8ff;
+            color: #7c3aed;
+            border: 1px solid #c4b5fd;
+        }
+        
+        /* Data Quality Indicators */
+        .data-quality-high {
+            background: #dcfce7;
+            color: #166534;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid #bbf7d0;
+        }
+        
+        .data-quality-medium {
+            background: #f3f4f6;
+            color: #4b5563;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid #d1d5db;
+        }
+        
+        .data-quality-limited {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid #fca5a5;
+        }
+        
+        /* Table Styles */
+        .comparison-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, #005EB8 0%, #0066cc 100%);
+            color: white;
+            padding: 1.5rem;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+        
+        .comparison-table td {
+            padding: 1.25rem;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+        }
+        
+        .comparison-table tr:hover td {
+            background: #f8fafc;
+        }
+        
+        /* Button Styles */
+        .contact-btn {
+            background-color: #005EB8;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .contact-btn:hover {
+            background-color: #004a91;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .pdf-download-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            border: 2px solid #f59e0b;
+            font-weight: 700;
+            padding: 18px 32px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+            cursor: pointer;
+        }
+        
+        .pdf-download-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(245, 158, 11, 0.5);
+        }
+        
+        /* Calculator Styles */
+        .calculator-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 2px solid #059669;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .calc-card {
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+        
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            body {
+                font-size: 1rem;
+                padding: 0 16px;
+            }
+            
+            .ranking-card, .methodology-card {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .comparison-table {
+                font-size: 0.9rem;
+                min-width: 600px;
+            }
+            
+            .pdf-download-btn {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                top: auto;
+                width: 60px;
+                height: 60px;
+                padding: 0;
+                border-radius: 50%;
+                font-size: 24px;
+            }
+            
+            .pdf-download-btn span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- PDF Download Button -->
+    <button onclick="downloadPDF()" class="pdf-download-btn no-print">
+        <span>Download PDF Report</span>
+    </button>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+        <div class="text-center">
+            <div class="loading-spinner mb-4"></div>
+            <p class="text-xl text-gray-600">Loading care home report data...</p>
+        </div>
+    </div>
+
+    <!-- Error Screen -->
+    <div id="error-screen" class="fixed inset-0 bg-white z-50 flex items-center justify-center" style="display: none;">
+        <div class="text-center max-w-lg mx-auto p-6">
+            <div class="text-6xl mb-4">⚠️</div>
+            <h2 class="text-2xl font-bold text-red-600 mb-4">Data Loading Error</h2>
+            <div id="error-message" class="error-message">
+                Unable to load report data. Please ensure the JSON data files are available.
+            </div>
+            <button onclick="location.reload()" class="contact-btn mt-4">Retry</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" style="display: none;">
+        
+        <!-- Header -->
+        <header class="bg-gradient-to-br from-nhs-blue to-caring-green py-16">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-12">
+                    <div class="mb-8 md:mb-0">
+                        <h1 id="main-title" class="text-4xl md:text-5xl font-bold text-white">Care Home Placement Report</h1>
+                        <p id="main-subtitle" class="text-blue-100 text-xl md:text-2xl mt-2">Loading...</p>
+                        <div class="bg-white/20 rounded-lg px-4 py-2 mt-4 inline-block">
+                            <span class="text-sm font-semibold text-white">Independent Analysis Service</span>
+                        </div>
+                    </div>
+                    <div class="text-left md:text-right">
+                        <div class="bg-white/20 rounded-xl p-6 backdrop-blur-sm">
+                            <p class="text-lg text-blue-200">Report Date</p>
+                            <p id="report-date" class="font-bold text-2xl text-white">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/15 backdrop-blur-sm rounded-xl p-10">
+                    <h2 id="client-title" class="text-3xl md:text-4xl font-bold mb-7 text-white">Loading client information...</h2>
+                    <p id="client-description" class="text-xl md:text-2xl text-blue-50 leading-relaxed">
+                        Loading detailed requirements...
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Executive Summary -->
+        <section class="py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-8">Executive Summary</h2>
+                    <p id="executive-summary-text" class="text-2xl md:text-3xl text-gray-600 max-w-5xl mx-auto leading-relaxed">
+                        Loading analysis summary...
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-12 mb-20">
+                    <div class="methodology-card text-center">
+                        <div class="text-6xl mb-7">⚡</div>
+                        <h3 id="processing-time" class="text-4xl font-bold text-birmingham-blue mb-3">Loading...</h3>
+                        <p class="text-gray-600 text-xl">Generation time</p>
+                    </div>
+                    
+                    <div class="methodology-card text-center">
+                        <div class="text-6xl mb-7">🎯</div>
+                        <h3 id="homes-analyzed" class="text-4xl font-bold text-caring-green mb-3">Loading...</h3>
+                        <p class="text-gray-600 text-xl">Homes analyzed</p>
+                    </div>
+                    
+                    <div class="methodology-card text-center">
+                        <div class="text-6xl mb-7">📊</div>
+                        <h3 class="text-4xl font-bold text-warmth-orange mb-3">100% Independent</h3>
+                        <p class="text-gray-600 text-xl">No care home commissions</p>
+                    </div>
+                </div>
+                
+                <div id="primary-recommendation" class="expert-tip">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6">🎯 Primary Recommendation</h3>
+                    <p class="text-xl md:text-2xl leading-relaxed">
+                        Loading primary recommendation...
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Sources -->
+        <section class="py-20 bg-light-cream">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-8">Data Sources & Reliability</h2>
+                    <p class="text-2xl md:text-3xl text-gray-600 leading-relaxed">
+                        Complete transparency about our data sources and analytical methods
+                    </p>
+                </div>
+                
+                <div id="data-sources-grid" class="grid md:grid-cols-3 gap-8 mb-12">
+                    <!-- Data sources will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Expert Analysis -->
+        <section class="py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-8">📊 Expert Analysis</h2>
+                    <p class="text-2xl md:text-3xl text-gray-600 leading-relaxed">
+                        Professional assessment beyond basic care home listings
+                    </p>
+                </div>
+                
+                <div id="expert-analysis-content">
+                    <!-- Expert analysis will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Top Recommendations -->
+        <section class="py-20 bg-light-cream">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-8">Top Care Home Recommendations</h2>
+                    <p id="recommendations-subtitle" class="text-2xl md:text-3xl text-gray-600 leading-relaxed">
+                        Loading personalized recommendations...
+                    </p>
+                </div>
+                
+                <div id="recommendations-container">
+                    <!-- Recommendations will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Cost Calculator -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="calculator-section">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">💰 Care Cost Calculator</h2>
+                        <p class="text-2xl text-gray-600 mb-4">Complete financial analysis for recommended care homes</p>
+                    </div>
+                    
+                    <div id="cost-calculator">
+                        <!-- Calculator will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Table -->
+        <section class="py-20 bg-light-cream">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-8">Care Home Comparison</h2>
+                    <p class="text-2xl md:text-3xl text-gray-600">Complete comparison across all recommended care homes</p>
+                </div>
+                
+                <div class="overflow-x-auto bg-white rounded-lg shadow-sm">
+                    <table id="comparison-table" class="comparison-table w-full bg-white" style="min-width: 1200px;">
+                        <!-- Table will be populated by JavaScript -->
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Verification Checklist -->
+        <section class="py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-8">Essential Verification Checklist</h2>
+                    <p class="text-2xl md:text-3xl text-gray-600">Critical questions generated from our data analysis</p>
+                </div>
+                
+                <div id="verification-checklist" class="grid md:grid-cols-2 gap-12">
+                    <!-- Verification checklist will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Next Steps -->
+        <section class="py-20 bg-light-cream">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-8">Your Next Steps</h2>
+                    <p class="text-2xl md:text-3xl text-gray-600">A structured action plan for care home selection</p>
+                </div>
+                
+                <div id="next-steps-timeline" class="space-y-8">
+                    <!-- Next steps will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-20 bg-gray-900 text-white">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="grid md:grid-cols-3 gap-12">
+                    <div>
+                        <h3 id="service-name" class="text-3xl font-bold mb-7 text-warmth-orange">Care Home Service</h3>
+                        <p id="service-description" class="text-gray-200 mb-7 text-xl leading-relaxed">
+                            Loading service information...
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold mb-7 text-xl text-warmth-orange">Our Methodology</h4>
+                        <ul id="methodology-list" class="space-y-4 text-gray-200 text-xl">
+                            <!-- Methodology will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold mb-7 text-xl text-warmth-orange">Contact Information</h4>
+                        <ul id="contact-info" class="space-y-4 text-gray-200 text-xl">
+                            <!-- Contact info will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-700 mt-12 pt-12 text-center text-gray-300 text-lg">
+                    <p id="footer-copyright">Loading...</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Embedded report data - replace this with your actual data
+        const reportData = {
+            "report_meta": {
+                "report_date": "2025-09-23",
+                "report_id": "BCH-2025-0923-001",
+                "generation_time": "48 hours",
+                "total_homes_analysed": 277,
+                "service_location": "Birmingham"
+            },
+            "client_information": {
+                "family_name": "The Thompson Family",
+                "patient_name": "Margaret Thompson",
+                "patient_age": 78,
+                "enquirer_relationship": "daughter",
+                "location": "Edgbaston area",
+                "primary_needs": [
+                    "Type 2 diabetes management",
+                    "mobility assistance (walking frame)", 
+                    "mild cognitive impairment support"
+                ]
+            },
+            "data_sources": {
+                "official_regulatory": {
+                    "confidence": 95,
+                    "last_updated": "01 September 2024",
+                    "includes": [
+                        "CQC ratings and inspections",
+                        "NHS Directory services", 
+                        "Licensed care capabilities"
+                    ],
+                    "status": "Fully Verified"
+                },
+                "aggregated_market": {
+                    "confidence": 70,
+                    "last_updated": "12 September 2024",
+                    "includes": [
+                        "Pricing information",
+                        "Bed availability",
+                        "Basic service descriptions"
+                    ],
+                    "status": "Requires confirmation when contacting"
+                },
+                "financial_analysis": {
+                    "confidence": 90,
+                    "last_updated": "10 September 2024", 
+                    "includes": [
+                        "Financial stability analysis",
+                        "Corporate structure",
+                        "Profitability history"
+                    ],
+                    "status": "Official government records"
+                }
+            },
+            "expert_analysis": {
+                "safety_assessment": {
+                    "overall_score": 91,
+                    "confirmed_measures": [
+                        "CQC 'Good' rating for safety maintained 3 years",
+                        "Fall prevention protocols listed in licence",
+                        "No serious incident reports in 12 months"
+                    ],
+                    "verify_on_visit": [
+                        "Physical fall prevention measures in corridors",
+                        "Emergency response time protocols", 
+                        "Secure dementia unit physical barriers"
+                    ]
+                },
+                "medical_capability": {
+                    "overall_score": 87,
+                    "assessments": [
+                        {
+                            "need": "Type 2 Diabetes Management",
+                            "description": "Daily insulin monitoring and dietary management",
+                            "status": "CQC Confirmed",
+                            "source": "Nursing care licence",
+                            "status_class": "data-quality-high"
+                        },
+                        {
+                            "need": "Mobility Support & Physiotherapy", 
+                            "description": "Walking frame assistance and muscle strengthening",
+                            "status": "On-site Confirmed",
+                            "source": "CQC inspection notes",
+                            "status_class": "data-quality-high"
+                        },
+                        {
+                            "need": "Cognitive Impairment Support",
+                            "description": "Memory activities and orientation support", 
+                            "status": "Verify Details",
+                            "source": "General dementia care licence",
+                            "status_class": "data-quality-medium"
+                        }
+                    ]
+                },
+                "placement_prediction": {
+                    "success_probability": 84,
+                    "strong_factors": 4,
+                    "moderate_factors": 2, 
+                    "risk_factors": 1,
+                    "key_strengths": [
+                        {
+                            "factor": "Medical Capability Match",
+                            "explanation": "CQC-confirmed nursing care aligns with diabetes requirements"
+                        },
+                        {
+                            "factor": "Proximity Convenience", 
+                            "explanation": "8.2 miles enables regular family visits from Edgbaston"
+                        }
+                    ],
+                    "mitigation_strategies": [
+                        {
+                            "strategy": "Language Support Uncertainty",
+                            "how_to": "Pre-visit call to confirm Russian-speaking staff availability"
+                        },
+                        {
+                            "strategy": "Trial Period Recommendation",
+                            "how_to": "2-week trial placement to assess adaptation"
+                        }
+                    ]
+                }
+            },
+            "recommendations": [
+                {
+                    "rank": 1,
+                    "name": "Manor House Care Home", 
+                    "location": "Acocks Green, Birmingham",
+                    "distance_from_client": "8.2 miles from Edgbaston",
+                    "weekly_fee": 1200,
+                    "currency": "£",
+                    "match_percentage": 87,
+                    "cqc_rating": "Outstanding",
+                    "source_indicators": [
+                        {
+                            "type": "official",
+                            "label": "CQC Outstanding"
+                        },
+                        {
+                            "type": "financial", 
+                            "label": "Financially Stable"
+                        },
+                        {
+                            "type": "algorithmic",
+                            "label": "87% Algorithm Match"
+                        }
+                    ],
+                    "scores": {
+                        "medical_capability": {
+                            "score": 95,
+                            "weight": 40,
+                            "description": "High compliance",
+                            "confidence": "CQC Verified"
+                        },
+                        "cultural_fit": {
+                            "score": 78,
+                            "weight": 35, 
+                            "description": "Good alignment",
+                            "confidence": "Requires Verification"
+                        },
+                        "location_environment": {
+                            "score": 90,
+                            "weight": 25,
+                            "description": "Excellent accessibility",
+                            "confidence": "Confirmed"
+                        }
+                    },
+                    "strengths": [
+                        {
+                            "title": "Diabetes Management",
+                            "description": "CQC-confirmed nursing care capabilities include medication management protocols"
+                        },
+                        {
+                            "title": "Physiotherapy Services",
+                            "description": "On-site physiotherapy noted in latest CQC inspection report"
+                        },
+                        {
+                            "title": "Cognitive Support", 
+                            "description": "Licensed for dementia care with structured activity programmes"
+                        },
+                        {
+                            "title": "Proximity",
+                            "description": "8.2 miles from Edgbaston, accessible via A38 with good transport links"
+                        }
+                    ],
+                    "key_questions": [
+                        "What are your specific diabetes monitoring protocols?",
+                        "How do you coordinate with local diabetes clinics?",
+                        "Is Russian-speaking staff available during day shifts?",
+                        "What is the current physiotherapy schedule?"
+                    ]
+                },
+                {
+                    "rank": 2,
+                    "name": "Digby Manor Care Home",
+                    "location": "Edgbaston, Birmingham", 
+                    "distance_from_client": "6.5 miles",
+                    "weekly_fee": 1050,
+                    "currency": "£",
+                    "match_percentage": 82,
+                    "cqc_rating": "Good",
+                    "strengths": [
+                        {
+                            "title": "Diabetes Protocols",
+                            "description": "Strong diabetes protocols and excellent family satisfaction ratings"
+                        }
+                    ]
+                }
+            ],
+            "calculator_data": {
+                "manor_house": {
+                    "name": "Manor House Care Home",
+                    "weekly_fee": 1200,
+                    "registration_fee": 500,
+                    "deposit_weeks": 6,
+                    "activities_monthly": 60,
+                    "medical_extras_monthly": 180,
+                    "transport_monthly": 80
+                },
+                "digby_manor": {
+                    "name": "Digby Manor Care Home", 
+                    "weekly_fee": 1050,
+                    "registration_fee": 400,
+                    "deposit_weeks": 4,
+                    "activities_monthly": 45,
+                    "medical_extras_monthly": 160,
+                    "transport_monthly": 70
+                }
+            },
+            "verification_checklist": [
+                {
+                    "category": "Medical Care Verification",
+                    "priority": "CRITICAL",
+                    "items": [
+                        {
+                            "title": "Diabetes Management Protocol",
+                            "why_critical": "CQC confirms nursing care licence but diabetes-specific protocols not detailed in public records",
+                            "questions": [
+                                "How frequently do you monitor blood glucose levels?",
+                                "Which staff members are trained in insulin administration?", 
+                                "How do you coordinate with Margaret's current GP?"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "category": "Cultural & Communication",
+                    "priority": "HIGH",
+                    "items": [
+                        {
+                            "title": "Language Support", 
+                            "why_critical": "Staff listings suggest Eastern European personnel but Russian language not specifically confirmed",
+                            "questions": [
+                                "Do you have Russian-speaking care staff?",
+                                "Which shifts do they typically work?",
+                                "Can they assist with medical consultations?"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "next_steps": [
+                {
+                    "timeline": "Days 1-2",
+                    "title": "Initial Contact",
+                    "color": "text-blue-800",
+                    "priority_calls": [
+                        "Manor House Care Home: Confirm bed availability and arrange visit",
+                        "Digby Manor: Secondary option, schedule visit"
+                    ],
+                    "key_questions": [
+                        "Current bed availability",
+                        "Earliest possible visit date", 
+                        "Diabetes care protocols",
+                        "Russian-speaking staff availability"
+                    ]
+                }
+            ],
+            "contact_information": {
+                "service_name": "RightCareHome Birmingham",
+                "email": "birmingham@rightcarehome.co.uk", 
+                "description": "Birmingham's independent care home selection service with algorithmic analysis"
+            }
+        };
+
+        // Initialize the report
+        document.addEventListener('DOMContentLoaded', function() {
+            loadReportData();
+        });
+
+        // Load report data - now using embedded data
+        function loadReportData() {
+            try {
+                showLoading();
+                
+                // Use embedded data
+                setTimeout(() => {
+                    populateReport();
+                    hideLoading();
+                }, 500); // Small delay to show loading animation
+
+            } catch (error) {
+                console.error('Error loading report data:', error);
+                showError('Unable to load report data: ' + error.message);
+            }
+        }
+
+        // Populate all report sections
+        function populateReport() {
+            try {
+                populateHeader();
+                populateExecutiveSummary();
+                populateDataSources();
+                populateExpertAnalysis();
+                populateRecommendations();
+                populateCostCalculator();
+                populateComparisonTable();
+                populateVerificationChecklist();
+                populateNextSteps();
+                populateFooter();
+                
+                console.log('Report populated successfully');
+            } catch (error) {
+                console.error('Error populating report:', error);
+                showError('Error displaying report data: ' + error.message);
+            }
+        }
+
+        // Populate header section
+        function populateHeader() {
+            const clientInfo = reportData.client_information;
+            const reportMeta = reportData.report_meta;
+
+            document.getElementById('report-title').textContent = 
+                `Personal Care Home Placement Report - ${clientInfo.family_name}`;
+            
+            document.getElementById('main-title').textContent = 
+                `${reportMeta.service_location || 'Care Home'} Placement Report`;
+            
+            document.getElementById('main-subtitle').textContent = 
+                'Personal Care Home Placement Report';
+            
+            document.getElementById('report-date').textContent = 
+                new Date(reportMeta.report_date).toLocaleDateString('en-GB', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                });
+
+            document.getElementById('client-title').textContent = 
+                `Personal Care Home Placement Report for ${clientInfo.family_name}`;
+            
+            const needs = clientInfo.primary_needs || [];
+            document.getElementById('client-description').textContent = 
+                `Expert recommendations for ${clientInfo.patient_name} (${clientInfo.patient_age} years) requiring ${needs.join(', ')} in ${clientInfo.location} area`;
+        }
+
+        // Populate executive summary
+        function populateExecutiveSummary() {
+            const reportMeta = reportData.report_meta;
+            
+            document.getElementById('executive-summary-text').textContent = 
+                `This report transforms weeks of stressful research across ${reportMeta.total_homes_analysed || 'hundreds of'} care homes into a clear, algorithmically-verified shortlist—delivered in just ${reportMeta.generation_time} with independent expert analysis`;
+
+            document.getElementById('processing-time').textContent = reportMeta.generation_time || '48 Hours';
+            document.getElementById('homes-analyzed').textContent = reportMeta.total_homes_analysed || 'Multiple';
+
+            // Primary recommendation
+            if (reportData.recommendations && reportData.recommendations.length > 0) {
+                const primaryRec = reportData.recommendations[0];
+                document.getElementById('primary-recommendation').innerHTML = `
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6">🎯 Our Primary Recommendation</h3>
+                    <p class="text-xl md:text-2xl leading-relaxed">
+                        <strong>${primaryRec.name}</strong> emerges as our primary recommendation through algorithmic analysis. 
+                        ${primaryRec.cqc_rating} CQC rating with ${primaryRec.match_percentage}% compatibility match. 
+                        Located ${primaryRec.distance_from_client}.
+                    </p>
+                `;
+            }
+        }
+
+        // Populate data sources
+        function populateDataSources() {
+            const dataSources = reportData.data_sources;
+            const container = document.getElementById('data-sources-grid');
+            
+            container.innerHTML = '';
+
+            Object.entries(dataSources).forEach(([key, source]) => {
+                const sourceCard = document.createElement('div');
+                sourceCard.className = 'bg-white p-6 rounded-xl shadow-md border-l-4 border-green-500';
+                
+                const iconMap = {
+                    'official_regulatory': '🏛️',
+                    'aggregated_market': '🌐',
+                    'financial_analysis': '📊'
+                };
+
+                const colorMap = {
+                    'official_regulatory': 'green',
+                    'aggregated_market': 'orange',
+                    'financial_analysis': 'blue'
+                };
+
+                const color = colorMap[key] || 'gray';
+                
+                sourceCard.innerHTML = `
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl mr-3">${iconMap[key] || '📋'}</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-${color}-800">${formatTitle(key)}</h3>
+                            <span class="source-${key.includes('official') ? 'official' : key.includes('market') ? 'market' : 'financial'}">${source.confidence}% Reliability</span>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div>
+                            <strong>Includes:</strong>
+                            <ul class="list-disc list-inside mt-1 text-sm">
+                                ${source.includes.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div>
+                            <strong>Last Updated:</strong> ${source.last_updated}
+                        </div>
+                        <div class="text-${color}-700 font-semibold">
+                            ${source.status}
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(sourceCard);
+            });
+        }
+
+        // Populate expert analysis
+        function populateExpertAnalysis() {
+            const expertAnalysis = reportData.expert_analysis;
+            const container = document.getElementById('expert-analysis-content');
+            
+            container.innerHTML = '';
+
+            // Safety Assessment
+            if (expertAnalysis.safety_assessment) {
+                const safetyCard = createAnalysisCard(
+                    '🛡️ Safety Risk Assessment',
+                    expertAnalysis.safety_assessment.overall_score,
+                    expertAnalysis.safety_assessment.confirmed_measures,
+                    expertAnalysis.safety_assessment.verify_on_visit
+                );
+                container.appendChild(safetyCard);
+            }
+
+            // Medical Capability
+            if (expertAnalysis.medical_capability) {
+                const medicalCard = createMedicalCapabilityCard(expertAnalysis.medical_capability);
+                container.appendChild(medicalCard);
+            }
+
+            // Placement Prediction
+            if (expertAnalysis.placement_prediction) {
+                const placementCard = createPlacementPredictionCard(expertAnalysis.placement_prediction);
+                container.appendChild(placementCard);
+            }
+        }
+
+        // Create analysis card
+        function createAnalysisCard(title, score, confirmed, verify) {
+            const card = document.createElement('div');
+            card.className = 'ranking-card mb-8';
+            
+            card.innerHTML = `
+                <h3 class="text-2xl font-bold mb-6 flex items-center">
+                    <span class="mr-3">${title.split(' ')[0]}</span>
+                    ${title.substring(title.indexOf(' '))} : ${score}/100
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h4 class="font-bold text-green-800 mb-3">Confirmed Measures:</h4>
+                        <ul class="space-y-2">
+                            ${confirmed.map(item => `
+                                <li class="flex items-start">
+                                    <span class="text-green-600 mr-2">✓</span>
+                                    <span>${item}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    <div class="bg-amber-50 p-4 rounded-lg">
+                        <h4 class="font-bold text-amber-800 mb-3">Verify During Visit:</h4>
+                        <ul class="space-y-2">
+                            ${verify.map(item => `
+                                <li class="flex items-start">
+                                    <span class="text-amber-600 mr-2">⚠️</span>
+                                    <span>${item}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Create medical capability card
+        function createMedicalCapabilityCard(medical) {
+            const card = document.createElement('div');
+            card.className = 'ranking-card mb-8';
+            
+            let assessmentsHTML = '';
+            if (medical.assessments) {
+                assessmentsHTML = medical.assessments.map(assessment => `
+                    <div class="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
+                        <div>
+                            <strong>${assessment.need}</strong>
+                            <p class="text-sm text-gray-600">${assessment.description}</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="${assessment.status_class || 'data-quality-medium'}">${assessment.status}</span>
+                            <p class="text-xs text-gray-500 mt-1">${assessment.source}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            card.innerHTML = `
+                <h3 class="text-2xl font-bold mb-6 flex items-center">
+                    <span class="mr-3">⚕️</span>
+                    Medical Capability Alignment: ${medical.overall_score}/100
+                </h3>
+                
+                <div class="space-y-4">
+                    ${assessmentsHTML}
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Create placement prediction card
+        function createPlacementPredictionCard(prediction) {
+            const card = document.createElement('div');
+            card.className = 'ranking-card mb-8';
+            
+            card.innerHTML = `
+                <h3 class="text-2xl font-bold mb-6 flex items-center">
+                    <span class="mr-3">📈</span>
+                    Placement Success Prediction: ${prediction.success_probability}%
+                </h3>
+                
+                <div class="grid md:grid-cols-3 gap-6 mb-6">
+                    <div class="text-center p-4 bg-green-50 rounded-lg">
+                        <div class="text-3xl font-bold text-green-600">${prediction.strong_factors}</div>
+                        <div class="text-green-800">Strong Alignment Factors</div>
+                    </div>
+                    <div class="text-center p-4 bg-yellow-50 rounded-lg">
+                        <div class="text-3xl font-bold text-yellow-600">${prediction.moderate_factors}</div>
+                        <div class="text-yellow-800">Moderate Considerations</div>
+                    </div>
+                    <div class="text-center p-4 bg-red-50 rounded-lg">
+                        <div class="text-3xl font-bold text-red-600">${prediction.risk_factors}</div>
+                        <div class="text-red-800">Risk Factor</div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold text-green-800 mb-3">Key Success Factors:</h4>
+                        ${prediction.key_strengths ? prediction.key_strengths.map(strength => `
+                            <div class="bg-green-50 p-3 rounded border-l-4 border-green-500 mb-2">
+                                <strong>${strength.factor}</strong>
+                                <p class="text-sm text-green-700 mt-1">${strength.explanation}</p>
+                            </div>
+                        `).join('') : ''}
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-amber-800 mb-3">Risk Mitigation Strategies:</h4>
+                        ${prediction.mitigation_strategies ? prediction.mitigation_strategies.map(strategy => `
+                            <div class="bg-amber-50 p-3 rounded border-l-4 border-amber-500 mb-2">
+                                <strong>${strategy.strategy}</strong>
+                                <p class="text-sm text-amber-700 mt-1">${strategy.how_to}</p>
+                            </div>
+                        `).join('') : ''}
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Populate recommendations
+        function populateRecommendations() {
+            const recommendations = reportData.recommendations || [];
+            const container = document.getElementById('recommendations-container');
+            
+            container.innerHTML = '';
+
+            document.getElementById('recommendations-subtitle').textContent = 
+                `${recommendations.length} homes algorithmically matched to specific requirements`;
+
+            recommendations.forEach((rec, index) => {
+                const recCard = createRecommendationCard(rec, index === 0);
+                container.appendChild(recCard);
+            });
+        }
+
+        // Create recommendation card
+        function createRecommendationCard(rec, isTop = false) {
+            const card = document.createElement('div');
+            card.className = `ranking-card ${isTop ? 'top-recommendation' : ''} p-12 mb-12`;
+            
+            // Source indicators
+            let sourceIndicators = '';
+            if (rec.source_indicators) {
+                sourceIndicators = rec.source_indicators.map(indicator => 
+                    `<span class="source-${indicator.type}">${indicator.label}</span>`
+                ).join('');
+            }
+
+            // Scores section
+            let scoresHTML = '';
+            if (rec.scores) {
+                scoresHTML = Object.entries(rec.scores).map(([key, score]) => `
+                    <div>
+                        <h4 class="font-bold text-caring-green mb-4 text-xl">${formatScoreTitle(key)} (${score.weight}%)</h4>
+                        <div class="progress-bar mb-4">
+                            <div class="progress-fill" style="width: ${score.score}%"></div>
+                        </div>
+                        <p class="text-lg text-gray-600">${score.description} 
+                            ${score.confidence ? `<span class="${getConfidenceClass(score.confidence)}">${score.confidence}</span>` : ''}
+                        </p>
+                    </div>
+                `).join('');
+            }
+
+            // Strengths section
+            let strengthsHTML = '';
+            if (rec.strengths) {
+                strengthsHTML = rec.strengths.map(strength => `
+                    <li class="flex items-start">
+                        <span class="text-caring-green mr-5 font-bold text-2xl">✓</span>
+                        <span class="text-lg"><strong>${strength.title}:</strong> ${strength.description}</span>
+                    </li>
+                `).join('');
+            }
+
+            // Key questions
+            let questionsHTML = '';
+            if (rec.key_questions) {
+                const halfLength = Math.ceil(rec.key_questions.length / 2);
+                const firstHalf = rec.key_questions.slice(0, halfLength);
+                const secondHalf = rec.key_questions.slice(halfLength);
+
+                questionsHTML = `
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <ul class="space-y-2">
+                            ${firstHalf.map(q => `<li class="text-yellow-700">• "${q}"</li>`).join('')}
+                        </ul>
+                        <ul class="space-y-2">
+                            ${secondHalf.map(q => `<li class="text-yellow-700">• "${q}"</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            card.innerHTML = `
+                <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-10">
+                    <div class="mb-8 md:mb-0">
+                        <div class="flex items-center mb-3">
+                            <div class="w-20 h-20 bg-gradient-to-br from-nhs-blue to-birmingham-blue text-white rounded-full flex items-center justify-center text-4xl font-bold mr-7 shadow-lg">${rec.rank}</div>
+                            <div>
+                                <h3 class="text-4xl font-bold text-gray-800">${rec.name}</h3>
+                                <p class="text-gray-600 text-xl mt-2">${rec.location}, ${rec.distance_from_client}</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            ${sourceIndicators}
+                        </div>
+                    </div>
+                    <div class="text-left md:text-right">
+                        <p class="text-5xl font-bold text-birmingham-blue">${rec.currency}${rec.weekly_fee.toLocaleString()}</p>
+                        <p class="text-gray-600 text-xl">per week</p>
+                    </div>
+                </div>
+                
+                ${scoresHTML ? `
+                    <div class="grid md:grid-cols-3 gap-10 mb-10">
+                        ${scoresHTML}
+                    </div>
+                ` : ''}
+                
+                ${strengthsHTML ? `
+                    <div class="bg-blue-50 border border-blue-200 rounded-xl p-10 mb-10">
+                        <h4 class="font-bold text-gray-800 mb-6 text-xl">🎯 Why ${rec.name} Aligns with Your Needs:</h4>
+                        <ul class="space-y-4">
+                            ${strengthsHTML}
+                        </ul>
+                    </div>
+                ` : ''}
+                
+                ${questionsHTML ? `
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-8">
+                        <h4 class="font-bold text-yellow-800 mb-4 text-xl">🔍 Essential Questions for Your Visit</h4>
+                        ${questionsHTML}
+                    </div>
+                ` : ''}
+                
+                <div class="flex items-center justify-between mt-8">
+                    <button class="contact-btn">
+                        Contact home directly
+                    </button>
+                    <p class="text-sm text-gray-500 max-w-sm text-right">
+                        We recommend calling the care home to confirm bed availability before making a decision.
+                    </p>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Populate cost calculator
+        function populateCostCalculator() {
+            const calculatorData = reportData.calculator_data;
+            const container = document.getElementById('cost-calculator');
+            
+            if (!calculatorData) {
+                container.innerHTML = '<p class="text-center text-gray-600">Cost calculator data not available</p>';
+                return;
+            }
+
+            container.innerHTML = `
+                <div class="calc-card mb-10">
+                    <div class="grid md:grid-cols-2 gap-10">
+                        <div>
+                            <label for="care-home-select" class="block font-bold text-gray-800 mb-4 text-xl">Select Care Home:</label>
+                            <select id="care-home-select" class="w-full p-4 border-2 border-gray-300 rounded-lg text-lg">
+                                <option value="">Choose a care home...</option>
+                                ${Object.entries(calculatorData).map(([key, home]) => 
+                                    `<option value="${key}">${home.name} - £${home.weekly_fee}/week</option>`
+                                ).join('')}
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="time-slider" class="block font-bold text-gray-800 mb-4 text-xl">
+                                Time Period: <span id="time-display">3 years</span>
+                            </label>
+                            <input type="range" id="time-slider" min="1" max="5" step="0.5" value="3" 
+                                   class="w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                            <div class="flex justify-between text-lg text-gray-500 mt-2">
+                                <span>1 year</span>
+                                <span>5 years</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="calculator-results" style="display: none;">
+                    <div class="grid lg:grid-cols-3 gap-10 mb-12">
+                        <div class="calc-card">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Basic Care Costs</h3>
+                            <div class="space-y-6">
+                                <div class="flex justify-between items-center py-4 border-b">
+                                    <span class="text-xl">Weekly Fee</span>
+                                    <span id="weekly-fee" class="font-bold text-birmingham-blue text-xl">£0</span>
+                                </div>
+                                <div class="flex justify-between items-center py-4 border-b">
+                                    <span class="text-xl">Annual Base Cost</span>
+                                    <span id="annual-cost" class="font-bold text-birmingham-blue text-xl">£0</span>
+                                </div>
+                                <div class="flex justify-between items-center py-4 font-bold text-2xl">
+                                    <span>Basic Total</span>
+                                    <span id="basic-total" class="text-birmingham-blue">£0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="calc-card">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Additional Costs</h3>
+                            <div class="space-y-6">
+                                <div class="flex justify-between items-center py-4 border-b">
+                                    <span class="text-xl">Registration Fee</span>
+                                    <span id="registration-fee" class="font-bold text-caring-green text-xl">£0</span>
+                                </div>
+                                <div class="flex justify-between items-center py-4 border-b">
+                                    <span class="text-xl">Activities & Social</span>
+                                    <span id="activity-cost" class="font-bold text-caring-green text-xl">£0</span>
+                                </div>
+                                <div class="flex justify-between items-center py-4 border-b">
+                                    <span class="text-xl">Medical Extras</span>
+                                    <span id="medical-cost" class="font-bold text-caring-green text-xl">£0</span>
+                                </div>
+                                <div class="flex justify-between items-center py-4">
+                                    <span class="text-xl">Transport</span>
+                                    <span id="transport-cost" class="font-bold text-caring-green text-xl">£0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="calc-card">
+                            <div class="bg-gradient-to-r from-caring-green to-birmingham-gold text-white p-8 rounded-xl text-center">
+                                <div class="text-lg opacity-90 mb-3">Total Projected Cost:</div>
+                                <div id="total-projected" class="text-4xl font-bold">£0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Initialize calculator functionality
+            initializeCostCalculator();
+        }
+
+        // Initialize cost calculator
+        function initializeCostCalculator() {
+            const select = document.getElementById('care-home-select');
+            const slider = document.getElementById('time-slider');
+            const display = document.getElementById('time-display');
+
+            if (select) {
+                select.addEventListener('change', function(e) {
+                    const homeKey = e.target.value;
+                    const results = document.getElementById('calculator-results');
+                    
+                    if (homeKey && results) {
+                        results.style.display = 'block';
+                        updateCostCalculation(homeKey, parseFloat(slider.value));
+                    } else if (results) {
+                        results.style.display = 'none';
+                    }
+                });
+            }
+
+            if (slider && display) {
+                slider.addEventListener('input', function(e) {
+                    const years = parseFloat(e.target.value);
+                    display.textContent = years === 1 ? '1 year' : `${years} years`;
+                    
+                    const homeKey = select.value;
+                    if (homeKey) {
+                        updateCostCalculation(homeKey, years);
+                    }
+                });
+            }
+        }
+
+        // Update cost calculation
+        function updateCostCalculation(homeKey, years) {
+            const homeData = reportData.calculator_data[homeKey];
+            if (!homeData) return;
+
+            const weeklyFee = homeData.weekly_fee;
+            const annualCost = weeklyFee * 52;
+            const basicTotal = annualCost * years;
+            const additionalCosts = {
+                registration: homeData.registration_fee,
+                activities: homeData.activities_monthly * 12 * years,
+                medical: homeData.medical_extras_monthly * 12 * years,
+                transport: homeData.transport_monthly * 12 * years
+            };
+
+            const totalProjected = basicTotal + Object.values(additionalCosts).reduce((a, b) => a + b, 0);
+
+            // Update display
+            document.getElementById('weekly-fee').textContent = `£${weeklyFee.toLocaleString()}`;
+            document.getElementById('annual-cost').textContent = `£${annualCost.toLocaleString()}`;
+            document.getElementById('basic-total').textContent = `£${basicTotal.toLocaleString()}`;
+            document.getElementById('registration-fee').textContent = `£${additionalCosts.registration.toLocaleString()}`;
+            document.getElementById('activity-cost').textContent = `£${additionalCosts.activities.toLocaleString()}`;
+            document.getElementById('medical-cost').textContent = `£${additionalCosts.medical.toLocaleString()}`;
+            document.getElementById('transport-cost').textContent = `£${additionalCosts.transport.toLocaleString()}`;
+            document.getElementById('total-projected').textContent = `£${totalProjected.toLocaleString()}`;
+        }
+
+        // Populate comparison table
+        function populateComparisonTable() {
+            const recommendations = reportData.recommendations || [];
+            const table = document.getElementById('comparison-table');
+            
+            table.innerHTML = `
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-left">Care Home</th>
+                        <th scope="col" class="text-center">Match %</th>
+                        <th scope="col" class="text-center">CQC Rating</th>
+                        <th scope="col" class="text-center">Weekly Fee</th>
+                        <th scope="col" class="text-center">Distance</th>
+                        <th scope="col" class="text-center">Key Strength</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${recommendations.map(rec => `
+                        <tr class="border-b hover:bg-gray-50 ${rec.rank === 1 ? 'bg-blue-50' : ''}">
+                            <td class="font-bold">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 ${rec.rank === 1 ? 'bg-birmingham-blue' : 'bg-caring-green'} text-white rounded-full flex items-center justify-center text-lg font-bold mr-4">${rec.rank}</div>
+                                    ${rec.name}
+                                </div>
+                            </td>
+                            <td class="text-center font-bold text-xl ${rec.rank === 1 ? 'text-birmingham-blue' : 'text-caring-green'}">${rec.match_percentage}%</td>
+                            <td class="text-center">
+                                <span class="bg-${rec.cqc_rating === 'Outstanding' ? 'caring-green' : 'warmth-orange'} text-white px-4 py-2 rounded-lg font-bold">${rec.cqc_rating}</span>
+                            </td>
+                            <td class="text-center font-bold text-xl">${rec.currency}${rec.weekly_fee.toLocaleString()}</td>
+                            <td class="text-center">${rec.distance_from_client}</td>
+                            <td class="text-center">${rec.strengths && rec.strengths[0] ? rec.strengths[0].title : 'Multiple benefits'}</td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            `;
+        }
+
+        // Populate verification checklist
+        function populateVerificationChecklist() {
+            const checklist = reportData.verification_checklist || [];
+            const container = document.getElementById('verification-checklist');
+            
+            container.innerHTML = '';
+
+            checklist.forEach(category => {
+                const categoryCard = document.createElement('div');
+                categoryCard.className = 'ranking-card';
+                
+                let itemsHTML = '';
+                if (category.items) {
+                    itemsHTML = category.items.map(item => `
+                        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-4">
+                            <h4 class="font-bold text-red-800">${item.title}</h4>
+                            <p class="text-red-700 mt-2"><strong>Why Critical:</strong> ${item.why_critical}</p>
+                            <ul class="mt-3 space-y-1 text-red-700">
+                                ${item.questions.map(q => `<li>• ${q}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `).join('');
+                }
+
+                categoryCard.innerHTML = `
+                    <h3 class="text-2xl font-bold mb-6">${getCategoryIcon(category.category)} ${category.category}</h3>
+                    <div class="space-y-4">
+                        ${itemsHTML}
+                    </div>
+                `;
+                
+                container.appendChild(categoryCard);
+            });
+        }
+
+        // Populate next steps
+        function populateNextSteps() {
+            const nextSteps = reportData.next_steps || [];
+            const container = document.getElementById('next-steps-timeline');
+            
+            container.innerHTML = '';
+
+            nextSteps.forEach(step => {
+                const stepCard = document.createElement('div');
+                stepCard.className = 'ranking-card';
+                
+                let contentHTML = '';
+                
+                if (step.priority_calls || step.key_questions) {
+                    contentHTML += `
+                        <div class="grid md:grid-cols-2 gap-6">
+                            ${step.priority_calls ? `
+                                <div>
+                                    <h4 class="font-bold mb-3">Priority Actions:</h4>
+                                    <ul class="space-y-2">
+                                        ${step.priority_calls.map(call => `
+                                            <li class="bg-blue-50 border-l-4 border-blue-500 p-3 rounded">
+                                                📞 ${call}
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                            ` : ''}
+                            ${step.key_questions ? `
+                                <div>
+                                    <h4 class="font-bold mb-3">Key Questions:</h4>
+                                    <ul class="space-y-2 text-gray-700">
+                                        ${step.key_questions.map(q => `<li>• ${q}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                }
+
+                if (step.visit_structure || step.critical_observations) {
+                    contentHTML += `
+                        <div class="grid md:grid-cols-2 gap-6">
+                            ${step.visit_structure ? `
+                                <div>
+                                    <h4 class="font-bold mb-3">Visit Structure (2-3 hours each):</h4>
+                                    <ul class="space-y-2">
+                                        ${step.visit_structure.map(item => `
+                                            <li class="bg-green-50 border-l-4 border-green-500 p-3 rounded">
+                                                ${getVisitIcon(item)} ${item}
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                            ` : ''}
+                            ${step.critical_observations ? `
+                                <div>
+                                    <h4 class="font-bold mb-3">Critical Observations:</h4>
+                                    <ul class="space-y-2 text-gray-700">
+                                        ${step.critical_observations.map(obs => `<li>• ${obs}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                }
+
+                if (step.decision_criteria) {
+                    contentHTML += `
+                        <div class="bg-purple-50 p-6 rounded-lg">
+                            <h4 class="font-bold text-purple-800 mb-3">Decision Criteria (in order of importance):</h4>
+                            <ol class="space-y-2 text-purple-700">
+                                ${step.decision_criteria.map(criteria => `
+                                    <li><strong>${criteria.priority}. ${criteria.criteria}:</strong> ${criteria.question}</li>
+                                `).join('')}
+                            </ol>
+                        </div>
+                    `;
+                }
+
+                stepCard.innerHTML = `
+                    <h3 class="text-2xl font-bold mb-4 ${step.color || 'text-blue-800'}">${step.timeline}: ${step.title}</h3>
+                    ${contentHTML}
+                `;
+                
+                container.appendChild(stepCard);
+            });
+        }
+
+        // Populate footer
+        function populateFooter() {
+            const contact = reportData.contact_information;
+            const reportMeta = reportData.report_meta;
+            const local = reportData.local_information;
+
+            if (contact) {
+                document.getElementById('service-name').textContent = contact.service_name || 'Care Home Service';
+                document.getElementById('service-description').textContent = contact.description || 'Professional care home placement service';
+                
+                document.getElementById('contact-info').innerHTML = `
+                    <li>📧 <a href="mailto:${contact.email}" class="text-warmth-orange hover:text-yellow-300 font-bold">${contact.email}</a></li>
+                    <li>📞 <span class="text-gray-400">Available during business hours</span></li>
+                `;
+            }
+
+            document.getElementById('methodology-list').innerHTML = `
+                <li>• ${reportMeta.total_homes_analysed || 'Multiple'} care homes analyzed</li>
+                <li>• Multi-source data verification</li>
+                <li>• Algorithmic safety assessment</li>
+                <li>• Independent financial analysis</li>
+            `;
+
+            document.getElementById('footer-copyright').textContent = 
+                `© 2025 ${contact?.service_name || 'Care Home Service'}. Report prepared ${new Date(reportMeta.report_date).toLocaleDateString('en-GB')}. Confidential document.`;
+        }
+
+        // Helper functions
+        function formatTitle(key) {
+            return key.split('_').map(word => 
+                word.charAt(0).toUpperCase() + word.slice(1)
+            ).join(' ');
+        }
+
+        function formatScoreTitle(key) {
+            const titleMap = {
+                'medical_capability': 'Medical Capability',
+                'cultural_fit': 'Cultural & Personal Fit',
+                'location_environment': 'Location & Environment'
+            };
+            return titleMap[key] || formatTitle(key);
+        }
+
+        function getConfidenceClass(confidence) {
+            if (confidence.includes('Verified') || confidence.includes('Confirmed')) {
+                return 'data-quality-high';
+            } else if (confidence.includes('Verification') || confidence.includes('Details')) {
+                return 'data-quality-medium';
+            }
+            return 'data-quality-limited';
+        }
+
+        function getCategoryIcon(category) {
+            const iconMap = {
+                'Medical Care Verification': '🏥',
+                'Cultural & Communication': '🌐'
+            };
+            return iconMap[category] || '📋';
+        }
+
+        function getVisitIcon(item) {
+            if (item.includes('nursing')) return '🏥';
+            if (item.includes('Tour')) return '🏠';
+            if (item.includes('meal')) return '🍽️';
+            if (item.includes('care plans')) return '📋';
+            return '✓';
+        }
+
+        function showLoading() {
+            document.getElementById('loading-screen').style.display = 'flex';
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('error-screen').style.display = 'none';
+        }
+
+        function hideLoading() {
+            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            document.getElementById('error-screen').style.display = 'none';
+        }
+
+        function showError(message) {
+            document.getElementById('error-message').textContent = message;
+            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('error-screen').style.display = 'flex';
+        }
+
+        function downloadPDF() {
+            window.print();
+        }
+    </script>
+</body>
+</html>

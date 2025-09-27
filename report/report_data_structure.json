@@ -1,0 +1,440 @@
+{
+  "report_meta": {
+    "report_date": "13 September 2025",
+    "report_id": "BCH-2025-0913-001",
+    "generation_time": "48 hours",
+    "total_homes_analysed": 277,
+    "service_location": "Birmingham"
+  },
+  
+  "client_information": {
+    "family_name": "The Thompson Family",
+    "patient_name": "Margaret Thompson",
+    "patient_age": 78,
+    "enquirer_relationship": "daughter",
+    "location": "Edgbaston area",
+    "primary_needs": [
+      "Type 2 diabetes management",
+      "mobility assistance (walking frame)", 
+      "mild cognitive impairment support"
+    ]
+  },
+  
+  "data_sources": {
+    "official_regulatory": {
+      "confidence": 95,
+      "last_updated": "01 September 2024",
+      "includes": [
+        "CQC ratings and inspections",
+        "NHS Directory services", 
+        "Licensed care capabilities"
+      ],
+      "status": "Fully Verified"
+    },
+    "aggregated_market": {
+      "confidence": 70,
+      "last_updated": "12 September 2024",
+      "includes": [
+        "Pricing information",
+        "Bed availability",
+        "Basic service descriptions"
+      ],
+      "status": "Requires confirmation when contacting"
+    },
+    "financial_analysis": {
+      "confidence": 90,
+      "last_updated": "10 September 2024", 
+      "includes": [
+        "Financial stability analysis",
+        "Corporate structure",
+        "Profitability history"
+      ],
+      "status": "Official government records"
+    }
+  },
+  
+  "expert_analysis": {
+    "safety_assessment": {
+      "overall_score": 91,
+      "confirmed_measures": [
+        "CQC 'Good' rating for safety maintained 3 years",
+        "Fall prevention protocols listed in licence",
+        "No serious incident reports in 12 months"
+      ],
+      "verify_on_visit": [
+        "Physical fall prevention measures in corridors",
+        "Emergency response time protocols", 
+        "Secure dementia unit physical barriers"
+      ]
+    },
+    "medical_capability": {
+      "overall_score": 87,
+      "assessments": [
+        {
+          "need": "Type 2 Diabetes Management",
+          "description": "Daily insulin monitoring and dietary management",
+          "status": "CQC Confirmed",
+          "source": "Nursing care licence"
+        },
+        {
+          "need": "Mobility Support & Physiotherapy", 
+          "description": "Walking frame assistance and muscle strengthening",
+          "status": "On-site Confirmed",
+          "source": "CQC inspection notes"
+        },
+        {
+          "need": "Cognitive Impairment Support",
+          "description": "Memory activities and orientation support", 
+          "status": "Verify Details",
+          "source": "General dementia care licence"
+        }
+      ]
+    },
+    "placement_prediction": {
+      "success_probability": 84,
+      "strong_factors": 4,
+      "moderate_factors": 2, 
+      "risk_factors": 1,
+      "key_strengths": [
+        {
+          "factor": "Medical Capability Match",
+          "explanation": "CQC-confirmed nursing care aligns with diabetes requirements"
+        },
+        {
+          "factor": "Proximity Convenience", 
+          "explanation": "8.2 miles enables regular family visits from Edgbaston"
+        }
+      ],
+      "mitigation_strategies": [
+        {
+          "strategy": "Language Support Uncertainty",
+          "how_to": "Pre-visit call to confirm Russian-speaking staff availability"
+        },
+        {
+          "strategy": "Trial Period Recommendation",
+          "how_to": "2-week trial placement to assess adaptation"
+        }
+      ]
+    },
+    "financial_stability": {
+      "market_position": "+8%",
+      "market_position_description": "above regional average",
+      "hidden_costs_risk": "LOW",
+      "hidden_costs_description": "comprehensive fee structure",
+      "stability_score": 92,
+      "stability_description": "3 years profitable operation"
+    }
+  },
+  
+  "recommendations": [
+    {
+      "rank": 1,
+      "name": "Manor House Care Home", 
+      "location": "Acocks Green, Birmingham",
+      "distance_from_client": "8.2 miles from Edgbaston",
+      "weekly_fee": 1200,
+      "currency": "£",
+      "match_percentage": 87,
+      "cqc_rating": "Outstanding",
+      "source_indicators": [
+        {
+          "type": "official",
+          "label": "CQC Outstanding"
+        },
+        {
+          "type": "financial", 
+          "label": "Financially Stable"
+        },
+        {
+          "type": "algorithmic",
+          "label": "87% Algorithm Match"
+        }
+      ],
+      "scores": {
+        "medical_capability": {
+          "score": 95,
+          "weight": 40,
+          "description": "High compliance"
+        },
+        "cultural_fit": {
+          "score": 78,
+          "weight": 35, 
+          "description": "Good alignment"
+        },
+        "location_environment": {
+          "score": 90,
+          "weight": 25,
+          "description": "Excellent accessibility"
+        }
+      },
+      "strengths": [
+        {
+          "title": "Diabetes Management",
+          "description": "CQC-confirmed nursing care capabilities include medication management protocols"
+        },
+        {
+          "title": "Physiotherapy Services",
+          "description": "On-site physiotherapy noted in latest CQC inspection report"
+        },
+        {
+          "title": "Cognitive Support", 
+          "description": "Licensed for dementia care with structured activity programmes"
+        },
+        {
+          "title": "Proximity",
+          "description": "8.2 miles from Edgbaston, accessible via A38 with good transport links"
+        }
+      ],
+      "key_questions": [
+        "What are your specific diabetes monitoring protocols?",
+        "How do you coordinate with local diabetes clinics?",
+        "Is Russian-speaking staff available during day shifts?",
+        "What is the current physiotherapy schedule?"
+      ]
+    },
+    {
+      "rank": 2,
+      "name": "Digby Manor Care Home",
+      "location": "Edgbaston, Birmingham", 
+      "distance_from_client": "6.5 miles",
+      "weekly_fee": 1050,
+      "currency": "£",
+      "match_percentage": 82,
+      "cqc_rating": "Good",
+      "description": "Strong diabetes protocols and excellent family satisfaction ratings"
+    },
+    {
+      "rank": 3,
+      "name": "Bishops Manor Care Home",
+      "location": "Hall Green, Birmingham",
+      "distance_from_client": "4.1 miles", 
+      "weekly_fee": 1150,
+      "currency": "£",
+      "match_percentage": 79,
+      "cqc_rating": "Good",
+      "description": "Outstanding dementia expertise, close to Birmingham city centre"
+    },
+    {
+      "rank": 4,
+      "name": "Edgbaston Manor Care Home",
+      "location": "Edgbaston, Birmingham",
+      "distance_from_client": "3.0 miles",
+      "weekly_fee": 1299, 
+      "currency": "£",
+      "match_percentage": 76,
+      "cqc_rating": "Good"
+    },
+    {
+      "rank": 5,
+      "name": "Metchley Manor Care Home", 
+      "location": "Metchley, Birmingham",
+      "distance_from_client": "2.8 miles",
+      "weekly_fee": 1099,
+      "currency": "£", 
+      "match_percentage": 74,
+      "cqc_rating": "Good"
+    }
+  ],
+  
+  "calculator_data": {
+    "manor_house": {
+      "name": "Manor House Care Home",
+      "weekly_fee": 1200,
+      "registration_fee": 500,
+      "deposit_weeks": 6,
+      "activities_monthly": 60,
+      "medical_extras_monthly": 180,
+      "transport_monthly": 80
+    },
+    "digby_manor": {
+      "name": "Digby Manor Care Home", 
+      "weekly_fee": 1050,
+      "registration_fee": 400,
+      "deposit_weeks": 4,
+      "activities_monthly": 45,
+      "medical_extras_monthly": 160,
+      "transport_monthly": 70
+    },
+    "bishops_manor": {
+      "name": "Bishops Manor Care Home",
+      "weekly_fee": 1150, 
+      "registration_fee": 450,
+      "deposit_weeks": 5,
+      "activities_monthly": 50,
+      "medical_extras_monthly": 170,
+      "transport_monthly": 75
+    },
+    "edgbaston_manor": {
+      "name": "Edgbaston Manor Care Home",
+      "weekly_fee": 1299,
+      "registration_fee": 600,
+      "deposit_weeks": 6,
+      "activities_monthly": 70,
+      "medical_extras_monthly": 200,
+      "transport_monthly": 60
+    },
+    "metchley_manor": {
+      "name": "Metchley Manor Care Home",
+      "weekly_fee": 1099,
+      "registration_fee": 350, 
+      "deposit_weeks": 5,
+      "activities_monthly": 40,
+      "medical_extras_monthly": 150,
+      "transport_monthly": 85
+    }
+  },
+  
+  "verification_checklist": [
+    {
+      "category": "Medical Care Verification",
+      "priority": "CRITICAL",
+      "items": [
+        {
+          "title": "Diabetes Management Protocol",
+          "why_critical": "CQC confirms nursing care licence but diabetes-specific protocols not detailed in public records",
+          "questions": [
+            "How frequently do you monitor blood glucose levels?",
+            "Which staff members are trained in insulin administration?", 
+            "How do you coordinate with Margaret's current GP?"
+          ]
+        },
+        {
+          "title": "Physiotherapy Services",
+          "why_critical": "CQC notes on-site physiotherapy but schedule and intensity not specified",
+          "questions": [
+            "What is the typical physiotherapy schedule for mobility support?",
+            "Are walking frame assessments conducted regularly?"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Cultural & Communication",
+      "priority": "HIGH",
+      "items": [
+        {
+          "title": "Language Support", 
+          "why_critical": "Staff listings suggest Eastern European personnel but Russian language not specifically confirmed",
+          "questions": [
+            "Do you have Russian-speaking care staff?",
+            "Which shifts do they typically work?",
+            "Can they assist with medical consultations?"
+          ]
+        },
+        {
+          "title": "Family Involvement",
+          "why_critical": "Good accessibility from Edgbaston but family integration policies need confirmation",
+          "questions": [
+            "What are your visiting hours and policies?", 
+            "Can family participate in care planning meetings?"
+          ]
+        }
+      ]
+    }
+  ],
+  
+  "verification_required": {
+    "must_verify": [
+      "Current bed availability (changes daily)",
+      "Specific diabetes management protocols", 
+      "Qualifications of assigned care staff"
+    ],
+    "should_confirm": [
+      "Staff language capabilities",
+      "Physiotherapy scheduling",
+      "Additional service costs"
+    ]
+  },
+  
+  "documents_for_visit": [
+    "Current diabetes medication list from GP",
+    "Recent blood glucose monitoring records",
+    "Mobility assessment (if available)",
+    "List of Margaret's preferred activities", 
+    "Emergency contact information",
+    "This analysis report for reference"
+  ],
+  
+  "next_steps": [
+    {
+      "timeline": "Days 1-2",
+      "title": "Initial Contact",
+      "priority_calls": [
+        "Manor House Care Home: Confirm bed availability and arrange visit",
+        "Digby Manor: Secondary option, schedule visit"
+      ],
+      "key_questions": [
+        "Current bed availability",
+        "Earliest possible visit date", 
+        "Diabetes care protocols",
+        "Russian-speaking staff availability"
+      ]
+    },
+    {
+      "timeline": "Days 3-5", 
+      "title": "Care Home Visits",
+      "visit_structure": [
+        "Meet with nursing team",
+        "Tour facilities and rooms",
+        "Observe meal time",
+        "Review care plans"
+      ],
+      "critical_observations": [
+        "Staff-to-resident interaction quality",
+        "Cleanliness and maintenance standards",
+        "Activity levels and engagement", 
+        "Security measures for dementia care"
+      ]
+    },
+    {
+      "timeline": "Days 6-7",
+      "title": "Decision Making", 
+      "decision_criteria": [
+        {
+          "priority": 1,
+          "criteria": "Safety & Medical Capability",
+          "question": "Can they safely manage Margaret's diabetes and mobility needs?"
+        },
+        {
+          "priority": 2,
+          "criteria": "Staff Quality & Communication",
+          "question": "Do staff demonstrate competence and compassion?"
+        },
+        {
+          "priority": 3, 
+          "criteria": "Cultural Fit",
+          "question": "Will Margaret feel comfortable and understood?"
+        },
+        {
+          "priority": 4,
+          "criteria": "Family Integration", 
+          "question": "Can you maintain meaningful involvement in her care?"
+        },
+        {
+          "priority": 5,
+          "criteria": "Financial Sustainability",
+          "question": "Is this affordable long-term?"
+        }
+      ]
+    }
+  ],
+  
+  "local_information": {
+    "council": "Birmingham City Council",
+    "funding_asset_limit": 23250,
+    "weekly_funded_rates": {
+      "residential": 728,
+      "nursing": 831,
+      "year": "2025/26"
+    },
+    "typical_savings_vs_london": "£200-400 weekly",
+    "contact_info": "Birmingham City Council Adult Social Care Assessment Team"
+  },
+  
+  "contact_information": {
+    "service_name": "RightCareHome Birmingham",
+    "email": "birmingham@rightcarehome.co.uk", 
+    "description": "Birmingham's independent care home selection service with algorithmic analysis",
+    "positioning": "Completely independent advice with no care home commissions"
+  }
+}
